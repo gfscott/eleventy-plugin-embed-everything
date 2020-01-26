@@ -24,6 +24,8 @@ module.exports = function(eleventyConfig) {
 
 To embed a YouTube video into any markdown page, paste its URL into a new line. The URL should be the only thing on the line.
 
+### Markdown file example
+
 ```markdown
 ...
 
@@ -36,7 +38,11 @@ Maecenas non velit nibh. Aenean eu justo et odio commodo ornare. In scelerisque 
 ...
 ```
 
-The plugin supports common variants as well. These will also work:
+### Result:
+
+![Rickroll](https://user-images.githubusercontent.com/547470/73130266-2b8c2980-3fc3-11ea-8a8c-7994175a8490.jpg)
+
+The plugin supports common YouTube URL variants as well. These will also work:
 
 ```markdown
 <!-- No protocol: -->
