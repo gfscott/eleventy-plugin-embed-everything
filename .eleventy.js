@@ -19,6 +19,8 @@ module.exports = function(eleventyConfig, options) {
     });
     return content;
   });
+
+  // Helper functions
   function contentContainsYouTubeUrls(str) {
     const youTubeUrlPattern = /<p>(https?:\/\/)?(w{3}\.)?(youtube\.com|youtu\.be)\/(watch\?v=)?([A-Za-z0-9-_]{11})(.*)<\/p>/g;
     return str.match(youTubeUrlPattern);
@@ -29,7 +31,7 @@ module.exports = function(eleventyConfig, options) {
     const thisPattern = /<p>(https?:\/\/)?(w{3}\.)?(youtube\.com|youtu\.be)\/(watch\?v=)?(?<videoId>[A-Za-z0-9-_]{11})(.*)<\/p>/;
     return thisPattern.exec(str).groups.videoId;
   }
-  pluginConfig;
+
   function buildEmbedCodeString(id) {
     let out =
       '<div style="position:relative;width: 100%;padding-top: 56.25%;">';
