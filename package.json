@@ -1,0 +1,11 @@
+{
+  "name": "eleventy-plugin-youtube-embed",
+  "version": "1.0.0",
+  "description": "An Eleventy plugin to automatically embed YouTube videos, using just their URLs.",
+  "main": ".eleventy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Graham F. Scott",
+  "license": "MIT"
+}
