@@ -22,13 +22,13 @@ module.exports = function(eleventyConfig, options) {
 
   // Helper functions
   function contentContainsYouTubeUrls(str) {
-    const youTubeUrlPattern = /<p>(https?:\/\/)?(w{3}\.)?(youtube\.com|youtu\.be)\/(watch\?v=)?([A-Za-z0-9-_]{11})(.*)<\/p>/g;
+    const youTubeUrlPattern = /<p>(\s*)?(https?:\/\/)?(w{3}\.)?(youtube\.com|youtu\.be)\/(watch\?v=|embed\/)?([A-Za-z0-9-_]{11})(\S*)(\s*)?<\/p>/g;
     return str.match(youTubeUrlPattern);
   }
 
   function extractVideoId(str) {
     // need to use exec to get named regex groups
-    const thisPattern = /<p>(https?:\/\/)?(w{3}\.)?(youtube\.com|youtu\.be)\/(watch\?v=)?(?<videoId>[A-Za-z0-9-_]{11})(.*)<\/p>/;
+    const thisPattern = /<p>(\s*)?(https?:\/\/)?(w{3}\.)?(youtube\.com|youtu\.be)\/(watch\?v=|embed\/)?(?<videoId>[A-Za-z0-9-_]{11})(\S*)(\s*)?<\/p>/;
     return thisPattern.exec(str).groups.videoId;
   }
 
