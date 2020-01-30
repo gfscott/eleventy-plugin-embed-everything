@@ -76,8 +76,11 @@ https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1&t=1
 ## Notes and caveats
 
 - This plugin is deliberately designed _only_ to embed videos when the URL is on its own line, and not inline with other text.
-- To do this, it uses a regular expression to recognize YouTube video URLs, wrapped in an HTML `<p>` tag. If your Markdown parser produces any other output, it won’t be recognized.
-- I’ve tried to [accommodate common variants](https://regex101.com/r/wSkwtj/2) (like short **youtu.be** links, for example), but there are conceivably valid YouTube URLs that wouldn’t get recognized. Please [file an issue](https://github.com/gfscott/eleventy-plugin-youtube-embed/issues/new) if you run into an edge case!
+- To do this, it uses [a regular expression](https://regex101.com/r/wSkwtj/13) to recognize YouTube video URLs. Currently these are the limitations on what it can recognize in a markdown parser’s HTML output:
+  - The URL *must* be wrapped in a paragraph tag: `<p>`
+  - It *may* also be wrapped in an anchor tag, (*inside* the paragraph): `<a>`
+  - The URL string *may* have whitespace around it
+- I’ve tried to accommodate common variants (like short **youtu.be** links, for example), but there are conceivably valid YouTube URLs that wouldn’t get recognized. Please [file an issue](https://github.com/gfscott/eleventy-plugin-youtube-embed/issues/new) if you run into an edge case!
 - This plugin uses [transforms](https://www.11ty.dev/docs/config/#transforms), so it alters Eleventy’s HTML output as it’s generated. It doesn’t alter the source markdown.
 - Right now it supports only single videos, not playlists.
 - The embedded video is responsive, using the [intrinsic aspect ratio](https://codepen.io/gfscott/pen/qpKqZR?editors=1100) method. It will expand to fill whatever horizontal space is available.
