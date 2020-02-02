@@ -4,7 +4,7 @@ module.exports = function(eleventyConfig, options) {
     embedClass: 'eleventy-plugin-youtube-embed',
     allowAttrs: 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture',
     allowFullscreen: true,
-    autoplay: false
+    allowAutoplay: false
   };
   const pluginConfig = Object.assign(defaults, options);
 
@@ -55,7 +55,7 @@ module.exports = function(eleventyConfig, options) {
     out += '.com/embed/';
     out += id;
     // autoplay is _technically_ possible, but be cool, don't do this
-    out += pluginConfig.autoplay ? '?autoplay=1' : '';
+    out += pluginConfig.allowAutoplay ? '?autoplay=1' : '';
     out += '" ';
     // configurable allow attributes
     out += 'allow="' + pluginConfig.allowAttrs + '"';
