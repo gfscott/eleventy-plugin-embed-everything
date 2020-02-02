@@ -1,0 +1,16 @@
+{
+  "name": "eleventy-plugin-embed-everything",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eleventy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eleventy-plugin-instagram-embed": "file:../eleventy-plugin-instagram-embed",
+    "eleventy-plugin-youtube-embed": "^1.1.1"
+  }
+}
