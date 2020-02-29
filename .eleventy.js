@@ -1,32 +1,40 @@
-global.instagram = require('eleventy-plugin-instagram-embed');
+// Needs to be in global context to be accessed by module
 global.youtube = require('eleventy-plugin-youtube-embed');
+global.vimeo = require('eleventy-plugin-vimeo-embed');
 
 module.exports = function(eleventyConfig, options) {
 
   // every valid embed offered
-  const validEmbeds = ['instagram', 'youtube'];
+  const validEmbeds = [
+    'youtube',
+    'vimeo'
+  ];
+
   // embeds offered by default
-  const defaultEmbeds = ['instagram', 'youtube'];
+  const defaultEmbeds = [
+    'youtube',
+    'vimeo'
+  ];
+
+  // active embeds on this instance
+  // if user has requested a non-default list of embeds, validate and activate the valid ones
+  let activeEmbeds = options && options.use ? validateEmbeds(options.use) : defaultEmbeds;
+
   // dynamically build default settings
-  let defaultOptions = {};
-  validEmbeds.forEach(function(embed){
-    // this is kind of ugly
+  let activeEmbedOptions = {};
+  activeEmbeds.forEach(function(embed){
+    // Parsing a string this way is a hack, but the alternative is using eval
     let str = '{"'+ embed + '":{"options":{}}}';
     let obj = JSON.parse(str);
-    defaultOptions = Object.assign({}, defaultOptions, obj);
+    activeEmbedOptions = Object.assign({}, activeEmbedOptions, obj);
   });
-  defaultOptions.use = options && options.use ? validateEmbeds(options.use) : validateEmbeds(defaultEmbeds);
-
-  // combine defaults and user options to configure the plugin
-  let pluginConfig = Object.assign(defaultOptions, options);
 
   // for each valid embed being used, call it in eleventy
-  pluginConfig.use.forEach(function(embedName){
-    eleventyConfig.addPlugin(global[embedName], pluginConfig[embedName].options);
+  activeEmbeds.forEach(function(embedName){
+    eleventyConfig.addPlugin(global[embedName], activeEmbedOptions[embedName].options);
   });
 
   // Helper functions
-
   function validateEmbeds(arr){
     let out = [];
     arr.forEach(str => {

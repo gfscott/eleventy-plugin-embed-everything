@@ -1,16 +1,35 @@
 {
   "name": "eleventy-plugin-embed-everything",
   "version": "1.0.0",
-  "description": "",
+  "description": "An Eleventy plugin that allows you to quickly add common web embeds to markdown posts, using only their URLs",
   "main": ".eleventy.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "11ty",
+    "eleventy",
+    "eleventy-plugin",
+    "embeds",
+    "embedding",
+    "media",
+    "youtube",
+    "vimeo"
+  ],
+  "license": "MIT",
   "dependencies": {
-    "eleventy-plugin-instagram-embed": "file:../eleventy-plugin-instagram-embed",
+    "eleventy-plugin-vimeo-embed": "^1.0.0",
     "eleventy-plugin-youtube-embed": "^1.2.0"
-  }
+  },
+  "author": {
+    "name": "Graham F. Scott",
+    "email": "gfscott@gmail.com",
+    "url": "https://gfscott.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gfscott/eleventy-plugin-embed-everything.git"
+  },
+  "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues"
 }
