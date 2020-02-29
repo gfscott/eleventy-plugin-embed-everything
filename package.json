@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "eleventy-plugin-instagram-embed": "file:../eleventy-plugin-instagram-embed",
-    "eleventy-plugin-youtube-embed": "^1.1.1"
+    "eleventy-plugin-youtube-embed": "^1.2.0"
   }
 }
