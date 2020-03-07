@@ -5,7 +5,7 @@
 
 This [Eleventy](https://11ty.dev) plugin will automatically embed common media formats in your pages, requiring only a URL in your markdown files.
 
-It currently supports **YouTube** and **Vimeo**, with more planned.
+It currently supports **Instagram**, **YouTube**, and **Vimeo**, with more planned.
 
 - ⚡️ [Installation](#installation)
 - 🛠 [Usage](#usage)
@@ -53,6 +53,7 @@ Maecenas non velit nibh. Aenean eu justo et odio commodo ornare. In scelerisque 
 
 Currently, the plugin supports the following embed services (listed alphabetically):
 
+- Instagram
 - Vimeo
 - YouTube
 
@@ -65,9 +66,9 @@ _More are planned!_
 The plugin supports a number of frequently used services by default, but you can configure it for only the specific ones you want by passing an options object to the `addPlugin` function:
 
 ```javascript
-// configure the plugin to ~only~ embed Vimeo videos
+// configure the plugin to ~only~ embed Vimeo videos and Instagram photos/videos
 eleventyConfig.addPlugin(embedEverything, {
-  use: ['vimeo']
+  use: ['vimeo', 'instagram']
 });
 ```
 
@@ -100,5 +101,6 @@ For more about each [supported service](#supported-services), consult this table
 
 | Service | Package | Repository |
 | ------- | ------- | ---------- |
+| Instagram | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-instagram) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-instagram) |
 | Vimeo | [npm](https://www.npmjs.com/package/eleventy-plugin-vimeo-embed) | [GitHub](https://github.com/gfscott/eleventy-plugin-vimeo-embed) |
 | YouTube | [npm](https://www.npmjs.com/package/eleventy-plugin-youtube-embed) | [GitHub](https://github.com/gfscott/eleventy-plugin-youtube-embed) |

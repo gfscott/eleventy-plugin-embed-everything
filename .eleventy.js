@@ -1,19 +1,22 @@
 // Needs to be in global context to be accessed by module
 global.youtube = require('eleventy-plugin-youtube-embed');
 global.vimeo = require('eleventy-plugin-vimeo-embed');
+global.instagram = require('eleventy-plugin-embed-instagram');
 
 module.exports = function(eleventyConfig, options) {
 
   // every valid embed offered
   const validEmbeds = [
-    'youtube',
-    'vimeo'
+    'instagram',
+    'vimeo',
+    'youtube'
   ];
 
   // embeds offered by default
   const defaultEmbeds = [
-    'youtube',
-    'vimeo'
+    'instagram',
+    'vimeo',
+    'youtube'
   ];
 
   // active embeds on this instance
