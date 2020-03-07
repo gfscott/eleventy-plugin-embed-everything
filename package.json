@@ -1,7 +1,7 @@
 {
   "name": "eleventy-plugin-embed-instagram",
   "version": "1.0.0",
-  "description": "An Eleventy plugin to automatically embed Instagram media, using just their URLs.",
+  "description": "An Eleventy plugin to automatically embed Instagram photos and videos, using just their URLs.",
   "keywords": [
     "11ty",
     "eleventy",
