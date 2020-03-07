@@ -18,6 +18,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "eleventy-plugin-embed-instagram": "^1.0.2",
     "eleventy-plugin-vimeo-embed": "^1.0.0",
     "eleventy-plugin-youtube-embed": "^1.2.0"
   },
