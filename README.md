@@ -1,7 +1,7 @@
-# eleventy-plugin-youtube-embed
+# eleventy-plugin-embed-instagram
 
-[![NPM Version](https://img.shields.io/npm/v/eleventy-plugin-youtube-embed?style=for-the-badge)](https://www.npmjs.com/package/eleventy-plugin-youtube-embed)
-[![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-youtube-embed?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-youtube-embed/blob/master/LICENSE)
+[![NPM Version](https://img.shields.io/npm/v/eleventy-plugin-embed-instagram?style=for-the-badge)](https://www.npmjs.com/package/eleventy-plugin-embed-instagram)
+[![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-embed-instagram?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-instagram/blob/master/LICENSE)
 
 This [Eleventy](https://www.11ty.dev/) plugin automatically embeds Instagram photos and videos from URLs in markdown files.
 
