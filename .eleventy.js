@@ -31,9 +31,10 @@ module.exports = function(eleventyConfig, options) {
   }
 
   function extractVideoId(str) {
-    // need to use exec to get named regex groups
-    const thisPattern = /<p>(\s*)(<a(.*)>)?(\s*)(https?:\/\/)?(w{3}\.)?(youtube\.com|youtu\.be)\/(watch\?v=|embed\/)?(?<videoId>[A-Za-z0-9-_]{11})(\S*)(\s*)(<\/a>)?(\s*)<\/p>/;
-    return thisPattern.exec(str).groups.videoId;
+    // CHANGE @1.3.0: Remove named capture group (Node ^10). Instead use destructuring (Node ^6).
+    const thisPattern = /<p>(?:\s*)(?:<a(?:.*)>)?(?:\s*)(?:https?:\/\/)?(?:w{3}\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=|embed\/)?([A-Za-z0-9-_]{11})(?:\S*)(?:\s*)(?:<\/a>)?(?:\s*)<\/p>/;
+    let [ match, out ] = thisPattern.exec(str);
+    return out;
   }
 
   function buildEmbedCodeString(id) {
