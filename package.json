@@ -1,0 +1,29 @@
+{
+  "name": "eleventy-plugin-embed-spotify",
+  "version": "1.0.0",
+  "description": "An Eleventy plugin to automatically embed Spotify tracks, using just their URLs.",
+  "keywords": [
+    "11ty",
+    "eleventy",
+    "eleventy-plugin",
+    "spotify"
+  ],
+  "main": ".eleventy.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "author": {
+    "name": "Graham F. Scott",
+    "email": "gfscott@gmail.com",
+    "url": "https://gfscott.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gfscott/eleventy-plugin-youtube-embed.git"
+  },
+  "bugs": "https://github.com/gfscott/eleventy-plugin-youtube-embed/issues",
+  "devDependencies": {
+    "ava": "^3.5.2"
+  }
+}
