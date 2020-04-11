@@ -5,7 +5,7 @@
 
 This [Eleventy](https://11ty.dev) plugin will automatically embed common media formats in your pages, requiring only a URL in your markdown files.
 
-It currently supports **Instagram**, **YouTube**, and **Vimeo**, with more planned.
+It currently supports **Instagram**, **Spotify**, **YouTube**, and **Vimeo**, with more planned.
 
 - ⚡️ [Installation](#installation)
 - 🛠 [Usage](#usage)
@@ -54,6 +54,7 @@ Maecenas non velit nibh. Aenean eu justo et odio commodo ornare. In scelerisque 
 Currently, the plugin supports the following embed services (listed alphabetically):
 
 - Instagram
+- Spotify
 - Vimeo
 - YouTube
 
@@ -93,7 +94,7 @@ Currently, you’ll need to consult the [individual plugin packages](#aggregated
 
 - This plugin does very little on its own. Instead, it _aggregates_ other embed plugins in a single place.
 - Each service is itself a standalone Eleventy plugin, each of which you can install individually.
-- This is clearly a fledgling plugin, with only a few supported embed patterns right now. If there’s a specific service you want added, please [open an issue](https://github.com/gfscott/eleventy-plugin-embed-everything/issues).
+- This plugin is in its early stages, with only a few supported embed patterns right now. If there’s a specific service you want added, please [open an issue](https://github.com/gfscott/eleventy-plugin-embed-everything/issues).
 
 ### Aggregated plugins
 
@@ -102,5 +103,6 @@ For more about each [supported service](#supported-services), consult this table
 | Service | Package | Repository |
 | ------- | ------- | ---------- |
 | Instagram | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-instagram) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-instagram) |
+| Spotify | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-spotify) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-spotify) |
 | Vimeo | [npm](https://www.npmjs.com/package/eleventy-plugin-vimeo-embed) | [GitHub](https://github.com/gfscott/eleventy-plugin-vimeo-embed) |
 | YouTube | [npm](https://www.npmjs.com/package/eleventy-plugin-youtube-embed) | [GitHub](https://github.com/gfscott/eleventy-plugin-youtube-embed) |
