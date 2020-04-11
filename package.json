@@ -1,12 +1,12 @@
 {
-  "name": "eleventy-plugin-youtube-embed",
-  "version": "1.3.0",
-  "description": "An Eleventy plugin to automatically embed YouTube videos, using just their URLs.",
+  "name": "eleventy-plugin-embed-soundcloud",
+  "version": "1.0.0",
+  "description": "An Eleventy plugin to automatically embed SoundCloud players, using just their URLs.",
   "keywords": [
     "11ty",
     "eleventy",
     "eleventy-plugin",
-    "youtube"
+    "soundcloud"
   ],
   "main": ".eleventy.js",
   "scripts": {
@@ -20,9 +20,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gfscott/eleventy-plugin-youtube-embed.git"
+    "url": "https://github.com/gfscott/eleventy-plugin-embed-soundcloud.git"
   },
-  "bugs": "https://github.com/gfscott/eleventy-plugin-youtube-embed/issues",
+  "bugs": "https://github.com/gfscott/eleventy-plugin-embed-soundcloud/issues",
   "devDependencies": {
     "ava": "^3.5.2"
   },
