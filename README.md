@@ -45,6 +45,8 @@ https://www.youtube.com/watch?v=dQw4w9WgXcQ
 Maecenas non velit nibh. Aenean eu justo et odio commodo ornare. In scelerisque sapien at.
 ```
 
+The same principle applies to the other supported services.
+
 ### Result:
 
 ![Rick Astley performing “Never gonna give you up”](https://user-images.githubusercontent.com/547470/73130266-2b8c2980-3fc3-11ea-8a8c-7994175a8490.jpg)
@@ -53,16 +55,20 @@ Maecenas non velit nibh. Aenean eu justo et odio commodo ornare. In scelerisque 
 
 Currently, the plugin supports the following embed services (listed alphabetically):
 
+**On by default:**
 - Instagram
 - Spotify
 - Vimeo
 - YouTube
 
+**Off by default** ([How to activate](#configure-which-embed-services-are-active))
+- SoundCloud
+
 _More are planned!_
 
 ## ⚙️ Settings
 
-### Picking which embed services you want
+### Configure which embed services are active
 
 The plugin supports a number of frequently used services by default, but you can configure it for only the specific ones you want by passing an options object to the `addPlugin` function:
 
@@ -73,7 +79,7 @@ eleventyConfig.addPlugin(embedEverything, {
 });
 ```
 
-### Configuring embed services individually
+### Configure embed services individually
 
 Each service comes with some useful defaults, but you can also configure each one individually using the same method:
 
@@ -103,6 +109,7 @@ For more about each [supported service](#supported-services), consult this table
 | Service | Package | Repository |
 | ------- | ------- | ---------- |
 | Instagram | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-instagram) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-instagram) |
+| SoundCloud | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-soundcloud) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-soundcloud) |
 | Spotify | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-spotify) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-spotify) |
 | Vimeo | [npm](https://www.npmjs.com/package/eleventy-plugin-vimeo-embed) | [GitHub](https://github.com/gfscott/eleventy-plugin-vimeo-embed) |
 | YouTube | [npm](https://www.npmjs.com/package/eleventy-plugin-youtube-embed) | [GitHub](https://github.com/gfscott/eleventy-plugin-youtube-embed) |
