@@ -29,6 +29,7 @@
     "email": "gfscott@gmail.com",
     "url": "https://gfscott.com"
   },
+  "homepage": "https://gfscott.com/embed-everything/",
   "repository": {
     "type": "git",
     "url": "https://github.com/gfscott/eleventy-plugin-embed-everything.git"
