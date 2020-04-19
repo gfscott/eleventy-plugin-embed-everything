@@ -18,6 +18,7 @@
     "url": "https://gfscott.com"
   },
   "license": "MIT",
+  "homepage": "https://gfscott.com/embed-everything/",
   "repository": {
     "type": "git",
     "url": "https://github.com/gfscott/eleventy-plugin-embed-soundcloud.git"
