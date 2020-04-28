@@ -2,6 +2,7 @@
 global.instagram = require('eleventy-plugin-embed-instagram');
 global.soundcloud = require('eleventy-plugin-embed-soundcloud');
 global.spotify = require('eleventy-plugin-embed-spotify');
+global.twitch = require('eleventy-plugin-embed-twitch');
 global.vimeo = require('eleventy-plugin-vimeo-embed');
 global.youtube = require('eleventy-plugin-youtube-embed');
 
@@ -12,6 +13,7 @@ module.exports = function(eleventyConfig, options) {
     'instagram',
     'soundcloud',
     'spotify',
+    'twitch',
     'vimeo',
     'youtube'
   ];
@@ -20,6 +22,7 @@ module.exports = function(eleventyConfig, options) {
   const defaultEmbeds = [
     'instagram',
     'spotify',
+    'twitch',
     'vimeo',
     'youtube'
   ];
