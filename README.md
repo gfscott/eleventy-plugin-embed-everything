@@ -17,7 +17,7 @@ $ npm i eleventy-plugin-embed-instagram
 Then add it to your [Eleventy config](https://www.11ty.dev/docs/config/) file (usually `.eleventy.js`):
 
 ```javascript
-const embedYouTube = require("eleventy-plugin-embed-instagram");
+const embedInstagram = require("eleventy-plugin-embed-instagram");
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(embedInstagram);
@@ -72,7 +72,7 @@ https://www.instagram.com/p/B9XK4J3jVui/?foo=bar
 ## Notes and caveats
 
 - This plugin is deliberately designed _only_ to embed when the URL is on its own line, and not inline with other text.
-- To do this, it uses a regular expression to recognize YouTube video URLs, wrapped in an HTML `<p>` tag. If your Markdown parser produces any other output, it won’t be recognized.
+- To do this, it uses a regular expression to recognize Instagram URLs, wrapped in an HTML `<p>` tag. If your Markdown parser produces any other output, it won’t be recognized.
 - I’ve tried to [accommodate common variants](https://regex101.com/r/cwLcjL/5), but there are conceivably valid Instagram URLs that wouldn’t get recognized. Please [file an issue](https://github.com/gfscott/eleventy-plugin-embed-instagram/issues/new) if you run into an edge case!
 - This plugin uses [transforms](https://www.11ty.dev/docs/config/#transforms), so it alters Eleventy’s HTML output as it’s generated. It doesn’t alter the source markdown.
 - By necessity, this plugin will add a call to Instagram’s third-party javascript file. It does this once per page, if that page contains an Instagram embed.
