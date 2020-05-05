@@ -1,6 +1,7 @@
 # eleventy-plugin-embed-spotify
 
-[![NPM Version](https://img.shields.io/npm/v/eleventy-plugin-embed-spotify?style=for-the-badge)](https://www.npmjs.com/package/eleventy-plugin-embed-spotify)\
+[![NPM Version](https://img.shields.io/npm/v/eleventy-plugin-embed-spotify?style=for-the-badge)](https://www.npmjs.com/package/eleventy-plugin-embed-spotify)
+[![Build Status](https://img.shields.io/travis/gfscott/eleventy-plugin-embed-spotify?style=for-the-badge)](https://travis-ci.org/github/gfscott/eleventy-plugin-embed-spotify)\
 [![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-embed-spotify?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-spotify/blob/master/LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0-ff69b4.svg?style=for-the-badge)](code_of_conduct.md)
 
