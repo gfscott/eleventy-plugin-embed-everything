@@ -10,6 +10,7 @@ const validStrings = [
   {type: 'Playlist', str: 'spotify.com/playlist/7zv2xFPTH1MBynYafuvtCj'},
   {type: 'Playlist with user ID', str: 'spotify.com/user/gfscott/playlist/7zv2xFPTH1MBynYafuvtCj'},
   {type: 'Track', str: 'spotify.com/track/3gsCAGsWr6pUm1Vy7CPPob'},
+  {type: 'Podcast episode', str: 'spotify.com/episode/7G5O2wWmch1ciYDPZS4a4O'},
 ]
 
 const invalidStrings = [
