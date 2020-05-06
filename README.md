@@ -85,11 +85,12 @@ Edit any of the [default values](lib/pluginDefaults.js) in this options object t
 The plugin supports common Spotify URL variants as well. These should also work in your Markdown files.:
 
 ```markdown
-<!-- Works with individual tracks, albums, artists, and playlists: -->
+<!-- Works with individual tracks, albums, artists, podcast episodes, and playlists: -->
 
 https://open.spotify.com/track/7nJZ9LplJ3ZAyhQyJCJk0K
 https://open.spotify.com/album/2PjlaxlMunGOUvcRzlTbtE
 https://open.spotify.com/artist/6ueGR6SWhUJfvEhqkvMsVs
+https://open.spotify.com/episode/7G5O2wWmch1ciYDPZS4a4O
 
 <!-- Playlists work with or without usernames: -->
 
@@ -129,3 +130,4 @@ If you run across a URL pattern that you think should work, but doesn’t, pleas
 - I’ve tried to accommodate common variants, but there are conceivably valid Spotify URLs that wouldn’t get recognized. Please [file an issue](https://github.com/gfscott/eleventy-plugin-embed-spotify/issues/new) if you run into an edge case!
 - This plugin uses [transforms](https://www.11ty.dev/docs/config/#transforms), so it alters Eleventy’s HTML output as it’s generated. It doesn’t alter the source Markdown.
 - The embedded player is not responsive by default. Spotify’s default player is 300 pixels wide by 380 pixels tall.
+- **New in 1.1.0:** The embedded podcast player _is_ responsive, in keeping with Spotify’s defaults. Currently, all podcast episode players will be 232 pixels tall, with 100% width.
