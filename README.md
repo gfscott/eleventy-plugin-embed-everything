@@ -1,7 +1,9 @@
 # eleventy-plugin-vimeo-embed
 
 [![NPM Version](https://img.shields.io/npm/v/eleventy-plugin-vimeo-embed?style=for-the-badge)](https://www.npmjs.com/package/eleventy-plugin-vimeo-embed)
+[![Build Status](https://img.shields.io/travis/gfscott/eleventy-plugin-vimeo-embed?style=for-the-badge)](https://travis-ci.org/github/gfscott/eleventy-plugin-vimeo-embed)\
 [![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-vimeo-embed?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-vimeo-embed/blob/master/LICENSE)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0-ff69b4.svg?style=for-the-badge)](CODE_OF_CONDUCT.md)
 
 This [Eleventy](https://www.11ty.dev/) plugin automatically embeds responsive Vimeo videos from URLs in Markdown files.
 
