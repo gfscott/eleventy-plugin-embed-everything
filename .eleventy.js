@@ -6,18 +6,18 @@ const pluginDefaults = require('./lib/pluginDefaults.js');
 module.exports = function(eleventyConfig, options) {
   const pluginConfig = Object.assign(pluginDefaults, options);
   eleventyConfig.addTransform("embedTwitch", async (content, outputPath) => {
-    if (!outputPath.endsWith(".html")) {
+    if (outputPath && outputPath.endsWith(".html")) {
+      let matches = patternPresent(content);
+      if (!matches) {
+        return content;
+      }
+      matches.forEach(function (stringToReplace) {
+        let media = extractVideoId(stringToReplace);
+        let embedCode = buildEmbedCodeString(media, pluginConfig);
+        content = content.replace(stringToReplace, embedCode);
+      });
       return content;
     }
-    let matches = patternPresent(content);
-    if (!matches) {
-      return content;
-    }
-    matches.forEach(function(stringToReplace) {
-      let media = extractVideoId(stringToReplace);
-      let embedCode = buildEmbedCodeString(media, pluginConfig);
-      content = content.replace(stringToReplace, embedCode);
-    });
     return content;
   });
 };
