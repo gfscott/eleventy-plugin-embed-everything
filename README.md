@@ -5,13 +5,13 @@
 
 This [Eleventy](https://11ty.dev) plugin will automatically embed common media formats in your pages, requiring only a URL in your markdown files.
 
-It currently supports **Instagram**, **SoundCloud**, **Spotify**, **Twitch**, **Vimeo**, and **YouTube**, with more planned.
+It currently supports **Instagram**, **SoundCloud**, **Spotify**, **TikTok**, **Twitch**, **Vimeo**, and **YouTube**, with more planned.
 
-- ⚡️ [Installation](#installation)
-- 🛠 [Usage](#usage)
-- 🌈 [Supported services](#supported-services)
-- ⚙️ [Settings](#settings)
-- ⚠️ [Notes and caveats](#notes-and-caveats)
+- ⚡️ [Installation](#%EF%B8%8F-installation)
+- 🛠 [Usage](#-usage)
+- 🌈 [Supported services](#-supported-services)
+- ⚙️ [Settings](#%EF%B8%8F-settings)
+- ⚠️ [Notes and caveats](#%EF%B8%8F-notes-and-caveats)
 
 ## ⚡️ Installation
 
@@ -58,6 +58,7 @@ Currently, the plugin supports the following embed services (listed alphabetical
 **On by default:**
 - Instagram
 - Spotify
+- TikTok
 - Twitch
 - Vimeo
 - YouTube
@@ -112,6 +113,7 @@ For more about each [supported service](#supported-services), consult this table
 | Instagram | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-instagram) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-instagram) |
 | SoundCloud | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-soundcloud) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-soundcloud) |
 | Spotify | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-spotify) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-spotify) |
+| TikTok | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-tiktok) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-tiktok) |
 | Twitch | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitch) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-twitch) |
 | Vimeo | [npm](https://www.npmjs.com/package/eleventy-plugin-vimeo-embed) | [GitHub](https://github.com/gfscott/eleventy-plugin-vimeo-embed) |
 | YouTube | [npm](https://www.npmjs.com/package/eleventy-plugin-youtube-embed) | [GitHub](https://github.com/gfscott/eleventy-plugin-youtube-embed) |

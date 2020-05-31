@@ -12,7 +12,12 @@
     "eleventy-plugin",
     "embeds",
     "embedding",
+    "instagram",
     "media",
+    "soundcloud",
+    "spotify",
+    "tiktok",
+    "twitch",
     "youtube",
     "vimeo"
   ],
@@ -21,6 +26,7 @@
     "eleventy-plugin-embed-instagram": "^1.1.2",
     "eleventy-plugin-embed-soundcloud": "^1.0.1",
     "eleventy-plugin-embed-spotify": "^1.1.0",
+    "eleventy-plugin-embed-tiktok": "^1.0.0",
     "eleventy-plugin-embed-twitch": "^1.0.0",
     "eleventy-plugin-vimeo-embed": "^1.1.1",
     "eleventy-plugin-youtube-embed": "^1.3.1"
