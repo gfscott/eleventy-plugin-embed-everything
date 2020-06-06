@@ -5,7 +5,7 @@ const pluginDefaults = require('./lib/pluginDefaults.js');
 
 module.exports = function(eleventyConfig, options) {
   const pluginConfig = Object.assign(pluginDefaults, options);
-  eleventyConfig.addTransform("embedVimeo", async (content, outputPath) => {
+  eleventyConfig.addTransform("embedTikTok", async (content, outputPath) => {
     if (outputPath && outputPath.endsWith(".html")) {
       let matches = spotPattern(content);
       if (!matches) {
