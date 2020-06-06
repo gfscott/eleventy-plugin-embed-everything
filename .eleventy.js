@@ -6,18 +6,18 @@ const pluginDefaults = require('./lib/pluginDefaults.js');
 module.exports = function(eleventyConfig, options) {
   const pluginConfig = Object.assign(pluginDefaults, options);
   eleventyConfig.addTransform("embedSpotify", async (content, outputPath) => {
-    if (!outputPath.endsWith(".html")) {
+    if (outputPath && outputPath.endsWith(".html")) {
+      let matches = spotPattern(content);
+      if (!matches) {
+        return content;
+      }
+      matches.forEach(function (stringToReplace) {
+        let mediaId = extractMatches(stringToReplace);
+        let embedCode = buildEmbedCodeString(mediaId, pluginConfig);
+        content = content.replace(stringToReplace, embedCode);
+      });
       return content;
     }
-    let matches = spotPattern(content);
-    if (!matches) {
-      return content;
-    }
-    matches.forEach(function(stringToReplace) {
-      let mediaDetail = extractMatches(stringToReplace);
-      let embedCode = buildEmbedCodeString(mediaDetail, pluginConfig);
-      content = content.replace(stringToReplace, embedCode);
-    });
     return content;
   });
 };
