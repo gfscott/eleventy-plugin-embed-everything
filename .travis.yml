@@ -7,5 +7,4 @@ os:
   - linux
   - osx
   - windows
-script: npm run test
-after_success: npm run coverage
+script: npx nyc --reporter=lcov npm test && npx codecov
