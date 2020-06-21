@@ -1,8 +1,8 @@
 const test = require('ava');
 const patternPresent = require('./lib/spotPattern.js');
-// TODO: Finish tests for extracting ID strings and correct outputs
-// const extractVideoId = require('./lib/extractMatches.js');
-// const buildEmbedCodeString = require('./lib/buildEmbed.js');
+const extractVideoId = require('./lib/extractMatches.js');
+const buildEmbedCodeString = require('./lib/buildEmbed.js');
+const pluginDefaults = require('./lib/pluginDefaults.js');
 
 const validStrings = [
   {type: 'Standard', str: 'https://www.youtube.com/watch?v=hIs5StN8J-0'},
@@ -30,16 +30,28 @@ validStrings.forEach(function(obj){
   test(`${obj.type} ideal case`, t => {
     let idealCase = `<p>${obj.str}</p>`;
     t.truthy(patternPresent(idealCase));
+    t.is(extractVideoId(idealCase), 'hIs5StN8J-0', 'foo');
+    t.is(buildEmbedCodeString(extractVideoId(idealCase), pluginDefaults),
+      '<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" src="https://www.youtube-nocookie.com/embed/hIs5StN8J-0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
+    );
   });
   test(`${obj.type} with links`, t => {
     let withLinks = `<p><a href="">${obj.str}</a></p>`;
     t.truthy(patternPresent(withLinks));
+    t.is(extractVideoId(withLinks), 'hIs5StN8J-0');
+    t.is(buildEmbedCodeString(extractVideoId(withLinks), pluginDefaults),
+      '<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" src="https://www.youtube-nocookie.com/embed/hIs5StN8J-0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
+    );
   });
   test(`${obj.type} with whitespace`, t => {
     let withWhitespace = `<p>
       ${obj.str}
     </p>`;
     t.truthy(patternPresent(withWhitespace));
+    t.is(extractVideoId(withWhitespace), 'hIs5StN8J-0');
+    t.is(buildEmbedCodeString(extractVideoId(withWhitespace), pluginDefaults),
+      '<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" src="https://www.youtube-nocookie.com/embed/hIs5StN8J-0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
+    );
   });
   test(`${obj.type} with links and whitespace`, t => {
     let withLinksAndWhitespace = `<p>
@@ -48,6 +60,10 @@ validStrings.forEach(function(obj){
       </a>
     </p>`;
     t.truthy(patternPresent(withLinksAndWhitespace));
+    t.is(extractVideoId(withLinksAndWhitespace), 'hIs5StN8J-0');
+    t.is(buildEmbedCodeString(extractVideoId(withLinksAndWhitespace), pluginDefaults),
+      '<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" src="https://www.youtube-nocookie.com/embed/hIs5StN8J-0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
+    );
   });
 });
 
