@@ -10,7 +10,8 @@
   ],
   "main": ".eleventy.js",
   "scripts": {
-    "test": "ava"
+    "test": "nyc --reporter=lcov ava",
+    "coverage": "coverage"
   },
   "author": {
     "name": "Graham F. Scott",
@@ -25,6 +26,8 @@
   },
   "bugs": "https://github.com/gfscott/eleventy-plugin-youtube-embed/issues",
   "devDependencies": {
-    "ava": "^3.9.0"
+    "ava": "^3.9.0",
+    "codecov": "^3.7.0",
+    "nyc": "^15.1.0"
   }
 }
