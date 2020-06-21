@@ -1,10 +1,12 @@
 # eleventy-plugin-youtube-embed
 
-[![NPM Version](https://img.shields.io/npm/v/eleventy-plugin-youtube-embed?style=for-the-badge)](https://www.npmjs.com/package/eleventy-plugin-youtube-embed)\
+[![NPM Version](https://img.shields.io/npm/v/eleventy-plugin-youtube-embed?style=for-the-badge)](https://www.npmjs.com/package/eleventy-plugin-youtube-embed) 
+[![Travis (.org)](https://img.shields.io/travis/gfscott/eleventy-plugin-youtube-embed?style=for-the-badge)](https://travis-ci.org/github/gfscott/eleventy-plugin-youtube-embed)
+[![codecov](https://img.shields.io/codecov/c/github/gfscott/eleventy-plugin-youtube-embed?style=for-the-badge)](https://codecov.io/gh/gfscott/eleventy-plugin-youtube-embed)\
 [![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-youtube-embed?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-youtube-embed/blob/master/LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0-ff69b4.svg?style=for-the-badge)](code_of_conduct.md)
 
-This [Eleventy](https://www.11ty.dev/) plugin automatically embeds responsive YouTube videos from URLs in Markdown files.
+This [Eleventy](https://www.11ty.dev/) plugin automatically embeds responsive YouTube videos from URLs in Markdown files. It’s part of the [`eleventy-plugin-embed-everything`](https://gfscott.com/embed-everything/) project.
 
 - ⚡️ [Installation](#install-in-eleventy)
 - 🛠 [Usage](#usage)
@@ -12,6 +14,7 @@ This [Eleventy](https://www.11ty.dev/) plugin automatically embeds responsive Yo
 - ⚠️ [Notes and caveats](#notes-and-caveats)
 
 ---
+<span id="install-in-eleventy"></span>
 
 ## ⚡️ Installation
 
@@ -24,12 +27,20 @@ $ npm i eleventy-plugin-youtube-embed
 Then add it to your [Eleventy config](https://www.11ty.dev/docs/config/) file:
 
 ```javascript
+// `require` the package at the top of the file with all the others
 const embedYouTube = require("eleventy-plugin-youtube-embed");
 
 module.exports = function(eleventyConfig) {
+  
+  // There could be quite a lot of surrounding code here...
+  
   eleventyConfig.addPlugin(embedYouTube);
+
+  // There could be quite a lot of surrounding code here...
+
 };
 ```
+<span id="usage"></span>
 
 ## 🛠 Usage
 
@@ -49,40 +60,65 @@ Maecenas non velit nibh. Aenean eu justo et odio commodo ornare. In scelerisque 
 
 ![Rick Astley performing “Never gonna give you up”](https://user-images.githubusercontent.com/547470/73130266-2b8c2980-3fc3-11ea-8a8c-7994175a8490.jpg)
 
+<span id="settings"></span>
+
 ## ⚙️ Settings
 
 You can configure the plugin to change its behavior by passing an options object to the `addPlugin` function:
 
 ```javascript
 eleventyConfig.addPlugin(embedYouTube, {
-  // edit options here
+  // just an example, see default values below:
+  embedClass: 'my-alternate-classname'
 });
 ```
 
 ### Plugin default options
 
-Edit any of the default values in this options object to override the plugin behavior. These are the default settings, which will apply to all embed instances. Currently there’s no way to configure individual embeds.
+The plugin’s default settings reside in [lib/pluginDefaults.js](lib/pluginDefaults.js). All of these values can be changed with an options object passed to the plugin.
 
-```javascript
-{
-  // By default, uses the “privacy-enhanced” www.youtube-nocookie.com domain.
-  // Change to false to use www.youtube.com.
-  noCookie: true,
-  // Default class that gets applied to the wrapper <div>.
-  // Substitute your preferred string to target embeds with CSS.
-  embedClass: 'eleventy-plugin-youtube-embed',
-  // Default “allow” attributes that get applied to the embed <iframe>.
-  // Substitute your preferred string to allow other iframe behaviors.
-  allowAttrs: 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture',
-  // Default “allowfullscreen” boolean attribute that gets applied to the embed <iframe>.
-  // Change to false to disable fullscreen.
-  allowFullscreen: true,
-  // Default "?autoplay=1" URL param that turns on autoplay.
-  // BE ADVISED: Changing this to true will cause ALL embedded videos to autoplay.
-  // BE COOL: Don’t do it.
-  allowAutoplay: false
-});
-```
+<table style="width: 100%;">
+  <thead>
+    <tr>
+      <td style="width:15%">Option</td>
+      <td style="width:15%">Type</td>
+      <td style="width:15%">Default <br>value</td>
+      <td style="width:40%">Notes</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>allowAttrs</code></td>
+      <td>String</td>
+      <td><code>accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture</code></td>
+      <td>Default <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-allow"><code>allow</code> attributes</a> that get applied to the embed <code>iframe</code>. Substitute your preferred string to allow other iframe behaviors and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Feature_Policy">feature policies</a>.</td>
+    </tr>
+    <tr>
+      <td><code>allowAutoplay</code></td>
+      <td>Boolean</td>
+      <td><code>false</code></td>
+      <td>Setting this to <code>true</code> will cause <b>all</b> embedded videos to autoplay. Be cool: don’t do it! <br>⚠️ This setting will be removed in v2.0.</td>
+    </tr>
+    <tr>
+      <td><code>allowFullscreen</code></td>
+      <td>Boolean</td>
+      <td><code>true</code></td>
+      <td>Default <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-allowfullscreen">allowfullscreen</a> attribute that gets applied to the embed <code>iframe</code>. Changing this to <code>false</code> will disable the fullscreen button on your embeds.</td>
+    </tr>
+    <tr>
+      <td><code>embedClass</code></td>
+      <td>String</td>
+      <td><code>eleventy-plugin-youtube-embed</code></td>
+      <td>Class name applied to the <code>div</code> element that wraps the embedded YouTube <code>iframe</code>. Use the default string to target the embeds with CSS, or substitute your preferred string.</td>
+    </tr>
+    <tr>
+      <td><code>noCookie</code></td>
+      <td>Boolean</td>
+      <td><code>true</code></td>
+      <td>Defaults to the “privacy-enhanced” www.youtube-nocookie.com domain. Change this to <code>false</code> to use www.youtube.com.</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Supported URL patterns
 
@@ -114,7 +150,9 @@ https://www.youtube.com/watch?v=LQaehcfXvK0&feature=youtu.be
 https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1&t=1
 ```
 
-If you run across a URL pattern that you think should work, but doesn’t, please [file an issue](https://github.com/gfscott/eleventy-plugin-youtube-embed/issues/new)!
+If you really want to get into the weeds, check the `validStrings` and `invalidStrings` that get checked in [`test.js`](test.js). And if you run across a URL pattern that you think should work, but doesn’t, please [file an issue](https://github.com/gfscott/eleventy-plugin-youtube-embed/issues/new)!
+
+<span id="notes-and-caveats"></span>
 
 ## ⚠️ Notes and caveats
 
