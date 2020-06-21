@@ -6,7 +6,7 @@
 [![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-youtube-embed?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-youtube-embed/blob/master/LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0-ff69b4.svg?style=for-the-badge)](code_of_conduct.md)
 
-This [Eleventy](https://www.11ty.dev/) plugin automatically embeds responsive YouTube videos from URLs in Markdown files.
+This [Eleventy](https://www.11ty.dev/) plugin automatically embeds responsive YouTube videos from URLs in Markdown files. It’s part of the [`eleventy-plugin-embed-everything`](https://gfscott.com/embed-everything/) project.
 
 - ⚡️ [Installation](#install-in-eleventy)
 - 🛠 [Usage](#usage)
@@ -14,7 +14,7 @@ This [Eleventy](https://www.11ty.dev/) plugin automatically embeds responsive Yo
 - ⚠️ [Notes and caveats](#notes-and-caveats)
 
 ---
-<span id="install-in-eleventy">
+<span id="install-in-eleventy"></span>
 
 ## ⚡️ Installation
 
@@ -40,7 +40,7 @@ module.exports = function(eleventyConfig) {
 
 };
 ```
-<span id="usage">
+<span id="usage"></span>
 
 ## 🛠 Usage
 
@@ -60,7 +60,7 @@ Maecenas non velit nibh. Aenean eu justo et odio commodo ornare. In scelerisque 
 
 ![Rick Astley performing “Never gonna give you up”](https://user-images.githubusercontent.com/547470/73130266-2b8c2980-3fc3-11ea-8a8c-7994175a8490.jpg)
 
-<span id="settings">
+<span id="settings"></span>
 
 ## ⚙️ Settings
 
@@ -152,7 +152,7 @@ https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1&t=1
 
 If you really want to get into the weeds, check the `validStrings` and `invalidStrings` that get checked in [`test.js`](test.js). And if you run across a URL pattern that you think should work, but doesn’t, please [file an issue](https://github.com/gfscott/eleventy-plugin-youtube-embed/issues/new)!
 
-<span id="notes-and-caveats">
+<span id="notes-and-caveats"></span>
 
 ## ⚠️ Notes and caveats
 
