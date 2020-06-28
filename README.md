@@ -112,6 +112,18 @@ The plugin’s default settings reside in [lib/pluginDefaults.js](lib/pluginDefa
       <td>Class name applied to the <code>div</code> element that wraps the embedded YouTube <code>iframe</code>. Use the default string to target the embeds with CSS, or substitute your preferred string.</td>
     </tr>
     <tr>
+      <td>✨ <b>New in v1.4.0!</b><br> <code>lazy</code></td>
+      <td>Boolean</td>
+      <td><code>false</code></td>
+      <td>Setting this to <code>true</code> will add a <code>loading="lazy"</code> attribute to the standard iframe embed. <a href="https://www.caniuse.com/#feat=loading-lazy-attr">Some browsers</a> will use this to optimize resource loading.</td>
+    </tr>
+    <tr>
+      <td>✨ <b>New in v1.4.0!</b><br> <code>lite</code></td>
+      <td>Boolean <b>or</b> Object</td>
+      <td><code>false</code></td>
+      <td>Setting this to <code>true</code> will use Paul Irish’s <a href="https://github.com/paulirish/lite-youtube-embed">Lite YouTube Embed</a> method. See the section on the <a href="#lite">Lite version</a> below for more details.</td>
+    </tr>
+    <tr>
       <td><code>noCookie</code></td>
       <td>Boolean</td>
       <td><code>true</code></td>
@@ -119,6 +131,47 @@ The plugin’s default settings reside in [lib/pluginDefaults.js](lib/pluginDefa
     </tr>
   </tbody>
 </table>
+
+<span id="lite"></span>
+
+### Lite YouTube Embed
+
+✨ **New in v1.4.0:** Use the [Lite YouTube Embed](https://github.com/paulirish/lite-youtube-embed) instead of the standard YouTube iframe. In many circumstances this is a performance win because it delays loading the iframe element until the user clicks play. 
+
+Be aware that the Lite version defaults to [loading two files from the jsDelivr CDN](https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/). It loads these files once on any HTML page that includes an embed. You can override both resource URIs if you want to load from a different source, such as [unpkg](https://unpkg.com/browse/lite-youtube-embed@0.0.0/src/) or your own server.
+
+In addition, using the Lite version will cause several of the plugin’s settings to become un-configurable. The `embedClass` option will still work, but the following options will be ignored if you set `lite: true`:
+
+- `allowAttrs`
+- `allowAutoplay`
+- `allowFullscreen`
+- `lazy`
+- `noCookie`
+
+#### Lite embed options
+
+To use the default Lite version, simply pass `lite: true` to the options object when you add the plugin to your Eleventy config:
+
+```javascript
+eleventyConfig.addPlugin(embedYouTube, {
+  lite: true
+});
+```
+
+To load the necessary CSS and JavaScript from a different source, pass in an object instead of the boolean, passing the URIs to `lite.css.path` and `lite.js.path`:
+
+```javascript
+eleventyConfig.addPlugin(embedYouTube, {
+  lite: {
+    css: {
+      path: "some_other_url"
+    },
+    js: {
+      path: "some_other_url"
+    }
+  }
+});
+```
 
 ### Supported URL patterns
 
