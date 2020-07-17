@@ -7,12 +7,13 @@
 
 This [Eleventy](https://www.11ty.dev/) plugin automatically embeds responsive Twitch videos from URLs in Markdown files.
 
-- ⚡️ [Installation](#%EF%B8%8F-installation)
-- 🛠 [Usage](#-usage)
-- ⚙️ [Settings](#%EF%B8%8F-settings)
-- ⚠️ [Notes and caveats](#%EF%B8%8F-notes-and-caveats)
+- ⚡️ [Installation](#installation)
+- 🛠 [Usage](#usage)
+- ⚙️ [Settings](#settings)
+- ⚠️ [Notes and caveats](#notes-and-caveats)
 
 ---
+<span id="installation"></span>
 
 ## ⚡️ Installation
 
@@ -28,9 +29,19 @@ Then add it to your [Eleventy config](https://www.11ty.dev/docs/config/) file:
 const embedTwitch = require("eleventy-plugin-embed-twitch");
 
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPlugin(embedTwitch);
+  eleventyConfig.addPlugin(embedTwitch, {
+    /**
+     * `parent` is now a REQUIRED option. It MUST comply with these specs (set by Twitch):
+     * - Must be a text string
+     * - Must be the domain where the embed will be shown, without the protocol
+     * - Reference: https://dev.twitch.tv/docs/embed/video-and-clips#non-interactive-inline-frames-for-live-streams-and-vods
+     */
+    parent: "example.com"
+  });
 };
 ```
+
+<span id="usage"></span>
 
 ## 🛠 Usage
 
@@ -50,13 +61,17 @@ Maecenas non velit nibh. Aenean eu justo et odio commodo ornare. In scelerisque 
 
 ![Twitch streamer Vixella playing Animal Crossing](https://user-images.githubusercontent.com/547470/80289103-77f21d00-870a-11ea-85d8-69fa67c449bd.png)
 
+<span id="settings"></span>
+
 ## ⚙️ Settings
 
 You can configure the plugin to change its behavior by passing an options object to the `addPlugin` function:
 
 ```javascript
 eleventyConfig.addPlugin(embedTwitch, {
-  // edit options here
+  // `parent` value is required!
+  parent: "example.com",
+  //...set additional options here
 });
 ```
 
@@ -75,6 +90,11 @@ Edit any of the default values in this options object to override the plugin beh
   // Default class that gets applied to the wrapper <div>.
   // Substitute your preferred string to target embeds with CSS.
   embedClass: 'eleventy-plugin-embed-twitch',
+  // REQUIRED
+  // @since 2.0.0
+  // Default value is empty, which will produce a console error when building your site.
+  // Set this to your website’s domain, such as "example.com" or "subdomain.example.com".
+  parent: ""
 }
 ```
 
@@ -98,6 +118,8 @@ https://www.twitch.tv/videos/597008599
 ```
 
 If you run across a URL pattern that you think should work, but doesn’t, please [file an issue](https://github.com/gfscott/eleventy-plugin-embed-twitch/issues/new)!
+
+<span id="notes-and-caveats"></span>
 
 ## ⚠️ Notes and caveats
 
