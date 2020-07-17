@@ -25,7 +25,7 @@
   },
   "bugs": "https://github.com/gfscott/eleventy-plugin-embed-twitch/issues",
   "devDependencies": {
-    "ava": "^3.8.2",
+    "ava": "^3.10.1",
     "chalk": "^4.1.0"
   }
 }
