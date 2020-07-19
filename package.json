@@ -1,6 +1,6 @@
 {
   "name": "eleventy-plugin-embed-everything",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "An Eleventy plugin that allows you to quickly add common web embeds to markdown posts, using only their URLs",
   "main": ".eleventy.js",
   "scripts": {
