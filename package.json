@@ -27,7 +27,7 @@
   "bugs": "https://github.com/gfscott/eleventy-plugin-youtube-embed/issues",
   "devDependencies": {
     "ava": "^3.9.0",
-    "codecov": "^3.7.0",
+    "codecov": "^3.7.2",
     "nyc": "^15.1.0"
   }
 }
