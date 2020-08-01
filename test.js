@@ -1,8 +1,9 @@
 const test = require('ava');
 const patternPresent = require('./lib/spotPattern.js');
-// TODO: Finish tests for extracting ID strings and correct outputs
-// const extractVideoId = require('./lib/extractMatches.js');
-// const buildEmbedCodeString = require('./lib/buildEmbed.js');
+const extractId = require('./lib/extractMatches.js');
+const buildEmbed = require('./lib/buildEmbed.js');
+const pluginDefaults = require('./lib/pluginDefaults.js');
+
 
 const validStrings = [
   {type: 'Standard', str: 'https://www.instagram.com/p/B-rRt1MjKZD/'},
@@ -23,22 +24,25 @@ const invalidStrings = [
   {type: 'With appended text, with link', str: '<a href="">https://www.instagram.com/p/B-rRt1MjKZD/</a> bar'},
 ]
 
+/**
+ * Ensure that valid strings pass
+ */
 validStrings.forEach(function(obj){
-  test(`${obj.type} ideal case`, t => {
+  test(`String is valid: ${obj.type} ideal case`, t => {
     let idealCase = `<p>${obj.str}</p>`;
     t.truthy(patternPresent(idealCase));
   });
-  test(`${obj.type} with links`, t => {
+  test(`String is valid: ${obj.type} with links`, t => {
     let withLinks = `<p><a href="">${obj.str}</a></p>`;
     t.truthy(patternPresent(withLinks));
-  });
-  test(`${obj.type} with whitespace`, t => {
+    });
+  test(`String is valid: ${obj.type} with whitespace`, t => {
     let withWhitespace = `<p>
       ${obj.str}
     </p>`;
     t.truthy(patternPresent(withWhitespace));
   });
-  test(`${obj.type} with links and whitespace`, t => {
+  test(`String is valid: ${obj.type} with links and whitespace`, t => {
     let withLinksAndWhitespace = `<p>
       <a href="">
         ${obj.str}
@@ -47,6 +51,108 @@ validStrings.forEach(function(obj){
     t.truthy(patternPresent(withLinksAndWhitespace));
   });
 });
+/**
+ * Ensure that valid strings produce the expected media ID as output
+ */
+validStrings.forEach(function(obj){
+  test(`Proper ID returned: ${obj.type} ideal case`, t => {
+    let idealCase = `<p>${obj.str}</p>`;
+    t.is(extractId(idealCase), 'B-rRt1MjKZD');
+  });
+  test(`Proper ID returned: ${obj.type} with links`, t => {
+    let withLinks = `<p><a href="">${obj.str}</a></p>`;
+    t.is(extractId(withLinks), 'B-rRt1MjKZD');
+  });
+  test(`Proper ID returned: ${obj.type} with whitespace`, t => {
+    let withWhitespace = `<p>
+      ${obj.str}
+    </p>`;
+    t.is(extractId(withWhitespace), 'B-rRt1MjKZD');
+  });
+  test(`Proper ID returned: ${obj.type} with links and whitespace`, t => {
+    let withLinksAndWhitespace = `<p>
+      <a href="">
+        ${obj.str}
+      </a>
+    </p>`;
+    t.is(extractId(withLinksAndWhitespace), 'B-rRt1MjKZD');
+  });
+});
+
+/**
+ * Ensure that build script produces expected HTML output on first instance
+ */
+validStrings.forEach(function(obj){
+  test(`Proper HTML output, zero-index: ${obj.type} ideal case`, t => {
+    let idealCase = `<p>${obj.str}</p>`;
+    t.is(buildEmbed(extractId(idealCase), pluginDefaults, 0),
+      `<blockquote class="eleventy-plugin-embed-instagram instagram-media" data-instgrm-permalink="https://www.instagram.com/p/B-rRt1MjKZD"></blockquote><script async defer src="https://www.instagram.com/embed.js"></script>`
+    );
+  });
+  test(`Proper HTML output, zero-index: ${obj.type} with links`, t => {
+    let withLinks = `<p><a href="">${obj.str}</a></p>`;
+    t.is(buildEmbed(extractId(withLinks), pluginDefaults, 0),
+      `<blockquote class="eleventy-plugin-embed-instagram instagram-media" data-instgrm-permalink="https://www.instagram.com/p/B-rRt1MjKZD"></blockquote><script async defer src="https://www.instagram.com/embed.js"></script>`
+    );
+  });
+  test(`Proper HTML output, zero-index: ${obj.type} with whitespace`, t => {
+    let withWhitespace = `<p>
+      ${obj.str}
+    </p>`;
+    t.is(buildEmbed(extractId(withWhitespace), pluginDefaults, 0),
+      `<blockquote class="eleventy-plugin-embed-instagram instagram-media" data-instgrm-permalink="https://www.instagram.com/p/B-rRt1MjKZD"></blockquote><script async defer src="https://www.instagram.com/embed.js"></script>`
+    );
+  });
+  test(`Proper HTML output, zero-index: ${obj.type} with links and whitespace`, t => {
+    let withLinksAndWhitespace = `<p>
+      <a href="">
+        ${obj.str}
+      </a>
+    </p>`;
+    t.is(buildEmbed(extractId(withLinksAndWhitespace), pluginDefaults, 0),
+      `<blockquote class="eleventy-plugin-embed-instagram instagram-media" data-instgrm-permalink="https://www.instagram.com/p/B-rRt1MjKZD"></blockquote><script async defer src="https://www.instagram.com/embed.js"></script>`
+    );
+  });
+});
+/**
+ * Ensure that valid strings pass
+ */
+validStrings.forEach(function(obj){
+  test(`Proper HTML output, >0 index: ${obj.type} ideal case`, t => {
+    let idealCase = `<p>${obj.str}</p>`;
+    t.is(buildEmbed(extractId(idealCase), pluginDefaults, 1),
+      `<blockquote class="eleventy-plugin-embed-instagram instagram-media" data-instgrm-permalink="https://www.instagram.com/p/B-rRt1MjKZD"></blockquote>`
+    );
+  });
+  test(`Proper HTML output, >0 index: ${obj.type} with links`, t => {
+    let withLinks = `<p><a href="">${obj.str}</a></p>`;
+    t.is(buildEmbed(extractId(withLinks), pluginDefaults, 1),
+      `<blockquote class="eleventy-plugin-embed-instagram instagram-media" data-instgrm-permalink="https://www.instagram.com/p/B-rRt1MjKZD"></blockquote>`
+    );
+  });
+  test(`Proper HTML output, >0 index: ${obj.type} with whitespace`, t => {
+    let withWhitespace = `<p>
+      ${obj.str}
+    </p>`;
+    t.is(buildEmbed(extractId(withWhitespace), pluginDefaults, 1),
+      `<blockquote class="eleventy-plugin-embed-instagram instagram-media" data-instgrm-permalink="https://www.instagram.com/p/B-rRt1MjKZD"></blockquote>`
+    );
+  });
+  test(`Proper HTML output, >0 index: ${obj.type} with links and whitespace`, t => {
+    let withLinksAndWhitespace = `<p>
+      <a href="">
+        ${obj.str}
+      </a>
+    </p>`;
+    t.is(buildEmbed(extractId(withLinksAndWhitespace), pluginDefaults, 1),
+      `<blockquote class="eleventy-plugin-embed-instagram instagram-media" data-instgrm-permalink="https://www.instagram.com/p/B-rRt1MjKZD"></blockquote>`
+    );
+  });
+});
+
+/**
+ * Ensure that invalid strings fail
+ */
 
 invalidStrings.forEach(function(obj){
   test(`${obj.type} ideal case`, t => {
