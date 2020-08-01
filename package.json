@@ -10,7 +10,8 @@
   ],
   "main": ".eleventy.js",
   "scripts": {
-    "test": "ava"
+    "test": "nyc --reporter=lcov ava",
+    "coverage": "coverage"
   },
   "author": {
     "name": "Graham F. Scott",
@@ -27,6 +28,8 @@
     "url": "https://github.com/gfscott/eleventy-plugin-embed-instagram/issues"
   },
   "devDependencies": {
-    "ava": "^3.11.0"
+    "ava": "^3.11.0",
+    "codecov": "^3.7.2",
+    "nyc": "^15.1.0"
   }
 }
