@@ -25,6 +25,8 @@
   },
   "bugs": "https://github.com/gfscott/eleventy-plugin-vimeo-embed/issues",
   "devDependencies": {
-    "ava": "^3.11.0"
+    "ava": "^3.11.0",
+    "codecov": "^3.7.2",
+    "nyc": "^15.1.0"
   }
 }
