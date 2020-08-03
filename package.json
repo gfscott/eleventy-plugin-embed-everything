@@ -1,6 +1,6 @@
 {
   "name": "eleventy-plugin-embed-tiktok",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "An Eleventy plugin to automatically embed TikTok videos, using just their URLs.",
   "keywords": [
     "11ty",
