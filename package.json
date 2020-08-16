@@ -1,6 +1,6 @@
 {
   "name": "eleventy-plugin-youtube-embed",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "An Eleventy plugin to automatically embed YouTube videos, using just their URLs.",
   "keywords": [
     "11ty",
