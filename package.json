@@ -28,7 +28,7 @@
     "ava": "^3.11.1"
   },
   "dependencies": {
-    "bent": "^7.3.9",
+    "bent": "^7.3.10",
     "parse-path": "^4.0.2"
   }
 }
