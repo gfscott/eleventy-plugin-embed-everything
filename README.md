@@ -68,4 +68,5 @@ Be aware, activating `cacheText` will cause a network request to Twitter on ever
 - To do this, it uses a regular expression to recognize Twitter URLs, wrapped in an HTML `<p>` tag or, optionally, additionally wrapped in an anchor tag. If your Markdown parser produces any other output, it won’t be recognized.
 - The plugin supports common URL variants as well. Check the [supported URL variants](test/inc/validStrings.js) to see the complete list, but there are conceivably valid Twitter URLs that wouldn’t be recognized. Please [file an issue](https://github.com/gfscott/eleventy-plugin-embed-twitter/issues/new) if you run into an edge case!
 - This plugin uses [transforms](https://www.11ty.dev/docs/config/#transforms), so it alters Eleventy’s HTML output as it’s generated. It doesn’t alter the source markdown.
-- By necessity, this plugin will add a call to Twitter’s third-party javascript file. It does this once per page, if that page contains a Twitter embed.
+- By necessity, this plugin will add a call to Twitter’s third-party JavaScript file. It does this once per page, if that page contains a Twitter embed.
+- Currently the plugin supports only individual Tweets. Embedding timelines, lists, or Twitter Moments isn’t possible right now.
