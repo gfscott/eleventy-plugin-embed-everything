@@ -1,6 +1,6 @@
 {
   "name": "eleventy-plugin-embed-twitter",
-  "version": "1.0.5",
+  "version": "1.0.0",
   "description": "An Eleventy plugin to automatically embed Tweets, using just their URLs.",
   "keywords": [
     "11ty",
@@ -16,6 +16,7 @@
   "ava": {
     "files": [
       "!test/inc"
+      "!test/html"
     ]
   },
   "author": {
