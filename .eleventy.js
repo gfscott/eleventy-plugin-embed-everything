@@ -5,8 +5,8 @@ const buildEmbed = require("./lib/buildEmbed.js");
 const pluginDefaults = require("./lib/pluginDefaults.js");
 
 module.exports = async function(eleventyConfig, options) {
-  const pluginConfig = merge(pluginDefaults, options);
-  console.log(pluginConfig);
+	const pluginConfig = merge(pluginDefaults, options);
+	console.log(pluginConfig);
 	eleventyConfig.addTransform(
 		"embedTwitter",
 		async (content, outputPath) => {
@@ -14,15 +14,15 @@ module.exports = async function(eleventyConfig, options) {
 				let matches = spotPattern(content);
 				if (!matches) {
 					return content;
-        }
-        // 1. must use for...of to enable await
-        // 2. must destructure and use entries() to get index in for...of
-        // SOURCE: https://flaviocopes.com/how-to-get-index-in-for-of-loop/
-        for ( const [index, stringToReplace] of matches.entries() ) {
+				}
+				// 1. must use for...of to enable await
+				// 2. must destructure and use entries() to get index in for...of
+				// SOURCE: https://flaviocopes.com/how-to-get-index-in-for-of-loop/
+				for (const [index, stringToReplace] of matches.entries()) {
 					let media = extractMatch(stringToReplace);
 					let embedCode = await buildEmbed(media, pluginConfig, index);
 					content = content.replace(stringToReplace, embedCode);
-        }
+				}
 				return content;
 			}
 			return content;
