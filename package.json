@@ -15,7 +15,7 @@
   },
   "ava": {
     "files": [
-      "!test/inc"
+      "!test/inc",
       "!test/html"
     ]
   },
