@@ -25,6 +25,6 @@
   },
   "bugs": "https://github.com/gfscott/eleventy-plugin-embed-spotify/issues",
   "devDependencies": {
-    "ava": "^3.11.0"
+    "ava": "^3.12.1"
   }
 }
