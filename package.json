@@ -1,6 +1,6 @@
 {
   "name": "eleventy-plugin-embed-soundcloud",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "An Eleventy plugin to automatically embed SoundCloud players, using just their URLs.",
   "keywords": [
     "11ty",
