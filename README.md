@@ -5,7 +5,7 @@
 
 This [Eleventy](https://11ty.dev) plugin will automatically embed common media formats in your pages, requiring only a URL in your markdown files.
 
-It currently supports **Instagram**, **SoundCloud**, **Spotify**, **TikTok**, **Twitch**, **Vimeo**, and **YouTube**, with more planned.
+It currently supports **Instagram**, **SoundCloud**, **Spotify**, **TikTok**, **Twitch**, **Twitter**, **Vimeo**, and **YouTube**, with more planned.
 
 - ⚡️ [Installation](#%EF%B8%8F-installation)
 - 🛠 [Usage](#-usage)
@@ -60,6 +60,7 @@ Currently, the plugin supports the following embed services (listed alphabetical
 - Spotify
 - TikTok
 - Twitch
+- Twitter
 - Vimeo
 - YouTube
 
@@ -115,5 +116,6 @@ For more about each [supported service](#supported-services), consult this table
 | Spotify | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-spotify) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-spotify) |
 | TikTok | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-tiktok) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-tiktok) |
 | Twitch | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitch) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-twitch) |
+| Twitter | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitter) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-twitter) |
 | Vimeo | [npm](https://www.npmjs.com/package/eleventy-plugin-vimeo-embed) | [GitHub](https://github.com/gfscott/eleventy-plugin-vimeo-embed) |
 | YouTube | [npm](https://www.npmjs.com/package/eleventy-plugin-youtube-embed) | [GitHub](https://github.com/gfscott/eleventy-plugin-youtube-embed) |
