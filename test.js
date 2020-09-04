@@ -83,13 +83,13 @@ validStrings.forEach(function(obj){
   test(`Expected HTML returned: ${obj.type} ideal case`, t => {
     let idealCase = `<p>${obj.str}</p>`;
     t.is(buildEmbed(extractId(idealCase), pluginDefaults),
-      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1" allowfullscreen></iframe></div>`
+      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top:56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1" allowfullscreen></iframe></div>`
     );
   });
   test(`Expected HTML returned: ${obj.type} with links`, t => {
     let withLinks = `<p><a href="">${obj.str}</a></p>`;
     t.is(buildEmbed(extractId(withLinks), pluginDefaults),
-      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1" allowfullscreen></iframe></div>`
+      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top:56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1" allowfullscreen></iframe></div>`
     );
   });
   test(`Expected HTML returned: ${obj.type} with whitespace`, t => {
@@ -97,7 +97,7 @@ validStrings.forEach(function(obj){
       ${obj.str}
     </p>`;
     t.is(buildEmbed(extractId(withWhitespace), pluginDefaults),
-      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1" allowfullscreen></iframe></div>`
+      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top:56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1" allowfullscreen></iframe></div>`
     );
   });
   test(`Expected HTML returned: ${obj.type} with links and whitespace`, t => {
@@ -107,7 +107,7 @@ validStrings.forEach(function(obj){
       </a>
     </p>`;
     t.is(buildEmbed(extractId(withLinksAndWhitespace), pluginDefaults),
-      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1" allowfullscreen></iframe></div>`
+      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top:56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1" allowfullscreen></iframe></div>`
     );
   });
 });
@@ -121,13 +121,13 @@ validStrings.forEach(function(obj){
   test(`Expected HTML returned; case: DNT false: ${obj.type} ideal case`, t => {
     let idealCase = `<p>${obj.str}</p>`;
     t.is(buildEmbed(extractId(idealCase), optionsDntFalse),
-      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=0" allowfullscreen></iframe></div>`
+      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top:56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=0" allowfullscreen></iframe></div>`
     );
   });
   test(`Expected HTML returned; case: DNT false: ${obj.type} with links`, t => {
     let withLinks = `<p><a href="">${obj.str}</a></p>`;
     t.is(buildEmbed(extractId(withLinks), optionsDntFalse),
-      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=0" allowfullscreen></iframe></div>`
+      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top:56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=0" allowfullscreen></iframe></div>`
     );
   });
   test(`Expected HTML returned; case: DNT false: ${obj.type} with whitespace`, t => {
@@ -135,7 +135,7 @@ validStrings.forEach(function(obj){
       ${obj.str}
     </p>`;
     t.is(buildEmbed(extractId(withWhitespace), optionsDntFalse),
-      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=0" allowfullscreen></iframe></div>`
+      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top:56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=0" allowfullscreen></iframe></div>`
     );
   });
   test(`Expected HTML returned; case: DNT false: ${obj.type} with links and whitespace`, t => {
@@ -145,7 +145,7 @@ validStrings.forEach(function(obj){
       </a>
     </p>`;
     t.is(buildEmbed(extractId(withLinksAndWhitespace), optionsDntFalse),
-      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=0" allowfullscreen></iframe></div>`
+      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top:56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=0" allowfullscreen></iframe></div>`
     );
   });
 });
@@ -159,13 +159,13 @@ validStrings.forEach(function(obj){
   test(`Expected HTML returned; case: allowFullscreen false: ${obj.type} ideal case`, t => {
     let idealCase = `<p>${obj.str}</p>`;
     t.is(buildEmbed(extractId(idealCase), optionsFullscreenFalse),
-      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1"></iframe></div>`
+      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top:56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1"></iframe></div>`
     );
   });
   test(`Expected HTML returned; case: allowFullscreen false: ${obj.type} with links`, t => {
     let withLinks = `<p><a href="">${obj.str}</a></p>`;
     t.is(buildEmbed(extractId(withLinks), optionsFullscreenFalse),
-      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1"></iframe></div>`
+      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top:56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1"></iframe></div>`
     );
   });
   test(`Expected HTML returned; case: allowFullscreen false: ${obj.type} with whitespace`, t => {
@@ -173,7 +173,7 @@ validStrings.forEach(function(obj){
       ${obj.str}
     </p>`;
     t.is(buildEmbed(extractId(withWhitespace), optionsFullscreenFalse),
-      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1"></iframe></div>`
+      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top:56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1"></iframe></div>`
     );
   });
   test(`Expected HTML returned; case: allowFullscreen false: ${obj.type} with links and whitespace`, t => {
@@ -183,7 +183,48 @@ validStrings.forEach(function(obj){
       </a>
     </p>`;
     t.is(buildEmbed(extractId(withLinksAndWhitespace), optionsFullscreenFalse),
-      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1"></iframe></div>`
+      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top:56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1"></iframe></div>`
+    );
+  });
+});
+
+/**
+ * Test that embed builder returns expected HTML with non-default options
+ */
+const customStyles = {
+  wrapperStyle: '',
+  iframeStyle: '',
+}
+const optionsCustomStyleStrings = Object.assign({}, pluginDefaults, customStyles);
+validStrings.forEach(function(obj){
+  test(`Expected HTML returned; case: custom style strings: ${obj.type} ideal case`, t => {
+    let idealCase = `<p>${obj.str}</p>`;
+    t.is(buildEmbed(extractId(idealCase), optionsCustomStyleStrings),
+      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style=""><iframe style="" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1" allowfullscreen></iframe></div>`
+    );
+  });
+  test(`Expected HTML returned; case: custom style strings: ${obj.type} with links`, t => {
+    let withLinks = `<p><a href="">${obj.str}</a></p>`;
+    t.is(buildEmbed(extractId(withLinks), optionsCustomStyleStrings),
+      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style=""><iframe style="" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1" allowfullscreen></iframe></div>`
+    );
+  });
+  test(`Expected HTML returned; case: custom style strings: ${obj.type} with whitespace`, t => {
+    let withWhitespace = `<p>
+      ${obj.str}
+    </p>`;
+    t.is(buildEmbed(extractId(withWhitespace), optionsCustomStyleStrings),
+      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style=""><iframe style="" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1" allowfullscreen></iframe></div>`
+    );
+  });
+  test(`Expected HTML returned; case: custom style strings: ${obj.type} with links and whitespace`, t => {
+    let withLinksAndWhitespace = `<p>
+      <a href="">
+        ${obj.str}
+      </a>
+    </p>`;
+    t.is(buildEmbed(extractId(withLinksAndWhitespace), optionsCustomStyleStrings),
+      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style=""><iframe style="" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1" allowfullscreen></iframe></div>`
     );
   });
 });
