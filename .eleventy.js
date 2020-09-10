@@ -5,7 +5,7 @@ const buildEmbed = require("./lib/buildEmbed.js");
 const pluginDefaults = require("./lib/pluginDefaults.js");
 
 module.exports = async function(eleventyConfig, options) {
-	const pluginConfig = merge(pluginDefaults, options);
+	const pluginConfig = options ? merge(pluginDefaults, options) : pluginDefaults;
 	console.log(pluginConfig);
 	eleventyConfig.addTransform(
 		"embedTwitter",
