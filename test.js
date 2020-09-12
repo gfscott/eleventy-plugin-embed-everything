@@ -200,13 +200,13 @@ validStrings.forEach(function(obj){
   test(`Expected HTML returned; case: custom style strings: ${obj.type} ideal case`, t => {
     let idealCase = `<p>${obj.str}</p>`;
     t.is(buildEmbed(extractId(idealCase), optionsCustomStyleStrings),
-      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style=""><iframe style="" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1" allowfullscreen></iframe></div>`
+      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed"><iframe frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1" allowfullscreen></iframe></div>`
     );
   });
   test(`Expected HTML returned; case: custom style strings: ${obj.type} with links`, t => {
     let withLinks = `<p><a href="">${obj.str}</a></p>`;
     t.is(buildEmbed(extractId(withLinks), optionsCustomStyleStrings),
-      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style=""><iframe style="" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1" allowfullscreen></iframe></div>`
+      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed"><iframe frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1" allowfullscreen></iframe></div>`
     );
   });
   test(`Expected HTML returned; case: custom style strings: ${obj.type} with whitespace`, t => {
@@ -214,7 +214,7 @@ validStrings.forEach(function(obj){
       ${obj.str}
     </p>`;
     t.is(buildEmbed(extractId(withWhitespace), optionsCustomStyleStrings),
-      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style=""><iframe style="" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1" allowfullscreen></iframe></div>`
+      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed"><iframe frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1" allowfullscreen></iframe></div>`
     );
   });
   test(`Expected HTML returned; case: custom style strings: ${obj.type} with links and whitespace`, t => {
@@ -224,7 +224,7 @@ validStrings.forEach(function(obj){
       </a>
     </p>`;
     t.is(buildEmbed(extractId(withLinksAndWhitespace), optionsCustomStyleStrings),
-      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed" style=""><iframe style="" frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1" allowfullscreen></iframe></div>`
+      `<div id="vimeo-400344311" class="eleventy-plugin-vimeo-embed"><iframe frameborder="0" src="https://player.vimeo.com/video/400344311?dnt=1" allowfullscreen></iframe></div>`
     );
   });
 });
