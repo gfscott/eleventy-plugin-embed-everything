@@ -8,7 +8,6 @@
 const test = require('ava');
 const validStrings = require('./inc/validStrings.js');
 const extractMatch = require('../lib/extractMatches.js');
-const { filter } = require('./inc/invalidStrings.js');
 
 
 validStrings.forEach(obj => {
