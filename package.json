@@ -10,7 +10,14 @@
   ],
   "main": ".eleventy.js",
   "scripts": {
-    "test": "ava"
+    "test": "nyc --reporter=lcov ava",
+    "coverage": "coverage"
+  },
+  "ava": {
+    "files": [
+      "!test/inc",
+      "!test/html"
+    ]
   },
   "author": {
     "name": "Graham F. Scott",
@@ -25,6 +32,8 @@
   },
   "bugs": "https://github.com/gfscott/eleventy-plugin-embed-spotify/issues",
   "devDependencies": {
-    "ava": "^3.12.1"
+    "ava": "^3.12.1",
+    "codecov": "^3.7.2",
+    "nyc": "^15.1.0"
   }
 }
