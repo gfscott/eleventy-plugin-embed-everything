@@ -1,7 +1,8 @@
 # eleventy-plugin-embed-spotify
 
 [![NPM Version](https://img.shields.io/npm/v/eleventy-plugin-embed-spotify?style=for-the-badge)](https://www.npmjs.com/package/eleventy-plugin-embed-spotify)
-[![Build Status](https://img.shields.io/travis/gfscott/eleventy-plugin-embed-spotify?style=for-the-badge)](https://travis-ci.org/github/gfscott/eleventy-plugin-embed-spotify)\
+[![Build Status](https://img.shields.io/travis/com/gfscott/eleventy-plugin-embed-spotify/main?style=for-the-badge)](https://travis-ci.com/github/gfscott/eleventy-plugin-embed-spotify)
+[![Code coverage](https://img.shields.io/codecov/c/gh/gfscott/eleventy-plugin-embed-spotify/main?style=for-the-badge)](https://codecov.io/gh/gfscott/eleventy-plugin-embed-spotify)\
 [![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-embed-spotify?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-spotify/blob/master/LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0-ff69b4.svg?style=for-the-badge)](code_of_conduct.md)
 
@@ -13,7 +14,7 @@ This [Eleventy](https://www.11ty.dev/) plugin automatically embeds responsive Sp
 - ⚠️ [Notes and caveats](#notes-and-caveats)
 
 ---
-
+<span id="install-in-eleventy"></span>
 ## ⚡️ Installation
 
 In your Eleventy project, [install the plugin](https://www.11ty.dev/docs/plugins/#adding-a-plugin) through npm:
@@ -32,6 +33,7 @@ module.exports = function(eleventyConfig) {
 };
 ```
 
+<span id="usage"></span>
 ## 🛠 Usage
 
 To embed a Spotify widget into any Markdown page, paste its URL into a new line. The URL should be the only thing on that line.
@@ -50,6 +52,7 @@ Maecenas non velit nibh. Aenean eu justo et odio commodo ornare. In scelerisque 
 
 ![Janelle Monae’s “Dirty Computer”](https://user-images.githubusercontent.com/547470/78504267-f70eb980-7739-11ea-8206-9862782b1f80.png)
 
+<span id="settings"></span>
 ## ⚙️ Settings
 
 You can configure the plugin to change its behavior by passing an options object to the `addPlugin` function:
@@ -121,6 +124,7 @@ https://open.spotify.com/track/7nJZ9LplJ3ZAyhQyJCJk0K?si=3qc9p-sGR3es3e8kkP9VFA
 
 If you run across a URL pattern that you think should work, but doesn’t, please [file an issue](https://github.com/gfscott/eleventy-plugin-embed-spotify/issues/new)!
 
+<span id="notes-and-caveats"></span>
 ## ⚠️ Notes and caveats
 
 - This plugin is deliberately designed _only_ to embed tracks when the URL is on its own line, and not inline with other text.
