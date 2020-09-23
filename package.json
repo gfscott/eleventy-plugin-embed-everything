@@ -11,7 +11,8 @@
   "main": ".eleventy.js",
   "scripts": {
     "test": "nyc --reporter=lcov ava",
-    "coverage": "coverage"
+    "coverage": "coverage",
+    "lint": "npx rome check"
   },
   "ava": {
     "files": [
@@ -34,6 +35,7 @@
   "devDependencies": {
     "ava": "^3.12.1",
     "codecov": "^3.7.2",
-    "nyc": "^15.1.0"
+    "nyc": "^15.1.0",
+    "rome": "^10.0.4-beta"
   }
 }
