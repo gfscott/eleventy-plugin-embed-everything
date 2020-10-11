@@ -1,7 +1,7 @@
 # eleventy-plugin-embed-twitch
 
 [![NPM Version](https://img.shields.io/npm/v/eleventy-plugin-embed-twitch?style=for-the-badge)](https://www.npmjs.com/package/eleventy-plugin-embed-twitch)
-[![Travis (.org)](https://img.shields.io/travis/gfscott/eleventy-plugin-embed-twitch?style=for-the-badge)](https://travis-ci.org/github/gfscott/eleventy-plugin-embed-twitch)\
+[![Travis CI](https://img.shields.io/travis/com/gfscott/eleventy-plugin-embed-twitch/main?style=for-the-badge)](https://travis-ci.com/github/gfscott/eleventy-plugin-embed-twitch)\
 [![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-embed-twitch?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-twitch/blob/master/LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0-ff69b4.svg?style=for-the-badge)](CODE_OF_CONDUCT.md)
 
