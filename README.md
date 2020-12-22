@@ -1,7 +1,7 @@
 # eleventy-plugin-embed-soundcloud
 
 [![NPM Version](https://img.shields.io/npm/v/eleventy-plugin-embed-soundcloud?style=for-the-badge)](https://www.npmjs.com/package/eleventy-plugin-embed-soundcloud)
-[![Travis CI](https://img.shields.io/travis/com/gfscott/eleventy-plugin-embed-soundcloud/main?style=for-the-badge)](https://travis-ci.com/github/gfscott/eleventy-plugin-embed-soundcloud)\
+[![Build test status](https://img.shields.io/github/workflow/status/gfscott/eleventy-plugin-embed-soundcloud/Node.js%20CI%20and%20Codecov/main?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-soundcloud/actions?query=workflow%3A%22Node.js+CI+and+Codecov%22)\
 [![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-embed-soundcloud?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-soundcloud/blob/master/LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0-ff69b4.svg?style=for-the-badge)](CODE_OF_CONDUCT.md)
 
