@@ -1,0 +1,23 @@
+name: Node.js CI and Codecov
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: ["ubuntu-latest", "macos-latest", "windows-latest"]
+        node: ["10", "12", "14"]
+    name: Node.js ${{ matrix.node }} on ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Run tests using ava
+        run: |
+          npm ci
+          npx nyc --reporter=lcov ava
+      - name: Upload coverage to Codecov.io
+        uses: codecov/codecov-action@v1
+      
