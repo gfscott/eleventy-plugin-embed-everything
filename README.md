@@ -1,7 +1,7 @@
 # eleventy-plugin-embed-instagram
 
 [![NPM Version](https://img.shields.io/npm/v/eleventy-plugin-embed-instagram?style=for-the-badge)](https://www.npmjs.com/package/eleventy-plugin-embed-instagram)
-[![Travis CI](https://img.shields.io/travis/com/gfscott/eleventy-plugin-embed-instagram/main?style=for-the-badge)](https://travis-ci.com/github/gfscott/eleventy-plugin-embed-instagram)
+[![Build test status](https://img.shields.io/github/workflow/status/gfscott/eleventy-plugin-embed-instagram/Node.js%20CI%20and%20Codecov/main?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-instagram/actions?query=workflow%3A%22Node.js+CI+and+Codecov%22)
 [![codecov](https://img.shields.io/codecov/c/github/gfscott/eleventy-plugin-embed-instagram?style=for-the-badge)](https://codecov.io/gh/gfscott/eleventy-plugin-embed-instagram)\
 [![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-embed-instagram?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-instagram/blob/master/LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0-ff69b4.svg?style=for-the-badge)](CODE_OF_CONDUCT.md)
