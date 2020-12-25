@@ -27,7 +27,7 @@
     "eleventy-plugin-embed-instagram": "^1.1.8",
     "eleventy-plugin-embed-soundcloud": "^1.0.7",
     "eleventy-plugin-embed-spotify": "^1.1.8",
-    "eleventy-plugin-embed-tiktok": "^1.0.6",
+    "eleventy-plugin-embed-tiktok": "^1.1.0",
     "eleventy-plugin-embed-twitch": "^1.1.4",
     "eleventy-plugin-embed-twitter": "^1.0.2",
     "eleventy-plugin-vimeo-embed": "^1.2.2",
