@@ -28,7 +28,7 @@
     "ava": "^3.12.1"
   },
   "dependencies": {
-    "bent": "^7.3.11",
+    "@11ty/eleventy-cache-assets": "^2.1.0",
     "parse-path": "^4.0.2"
   }
 }
