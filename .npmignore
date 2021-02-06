@@ -1,0 +1,18 @@
+# Ignore gitignore (meta!)
+.gitignore
+
+# Ignore tests
+test.js
+
+# Ignore github workflows
+.github
+
+# Ignore coverage files is redundant with gitignore, but just in case
+.nyc_output
+coverage/
+
+# Ignore editor style config
+.editorconfig
+
+# Ignore code of conduct
+CODE_OF_CONDUCT.md
