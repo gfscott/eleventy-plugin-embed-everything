@@ -25,7 +25,7 @@
   "license": "MIT",
   "dependencies": {
     "eleventy-plugin-embed-instagram": "^1.2.0",
-    "eleventy-plugin-embed-soundcloud": "^1.1.0",
+    "eleventy-plugin-embed-soundcloud": "^1.2.0",
     "eleventy-plugin-embed-spotify": "^1.2.0",
     "eleventy-plugin-embed-tiktok": "^1.1.0",
     "eleventy-plugin-embed-twitch": "^1.2.0",
