@@ -1,7 +1,10 @@
 # eleventy-plugin-embed-everything
 
 [![NPM Version](https://img.shields.io/npm/v/eleventy-plugin-embed-everything?style=for-the-badge)](https://www.npmjs.com/package/eleventy-plugin-embed-everything)
+[![Build test status](https://img.shields.io/github/workflow/status/gfscott/eleventy-plugin-embed-everything/Node.js%20CI%20and%20Codecov/main?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-everything/actions?query=workflow%3A%22Node.js+CI+and+Codecov%22)
+[![codecov](https://img.shields.io/codecov/c/github/gfscott/eleventy-plugin-embed-everything?style=for-the-badge)](https://codecov.io/gh/gfscott/eleventy-plugin-embed-everything)\
 [![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-embed-everything?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-everything/blob/master/LICENSE)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0-ff69b4.svg?style=for-the-badge)](CODE_OF_CONDUCT.md)
 
 This [Eleventy](https://11ty.dev) plugin will automatically embed common media formats in your pages, requiring only a URL in your markdown files.
 
@@ -71,12 +74,22 @@ _More are planned!_
 
 ## ⚙️ Settings
 
+The plugin supports a number of frequently used services by default, and they have default settings of their own. 
+
 ### Configure which embed services are active
 
-The plugin supports a number of frequently used services by default, but you can configure it for only the specific ones you want by passing an options object to the `addPlugin` function:
+ You can configure which services you want active by passing an options object to the `addPlugin` function:
+
+**Example (✨ New in 1.11.0):** configure the plugin to embed all default services _plus_ SoundCloud
 
 ```javascript
-// configure the plugin to ~only~ embed Vimeo videos and Instagram photos/videos
+eleventyConfig.addPlugin(embedEverything, {
+  add: ['soundcloud']
+});
+```
+
+**Example:** configure the plugin to embed _only_ Vimeo and Instagram:
+```javascript
 eleventyConfig.addPlugin(embedEverything, {
   use: ['vimeo', 'instagram']
 });
@@ -84,7 +97,7 @@ eleventyConfig.addPlugin(embedEverything, {
 
 ### Configure embed services individually
 
-Each service comes with some useful defaults, but you can also configure each one individually using the same method:
+Each service comes with some useful defaults, but you can also configure each one individually. Override each plugin’s defaults by passing an options object that includes its fully-lowercase name as the key:
 
 ```javascript
 // configure YouTube videos to prohibit fullscreen
@@ -96,8 +109,7 @@ eleventyConfig.addPlugin(embedEverything, {
   }
 });
 ```
-
-Currently, you’ll need to consult the [individual plugin packages](#aggregated-plugins) for the relevant defaults and options.
+Substitute `vimeo`, `instagram`, and so on in place of `youtube`. Consult the [individual plugin packages](#aggregated-plugins) for their relevant defaults and options.
 
 ## ⚠️ Notes and caveats
 
@@ -109,13 +121,13 @@ Currently, you’ll need to consult the [individual plugin packages](#aggregated
 
 For more about each [supported service](#supported-services), consult this table of relevant links.
 
-| Service | Package | Repository |
-| ------- | ------- | ---------- |
-| Instagram | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-instagram) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-instagram) |
-| SoundCloud | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-soundcloud) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-soundcloud) |
-| Spotify | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-spotify) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-spotify) |
-| TikTok | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-tiktok) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-tiktok) |
-| Twitch | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitch) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-twitch) |
-| Twitter | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitter) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-twitter) |
-| Vimeo | [npm](https://www.npmjs.com/package/eleventy-plugin-vimeo-embed) | [GitHub](https://github.com/gfscott/eleventy-plugin-vimeo-embed) |
-| YouTube | [npm](https://www.npmjs.com/package/eleventy-plugin-youtube-embed) | [GitHub](https://github.com/gfscott/eleventy-plugin-youtube-embed) |
+| Service | Package | Repository | Options |
+| ------- | ------- | ---------- | ------- |
+| Instagram | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-instagram) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-instagram) | [Options](https://github.com/gfscott/eleventy-plugin-embed-instagram/blob/main/lib/pluginDefaults.js) |
+| SoundCloud | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-soundcloud) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-soundcloud) | [Options](https://github.com/gfscott/eleventy-plugin-embed-soundcloud/blob/main/lib/pluginDefaults.js) |
+| Spotify | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-spotify) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-spotify) | [Options](https://github.com/gfscott/eleventy-plugin-embed-spotify/blob/main/lib/pluginDefaults.js) |
+| TikTok | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-tiktok) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-tiktok) | [Options](https://github.com/gfscott/eleventy-plugin-embed-tiktok/blob/main/lib/pluginDefaults.js) |
+| Twitch | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitch) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-twitch) | [Options](https://github.com/gfscott/eleventy-plugin-embed-twitch/blob/main/lib/pluginDefaults.js) |
+| Twitter | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitter) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-twitter) | [Options](https://github.com/gfscott/eleventy-plugin-embed-twitter/blob/main/lib/pluginDefaults.js) |
+| Vimeo | [npm](https://www.npmjs.com/package/eleventy-plugin-vimeo-embed) | [GitHub](https://github.com/gfscott/eleventy-plugin-vimeo-embed) | [Options](https://github.com/gfscott/eleventy-plugin-vimeo-embed/blob/main/lib/pluginDefaults.js) |
+| YouTube | [npm](https://www.npmjs.com/package/eleventy-plugin-youtube-embed) | [GitHub](https://github.com/gfscott/eleventy-plugin-youtube-embed) | [Options](https://github.com/gfscott/eleventy-plugin-youtube-embed/blob/main/lib/pluginDefaults.js) |
