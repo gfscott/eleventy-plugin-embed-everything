@@ -18,9 +18,6 @@ jobs:
         run: |
           npm ci
           npx nyc --reporter=lcov ava
-      - name: Lint with Rome
-        run: |
-          npm run lint
       - name: Upload coverage to Codecov.io
         uses: codecov/codecov-action@v1
       
