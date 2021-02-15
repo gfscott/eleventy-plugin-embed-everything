@@ -10,12 +10,13 @@ This [Eleventy](https://11ty.dev) plugin will automatically embed common media f
 
 It currently supports **Instagram**, **SoundCloud**, **Spotify**, **TikTok**, **Twitch**, **Twitter**, **Vimeo**, and **YouTube**, with more planned.
 
-- ⚡️ [Installation](#%EF%B8%8F-installation)
-- 🛠 [Usage](#-usage)
-- 🌈 [Supported services](#-supported-services)
-- ⚙️ [Settings](#%EF%B8%8F-settings)
-- ⚠️ [Notes and caveats](#%EF%B8%8F-notes-and-caveats)
+- ⚡️ [Installation](#installation)
+- 🛠 [Usage](#usage)
+- 🌈 [Supported services](#supported-services)
+- ⚙️ [Settings](#settings)
+- ⚠️ [Notes and caveats](#notes-and-caveats)
 
+<span id="installation"></span>
 ## ⚡️ Installation
 
 In your Eleventy project, [install the plugin](https://www.11ty.dev/docs/plugins/#adding-a-plugin) through npm:
@@ -33,7 +34,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(embedEverything);
 };
 ```
-
+<span id="usage"></span>
 ## 🛠 Usage
 
 To embed a YouTube video into any Markdown page, paste its URL into a new line. The URL should be the only thing on that line.
@@ -54,6 +55,7 @@ The same principle applies to the other supported services.
 
 ![Rick Astley performing “Never gonna give you up”](https://user-images.githubusercontent.com/547470/73130266-2b8c2980-3fc3-11ea-8a8c-7994175a8490.jpg)
 
+<span id="supported-services"></span>
 ## 🌈 Supported services
 
 Currently, the plugin supports the following embed services (listed alphabetically):
@@ -72,6 +74,7 @@ Currently, the plugin supports the following embed services (listed alphabetical
 
 _More are planned!_
 
+<span id="settings"></span>
 ## ⚙️ Settings
 
 The plugin supports a number of frequently used services by default, and they have default settings of their own. 
@@ -111,11 +114,13 @@ eleventyConfig.addPlugin(embedEverything, {
 ```
 Substitute `vimeo`, `instagram`, and so on in place of `youtube`. Consult the [individual plugin packages](#aggregated-plugins) for their relevant defaults and options.
 
+<span id="notes-and-caveats"></span>
 ## ⚠️ Notes and caveats
 
 - This plugin does very little on its own. Instead, it _aggregates_ other embed plugins in a single place.
 - Each service is itself a standalone Eleventy plugin, each of which you can install individually.
 - This plugin is in its early stages, with only a few supported embed patterns right now. If there’s a specific service you want added, please [open an issue](https://github.com/gfscott/eleventy-plugin-embed-everything/issues).
+- This plugin is not tested against Node.js 8 (since [ava](https://github.com/avajs/ava) doesn’t support it). I believe the plugin still works, but Node.js < 10 compatibility is best-effort only at this point, and will be explicitly dropped in future.
 
 ### Aggregated plugins
 
