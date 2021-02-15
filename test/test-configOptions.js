@@ -44,7 +44,7 @@ test(
 );
 
 test(
-	`Config returns expected default output with invalid "add" option`,
+	`Config returns default output with invalid "add" option`,
 	(t) => {
 		let output = config({
 			add: ["wrong"],
