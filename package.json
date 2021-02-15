@@ -4,7 +4,14 @@
   "description": "An Eleventy plugin that allows you to quickly add common web embeds to markdown posts, using only their URLs",
   "main": ".eleventy.js",
   "scripts": {
-    "test": "echo \"No tests specified\" && exit 0"
+    "coverage": "coverage",
+    "test": "nyc --reporter=lcov ava",
+    "lint": "npx rome check"
+  },
+  "ava": {
+    "files": [
+      "!test/inc"
+    ]
   },
   "keywords": [
     "11ty",
@@ -24,6 +31,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "deepmerge": "^4.2.2",
     "eleventy-plugin-embed-instagram": "^1.2.0",
     "eleventy-plugin-embed-soundcloud": "^1.2.0",
     "eleventy-plugin-embed-spotify": "^1.2.0",
@@ -43,5 +51,11 @@
     "type": "git",
     "url": "https://github.com/gfscott/eleventy-plugin-embed-everything.git"
   },
-  "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues"
+  "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues",
+  "devDependencies": {
+    "ava": "^3.15.0",
+    "codecov": "^3.8.1",
+    "nyc": "^15.1.0",
+    "rome": "^10.0.4-beta"
+  }
 }
