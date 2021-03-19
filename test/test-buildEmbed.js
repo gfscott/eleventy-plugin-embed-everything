@@ -97,3 +97,25 @@ validStrings.forEach(function(obj) {
 		},
 	);
 });
+
+/**
+ * TEST: Build script returns unaltered URL if oEmbed network response ≠ 200
+ * Note: the bent library is configured to throw an error on anything other 
+ * than 200, so the exact error code _should_ be irrelevant for this plugin.
+ */
+validStrings.forEach(function(obj) {
+	test(
+		`${obj.type} network failure case`,
+		async (t) => {
+			const oEmbedOption = merge(pluginDefaults, {cacheText: true});
+			const idealCase = `<p>${obj.str}</p>`;
+			const tweetObj = extractMatch(idealCase);
+			// change the last two digits to zero to make the tweet URL invalid for oEmbed.
+			tweetObj.tweetId = tweetObj.tweetId.slice(0, -2) + '00';
+			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
+			// Remember, the expected returned value is still an invalid URL for the purposes of this test!
+			const expected = 'https://twitter.com/SaraSoueidan/status/1289865845053652900';
+			t.is(output, expected);
+		},
+	);
+});
