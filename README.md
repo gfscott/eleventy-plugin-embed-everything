@@ -50,9 +50,86 @@ Maecenas non velit nibh. Aenean eu justo et odio commodo ornare. In scelerisque 
 
 ## Configure
 
-See [lib/pluginDefaults.js](lib/pluginDefaults.js) to see the plugin’s configurable settings. Pass an options object to the plugin to override any of its default settings.
+### Plugin default options
 
-By default, the plugin does _not_ save the text of the Tweet as plain HTML. That’s because doing so requires making a network request to Twitter. In general we minimize such calls unless you decide to enable them. To save the complete Tweet text when processing files in Eleventy, turn on the `cacheText` option:
+The plugin’s default settings reside in [lib/pluginDefaults.js](lib/pluginDefaults.js). Pass an options object to the plugin to override any of its default settings.
+
+<table style="width: 100%;">
+  <thead>
+    <tr>
+      <td style="width:15%">Option</td>
+      <td style="width:15%">Type</td>
+      <td style="width:15%">Default <br>value</td>
+      <td style="width:40%">Notes</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>cacheText</code></td>
+      <td>Boolean</td>
+      <td><code>false</code></td>
+      <td>Whether to save the Tweet content as plain HTML. Causes network calls on save. See <a href="#cacheText">Caching Tweet content as plain HTML</a> for more details.</td>
+    </tr>
+    <tr>
+      <td>✨ <b>New in v1.2.0!</b><br><code>doNotTrack</code></td>
+      <td>Boolean</td>
+      <td><code>false</code></td>
+      <td>Change to <code>true</code> to opt out of Twitter’s <a href="https://developer.twitter.com/en/docs/twitter-for-websites/privacy">personalization features</a>.</td>
+    </tr>
+    <tr>
+      <td><code>embedClass</code></td>
+      <td>String</td>
+      <td><code>eleventy-plugin-embed-twitter</code></td>
+      <td>Class name applied to the <code>div</code> element that wrapps the embedded Tweet <code>blockquote</code>. Use the default string to target the embeds with CSS, or substitute your preferred string.</td>
+    </tr>
+    <tr>
+      <td>✨ <b>New in v1.2.0!</b><br><code>theme</code></td>
+      <td>String</td>
+      <td><code>undefined</code></td>
+      <td>By default, Tweets embed with a black-on-white color scheme. Change to <code>dark</code> to switch to dark mode display.</td>
+    </tr>
+    <tr style="background-color: #444; color: #eee; font-weight: bold">
+      <td><code>twitterScript</code></td>
+      <td colspan="3">Object</td>
+    </tr>
+    <tr>
+      <td><code>twitterScript.async</code></td>
+      <td>Boolean</td>
+      <td><code>true</code></td>
+      <td>By default, Twitter’s JavaScript loads asynchronously. Changing to <code>false</code> will load it synchronously. Not recommended, as this harms page rendering performance.</td>
+    </tr>
+    <tr>
+      <td><code>twitterScript.charset</code></td>
+      <td>String</td>
+      <td><code>utf-8</code></td>
+      <td>The <code>charset</code> attribute for the Twitter <code>script</code> tag. This mirrors Twitter’s default embed approach, although <code>charset</code> is <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-charset">deprecated</a>. Expect this option to be removed in a future release.</td>
+    </tr>
+    <tr>
+      <td><code>twitterScript.defer</code></td>
+      <td>Boolean</td>
+      <td><code>false</code></td>
+      <td>Change to <code>true</code> to add a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-defer"><code>defer</code></a> attribute to the Twitter script element. In most cases <code>async</code> is enough.</td>
+    </tr>
+    <tr>
+      <td>✨ <b>New in v1.2.0!</b><br><code>twitterScript.enabled</code></td>
+      <td>Boolean</td>
+      <td><code>true</code></td>
+      <td>Change this to <code>false</code> to prevent the plugin from adding the Twitter <code>script</code> tag. Use this if you’re implementing your own strategy for loading Twitter’s <code>widgets.js</code> script.</td>
+    </tr>
+    <tr>
+      <td><code>twitterScript.src</code></td>
+      <td>String</td>
+      <td><code>https://platform.twitter.com/widgets.js</code></td>
+      <td>The official URL for Twitter’s <code>widgets.js</code> script. This may be useful if you prefer to self-host your own version of the code instead of loading it from Twitter’s CDN.</td>
+    </tr>
+  </tbody>
+</table>
+
+<span id="cacheText"></span>
+
+### Caching Tweet content as plain HTML
+
+By default, the plugin does _not_ save the text of the Tweet as plain HTML. That’s because doing so requires making a network request to Twitter. By default, we don’t make network calls unless you decide to enable them. To save the complete Tweet text when processing files in Eleventy, turn on the `cacheText` option:
 
 ```js
 eleventyConfig.addPlugin(embedTwitter, {
