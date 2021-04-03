@@ -111,7 +111,7 @@ validStrings.forEach(function(obj) {
 		`${obj.type} default embed, dark theme`,
 		(t) => {
 			const darkTheme = {
-				theme: 'dark',
+				theme: "dark",
 			};
 			const customOpt = merge(pluginDefaults, darkTheme);
 			const idealCase = `<p>${obj.str}</p>`;
@@ -151,7 +151,7 @@ validStrings.forEach(function(obj) {
 		`${obj.type} default embed, dark mode`,
 		(t) => {
 			const darkMode = {
-				theme: 'dark',
+				theme: "dark",
 			};
 			const customOpt = merge(pluginDefaults, darkMode);
 			const idealCase = `<p>${obj.str}</p>`;
@@ -171,7 +171,7 @@ validStrings.forEach(function(obj) {
 		`${obj.type} default embed, custom alignment`,
 		(t) => {
 			const align = {
-				align: 'right',
+				align: "right",
 			};
 			const customOpt = merge(pluginDefaults, align);
 			const idealCase = `<p>${obj.str}</p>`;
@@ -191,7 +191,7 @@ validStrings.forEach(function(obj) {
 		`${obj.type} default embed, disable cards/media`,
 		(t) => {
 			const cards = {
-				cards: 'hidden',
+				cards: "hidden",
 			};
 			const customOpt = merge(pluginDefaults, cards);
 			const idealCase = `<p>${obj.str}</p>`;
@@ -211,7 +211,7 @@ validStrings.forEach(function(obj) {
 		`${obj.type} default embed, disable conversation/threading`,
 		(t) => {
 			const conversation = {
-				conversation: 'none',
+				conversation: "none",
 			};
 			const customOpt = merge(pluginDefaults, conversation);
 			const idealCase = `<p>${obj.str}</p>`;
@@ -231,7 +231,7 @@ validStrings.forEach(function(obj) {
 		`${obj.type} default embed, custom language`,
 		(t) => {
 			const lang = {
-				lang: 'es',
+				lang: "es",
 			};
 			const customOpt = merge(pluginDefaults, lang);
 			const idealCase = `<p>${obj.str}</p>`;
@@ -309,12 +309,15 @@ validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} cached oembed behavior, disabled twitter script`,
 		async (t) => {
-			const oEmbedOption = merge(pluginDefaults, {
-				cacheText: true,
-				twitterScript: {
-					enabled: false,
+			const oEmbedOption = merge(
+				pluginDefaults,
+				{
+					cacheText: true,
+					twitterScript: {
+						enabled: false,
+					},
 				},
-			});
+			);
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
@@ -331,10 +334,13 @@ validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} cached oembed behavior, dark theme`,
 		async (t) => {
-			const oEmbedOption = merge(pluginDefaults, {
-				cacheText: true,
-				theme: 'dark',
-			});
+			const oEmbedOption = merge(
+				pluginDefaults,
+				{
+					cacheText: true,
+					theme: "dark",
+				},
+			);
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
@@ -351,10 +357,13 @@ validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} cached oembed behavior, do not track`,
 		async (t) => {
-			const oEmbedOption = merge(pluginDefaults, {
-				cacheText: true,
-				doNotTrack: true,
-			});
+			const oEmbedOption = merge(
+				pluginDefaults,
+				{
+					cacheText: true,
+					doNotTrack: true,
+				},
+			);
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
@@ -364,7 +373,6 @@ validStrings.forEach(function(obj) {
 	);
 });
 
-
 /**
  * TEST: Build script returns expected oEmbed HTML string with custom alignment.
  */
@@ -372,10 +380,13 @@ validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} cached oembed behavior, custom alignment`,
 		async (t) => {
-			const oEmbedOption = merge(pluginDefaults, {
-				cacheText: true,
-				align: 'center',
-			});
+			const oEmbedOption = merge(
+				pluginDefaults,
+				{
+					cacheText: true,
+					align: "center",
+				},
+			);
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
@@ -392,10 +403,13 @@ validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} cached oembed behavior, cards deactivated`,
 		async (t) => {
-			const oEmbedOption = merge(pluginDefaults, {
-				cacheText: true,
-				cards: 'hidden',
-			});
+			const oEmbedOption = merge(
+				pluginDefaults,
+				{
+					cacheText: true,
+					cards: "hidden",
+				},
+			);
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
@@ -415,10 +429,13 @@ validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} cached oembed behavior, conversations deactivated`,
 		async (t) => {
-			const oEmbedOption = merge(pluginDefaults, {
-				cacheText: true,
-				conversation: 'none',
-			});
+			const oEmbedOption = merge(
+				pluginDefaults,
+				{
+					cacheText: true,
+					conversation: "none",
+				},
+			);
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
@@ -436,13 +453,16 @@ validStrings.forEach(function(obj) {
  */
 
 test(
-	`Response tweet, cached oembed behavior, conversation deactivated for a response`,
+	"Response tweet, cached oembed behavior, conversation deactivated for a response",
 	async (t) => {
-		const oEmbedOption = merge(pluginDefaults, {
-			cacheText: true,
-			conversation: 'none',
-		});
-		const idealCase = `<p>https://twitter.com/juanstoppa/status/1289865999425167360</p>`;
+		const oEmbedOption = merge(
+			pluginDefaults,
+			{
+				cacheText: true,
+				conversation: "none",
+			},
+		);
+		const idealCase = "<p>https://twitter.com/juanstoppa/status/1289865999425167360</p>";
 		const tweetObj = extractMatch(idealCase);
 		const output = await buildEmbed(tweetObj, oEmbedOption, 0);
 		const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">what is your preference?</p>&mdash; Juan Stoppa (@juanstoppa) <a href="https://twitter.com/juanstoppa/status/1289865999425167360?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n</div>';
@@ -458,14 +478,17 @@ test(
  * the Tweet text, and defaults to "en" for English. See next test for a
  * variation on this.
  */
- validStrings.forEach(function(obj) {
+validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} cached oembed behavior, custom language`,
 		async (t) => {
-			const oEmbedOption = merge(pluginDefaults, {
-				cacheText: true,
-				lang: 'es',
-			});
+			const oEmbedOption = merge(
+				pluginDefaults,
+				{
+					cacheText: true,
+					lang: "es",
+				},
+			);
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
@@ -483,32 +506,37 @@ test(
  * write Tweets in. See previous test for a variation on this.
  */
 test(
-	`Non-English tweet, cached oembed behavior, custom language`,
+	"Non-English tweet, cached oembed behavior, custom language",
 	async (t) => {
-		const oEmbedOption = merge(pluginDefaults, {
-			cacheText: true,
-			lang: 'es',
-		});
-		const idealCase = `<p>https://twitter.com/ant_laguna/status/1250020567538905088</p>`;
+		const oEmbedOption = merge(
+			pluginDefaults,
+			{
+				cacheText: true,
+				lang: "es",
+			},
+		);
+		const idealCase = "<p>https://twitter.com/ant_laguna/status/1250020567538905088</p>";
 		const tweetObj = extractMatch(idealCase);
 		const output = await buildEmbed(tweetObj, oEmbedOption, 0);
-		const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-lang="es"><p lang="es" dir="ltr">¡Eso me pareció a mi!</p>&mdash; Antonio Laguna ツ (@ant_laguna) <a href="https://twitter.com/ant_laguna/status/1250020567538905088?ref_src=twsrc%5Etfw">14 de abril de 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n</div>';
+		const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-lang="es"><p lang="es" dir="ltr">\xa1Eso me pareci\xf3 a mi!</p>&mdash; Antonio Laguna \u30c4 (@ant_laguna) <a href="https://twitter.com/ant_laguna/status/1250020567538905088?ref_src=twsrc%5Etfw">14 de abril de 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n</div>';
 		t.is(output, expected);
 	},
 );
 
-
 /**
  * TEST: Build script returns expected oEmbed HTML string with custom width.
  */
- validStrings.forEach(function(obj) {
+validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} cached oembed behavior, custom width`,
 		async (t) => {
-			const oEmbedOption = merge(pluginDefaults, {
-				cacheText: true,
-				width: 325,
-			});
+			const oEmbedOption = merge(
+				pluginDefaults,
+				{
+					cacheText: true,
+					width: 325,
+				},
+			);
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
@@ -529,10 +557,10 @@ validStrings.forEach(function(obj) {
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			// change the last two digits to zero to make the tweet URL invalid for oEmbed.
-			tweetObj.tweetId = tweetObj.tweetId.slice(0, -2) + '00';
+			tweetObj.tweetId = `${tweetObj.tweetId.slice(0, -2)}00`;
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
 			// Remember, the expected returned value is still an invalid URL for the purposes of this test!
-			const expected = 'https://twitter.com/SaraSoueidan/status/1289865845053652900';
+			const expected = "https://twitter.com/SaraSoueidan/status/1289865845053652900";
 			t.is(output, expected);
 		},
 	);
