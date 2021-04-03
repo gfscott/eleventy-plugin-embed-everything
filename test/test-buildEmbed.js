@@ -520,8 +520,6 @@ test(
 
 /**
  * TEST: Build script returns unaltered URL if oEmbed network response ≠ 200
- * Note: the bent library is configured to throw an error on anything other
- * than 200, so the exact error code _should_ be irrelevant for this plugin.
  */
 validStrings.forEach(function(obj) {
 	test(
