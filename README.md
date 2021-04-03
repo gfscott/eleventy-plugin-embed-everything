@@ -71,6 +71,12 @@ The plugin’s default settings reside in [lib/pluginDefaults.js](lib/pluginDefa
       <td>Change to <code>left</code>, <code>center</code>, or <code>right</code> to control the embed alignment.</td>
     </tr>
     <tr>
+      <td>✨ <b>New in v1.3.0!</b><br><code>cacheDuration</code></td>
+      <td>String</td>
+      <td><code>5m</code></td>
+      <td>How long to cache the response from Twitter’s servers when <code>cacheText</code> is <code>true</code>. Use the <a href="https://www.11ty.dev/docs/plugins/cache/#change-the-cache-duration"><code>eleventy-cache-assets</code></a> syntax to set the duration. See also <a href="#cacheText">Caching Tweet content as plain HTML</a>.</td>
+    </tr>
+    <tr>
       <td><code>cacheText</code></td>
       <td>Boolean</td>
       <td><code>false</code></td>
@@ -167,7 +173,7 @@ eleventyConfig.addPlugin(embedTwitter, {
 });
 ```
 
-Be aware, activating `cacheText` will cause a network request to Twitter on every save. If the plugin experiences any network failure (such as if you're not connected to the internet), then it simply won’t complete the embed and the URL will be rendered as plain text.
+As of v1.3.0, `cacheText` uses [`eleventy-cache-assets`](https://www.11ty.dev/docs/plugins/cache/) to download the text of the Tweet and cache it locally for up to 5 minutes, which reduces the overall number of network calls and speeds up builds. You can configure the cache timing with the `cacheDuration` option. If the plugin experiences any network failure (such as if you're not connected to the internet), then it simply won’t complete the embed and the Tweet URL will be rendered as plain text.
 
 ## Notes and caveats
 
