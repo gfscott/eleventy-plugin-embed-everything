@@ -65,13 +65,31 @@ The plugin’s default settings reside in [lib/pluginDefaults.js](lib/pluginDefa
   </thead>
   <tbody>
     <tr>
+      <td>✨ <b>New in v1.3.0!</b><br><code>align</code></td>
+      <td>String</td>
+      <td><code>undefined</code></td>
+      <td>Change to <code>left</code>, <code>center</code>, or <code>right</code> to control the embed alignment.</td>
+    </tr>
+    <tr>
       <td><code>cacheText</code></td>
       <td>Boolean</td>
       <td><code>false</code></td>
       <td>Whether to save the Tweet content as plain HTML. Causes network calls on save. See <a href="#cacheText">Caching Tweet content as plain HTML</a> for more details.</td>
     </tr>
     <tr>
-      <td>✨ <b>New in v1.2.0!</b><br><code>doNotTrack</code></td>
+      <td>✨ <b>New in v1.3.0!</b><br><code>cards</code></td>
+      <td>String</td>
+      <td><code>undefined</code></td>
+      <td>Change to <code>hidden</code> to deactivate embedded media in Tweets, such as images or video.</td>
+    </tr>
+    <tr>
+      <td>✨ <b>New in v1.3.0!</b><br><code>conversation</code></td>
+      <td>String</td>
+      <td><code>undefined</code></td>
+      <td>Change to <code>none</code> to deactivate default automatic threading of the original Tweet when embedding a reply.</td>
+    </tr>
+    <tr>
+      <td><code>doNotTrack</code></td>
       <td>Boolean</td>
       <td><code>false</code></td>
       <td>Change to <code>true</code> to opt out of Twitter’s <a href="https://developer.twitter.com/en/docs/twitter-for-websites/privacy">personalization features</a>.</td>
@@ -83,10 +101,22 @@ The plugin’s default settings reside in [lib/pluginDefaults.js](lib/pluginDefa
       <td>Class name applied to the <code>div</code> element that wrapps the embedded Tweet <code>blockquote</code>. Use the default string to target the embeds with CSS, or substitute your preferred string.</td>
     </tr>
     <tr>
-      <td>✨ <b>New in v1.2.0!</b><br><code>theme</code></td>
+      <td>✨ <b>New in v1.3.0!</b><br><code>lang</code></td>
+      <td>String</td>
+      <td><code>undefined</code></td>
+      <td>Change to any of Twitter’s <a href="https://developer.twitter.com/en/docs/twitter-for-websites/supported-languages">supported language codes</a> to localize embedded Tweet components. Note that this has no connection to the language of the Tweet text itself!</td>
+    </tr>
+    <tr>
+      <td><code>theme</code></td>
       <td>String</td>
       <td><code>undefined</code></td>
       <td>By default, Tweets embed with a black-on-white color scheme. Change to <code>dark</code> to switch to dark mode display.</td>
+    </tr>
+    <tr>
+      <td>✨ <b>New in v1.3.0!</b><br><code>width</code></td>
+      <td>Number</td>
+      <td><code>undefined</code></td>
+      <td>Change to a whole number to control the width, in pixels, of embedded Tweets. Twitter <a href="https://developer.twitter.com/en/docs/twitter-for-websites/embedded-tweets/guides/embedded-tweet-parameter-reference">recommends</a> keeping this value between 250 and 550.</td>
     </tr>
     <tr style="background-color: #444; color: #eee; font-weight: bold">
       <td><code>twitterScript</code></td>
@@ -111,7 +141,7 @@ The plugin’s default settings reside in [lib/pluginDefaults.js](lib/pluginDefa
       <td>Change to <code>true</code> to add a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-defer"><code>defer</code></a> attribute to the Twitter script element. In most cases <code>async</code> is enough.</td>
     </tr>
     <tr>
-      <td>✨ <b>New in v1.2.0!</b><br><code>twitterScript.enabled</code></td>
+      <td><code>twitterScript.enabled</code></td>
       <td>Boolean</td>
       <td><code>true</code></td>
       <td>Change this to <code>false</code> to prevent the plugin from adding the Twitter <code>script</code> tag. Use this if you’re implementing your own strategy for loading Twitter’s <code>widgets.js</code> script.</td>
