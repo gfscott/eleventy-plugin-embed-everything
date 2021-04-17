@@ -112,13 +112,13 @@ The plugin’s default settings reside in [lib/pluginDefaults.js](lib/pluginDefa
       <td>Class name applied to the <code>div</code> element that wraps the embedded YouTube <code>iframe</code>. Use the default string to target the embeds with CSS, or substitute your preferred string.</td>
     </tr>
     <tr>
-      <td>✨ <b>New in v1.4.0!</b><br> <code>lazy</code></td>
+      <td><code>lazy</code></td>
       <td>Boolean</td>
       <td><code>false</code></td>
       <td>Setting this to <code>true</code> will add a <code>loading="lazy"</code> attribute to the standard iframe embed. <a href="https://www.caniuse.com/#feat=loading-lazy-attr">Some browsers</a> will use this to optimize resource loading.</td>
     </tr>
     <tr>
-      <td>✨ <b>New in v1.4.0!</b><br> <code>lite</code></td>
+      <td><code>lite</code></td>
       <td>Boolean <b>or</b> Object</td>
       <td><code>false</code></td>
       <td>Setting this to <code>true</code> will use Paul Irish’s <a href="https://github.com/paulirish/lite-youtube-embed">Lite YouTube Embed</a> method. See the section on the <a href="#lite">Lite version</a> below for more details.</td>
@@ -136,7 +136,7 @@ The plugin’s default settings reside in [lib/pluginDefaults.js](lib/pluginDefa
 
 ### Lite YouTube Embed
 
-✨ **New in v1.4.0:** Use the [Lite YouTube Embed](https://github.com/paulirish/lite-youtube-embed) instead of the standard YouTube iframe. In many circumstances this is a performance win because it delays loading the iframe element until the user clicks play. 
+You can use the [Lite YouTube Embed](https://github.com/paulirish/lite-youtube-embed) instead of the standard YouTube iframe. In many circumstances this is a performance win because it delays loading the iframe element until the user clicks play. 
 
 Be aware that the Lite version defaults to [loading two files from the jsDelivr CDN](https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/). It loads these files once on any HTML page that includes an embed. You can override both resource URIs if you want to load from a different source, such as [unpkg](https://unpkg.com/browse/lite-youtube-embed@0.0.0/src/) or your own server.
 
@@ -158,20 +158,66 @@ eleventyConfig.addPlugin(embedYouTube, {
 });
 ```
 
-To load the necessary CSS and JavaScript from a different source, pass in an object instead of the boolean, passing the URIs to `lite.css.path` and `lite.js.path`:
+#### Configuring lite embed options
+
+To manually configure the Lite version, pass an options object to the `lite` setting instead of `true`:
 
 ```javascript
 eleventyConfig.addPlugin(embedYouTube, {
   lite: {
-    css: {
-      path: "some_other_url"
-    },
-    js: {
-      path: "some_other_url"
-    }
+    // Change settings here
   }
 });
 ```
+
+<table style="width: 100%;">
+  <thead>
+    <tr>
+      <td style="width:15%">Option</td>
+      <td style="width:15%">Type</td>
+      <td style="width:15%">Default <br>value</td>
+      <td style="width:40%">Notes</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>✨ <b>New in v1.6.0!</b><br> <code>lite.css.enabled</code></td>
+      <td>Boolean</td>
+      <td><code>true</code></td>
+      <td>If you change this to <code>false</code>, then the plugin won’t add any CSS to the page. You’ll need to handle loading the necessary CSS yourself.</td>
+    </tr>
+    <tr>
+      <td>✨ <b>New in v1.6.0!</b><br> <code>lite.css.inline</code></td>
+      <td>Boolean</td>
+      <td><code>false</code></td>
+      <td>If you change this to <code>true</code>, then the plugin will load the CSS inline in <code>&lt;style&gt;</code> tags, instead of using the default <code>&lt;link&gt;</code> tag.</td>
+    </tr>
+    <tr>
+      <td><code>lite.css.path</code></td>
+      <td>String</td>
+      <td><code>https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.css</code></td>
+      <td>Pass a custom URL to load the necessary CSS from the source of your choice.</td>
+    </tr>
+    <tr>
+      <td>✨ <b>New in v1.6.0!</b><br> <code>lite.js.enabled</code></td>
+      <td>Boolean</td>
+      <td><code>true</code></td>
+      <td>If you change this to <code>false</code>, then the plugin won’t add any JavaScript to the page. You’ll need to handle loading the necessary JavaScript yourself.</td>
+    </tr>
+    <tr>
+      <td>✨ <b>New in v1.6.0!</b><br> <code>lite.js.inline</code></td>
+      <td>Boolean</td>
+      <td><code>false</code></td>
+      <td>If you change this to <code>true</code>, then the plugin will load the JavaScript inline in <code>&lt;script&gt;</code> tags.</td>
+    </tr>
+    <tr>
+      <td><code>lite.js.path</code></td>
+      <td>String</td>
+      <td><code>https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.js</code></td>
+      <td>Pass a custom URL to load the necessary JavaScript from the source of your choice.</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Supported URL patterns
 
