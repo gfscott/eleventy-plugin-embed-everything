@@ -29,5 +29,9 @@
     "ava": "^3.12.1",
     "codecov": "^3.8.1",
     "nyc": "^15.1.0"
+  },
+  "dependencies": {
+    "deepmerge": "^4.2.2",
+    "lite-youtube-embed": "^0.2.0"
   }
 }
