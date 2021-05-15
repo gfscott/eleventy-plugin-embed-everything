@@ -39,7 +39,7 @@
     "rome": "^10.0.4-beta"
   },
   "dependencies": {
-    "@11ty/eleventy-cache-assets": "^2.1.0",
+    "@11ty/eleventy-cache-assets": "^2.2.1",
     "deepmerge": "^4.2.2"
   }
 }
