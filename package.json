@@ -34,7 +34,7 @@
   "bugs": "https://github.com/gfscott/eleventy-plugin-embed-twitter/issues",
   "devDependencies": {
     "ava": "^3.15.0",
-    "codecov": "^3.8.2",
+    "codecov": "^3.8.3",
     "nyc": "^15.1.0",
     "rome": "^10.0.4-beta"
   },
