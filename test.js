@@ -50,6 +50,14 @@ validStrings.forEach(function(obj){
     </p>`;
     t.truthy(patternPresent(withLinksAndWhitespace));
   });
+  test(`String is valid: ${obj.type} with links and whitespace surrounding wrapping paragraph`, t => {
+    let withLinksAndWhitespace = `   <p>
+      <a href="">
+        ${obj.str}
+      </a>
+    </p>   `;
+    t.truthy(patternPresent(withLinksAndWhitespace));
+  });
 });
 /**
  * Ensure that valid strings produce the expected media ID as output
