@@ -12,6 +12,11 @@
   "scripts": {
     "test": "ava"
   },
+  "ava": {
+    "files": [
+      "!test/inc"
+    ]
+  },
   "author": {
     "name": "Graham F. Scott",
     "email": "gfscott@gmail.com",
