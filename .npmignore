@@ -3,6 +3,7 @@
 
 # Ignore tests
 test.js
+test/
 
 # Ignore github workflows
 .github
