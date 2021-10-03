@@ -10,7 +10,7 @@
   ],
   "main": ".eleventy.js",
   "scripts": {
-    "test": "ava"
+    "test": "npx ava"
   },
   "ava": {
     "files": [
