@@ -10,7 +10,12 @@
   ],
   "main": ".eleventy.js",
   "scripts": {
-    "test": "ava"
+    "test": "npx ava"
+  },
+  "ava": {
+    "files": [
+      "!test/inc"
+    ]
   },
   "author": {
     "name": "Graham F. Scott",
