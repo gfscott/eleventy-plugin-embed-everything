@@ -73,6 +73,18 @@ validStrings.forEach(function(obj){
   });
 });
 
+/**
+ * Test that regex isn't greedily consuming subsequent paragraphs in minified HTML
+ */
+ validStrings.forEach(function(obj){
+  test(`${obj.type} minified HTML with multiple paragraph tags on a single line`, t => {
+    let paragraph = "<p>https://www.youtube.com/watch?v=hIs5StN8J-0</p><p>Foo</p>";
+    let paragraphWithLinks = '<p><a href="foo">https://www.youtube.com/watch?v=hIs5StN8J-0</a></p><p>Foo</p>';
+    t.deepEqual(patternPresent(paragraph), ['<p>https://www.youtube.com/watch?v=hIs5StN8J-0</p>']);
+    t.deepEqual(patternPresent(paragraphWithLinks), ['<p><a href="foo">https://www.youtube.com/watch?v=hIs5StN8J-0</a></p>']);
+  });
+});
+
 // Test output of lite version of embed code
 const pluginLiteModeOptions = Object.assign({}, pluginDefaults, { lite: true });
 const pluginLiteModeOptionsAltCss = Object.assign({}, pluginDefaults, { 
