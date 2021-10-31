@@ -62,3 +62,32 @@ validStrings.forEach(function(obj) {
 		},
 	);
 });
+
+/**
+ * TESTS: Doesn’t greedily consume subsequent paragraph tags in minified HTML
+ * @since			1.3.3
+ * @see				https://github.com/gfscott/eleventy-plugin-embed-twitter/issues/33
+ */
+test(
+	"Regex doesn't greedily consume subsequent paragraph tags in minified HTML",
+	(t) => {
+		let multipleParagraphs = "<p>https://twitter.com/SaraSoueidan/status/1289865845053652994</p><p>Foo</p>";
+		let output = patternPresent(multipleParagraphs);
+		let expected = [
+			"<p>https://twitter.com/SaraSoueidan/status/1289865845053652994</p>",
+		];
+		t.deepEqual(output, expected);
+	},
+);
+
+test(
+	"Regex doesn't greedily consume subsequent paragraph tags in minified HTML, including anchor tags",
+	(t) => {
+		let multipleParagraphs = `<p><a href="foo">https://twitter.com/SaraSoueidan/status/1289865845053652994</a></p><p>Foo</p>`;
+		let output = patternPresent(multipleParagraphs);
+		let expected = [
+			'<p><a href="foo">https://twitter.com/SaraSoueidan/status/1289865845053652994</a></p>',
+		];
+		t.deepEqual(output, expected);
+	},
+);
