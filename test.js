@@ -1,7 +1,7 @@
 const test = require('ava');
 const patternPresent = require('./lib/spotPattern.js');
 // TODO: Finish tests for extracting ID strings and correct outputs
-// const extractVideoId = require('./lib/extractMatches.js');
+const extractVideoId = require('./lib/extractMatches.js');
 // const buildEmbedCodeString = require('./lib/buildEmbed.js');
 
 const validStrings = [
@@ -57,5 +57,39 @@ invalidStrings.forEach(function(obj){
       ${obj.str}
     </p>`;
     t.falsy(patternPresent(withWhitespace));
+  });
+});
+
+/**
+ * Given valid strings, extractMatches.js returns the proper
+ * type and ID.
+ */
+
+const expected = {
+  user: '@guiltyaesthetic',
+  id: '6806676200652655877',
+}
+ validStrings.forEach(function(obj){
+  test(`Extract ID, ${obj.type}, ideal case`, t => {
+    let idealCase = `<p>${obj.str}</p>`;
+    t.deepEqual(extractVideoId(idealCase), expected);
+  });
+  test(`Extract ID, ${obj.type}, with links`, t => {
+    let withLinks = `<p><a href="">${obj.str}</a></p>`;
+    t.deepEqual(extractVideoId(withLinks), expected);
+  });
+  test(`Extract ID, ${obj.type}, with whitespace`, t => {
+    let withWhitespace = `<p>
+      ${obj.str}
+    </p>`;
+    t.deepEqual(extractVideoId(withWhitespace), expected);
+  });
+  test(`Extract ID, ${obj.type}, with links and whitespace`, t => {
+    let withLinksAndWhitespace = `<p>
+      <a href="">
+        ${obj.str}
+      </a>
+    </p>`;
+    t.deepEqual(extractVideoId(withLinksAndWhitespace), expected);
   });
 });
