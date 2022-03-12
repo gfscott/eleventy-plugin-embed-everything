@@ -166,6 +166,29 @@ validStrings.forEach(function(obj){
 
 // Test output of lite version of embed code
 const pluginLiteModeOptions = Object.assign({}, pluginDefaults, { lite: true });
+const pluginLiteModeOptionsUrlParamAllowAutoplay = Object.assign({}, pluginDefaults, {
+  lite: true,
+  allowAutoplay: true
+});
+const pluginLiteModeOptionsUrlParamRecommendChannel = Object.assign({}, pluginDefaults, {
+  lite: true,
+  recommendChannel: true
+});
+const pluginLiteModeOptionsUrlParamModestBranding = Object.assign({}, pluginDefaults, {
+  lite: true,
+  modestBranding: true
+});
+const pluginLiteModeOptionsUrlParamAllowAutoplayAndRecommendChannel = Object.assign({}, pluginDefaults, {
+  lite: true,
+  allowAutoplay: true,
+  recommendChannel: true
+});
+const pluginLiteModeOptionsUrlParamAllowAutoplayAndRecommendChannelAndModestBranding = Object.assign({}, pluginDefaults, {
+  lite: true,
+  allowAutoplay: true,
+  recommendChannel: true,
+  modestBranding: true
+});
 const pluginLiteModeOptionsAltCss = Object.assign({}, pluginDefaults, { 
   lite: { 
     css: { 
@@ -265,7 +288,42 @@ validStrings.forEach(function(obj){
     t.is(buildEmbedCodeString(extractVideoId(idealCase), pluginLiteModeOptions, 0),
       `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
     );
+
+
   });
+  test(`${obj.type} ideal case, lite embed, zero-index, autoplay`, t => {
+    let idealCase = `<p>${obj.str}</p>`;
+    t.is(buildEmbedCodeString(extractVideoId(idealCase), pluginLiteModeOptionsUrlParamAllowAutoplay, 0),
+      `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');" params="autoplay=1"><div class="lty-playbtn"></div></lite-youtube></div>`
+    );
+  });
+  test(`${obj.type} ideal case, lite embed, zero-index, recommendChannel`, t => {
+    let idealCase = `<p>${obj.str}</p>`;
+    t.is(buildEmbedCodeString(extractVideoId(idealCase), pluginLiteModeOptionsUrlParamRecommendChannel, 0),
+      `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');" params="rel=0"><div class="lty-playbtn"></div></lite-youtube></div>`
+    );
+  });
+  test(`${obj.type} ideal case, lite embed, zero-index, modestBranding`, t => {
+    let idealCase = `<p>${obj.str}</p>`;
+    t.is(buildEmbedCodeString(extractVideoId(idealCase), pluginLiteModeOptionsUrlParamModestBranding, 0),
+      `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');" params="modestbranding=1"><div class="lty-playbtn"></div></lite-youtube></div>`
+    );
+  });
+  test(`${obj.type} ideal case, lite embed, zero-index, autoplay, recommendChannel`, t => {
+    let idealCase = `<p>${obj.str}</p>`;
+    t.is(buildEmbedCodeString(extractVideoId(idealCase), pluginLiteModeOptionsUrlParamAllowAutoplayAndRecommendChannel, 0),
+      `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');" params="autoplay=1&rel=0"><div class="lty-playbtn"></div></lite-youtube></div>`
+    );
+  });
+  test(`${obj.type} ideal case, lite embed, zero-index, autoplay, recommendChannel, modestBranding`, t => {
+    let idealCase = `<p>${obj.str}</p>`;
+    t.is(buildEmbedCodeString(extractVideoId(idealCase), pluginLiteModeOptionsUrlParamAllowAutoplayAndRecommendChannelAndModestBranding, 0),
+      `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');" params="autoplay=1&rel=0&modestbranding=1"><div class="lty-playbtn"></div></lite-youtube></div>`
+    );
+  });
+
+
+
   test(`${obj.type} with links, lite embed, zero-index`, t => {
     let withLinks = `<p><a href="">${obj.str}</a></p>`;
     t.is(buildEmbedCodeString(extractVideoId(withLinks), pluginLiteModeOptions, 0),
