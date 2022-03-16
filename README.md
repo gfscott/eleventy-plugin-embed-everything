@@ -130,7 +130,7 @@ The plugin’s default settings reside in [lib/pluginDefaults.js](lib/pluginDefa
       <td>Defaults to the “privacy-enhanced” www.youtube-nocookie.com domain. Change this to <code>false</code> to use www.youtube.com.</td>
     </tr>
     <tr>
-      <td><code>recommendChannel</code></td>
+      <td><code>recommendSelfOnly</code></td>
       <td>Boolean</td>
       <td><code>false</code></td>
       <td>Setting this to <code>true</code> will add a <code>rel=0</code> attribute to the embed url. This will tell YouTube to <a href="https://developers.google.com/youtube/player_parameters#rel">recommend videos from the same channel.</a></td>
