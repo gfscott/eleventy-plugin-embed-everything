@@ -119,9 +119,15 @@ The plugin’s default settings reside in [lib/pluginDefaults.js](lib/pluginDefa
     </tr>
     <tr>
       <td><code>lite</code></td>
-      <td>Boolean <b>or</b> Object</td>
+      <td>Boolean <b>or</b> <a href="#lite-options-table">Object</a></td>
       <td><code>false</code></td>
       <td>Setting this to <code>true</code> will use Paul Irish’s <a href="https://github.com/paulirish/lite-youtube-embed">Lite YouTube Embed</a> method. See the section on the <a href="#lite">Lite version</a> below for more details.</td>
+    </tr>
+    <tr>
+      <td>✨ <b>New in v1.7.0!</b><br> <code>modestBranding</code></td>
+      <td>Boolean</td>
+      <td><code>false</code></td>
+      <td>Setting this to <code>true</code> will add a <code>modestbranding=1</code> attribute to the embed url. This will tell YouTube to show <a href="https://developers.google.com/youtube/player_parameters#modestbranding">minimal YouTube branding</a></td>
     </tr>
     <tr>
       <td><code>noCookie</code></td>
@@ -130,16 +136,10 @@ The plugin’s default settings reside in [lib/pluginDefaults.js](lib/pluginDefa
       <td>Defaults to the “privacy-enhanced” www.youtube-nocookie.com domain. Change this to <code>false</code> to use www.youtube.com.</td>
     </tr>
     <tr>
-      <td><code>recommendSelfOnly</code></td>
+      <td>✨ <b>New in v1.7.0!</b><br> <code>recommendSelfOnly</code></td>
       <td>Boolean</td>
       <td><code>false</code></td>
       <td>Setting this to <code>true</code> will add a <code>rel=0</code> attribute to the embed url. This will tell YouTube to <a href="https://developers.google.com/youtube/player_parameters#rel">recommend videos from the same channel.</a></td>
-    </tr>
-    <tr>
-      <td><code>modestBranding</code></td>
-      <td>Boolean</td>
-      <td><code>false</code></td>
-      <td>Setting this to <code>true</code> will add a <code>modestbranding=1</code> attribute to the embed url. This will tell YouTube to show <a href="https://developers.google.com/youtube/player_parameters#modestbranding">minimal YouTube branding</a></td>
     </tr>
   </tbody>
 </table>
@@ -182,7 +182,7 @@ eleventyConfig.addPlugin(embedYouTube, {
 });
 ```
 
-<table style="width: 100%;">
+<table id="lite-options-table" style="width: 100%;">
   <thead>
     <tr>
       <td style="width:15%">Option</td>
@@ -193,13 +193,13 @@ eleventyConfig.addPlugin(embedYouTube, {
   </thead>
   <tbody>
     <tr>
-      <td>✨ <b>New in v1.6.0!</b><br> <code>lite.css.enabled</code></td>
+      <td><code>lite.css.enabled</code></td>
       <td>Boolean</td>
       <td><code>true</code></td>
       <td>If you change this to <code>false</code>, then the plugin won’t add any CSS to the page. You’ll need to handle loading the necessary CSS yourself.</td>
     </tr>
     <tr>
-      <td>✨ <b>New in v1.6.0!</b><br> <code>lite.css.inline</code></td>
+      <td><code>lite.css.inline</code></td>
       <td>Boolean</td>
       <td><code>false</code></td>
       <td>If you change this to <code>true</code>, then the plugin will load the CSS inline in <code>&lt;style&gt;</code> tags, instead of using the default <code>&lt;link&gt;</code> tag.</td>
@@ -211,13 +211,13 @@ eleventyConfig.addPlugin(embedYouTube, {
       <td>Pass a custom URL to load the necessary CSS from the source of your choice.</td>
     </tr>
     <tr>
-      <td>✨ <b>New in v1.6.0!</b><br> <code>lite.js.enabled</code></td>
+      <td><code>lite.js.enabled</code></td>
       <td>Boolean</td>
       <td><code>true</code></td>
       <td>If you change this to <code>false</code>, then the plugin won’t add any JavaScript to the page. You’ll need to handle loading the necessary JavaScript yourself.</td>
     </tr>
     <tr>
-      <td>✨ <b>New in v1.6.0!</b><br> <code>lite.js.inline</code></td>
+      <td><code>lite.js.inline</code></td>
       <td>Boolean</td>
       <td><code>false</code></td>
       <td>If you change this to <code>true</code>, then the plugin will load the JavaScript inline in <code>&lt;script&gt;</code> tags.</td>
