@@ -34,6 +34,6 @@
   },
   "dependencies": {
     "@11ty/eleventy-cache-assets": "^2.3.0",
-    "parse-path": "^4.0.2"
+    "parse-path": "^5.0.0"
   }
 }
