@@ -1,6 +1,6 @@
 {
   "name": "eleventy-plugin-embed-spotify",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "An Eleventy plugin to automatically embed Spotify tracks, using just their URLs.",
   "keywords": [
     "11ty",
