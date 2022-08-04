@@ -13,6 +13,11 @@
     "test": "nyc --reporter=lcov ava",
     "coverage": "coverage"
   },
+  "ava": {
+    "files": [
+      "!test/_inc"
+    ]
+  },
   "author": {
     "name": "Graham F. Scott",
     "email": "gfscott@gmail.com",
