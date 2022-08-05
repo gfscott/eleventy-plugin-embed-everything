@@ -9,10 +9,9 @@ const liteJsFilePath = path.resolve(__dirname, '../node_modules/lite-youtube-emb
 const inlineCss = fs.readFileSync(liteCssFilePath, 'utf-8');
 const inlineJs = fs.readFileSync(liteJsFilePath, 'utf-8');
 
-
 /**
  * Override plugin default settings
- * @param {object} obj 
+ * @param {object} obj
  * @returns {object}
  */
  const override = (obj) => Object.assign({}, pluginDefaults, obj)
@@ -67,9 +66,9 @@ const inlineJs = fs.readFileSync(liteJsFilePath, 'utf-8');
      '<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/hIs5StN8J-0?rel=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
    );
  });
- 
+
 /**
- * Lite mode
+ * Lite mode, zero index (first instance on page includes script and CSS)
  */
 test(`Build embed lite mode, zero index, lite defaults`, t => {
   t.is(buildEmbed(videoId, override({lite: true}), 0),
@@ -101,6 +100,25 @@ test(`Build embed lite mode, zero index, js inline`, t => {
   `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.css">\n<script>${inlineJs}</script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
   );
 });
+test(`Build embed lite mode, zero index, css AND js disabled`, t => {
+  t.is(buildEmbed(videoId, override({lite:{css:{enabled:false},js:{enabled:false}}}), 0),
+  `<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  );
+});
+test(`Build embed lite mode, zero index, css AND js path override`, t => {
+  t.is(buildEmbed(videoId, override({lite:{css:{path: 'foo'},js:{path: 'foo'}}}), 0),
+  `<link rel="stylesheet" href="foo">\n<script defer="defer" src="foo"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  );
+});
+test(`Build embed lite mode, zero index, css AND js inline`, t => {
+  t.is(buildEmbed(videoId, override({lite:{css:{inline: true},js:{inline: true}}}), 0),
+  `<style>${inlineCss}</style>\n<script>${inlineJs}</script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  );
+});
+
+/**
+ * Lite mode, 1+ index (no style or script on subsequent outputs)
+ */
 test(`Build embed lite mode, 1+ index, lite defaults`, t => {
   t.is(buildEmbed(videoId, override({lite: true}), 1),
   `<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
