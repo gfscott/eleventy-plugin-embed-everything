@@ -10,8 +10,7 @@
   ],
   "main": ".eleventy.js",
   "scripts": {
-    "test": "nyc --reporter=lcov ava",
-    "coverage": "coverage"
+    "test": "nyc --reporter=lcov ava"
   },
   "ava": {
     "files": [
@@ -32,7 +31,6 @@
   "bugs": "https://github.com/gfscott/eleventy-plugin-youtube-embed/issues",
   "devDependencies": {
     "ava": "^3.12.1",
-    "codecov": "^3.8.3",
     "nyc": "^15.1.0"
   },
   "dependencies": {

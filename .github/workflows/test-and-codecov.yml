@@ -19,5 +19,6 @@ jobs:
           npm ci
           npx nyc --reporter=lcov ava
       - name: Upload coverage to Codecov.io
-        uses: codecov/codecov-action@v1
-      
+        uses: codecov/codecov-action@v3
+        with:
+          verbose: true
