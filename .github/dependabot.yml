@@ -13,3 +13,10 @@ updates:
   - dependency-name: ava
     versions:
     - "> 3.12.1, < 4"
+- package-ecosystem: github-actions
+  directory: "/"
+  schedule:
+    interval: weekly
+    day: friday
+    time: "10:00"
+    timezone: EST
