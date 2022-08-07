@@ -1,6 +1,6 @@
 # eleventy-plugin-youtube-embed
 
-[![NPM Version](https://img.shields.io/npm/v/eleventy-plugin-youtube-embed?style=for-the-badge)](https://www.npmjs.com/package/eleventy-plugin-youtube-embed) 
+[![NPM Version](https://img.shields.io/npm/v/eleventy-plugin-youtube-embed?style=for-the-badge)](https://www.npmjs.com/package/eleventy-plugin-youtube-embed)
 [![Build test status](https://img.shields.io/github/workflow/status/gfscott/eleventy-plugin-youtube-embed/Node.js%20CI%20and%20Codecov/main?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-youtube-embed/actions?query=workflow%3A%22Node.js+CI+and+Codecov%22)
 [![codecov](https://img.shields.io/codecov/c/github/gfscott/eleventy-plugin-youtube-embed?style=for-the-badge)](https://codecov.io/gh/gfscott/eleventy-plugin-youtube-embed)\
 [![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-youtube-embed?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-youtube-embed/blob/master/LICENSE)
@@ -31,9 +31,9 @@ Then add it to your [Eleventy config](https://www.11ty.dev/docs/config/) file:
 const embedYouTube = require("eleventy-plugin-youtube-embed");
 
 module.exports = function(eleventyConfig) {
-  
+
   // There could be quite a lot of surrounding code here...
-  
+
   eleventyConfig.addPlugin(embedYouTube);
 
   // There could be quite a lot of surrounding code here...
@@ -90,7 +90,7 @@ The plugin’s default settings reside in [lib/pluginDefaults.js](lib/pluginDefa
     <tr>
       <td><code>allowAttrs</code></td>
       <td>String</td>
-      <td><code>accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture</code></td>
+      <td><code>accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture</code></td>
       <td>Default <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-allow"><code>allow</code> attributes</a> that get applied to the embed <code>iframe</code>. Substitute your preferred string to allow other iframe behaviors and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Feature_Policy">feature policies</a>.</td>
     </tr>
     <tr>
@@ -133,7 +133,7 @@ The plugin’s default settings reside in [lib/pluginDefaults.js](lib/pluginDefa
       <td><code>noCookie</code></td>
       <td>Boolean</td>
       <td><code>true</code></td>
-      <td>Defaults to the “privacy-enhanced” www.youtube-nocookie.com domain. Change this to <code>false</code> to use www.youtube.com.</td>
+      <td>Defaults to the “<a href="https://support.google.com/youtube/answer/171780?hl=en#zippy=,turn-on-privacy-enhanced-mode">privacy-enhanced</a>” <code>www.youtube-nocookie.com</code> domain. Change this to <code>false</code> to use <code>www.youtube.com</code>.</td>
     </tr>
     <tr>
       <td>✨ <b>New in v1.7.0!</b><br> <code>recommendSelfOnly</code></td>
@@ -148,7 +148,7 @@ The plugin’s default settings reside in [lib/pluginDefaults.js](lib/pluginDefa
 
 ### Lite YouTube Embed
 
-You can use the [Lite YouTube Embed](https://github.com/paulirish/lite-youtube-embed) instead of the standard YouTube iframe. In many circumstances this is a performance win because it delays loading the iframe element until the user clicks play. 
+You can use the [Lite YouTube Embed](https://github.com/paulirish/lite-youtube-embed) instead of the standard YouTube iframe. In many circumstances this is a performance win because it delays loading the iframe element until the user clicks play.
 
 Be aware that the Lite version defaults to [loading two files from the jsDelivr CDN](https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/). It loads these files once on any HTML page that includes an embed. You can override both resource URIs if you want to load from a different source, such as [unpkg](https://unpkg.com/browse/lite-youtube-embed@0.0.0/src/) or your own server.
 
@@ -261,14 +261,14 @@ https://www.youtube.com/watch?v=LQaehcfXvK0&feature=youtu.be
 https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1&t=1
 ```
 
-If you really want to get into the weeds, check the `validStrings` and `invalidStrings` that get checked in [`test.js`](test.js). And if you run across a URL pattern that you think should work, but doesn’t, please [file an issue](https://github.com/gfscott/eleventy-plugin-youtube-embed/issues/new)!
+If you really want to get into the weeds, inspect [`test/_inc/validUrls.js`](test/_inc/validUrls.js), which generates the comprehensive list of URL patterns that are explicitly tested. And if you run across a URL pattern that you think should work, but doesn’t, please [file an issue](https://github.com/gfscott/eleventy-plugin-youtube-embed/issues/new)!
 
 <span id="notes-and-caveats"></span>
 
 ## ⚠️ Notes and caveats
 
 - This plugin is deliberately designed _only_ to embed videos when the URL is on its own line, and not inline with other text.
-- To do this, it uses [a regular expression](https://regex101.com/r/wSkwtj/13) to recognize YouTube video URLs. Currently these are the limitations on what it can recognize in a Markdown parser’s HTML output:
+- To do this, it uses [a regular expression](https://github.com/gfscott/eleventy-plugin-youtube-embed/blob/main/lib/spotPattern.js#L1) to recognize YouTube video URLs. Currently these are the limitations on what it can recognize in a Markdown parser’s HTML output:
   - The URL *must* be wrapped in a paragraph tag: `<p>`
   - It *may* also be wrapped in an anchor tag, (*inside* the paragraph): `<a>`
   - The URL string *may* have whitespace around it
