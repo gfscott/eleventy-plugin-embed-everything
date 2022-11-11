@@ -33,7 +33,6 @@
     "ava": "^3.12.1"
   },
   "dependencies": {
-    "@11ty/eleventy-fetch": "^3.0.0",
-    "parse-path": "^5.0.0"
+    "@11ty/eleventy-fetch": "^3.0.0"
   }
 }
