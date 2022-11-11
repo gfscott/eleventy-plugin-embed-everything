@@ -1,6 +1,6 @@
 /**
  * VALID URLS
- * 
+ *
  * Starting with a short list of valid URL fragments, return
  * all possible valid URL permutations.
  */
@@ -9,7 +9,7 @@ const permute = require('./permuteArrays.js');
 
 /**
  * Core URL structures accepted by the plugin
- * Domain and path only 
+ * Domain and path only
  */
 const validUrls = [
   'soundcloud.com/earlxsweatshirtmusic',
