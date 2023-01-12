@@ -1,7 +1,7 @@
 # eleventy-plugin-embed-twitter
 
 [![NPM Version](https://img.shields.io/npm/v/eleventy-plugin-embed-twitter?style=for-the-badge)](https://www.npmjs.com/package/eleventy-plugin-embed-twitter)
-[![Build test status](https://img.shields.io/github/workflow/status/gfscott/eleventy-plugin-embed-twitter/Node.js%20CI%20and%20Codecov/main?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-twitter/actions?query=workflow%3A%22Node.js+CI+and+Codecov%22)
+[![Build test status](https://img.shields.io/github/actions/workflow/status/gfscott/eleventy-plugin-embed-twitter/test-and-codecov.yml?branch=main&style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-twitter/actions?query=workflow%3A%22Node.js+CI+and+Codecov%22)
 [![codecov](https://img.shields.io/codecov/c/github/gfscott/eleventy-plugin-embed-twitter?style=for-the-badge)](https://codecov.io/gh/gfscott/eleventy-plugin-embed-twitter)\
 [![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-embed-twitter?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-twitter/blob/master/LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0-ff69b4.svg?style=for-the-badge)](CODE_OF_CONDUCT.md)
