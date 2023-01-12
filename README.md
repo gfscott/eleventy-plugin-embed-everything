@@ -1,7 +1,7 @@
 # eleventy-plugin-embed-tiktok
 
 [![NPM Version](https://img.shields.io/npm/v/eleventy-plugin-embed-tiktok?style=for-the-badge)](https://www.npmjs.com/package/eleventy-plugin-embed-tiktok)
-[![Build test status](https://img.shields.io/github/workflow/status/gfscott/eleventy-plugin-embed-tiktok/Node.js%20CI%20and%20Codecov/main?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-tiktok/actions?query=workflow%3A%22Node.js+CI+and+Codecov%22)\
+[![Build test status](https://img.shields.io/github/actions/workflow/status/gfscott/eleventy-plugin-embed-tiktok/test-and-codecov.yml?branch=main&style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-tiktok/actions?query=workflow%3A%22Node.js+CI+and+Codecov%22)\
 [![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-embed-tiktok?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-tiktok/blob/master/LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0-ff69b4.svg?style=for-the-badge)](CODE_OF_CONDUCT.md)
 
