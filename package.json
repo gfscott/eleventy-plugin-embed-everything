@@ -33,7 +33,7 @@
   "dependencies": {
     "deepmerge": "^4.2.2",
     "eleventy-plugin-embed-instagram": "^1.2.4",
-    "eleventy-plugin-embed-soundcloud": "^1.2.4",
+    "eleventy-plugin-embed-soundcloud": "^1.2.5",
     "eleventy-plugin-embed-spotify": "^1.2.5",
     "eleventy-plugin-embed-tiktok": "^1.1.5",
     "eleventy-plugin-embed-twitch": "^1.2.5",
