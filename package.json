@@ -27,6 +27,6 @@
     "url": "https://github.com/gfscott/eleventy-plugin-embed-tiktok/issues"
   },
   "devDependencies": {
-    "ava": "^3.12.1"
+    "ava": "^5.1.0"
   }
 }
