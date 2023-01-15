@@ -32,7 +32,7 @@
   "bugs": "https://github.com/gfscott/eleventy-plugin-youtube-embed/issues",
   "devDependencies": {
     "@playwright/test": "^1.29.2",
-    "ava": "^3.12.1",
+    "ava": "^5.1.0",
     "nyc": "^15.1.0"
   },
   "dependencies": {
