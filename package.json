@@ -28,7 +28,7 @@
     "url": "https://github.com/gfscott/eleventy-plugin-embed-instagram/issues"
   },
   "devDependencies": {
-    "ava": "^3.12.1",
+    "ava": "^5.1.0",
     "codecov": "^3.8.3",
     "nyc": "^15.1.0"
   }
