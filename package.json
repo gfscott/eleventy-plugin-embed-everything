@@ -2,11 +2,6 @@
   "name": "embed-everything",
   "version": "0.0.1",
   "description": "Monorepo for Embed Everything: an Eleventy plugin that allows you to quickly add common web embeds to markdown posts, using only their URLs",
-  "scripts": {
-    "coverage": "coverage",
-    "test": "nyc --reporter=lcov ava",
-    "lint": "npx rome check"
-  },
   "license": "MIT",
   "author": {
     "name": "Graham F. Scott",
