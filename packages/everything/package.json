@@ -6,6 +6,7 @@
   "scripts": {
     "test": "nyc --reporter=lcov ava"
   },
+  "files": [".eleventy.js", "lib/**"],
   "keywords": [
     "11ty",
     "eleventy",
