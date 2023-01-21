@@ -1,0 +1,25 @@
+name: Coverage
+on: [push]
+jobs:
+  build:
+    runs-on: "ubuntu-latest"
+    name: Check test coverage
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+      - name: Run tests using ava
+        run: pnpm coverage
+      - name: Upload coverage to Codecov.io
+        uses: codecov/codecov-action@v3
+      

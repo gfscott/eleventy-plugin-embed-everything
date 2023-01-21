@@ -1,5 +1,5 @@
-name: Node.js CI and Codecov
-on: [push, pull_request]
+name: CI
+on: [push]
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -9,15 +9,19 @@ jobs:
         node: ["14", "16", "18", "19"]
     name: Node.js ${{ matrix.node }} on ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup node
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
       - name: Run tests using ava
-        run: |
-          npm ci
-          npx nyc --reporter=lcov ava
-      - name: Upload coverage to Codecov.io
-        uses: codecov/codecov-action@v3
+        run: pnpm test
       

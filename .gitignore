@@ -5,6 +5,9 @@ build/
 # don't track yarn cache
 .cache/
 
+# don't track turbo cache
+.turbo
+
 # =======================================================================
 # Created by https://www.gitignore.io/api/osx,gpg,node,compressedarchive
 
