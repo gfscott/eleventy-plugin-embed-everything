@@ -1,0 +1,40 @@
+{
+  "name": "eleventy-plugin-embed-soundcloud",
+  "version": "1.2.5",
+  "description": "An Eleventy plugin to automatically embed SoundCloud players, using just their URLs.",
+  "keywords": [
+    "11ty",
+    "eleventy",
+    "eleventy-plugin",
+    "soundcloud"
+  ],
+  "main": ".eleventy.js",
+  "scripts": {
+    "test": "npx ava",
+    "coverage": "nyc --reporter=lcov ava"
+  },
+  "files": [
+    ".eleventy.js",
+    "lib/**"
+  ],
+  "ava": {
+    "files": [
+      "!test/inc"
+    ]
+  },
+  "author": {
+    "name": "Graham F. Scott",
+    "email": "gfscott@gmail.com",
+    "url": "https://gfscott.com"
+  },
+  "license": "MIT",
+  "homepage": "https://gfscott.com/embed-everything/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gfscott/eleventy-plugin-embed-everything.git"
+  },
+  "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues",
+  "dependencies": {
+    "@11ty/eleventy-fetch": "^3.0.0"
+  }
+}
