@@ -19,7 +19,7 @@ importers:
     specifiers:
       deepmerge: ^4.2.2
       eleventy-plugin-embed-instagram: ^1.2.5
-      eleventy-plugin-embed-soundcloud: ^1.2.5
+      eleventy-plugin-embed-soundcloud: workspace:^
       eleventy-plugin-embed-spotify: workspace:^
       eleventy-plugin-embed-tiktok: ^1.1.5
       eleventy-plugin-embed-twitch: ^1.2.5
@@ -29,13 +29,19 @@ importers:
     dependencies:
       deepmerge: 4.2.2
       eleventy-plugin-embed-instagram: 1.2.5
-      eleventy-plugin-embed-soundcloud: 1.2.5
+      eleventy-plugin-embed-soundcloud: link:../soundcloud
       eleventy-plugin-embed-spotify: link:../spotify
       eleventy-plugin-embed-tiktok: 1.1.5
       eleventy-plugin-embed-twitch: 1.2.5
       eleventy-plugin-embed-twitter: 1.3.5
       eleventy-plugin-vimeo-embed: 1.3.5
       eleventy-plugin-youtube-embed: 1.8.0
+
+  packages/soundcloud:
+    specifiers:
+      '@11ty/eleventy-fetch': ^3.0.0
+    dependencies:
+      '@11ty/eleventy-fetch': 3.0.0
 
   packages/spotify:
     specifiers: {}
@@ -1140,15 +1146,6 @@ packages:
 
   /eleventy-plugin-embed-instagram/1.2.5:
     resolution: {integrity: sha512-H6kBOuh7cvHOhdzSiG75cMFMPSszB9rizyNwU07WBV4sqKe0Lzm4M5CidQOf1GvwpHPQRwJUHcaYe/pQsub9KQ==}
-    dev: false
-
-  /eleventy-plugin-embed-soundcloud/1.2.5:
-    resolution: {integrity: sha512-aKB6wEHcvUkLvPrrCz6gKkzg/hKcmn771CcpmfIozOpXp4/F+k2UcxctSt1KX73RdJJFn9dJDjz53fEO++GVvw==}
-    dependencies:
-      '@11ty/eleventy-fetch': 3.0.0
-    transitivePeerDependencies:
-      - encoding
-      - supports-color
     dev: false
 
   /eleventy-plugin-embed-tiktok/1.1.5:
