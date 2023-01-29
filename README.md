@@ -15,7 +15,7 @@ Service | Package | Repository | Migrated?
 Instagram   | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-instagram)  | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-instagram)  | No
 SoundCloud  | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-soundcloud) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-everything/packages/soundcloud) | Yes
 Spotify     | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-spotify)    | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-everything/packages/spotify)    | Yes
-TikTok      | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-tiktok)     | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-tiktok)     | No 
+TikTok      | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-tiktok)     | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-everything/tree/packages/tiktok)     | Yes 
 Twitch      | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitch)     | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-twitch)     | No
 Twitter     | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitter)    | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-twitter)    | No
 Vimeo       | [npm](https://www.npmjs.com/package/eleventy-plugin-vimeo-embed)      | [GitHub](https://github.com/gfscott/eleventy-plugin-vimeo-embed)      | No
