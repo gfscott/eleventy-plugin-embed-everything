@@ -33,7 +33,7 @@
     "eleventy-plugin-embed-instagram": "^1.2.5",
     "eleventy-plugin-embed-soundcloud": "workspace:^",
     "eleventy-plugin-embed-spotify": "workspace:^",
-    "eleventy-plugin-embed-tiktok": "^1.1.5",
+    "eleventy-plugin-embed-tiktok": "workspace:^",
     "eleventy-plugin-embed-twitch": "^1.2.5",
     "eleventy-plugin-embed-twitter": "^1.3.5",
     "eleventy-plugin-vimeo-embed": "^1.3.5",
