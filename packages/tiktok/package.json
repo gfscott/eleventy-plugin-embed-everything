@@ -1,0 +1,32 @@
+{
+  "name": "eleventy-plugin-embed-tiktok",
+  "version": "1.1.5",
+  "description": "An Eleventy plugin to automatically embed TikTok videos, using just their URLs.",
+  "keywords": [
+    "11ty",
+    "eleventy",
+    "eleventy-plugin",
+    "tiktok"
+  ],
+  "main": ".eleventy.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "author": {
+    "name": "Graham F. Scott",
+    "email": "gfscott@gmail.com",
+    "url": "https://gfscott.com"
+  },
+  "license": "MIT",
+  "homepage": "https://gfscott.com/embed-everything/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gfscott/eleventy-plugin-embed-tiktok.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gfscott/eleventy-plugin-embed-tiktok/issues"
+  },
+  "devDependencies": {
+    "ava": "^5.1.0"
+  }
+}
