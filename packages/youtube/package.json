@@ -10,7 +10,8 @@
   ],
   "main": ".eleventy.js",
   "scripts": {
-    "test": "nyc --reporter=lcov ava",
+    "test": "npx ava",
+    "coverage": "nyc --reporter=lcov ava",
     "playwright": "npx playwright test"
   },
   "ava": {
@@ -27,14 +28,9 @@
   "homepage": "https://gfscott.com/embed-everything/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gfscott/eleventy-plugin-youtube-embed.git"
+    "url": "https://github.com/gfscott/eleventy-plugin-embed-everything.git"
   },
-  "bugs": "https://github.com/gfscott/eleventy-plugin-youtube-embed/issues",
-  "devDependencies": {
-    "@playwright/test": "^1.29.2",
-    "ava": "^5.1.0",
-    "nyc": "^15.1.0"
-  },
+  "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues",
   "dependencies": {
     "deepmerge": "^4.2.2",
     "lite-youtube-embed": "^0.2.0"
