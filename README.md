@@ -4,19 +4,16 @@ This is the monorepo for [Embed Everything](https://gfscott.com/embed-everything
 
 ## 👉 Need directions for installing or configuring eleventy-plugin-embed-everything? [View the README here](/packages/everything/).
 
-## 🚧 Monorepo migration in progress
+### Project packages
 
-As of early 2023, all the plugins in this collection reside in their own repos, which over time has become a maintenance problem. I’m in the process of migrating them into this monorepo, but that will be an incremental process. It shouldn’t affect how the plugins work for Eleventy users at all.
-
-### Repos and packages
-
-Service | Package | Repository | Migrated?
-------- | ------- | ---------- | ---------
-Instagram   | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-instagram)  | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-everything/tree/main/packages/instagram)  | Yes
-SoundCloud  | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-soundcloud) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-everything/tree/main/packages/soundcloud) | Yes
-Spotify     | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-spotify)    | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-everything/tree/main/packages/spotify)    | Yes
-TikTok      | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-tiktok)     | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-everything/tree/main/packages/tiktok)     | Yes 
-Twitch      | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitch)     | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-everything/tree/main/packages/twitch)     | Yes
-Twitter     | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitter)    | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-everything/tree/main/packages/twitter)    | Yes
-Vimeo       | [npm](https://www.npmjs.com/package/eleventy-plugin-vimeo-embed)      | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-everything/tree/main/packages/vimeo)      | Yes
-YouTube     | [npm](https://www.npmjs.com/package/eleventy-plugin-youtube-embed)    | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-everything/tree/main/packages/youtube)    | Yes
+Service | Code | Package
+------- | ---- | -------
+**Everything**  | [GitHub](/packages/everything)  | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-everything)
+Instagram       | [GitHub](/packages/instagram)   | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-instagram)
+SoundCloud      | [GitHub](/packages/soundcloud)  | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-soundcloud)
+Spotify         | [GitHub](/packages/spotify)     | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-spotify)
+TikTok          | [GitHub](/packages/tiktok)      | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-tiktok)
+Twitch          | [GitHub](/packages/twitch)      | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitch)
+Twitter         | [GitHub](/packages/twitter)     | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitter)
+Vimeo           | [GitHub](/packages/vimeo)       | [npm](https://www.npmjs.com/package/eleventy-plugin-vimeo-embed)
+YouTube         | [GitHub](/packages/youtube)     | [npm](https://www.npmjs.com/package/eleventy-plugin-youtube-embed)
