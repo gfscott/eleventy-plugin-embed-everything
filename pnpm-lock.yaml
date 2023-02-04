@@ -24,7 +24,7 @@ importers:
       eleventy-plugin-embed-tiktok: workspace:^
       eleventy-plugin-embed-twitch: workspace:^
       eleventy-plugin-embed-twitter: workspace:^
-      eleventy-plugin-vimeo-embed: ^1.3.5
+      eleventy-plugin-vimeo-embed: workspace:^
       eleventy-plugin-youtube-embed: ^1.8.0
     dependencies:
       deepmerge: 4.2.2
@@ -34,7 +34,7 @@ importers:
       eleventy-plugin-embed-tiktok: link:../tiktok
       eleventy-plugin-embed-twitch: link:../twitch
       eleventy-plugin-embed-twitter: link:../twitter
-      eleventy-plugin-vimeo-embed: 1.3.5
+      eleventy-plugin-vimeo-embed: link:../vimeo
       eleventy-plugin-youtube-embed: 1.8.0
 
   packages/instagram:
@@ -65,6 +65,9 @@ importers:
     dependencies:
       '@11ty/eleventy-cache-assets': 2.3.0
       deepmerge: 4.2.2
+
+  packages/vimeo:
+    specifiers: {}
 
 packages:
 
@@ -1163,10 +1166,6 @@ packages:
   /electron-to-chromium/1.4.284:
     resolution: {integrity: sha512-M8WEXFuKXMYMVr45fo8mq0wUrrJHheiKZf6BArTKk9ZBYCKJEOU5H8cdWgDT+qCVZf7Na4lVUaZsA+h6uA9+PA==}
     dev: true
-
-  /eleventy-plugin-vimeo-embed/1.3.5:
-    resolution: {integrity: sha512-E1DGHEeg+zT6xz1+6hGFDj6xw/jtH0p7hpxxOLNUQbAL13cUEq1FuRucT4UpkJkcC9QG0jpyBfbRd6eDxodSig==}
-    dev: false
 
   /eleventy-plugin-youtube-embed/1.8.0:
     resolution: {integrity: sha512-k/k23hkba3C0KPp0QehTFhX826LFWKPr6qm9tsFMgRbBjnVj3gC5ps0AtIyj69dmFlzS6tdiIjNd1PcJqQ1Yyw==}
