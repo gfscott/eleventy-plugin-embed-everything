@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "test": "turbo run test",
+    "test:e2e": "turbo run test:e2e",
     "coverage": "turbo run coverage"
   },
   "license": "MIT",
@@ -20,6 +21,7 @@
   },
   "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues",
   "devDependencies": {
+    "@playwright/test": "^1.30.0",
     "ava": "^5.1.1",
     "nyc": "^15.1.0",
     "turbo": "^1.7.0"

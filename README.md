@@ -19,4 +19,4 @@ TikTok      | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-tiktok) 
 Twitch      | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitch)     | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-everything/tree/main/packages/twitch)     | Yes
 Twitter     | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitter)    | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-everything/tree/main/packages/twitter)    | Yes
 Vimeo       | [npm](https://www.npmjs.com/package/eleventy-plugin-vimeo-embed)      | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-everything/tree/main/packages/vimeo)      | Yes
-YouTube     | [npm](https://www.npmjs.com/package/eleventy-plugin-youtube-embed)    | [GitHub](https://github.com/gfscott/eleventy-plugin-youtube-embed)    | No
+YouTube     | [npm](https://www.npmjs.com/package/eleventy-plugin-youtube-embed)    | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-everything/tree/main/packages/youtube)    | Yes
