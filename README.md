@@ -12,7 +12,7 @@ As of early 2023, all the plugins in this collection reside in their own repos, 
 
 Service | Package | Repository | Migrated?
 ------- | ------- | ---------- | ---------
-Instagram   | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-instagram)  | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-instagram)  | No
+Instagram   | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-instagram)  | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-everything/tree/main/packages/instagram)  | Yes
 SoundCloud  | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-soundcloud) | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-everything/tree/main/packages/soundcloud) | Yes
 Spotify     | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-spotify)    | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-everything/tree/main/packages/spotify)    | Yes
 TikTok      | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-tiktok)     | [GitHub](https://github.com/gfscott/eleventy-plugin-embed-everything/tree/main/packages/tiktok)     | Yes 
