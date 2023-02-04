@@ -1,0 +1,42 @@
+{
+  "name": "eleventy-plugin-embed-twitter",
+  "version": "1.3.5",
+  "description": "An Eleventy plugin to automatically embed Tweets, using just their URLs.",
+  "keywords": [
+    "11ty",
+    "eleventy",
+    "eleventy-plugin",
+    "twitter"
+  ],
+  "main": ".eleventy.js",
+  "scripts": {
+    "test": "npx ava",
+    "coverage": "nyc --reporter=lcov ava"
+  },
+  "files": [
+    ".eleventy.js",
+    "lib/**"
+  ],
+  "ava": {
+    "files": [
+      "!test/inc",
+      "!test/html"
+    ]
+  },
+  "author": {
+    "name": "Graham F. Scott",
+    "email": "gfscott@gmail.com",
+    "url": "https://gfscott.com"
+  },
+  "license": "MIT",
+  "homepage": "https://gfscott.com/embed-everything/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gfscott/eleventy-plugin-embed-everything.git"
+  },
+  "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues",
+  "dependencies": {
+    "@11ty/eleventy-cache-assets": "^2.3.0",
+    "deepmerge": "^4.2.2"
+  }
+}
