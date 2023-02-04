@@ -37,7 +37,7 @@
     "eleventy-plugin-embed-twitch": "workspace:^",
     "eleventy-plugin-embed-twitter": "workspace:^",
     "eleventy-plugin-vimeo-embed": "workspace:^",
-    "eleventy-plugin-youtube-embed": "^1.8.0"
+    "eleventy-plugin-youtube-embed": "workspace:^"
   },
   "author": {
     "name": "Graham F. Scott",
