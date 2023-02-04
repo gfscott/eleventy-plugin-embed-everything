@@ -1,0 +1,35 @@
+{
+  "name": "eleventy-plugin-embed-instagram",
+  "version": "1.2.5",
+  "description": "An Eleventy plugin to automatically embed Instagram photos and videos, using just their URLs.",
+  "keywords": [
+    "11ty",
+    "eleventy",
+    "eleventy-plugin",
+    "instagram"
+  ],
+  "main": ".eleventy.js",
+  "scripts": {
+    "test": "nyc --reporter=lcov ava",
+    "coverage": "coverage"
+  },
+  "author": {
+    "name": "Graham F. Scott",
+    "email": "gfscott@gmail.com",
+    "url": "https://gfscott.com"
+  },
+  "license": "MIT",
+  "homepage": "https://gfscott.com/embed-everything/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gfscott/eleventy-plugin-embed-instagram.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gfscott/eleventy-plugin-embed-instagram/issues"
+  },
+  "devDependencies": {
+    "ava": "^5.1.0",
+    "codecov": "^3.8.3",
+    "nyc": "^15.1.0"
+  }
+}
