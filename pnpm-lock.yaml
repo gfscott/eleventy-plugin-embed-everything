@@ -56,9 +56,9 @@ importers:
 
   packages/twitch:
     specifiers:
-      chalk: ^4.1.2
+      chalk: ^5.0.0
     dependencies:
-      chalk: 4.1.2
+      chalk: 5.2.0
 
   packages/twitter:
     specifiers:
@@ -914,7 +914,6 @@ packages:
   /chalk/5.2.0:
     resolution: {integrity: sha512-ree3Gqw/nazQAPuJJEy+avdl7QfZMcUvmHIKgEZkGL+xOBzRvup5Hxo6LHuMceSxOabuJLJm5Yp/92R9eMmMvA==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
-    dev: true
 
   /chardet/0.7.0:
     resolution: {integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==}

@@ -30,6 +30,6 @@
   },
   "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues",
   "dependencies": {
-    "chalk": "^4.1.2"
+    "chalk": "^5.0.0"
   }
 }
