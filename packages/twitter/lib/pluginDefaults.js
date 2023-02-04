@@ -1,0 +1,20 @@
+module.exports = {
+	align: undefined,
+	embedClass: "eleventy-plugin-embed-twitter",
+	cacheText: false,
+	cacheDuration: "5m",
+	cards: undefined,
+	conversation: undefined,
+	doNotTrack: false,
+	lang: undefined,
+	oEmbedUrl: "https://publish.twitter.com/oembed",
+	theme: undefined,
+	width: undefined,
+	twitterScript: {
+		async: true,
+		charset: "utf-8",
+		defer: false,
+		enabled: true,
+		src: "https://platform.twitter.com/widgets.js",
+	},
+};
