@@ -10,8 +10,13 @@
   ],
   "main": ".eleventy.js",
   "scripts": {
-    "test": "ava"
+    "test": "npx ava",
+    "coverage": "nyc --reporter=lcov ava"
   },
+  "files": [
+    ".eleventy.js",
+    "lib/**"
+  ],
   "author": {
     "name": "Graham F. Scott",
     "email": "gfscott@gmail.com",
@@ -21,12 +26,9 @@
   "homepage": "https://gfscott.com/embed-everything/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gfscott/eleventy-plugin-embed-twitch.git"
+    "url": "https://github.com/gfscott/eleventy-plugin-embed-everything.git"
   },
-  "bugs": "https://github.com/gfscott/eleventy-plugin-embed-twitch/issues",
-  "devDependencies": {
-    "ava": "^5.1.0"
-  },
+  "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues",
   "dependencies": {
     "chalk": "^4.1.2"
   }
