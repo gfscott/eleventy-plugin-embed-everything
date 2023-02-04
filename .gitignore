@@ -1,12 +1,16 @@
 # don’t track dist/build folders
 dist/
 build/
+_site/
 
 # don't track yarn cache
 .cache/
 
 # don't track turbo cache
 .turbo
+
+# don't track playwright artifacts
+playwright-report/
 
 # =======================================================================
 # Created by https://www.gitignore.io/api/osx,gpg,node,compressedarchive

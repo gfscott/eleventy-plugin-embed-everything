@@ -11,8 +11,8 @@
   "main": ".eleventy.js",
   "scripts": {
     "test": "npx ava",
-    "coverage": "nyc --reporter=lcov ava",
-    "playwright": "npx playwright test"
+    "test:e2e": "npx playwright test",
+    "coverage": "nyc --reporter=lcov ava"
   },
   "ava": {
     "files": [
