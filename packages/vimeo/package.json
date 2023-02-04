@@ -1,0 +1,32 @@
+{
+  "name": "eleventy-plugin-vimeo-embed",
+  "version": "1.3.5",
+  "description": "An Eleventy plugin to automatically embed Vimeo videos, using just their URLs.",
+  "keywords": [
+    "11ty",
+    "eleventy",
+    "eleventy-plugin",
+    "vimeo"
+  ],
+  "main": ".eleventy.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "author": {
+    "name": "Graham F. Scott",
+    "email": "gfscott@gmail.com",
+    "url": "https://gfscott.com"
+  },
+  "license": "MIT",
+  "homepage": "https://gfscott.com/embed-everything/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gfscott/eleventy-plugin-vimeo-embed.git"
+  },
+  "bugs": "https://github.com/gfscott/eleventy-plugin-vimeo-embed/issues",
+  "devDependencies": {
+    "ava": "^5.1.0",
+    "codecov": "^3.8.3",
+    "nyc": "^15.1.0"
+  }
+}
