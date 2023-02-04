@@ -19,13 +19,15 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Install Playwright browser dependencies
-        run: pnpx playwright install --with-deps
+        run: pnpm playwright install --with-deps
       - name: Run end-to-end tests using Playwright
         run: "pnpm test:e2e"
       - uses: actions/upload-artifact@v3
         if: always()
         with:
           name: playwright-report
-          path: playwright-report/
+          # currently only youtube is being e2e tested
+          # TODO figure out how to handle this with multiple packages
+          path: packages/youtube/playwright-report/
           retention-days: 30
       
