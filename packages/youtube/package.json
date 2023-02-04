@@ -1,0 +1,42 @@
+{
+  "name": "eleventy-plugin-youtube-embed",
+  "version": "1.8.0",
+  "description": "An Eleventy plugin to automatically embed YouTube videos, using just their URLs.",
+  "keywords": [
+    "11ty",
+    "eleventy",
+    "eleventy-plugin",
+    "youtube"
+  ],
+  "main": ".eleventy.js",
+  "scripts": {
+    "test": "nyc --reporter=lcov ava",
+    "playwright": "npx playwright test"
+  },
+  "ava": {
+    "files": [
+      "!test/_inc"
+    ]
+  },
+  "author": {
+    "name": "Graham F. Scott",
+    "email": "gfscott@gmail.com",
+    "url": "https://gfscott.com"
+  },
+  "license": "MIT",
+  "homepage": "https://gfscott.com/embed-everything/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gfscott/eleventy-plugin-youtube-embed.git"
+  },
+  "bugs": "https://github.com/gfscott/eleventy-plugin-youtube-embed/issues",
+  "devDependencies": {
+    "@playwright/test": "^1.29.2",
+    "ava": "^5.1.0",
+    "nyc": "^15.1.0"
+  },
+  "dependencies": {
+    "deepmerge": "^4.2.2",
+    "lite-youtube-embed": "^0.2.0"
+  }
+}
