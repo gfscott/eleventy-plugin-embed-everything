@@ -1,9 +1,9 @@
 # eleventy-plugin-embed-soundcloud
 
 [![NPM Version](https://img.shields.io/npm/v/eleventy-plugin-embed-soundcloud?style=for-the-badge)](https://www.npmjs.com/package/eleventy-plugin-embed-soundcloud)
-[![Build test status](https://img.shields.io/github/actions/workflow/status/gfscott/eleventy-plugin-embed-soundcloud/test-and-codecov.yml?branch=main&style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-soundcloud/actions?query=workflow%3A%22Node.js+CI+and+Codecov%22)\
-[![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-embed-soundcloud?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-soundcloud/blob/master/LICENSE)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0-ff69b4.svg?style=for-the-badge)](CODE_OF_CONDUCT.md)
+[![Build test status](https://img.shields.io/github/actions/workflow/status/gfscott/eleventy-plugin-embed-everything/test.yml?branch=main&style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-everything/actions/workflows/test.yml?query=branch%3Amain)\
+[![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-embed-everything?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-everything/blob/main/LICENSE)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0-ff69b4.svg?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-everything/blob/main/CODE_OF_CONDUCT.md)
 
 This [Eleventy](https://www.11ty.dev/) plugin automatically embeds responsive SoundCloud players from URLs in Markdown files.
 
@@ -110,7 +110,7 @@ http://soundcloud.com/...
 soundcloud.com/...
 ```
 
-If you run across a URL pattern that you think should work, but doesn’t, please [file an issue](https://github.com/gfscott/eleventy-plugin-embed-soundcloud/issues/new)!
+If you run across a URL pattern that you think should work, but doesn’t, please [file an issue](https://github.com/gfscott/eleventy-plugin-embed-everything/issues/new)!
 
 ## ⚠️ Notes and caveats
 
@@ -121,5 +121,5 @@ If you run across a URL pattern that you think should work, but doesn’t, pleas
   - The URL *must* be wrapped in a paragraph tag: `<p>`
   - It *may* also be wrapped in an anchor tag, (*inside* the paragraph): `<a>`
   - The URL string *may* have whitespace around it
-- I’ve tried to accommodate common URL variants, but there are conceivably valid SoundCloud URLs that wouldn’t get recognized. Please [file an issue](https://github.com/gfscott/eleventy-plugin-embed-soundcloud/issues/new) if you run into an edge case!
+- I’ve tried to accommodate common URL variants, but there are conceivably valid SoundCloud URLs that wouldn’t get recognized. Please [file an issue](https://github.com/gfscott/eleventy-plugin-embed-everything/issues/new) if you run into an edge case!
 - This plugin uses [transforms](https://www.11ty.dev/docs/config/#transforms), so it alters Eleventy’s HTML output as it’s generated. It doesn’t alter the source Markdown.

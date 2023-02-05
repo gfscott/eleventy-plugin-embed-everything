@@ -1,10 +1,10 @@
 # eleventy-plugin-youtube-embed
 
 [![NPM Version](https://img.shields.io/npm/v/eleventy-plugin-youtube-embed?style=for-the-badge)](https://www.npmjs.com/package/eleventy-plugin-youtube-embed)
-[![Build test status](https://img.shields.io/github/actions/workflow/status/gfscott/eleventy-plugin-youtube-embed/test-and-codecov.yml?branch=main&style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-youtube-embed/actions?query=workflow%3A%22Node.js+CI+and+Codecov%22)
-[![codecov](https://img.shields.io/codecov/c/github/gfscott/eleventy-plugin-youtube-embed?style=for-the-badge)](https://codecov.io/gh/gfscott/eleventy-plugin-youtube-embed)\
-[![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-youtube-embed?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-youtube-embed/blob/master/LICENSE)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0-ff69b4.svg?style=for-the-badge)](code_of_conduct.md)
+[![Build test status](https://img.shields.io/github/actions/workflow/status/gfscott/eleventy-plugin-embed-everything/test.yml?branch=main&style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-everything/actions/workflows/test.yml?query=branch%3Amain)
+[![codecov](https://img.shields.io/codecov/c/github/gfscott/eleventy-plugin-embed-everything?style=for-the-badge)](https://codecov.io/gh/gfscott/eleventy-plugin-embed-everything)\
+[![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-embed-everything?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-everything/blob/main/LICENSE)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0-ff69b4.svg?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-everything/blob/main/CODE_OF_CONDUCT.md)
 
 This [Eleventy](https://www.11ty.dev/) plugin automatically embeds responsive YouTube videos from URLs in Markdown files. It’s part of the [`eleventy-plugin-embed-everything`](https://gfscott.com/embed-everything/) project.
 
@@ -261,18 +261,18 @@ https://www.youtube.com/watch?v=LQaehcfXvK0&feature=youtu.be
 https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1&t=1
 ```
 
-If you really want to get into the weeds, inspect [`test/_inc/validUrls.js`](test/_inc/validUrls.js), which generates the comprehensive list of URL patterns that are explicitly tested. And if you run across a URL pattern that you think should work, but doesn’t, please [file an issue](https://github.com/gfscott/eleventy-plugin-youtube-embed/issues/new)!
+If you really want to get into the weeds, inspect [`test/_inc/validUrls.js`](test/_inc/validUrls.js), which generates the comprehensive list of URL patterns that are explicitly tested. And if you run across a URL pattern that you think should work, but doesn’t, please [file an issue](/issues/new)!
 
 <span id="notes-and-caveats"></span>
 
 ## ⚠️ Notes and caveats
 
 - This plugin is deliberately designed _only_ to embed videos when the URL is on its own line, and not inline with other text.
-- To do this, it uses [a regular expression](https://github.com/gfscott/eleventy-plugin-youtube-embed/blob/main/lib/spotPattern.js#L1) to recognize YouTube video URLs. Currently these are the limitations on what it can recognize in a Markdown parser’s HTML output:
+- To do this, it uses [a regular expression](lib/spotPattern.js#L1) to recognize YouTube video URLs. Currently these are the limitations on what it can recognize in a Markdown parser’s HTML output:
   - The URL *must* be wrapped in a paragraph tag: `<p>`
   - It *may* also be wrapped in an anchor tag, (*inside* the paragraph): `<a>`
   - The URL string *may* have whitespace around it
-- I’ve tried to accommodate common variants (like short **youtu.be** links, for example), but there are conceivably valid YouTube URLs that wouldn’t get recognized. Please [file an issue](https://github.com/gfscott/eleventy-plugin-youtube-embed/issues/new) if you run into an edge case!
+- I’ve tried to accommodate common variants (like short **youtu.be** links, for example), but there are conceivably valid YouTube URLs that wouldn’t get recognized. Please [file an issue](/issues/new) if you run into an edge case!
 - This plugin uses [transforms](https://www.11ty.dev/docs/config/#transforms), so it alters Eleventy’s HTML output as it’s generated. It doesn’t alter the source Markdown.
 - Right now it supports only single videos, not playlists.
 - The embedded video is responsive, using the [intrinsic aspect ratio](https://codepen.io/gfscott/pen/qpKqZR?editors=1100) method. It will expand to fill whatever horizontal space is available.

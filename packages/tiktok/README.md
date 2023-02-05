@@ -1,9 +1,9 @@
 # eleventy-plugin-embed-tiktok
 
 [![NPM Version](https://img.shields.io/npm/v/eleventy-plugin-embed-tiktok?style=for-the-badge)](https://www.npmjs.com/package/eleventy-plugin-embed-tiktok)
-[![Build test status](https://img.shields.io/github/actions/workflow/status/gfscott/eleventy-plugin-embed-tiktok/test-and-codecov.yml?branch=main&style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-tiktok/actions?query=workflow%3A%22Node.js+CI+and+Codecov%22)\
-[![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-embed-tiktok?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-tiktok/blob/master/LICENSE)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0-ff69b4.svg?style=for-the-badge)](CODE_OF_CONDUCT.md)
+[![Build test status](https://img.shields.io/github/actions/workflow/status/gfscott/eleventy-plugin-embed-everything/test.yml?branch=main&style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-everything/actions/workflows/test.yml?query=branch%3Amain)\
+[![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-embed-everything?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-everything/blob/main/LICENSE)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0-ff69b4.svg?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-everything/blob/main/CODE_OF_CONDUCT.md)
 
 This [Eleventy](https://www.11ty.dev/) plugin automatically embeds TikTok videos from URLs in markdown files.
 
@@ -74,7 +74,7 @@ https://www.tiktok.com/@guiltyaesthetic/video/6806676200652655877?lang=en
 
 - This plugin is deliberately designed _only_ to embed when the URL is on its own line, and not inline with other text.
 - To do this, it uses a regular expression to recognize TikTok URLs, wrapped in an HTML `<p>` tag. If your Markdown parser produces any other output, it won’t be recognized.
-- I’ve tried to accommodate common URL variants, but there are conceivably valid TikTok URLs that wouldn’t get recognized. Please [file an issue](https://github.com/gfscott/eleventy-plugin-embed-tiktok/issues/new) if you run into an edge case!
+- I’ve tried to accommodate common URL variants, but there are conceivably valid TikTok URLs that wouldn’t get recognized. Please [file an issue](https://github.com/gfscott/eleventy-plugin-embed-everything/issues/new) if you run into an edge case!
 - This plugin uses [transforms](https://www.11ty.dev/docs/config/#transforms), so it alters Eleventy’s HTML output as it’s generated. It doesn’t alter the source markdown.
 - By necessity, this plugin will add a call to TikTok’s third-party JavaScript file. It does this once per page, if that page contains one or more TikTok embeds.
 - TikTok’s embed script applies a bunch of styles. For now this plugin uses TikTok’s default styling, which has has max-width of 605 pixels and a min-width of 325 pixels. 
