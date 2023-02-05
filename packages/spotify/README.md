@@ -1,10 +1,10 @@
 # eleventy-plugin-embed-spotify
 
 [![NPM Version](https://img.shields.io/npm/v/eleventy-plugin-embed-spotify?style=for-the-badge)](https://www.npmjs.com/package/eleventy-plugin-embed-spotify)
-[![Build test status](https://img.shields.io/github/actions/workflow/status/gfscott/eleventy-plugin-embed-spotify/test-and-codecov.yml?branch=main&style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-spotify/actions?query=workflow%3A%22Node.js+CI+and+Codecov%22)
-[![Code coverage](https://img.shields.io/codecov/c/gh/gfscott/eleventy-plugin-embed-spotify/main?style=for-the-badge)](https://codecov.io/gh/gfscott/eleventy-plugin-embed-spotify)\
-[![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-embed-spotify?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-spotify/blob/master/LICENSE)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0-ff69b4.svg?style=for-the-badge)](code_of_conduct.md)
+[![Build test status](https://img.shields.io/github/actions/workflow/status/gfscott/eleventy-plugin-embed-everything/test.yml?branch=main&style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-everything/actions/workflows/test.yml?query=branch%3Amain)
+[![codecov](https://img.shields.io/codecov/c/github/gfscott/eleventy-plugin-embed-everything?style=for-the-badge)](https://codecov.io/gh/gfscott/eleventy-plugin-embed-everything)\
+[![MIT License](https://img.shields.io/github/license/gfscott/eleventy-plugin-embed-everything?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-everything/blob/main/LICENSE)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0-ff69b4.svg?style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-everything/blob/main/CODE_OF_CONDUCT.md)
 
 This [Eleventy](https://www.11ty.dev/) plugin automatically embeds responsive Spotify tracks from URLs in Markdown files.
 
@@ -122,7 +122,7 @@ https://spotify.com/track/7nJZ9LplJ3ZAyhQyJCJk0K
 https://open.spotify.com/track/7nJZ9LplJ3ZAyhQyJCJk0K?si=3qc9p-sGR3es3e8kkP9VFA
 ```
 
-If you run across a URL pattern that you think should work, but doesn’t, please [file an issue](https://github.com/gfscott/eleventy-plugin-embed-spotify/issues/new)!
+If you run across a URL pattern that you think should work, but doesn’t, please [file an issue](https://github.com/gfscott/eleventy-plugin-embed-everything/issues/new)!
 
 <span id="notes-and-caveats"></span>
 ## ⚠️ Notes and caveats
@@ -132,7 +132,7 @@ If you run across a URL pattern that you think should work, but doesn’t, pleas
   - The URL *must* be wrapped in a paragraph tag: `<p>`
   - It *may* also be wrapped in an anchor tag, (*inside* the paragraph): `<a>`
   - The URL string *may* have whitespace around it
-- I’ve tried to accommodate common variants, but there are conceivably valid Spotify URLs that wouldn’t get recognized. Please [file an issue](https://github.com/gfscott/eleventy-plugin-embed-spotify/issues/new) if you run into an edge case!
+- I’ve tried to accommodate common variants, but there are conceivably valid Spotify URLs that wouldn’t get recognized. Please [file an issue](https://github.com/gfscott/eleventy-plugin-embed-everything/issues/new) if you run into an edge case!
 - This plugin uses [transforms](https://www.11ty.dev/docs/config/#transforms), so it alters Eleventy’s HTML output as it’s generated. It doesn’t alter the source Markdown.
 - The embedded player is not responsive by default. Spotify’s default player is 300 pixels wide by 380 pixels tall.
 - **New in 1.1.0:** The embedded podcast player _is_ responsive, in keeping with Spotify’s defaults. Currently, all podcast episode players will be 232 pixels tall, with 100% width.
