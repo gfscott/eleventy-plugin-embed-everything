@@ -29,7 +29,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "deepmerge": "^4.2.2",
+    "deepmerge": "^4.3.0",
     "eleventy-plugin-embed-instagram": "workspace:^",
     "eleventy-plugin-embed-soundcloud": "workspace:^",
     "eleventy-plugin-embed-spotify": "workspace:^",
