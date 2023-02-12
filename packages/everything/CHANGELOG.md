@@ -1,5 +1,23 @@
 # eleventy-plugin-embed-everything
 
+## 1.15.1
+
+### Patch Changes
+
+- Minor updates to package READMEs. Mostly URL changes related to migrating to the new monorepo. ([#153](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/153))
+
+- Bump deepmerge from v4.2.2 to v4.3.0 ([#155](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/155))
+
+- Updated dependencies [[`fc044b3`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/fc044b3e5bb23036d7a7a169dc3152af07f75c6f), [`ffbe0fb`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/ffbe0fbed725ed227a64ba2d9962441af629f3e9), [`0adc8d7`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/0adc8d730e5ae29e9a82285d02c80c5639507951)]:
+  - eleventy-plugin-embed-instagram@1.2.6
+  - eleventy-plugin-embed-soundcloud@1.2.6
+  - eleventy-plugin-embed-spotify@1.2.6
+  - eleventy-plugin-embed-tiktok@1.1.6
+  - eleventy-plugin-embed-twitch@1.2.6
+  - eleventy-plugin-embed-twitter@1.3.6
+  - eleventy-plugin-vimeo-embed@1.3.6
+  - eleventy-plugin-youtube-embed@1.8.1
+
 ## 1.15.0
 
 ### Minor Changes
