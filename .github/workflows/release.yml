@@ -34,5 +34,12 @@ jobs:
 
       - name: Create Release Pull Request
         uses: changesets/action@v1
+        with:
+          # Calls 'release' script in root package.json
+          # https://github.com/changesets/action#inputs
+          publish: pnpm release
+          commit: Version packages
+          title: Version packages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
