@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@2.3.0/schema.json",
-  "changelog": "@changesets/cli/changelog",
+  "changelog": ["@svitejs/changesets-changelog-github-compact", { "repo": "gfscott/eleventy-plugin-embed-everything" }],
   "commit": false,
   "fixed": [],
   "linked": [],
