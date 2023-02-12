@@ -6,7 +6,8 @@
   "scripts": {
     "test": "turbo run test",
     "test:e2e": "turbo run test:e2e",
-    "coverage": "turbo run coverage"
+    "coverage": "turbo run coverage",
+    "release": "changeset publish"
   },
   "license": "MIT",
   "author": {
