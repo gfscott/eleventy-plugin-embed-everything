@@ -64,10 +64,10 @@ importers:
 
   packages/twitter:
     specifiers:
-      '@11ty/eleventy-cache-assets': ^2.3.0
+      '@11ty/eleventy-fetch': ^3.0.0
       deepmerge: ^4.3.0
     dependencies:
-      '@11ty/eleventy-cache-assets': 2.3.0
+      '@11ty/eleventy-fetch': 3.0.0
       deepmerge: 4.3.0
 
   packages/vimeo:
@@ -82,20 +82,6 @@ importers:
       lite-youtube-embed: 0.2.0
 
 packages:
-
-  /@11ty/eleventy-cache-assets/2.3.0:
-    resolution: {integrity: sha512-W8tvO00GlWaKt3ccpEStaUBoj9BE3EgzuD8uYChCfYbN2Q4HkEItkiapvIJT0zJwAwoMfnSq6VHPLScYlX2XCg==}
-    engines: {node: '>=10'}
-    dependencies:
-      debug: 4.3.4
-      flat-cache: 3.0.4
-      node-fetch: 2.6.8
-      p-queue: 6.6.2
-      short-hash: 1.0.0
-    transitivePeerDependencies:
-      - encoding
-      - supports-color
-    dev: false
 
   /@11ty/eleventy-fetch/3.0.0:
     resolution: {integrity: sha512-qJvfb331rYQAmlCS71Ygg0/XHUdB4/qXBOLsG0DJ1m61WL5JNha52OtKVeQq34u2J2Nfzim+X4TIL/+QyesB7Q==}
@@ -1642,10 +1628,6 @@ packages:
       function-bind: 1.1.1
     dev: false
 
-  /hash-string/1.0.0:
-    resolution: {integrity: sha512-dtNNyxXobzHavayZwOwRWhBTqS9GX4jDjIMsGc0fDyaN2A+4zMn5Ua9ODDCggN6w3Spma6mAHL3ImmW3BkWDmQ==}
-    dev: false
-
   /hasha/5.2.2:
     resolution: {integrity: sha512-Hrp5vIK/xr5SkeN2onO32H0MgNZ0f17HRNH39WfL0SYUNOTZ5Lz1TJ8Pajo/87dYGEFlLMm7mIc/k/s6Bvz9HQ==}
     engines: {node: '>=8'}
@@ -2728,12 +2710,6 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
     dev: true
-
-  /short-hash/1.0.0:
-    resolution: {integrity: sha512-qbUCD2Pkl4IXRyVqneEjGnUr0NGDGLzZnBUVGJngIQZf/FrhOL0yJhH+JQzak0t8xMmScIKpoX1SxOsPHdwa4w==}
-    dependencies:
-      hash-string: 1.0.0
-    dev: false
 
   /side-channel/1.0.4:
     resolution: {integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==}
