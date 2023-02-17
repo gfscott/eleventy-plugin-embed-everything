@@ -1,17 +1,22 @@
 name: Prepare release
 
 on:
-  push:
-    branches:
-      - main
+  # Only triggered after CI tests workflow
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+  # Only runs on main branch
+  branches:
+    - main
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
-    # prevents this action from running on forks
-    if: github.repository == 'gfscott/eleventy-plugin-embed-everything'
-
+    # Only runs on main repo AND only runs if CI workflow succeeds
+    if: |
+      github.repository == 'gfscott/eleventy-plugin-embed-everything'
+      && github.event.workflow_run.conclusion == 'success'
     name: Release
     runs-on: ubuntu-latest
     steps:
