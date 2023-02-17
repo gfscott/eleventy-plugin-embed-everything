@@ -12,7 +12,7 @@ module.exports = function (eleventyConfig, options) {
         return content;
       }
       matches.forEach(function (stringToReplace, index) {
-        let videoId = extractVideoId(stringToReplace);
+        let {id: videoId} = extractVideoId(stringToReplace);
         let embedCode = buildEmbedCodeString(videoId, pluginConfig, index);
         content = content.replace(stringToReplace, embedCode);
       });
