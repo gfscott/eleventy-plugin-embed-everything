@@ -1,9 +1,13 @@
 name: Coverage
-on: [push]
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
 jobs:
   build:
-    runs-on: "ubuntu-latest"
     name: Check test coverage
+    runs-on: "ubuntu-latest"
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
