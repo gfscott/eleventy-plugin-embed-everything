@@ -1,9 +1,13 @@
 name: Sync “next” branch with main
 
 on:
-  push:
-    branches:
-      - main
+  # Only triggered after CI tests workflow
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+  # Only runs on main branch
+  branches:
+    - main
 
 jobs:
   sync:
