@@ -1,9 +1,14 @@
 name: e2e
-on: [push]
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+
 jobs:
   build:
-    runs-on: "ubuntu-latest"
     name: Run e2e tests
+    runs-on: "ubuntu-latest"
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
