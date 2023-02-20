@@ -1,6 +1,6 @@
 const merge = require('deepmerge');
 
-module.exports = function(id, options, index) {
+module.exports = function({id}, options, index) {
   let output;
   if ( !!options.lite ) {
     output = liteEmbed(id, options, index);

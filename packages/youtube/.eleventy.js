@@ -1,6 +1,6 @@
 const patternPresent = require('./lib/spotPattern.js');
 const extractVideoId = require('./lib/extractMatches.js');
-const buildEmbedCodeString = require('./lib/buildEmbed.js');
+const buildEmbed = require('./lib/buildEmbed.js');
 const { pluginDefaults } = require('./lib/pluginDefaults.js');
 
 module.exports = function (eleventyConfig, options) {
@@ -12,8 +12,8 @@ module.exports = function (eleventyConfig, options) {
         return content;
       }
       matches.forEach(function (stringToReplace, index) {
-        let {id: videoId} = extractVideoId(stringToReplace);
-        let embedCode = buildEmbedCodeString(videoId, pluginConfig, index);
+        let videoData = extractVideoId(stringToReplace);
+        let embedCode = buildEmbed(videoData, pluginConfig, index);
         content = content.replace(stringToReplace, embedCode);
       });
       return content;
