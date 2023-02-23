@@ -1,4 +1,4 @@
-const chalk = require('chalk');
+const kleur = require('kleur');
 
 module.exports = function(media, options) {
 
@@ -9,9 +9,9 @@ module.exports = function(media, options) {
    * We coerce the empty string to falsy with the triple-bang trick.
    */
   if ( !!!options.parent ) {
-    console.error(`⚠️  ${ chalk.red('Error embedding Twitch video') }
-  Eleventy plugin ${chalk.cyan('eleventy-plugin-embed-twitch')} requires a \`parent\` option to be set.
-  🔗  See ${chalk.cyan.underline('https://bit.ly/11ty-plugin-twitch-parent-error')} for details.`);
+    console.error(`⚠️  ${ kleur.red('Error embedding Twitch video') }
+  Eleventy plugin ${kleur.cyan('eleventy-plugin-embed-twitch')} requires a \`parent\` option to be set.
+  🔗  See ${kleur.cyan().underline('https://bit.ly/11ty-plugin-twitch-parent-error')} for details.`);
 }
   
   // Build the string, using config data as we go
