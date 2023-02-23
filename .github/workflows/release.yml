@@ -83,7 +83,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
         with:
-          # Checkout the next branch
+          # Checkout the next branch, instead of the default main branch
           ref: next
 
       - name: Install pnpm
@@ -100,6 +100,21 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      # By default, the changesets action creates an .npmrc file in each
+      # package directory before publishing so npm has the registry and
+      # token information it requires. Since this job requires entering
+      # prerelease mode and making a commit in the project root,
+      # the publish command fails because there is no .npmrc file and
+      # the root package.json file is marked as private. Therefore,
+      # this step creates that .npmrc file so the registry and token
+      # information is available when running `changeset publish` in
+      # the project's root directory context.
+      # 
+      # As I discovered through trial and error, you can’t just put a
+      # static .npmrc file here because then it messes up other GitHub
+      # Actions workflows.
+      #
+      # https://github.com/changesets/action#with-publishing
       - name: Creating .npmrc
         run: |
           cat << EOF > "$HOME/.npmrc"
@@ -107,10 +122,17 @@ jobs:
           EOF
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          
+
       # Following Changesets prerelease procedures:
       # https://github.com/changesets/changesets/blob/main/docs/prereleases.md
+      #
       # - Currently not pushing git tags to keep things moderately cleaner in the repo
+      #
+      # - `changeset pre enter next` adds the "next" suffix on the affected
+      #   package versions and also passes the "next" tag when publishing to
+      #   npm, which is why you don't have to manually add --tag next on the 
+      #   publish command
+      #
       # - git username and email comes from the recommendation in this thread:
       #   https://github.com/actions/checkout/issues/13#issuecomment-724415212
       - name: Enter prerelease mode and publish to npm with changesets
@@ -121,7 +143,6 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git commit -m "Enter prerelease mode and version packages"
-
           pnpm changeset publish --no-git-tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
