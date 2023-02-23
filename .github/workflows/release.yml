@@ -1,22 +1,21 @@
-name: Prepare release
-
-# Only triggered after CI tests workflow, and only on the main branch
+name: Prepare releases
 on:
-  workflow_run:
-    workflows: [CI]
-    types: [completed]
-    branches: [main]
+  push:
+    branches:
+      - main
+    paths: 
+      - packages/**
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  release:
-    # Only runs on main repo AND only runs if CI workflow succeeds
-    if: |
-      github.repository == 'gfscott/eleventy-plugin-embed-everything'
-      && github.event.workflow_run.conclusion == 'success'
+  
+  changesets_release:
     name: Release
     runs-on: ubuntu-latest
+    # Only runs in the main repo, not in forks
+    if: github.repository == 'gfscott/eleventy-plugin-embed-everything'
+    
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -35,7 +34,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Create Release Pull Request
+      # Even though the CI workflow runs tests, run them here
+      # so the release task errors out if there's a problem.
+      - name: Run unit tests
+        run: pnpm test
+
+      # The Changesets action either updates its "Version packages" PR
+      # OR publishes it to npm when that PR merges to main.
+      - name: Create Release Pull Request or publish
         uses: changesets/action@v1
         with:
           # Calls 'release' script in root package.json
@@ -43,6 +49,70 @@ jobs:
           publish: pnpm release
           commit: Version packages
           title: Version packages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+
+  sync_next:
+    name: Sync next branch with main
+    runs-on: ubuntu-latest
+    needs: changesets_release
+    if: github.repository == 'gfscott/eleventy-plugin-embed-everything'
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      
+      # Source: modified from a shopify/hydrogen workflow:
+      # https://github.com/Shopify/hydrogen/blob/main/.github/workflows/sync_main.yml
+      - name: Push to next branch
+        run: |
+          git show-ref
+          git push origin HEAD:next --force
+
+  
+  changesets_prerelease:
+    name: Prerelease packages
+    runs-on: ubuntu-latest
+    needs: sync_next
+    if: github.repository == 'gfscott/eleventy-plugin-embed-everything'
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          # Checkout the next branch
+          ref: next
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      # Following Changesets prerelease procedures:
+      # https://github.com/changesets/changesets/blob/main/docs/prereleases.md
+      # - Currently not pushing git tags to keep things moderately cleaner in the repo
+      # - git username and email comes from the recommendation in this thread:
+      #   https://github.com/actions/checkout/issues/13#issuecomment-724415212
+      - name: Enter prerelease mode and publish to npm with changesets
+        run: |
+          pnpm changeset pre enter next
+          pnpm changeset version
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Enter prerelease mode and version packages"
+          pnpm changeset publish --no-git-tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
