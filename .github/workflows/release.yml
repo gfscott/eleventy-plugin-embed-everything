@@ -112,7 +112,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git commit -m "Enter prerelease mode and version packages"
-          pnpm changeset publish --no-git-tag
+          pnpm publish -r --no-git-checks --tag next
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
