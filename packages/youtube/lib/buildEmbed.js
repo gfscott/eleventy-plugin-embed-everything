@@ -20,7 +20,10 @@ module.exports = function(videoData, options, index) {
  * is higher,so we let them override general plugin-level settings.
  */
 function parseInputUrlParams(url) {
-  let params = new URL(url).searchParams;
+  // URLSearchParams object doesn't escape HTML-encoded ampersands, 
+  // so replace them before parsing
+  let unescapedUrl = url.replace("&amp;", "&")
+  let params = new URL(unescapedUrl).searchParams;
   let urlOptions = new Object;
   
   // YouTube treats 'start' and 't' params as synonymous but 't' is the
