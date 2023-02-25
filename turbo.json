@@ -1,6 +1,13 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
+    "build": {
+      "outputs": ["_site/**"]
+    },
+    "dev": {
+      "outputs": ["_site/**"],
+      "cache": false
+    },
     "test": {
       "outputs": []
     },
