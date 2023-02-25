@@ -1,13 +1,34 @@
 const merge = require('deepmerge');
 
-module.exports = function({id}, options, index) {
+module.exports = function(videoData, options, index) {
   let output;
   if ( !!options.lite ) {
-    output = liteEmbed(id, options, index);
+    output = liteEmbed(videoData, options, index);
   } else {
-    output = defaultEmbed(id, options);
+    output = defaultEmbed(videoData, options);
   }
   return output;
+}
+
+/**
+ * Parse params from input URL
+ * 
+ * @param {string} url - The full YouTube URL the user pasted.
+ * 
+ * There are some embed options that can be configured directly 
+ * through URL params. The specificity of these per-video options 
+ * is higher,so we let them override general plugin-level settings.
+ */
+function parseInputUrlParams(url) {
+  let params = new URL(url).searchParams;
+  let urlOptions = new Object;
+  
+  // YouTube treats 'start' and 't' params as synonymous but 't' is the
+  // official param so if you pass both 't' wins by being parsed last.
+  if ( params.has('start') ) urlOptions.startTime = params.get('start');
+  if ( params.has('t') ) urlOptions.startTime = params.get('t');
+
+  return urlOptions;
 }
 
 function urlParams(options){
@@ -17,13 +38,15 @@ function urlParams(options){
   if(options.allowAutoplay) params.push('autoplay=1');
   if(options.recommendSelfOnly) params.push('rel=0');
   if(options.modestBranding) params.push('modestbranding=1');
+  if(options.startTime) params.push(`start=${options.startTime}`);
 
 if(params.length > 0) {
   return params.join("&amp;")
 }
 }
 
-function liteEmbed(id, options, index) {
+function liteEmbed({id, url}, options, index) {
+  options = Object.assign({}, options, parseInputUrlParams(url))
   let liteOpt = liteConfig(options);
   let out = '';
 
@@ -63,9 +86,10 @@ function liteConfig(options){
   }
 }
 
-function defaultEmbed(id, options){
+function defaultEmbed({id, url}, options){
   // Build the string, using config data as we go
   // unique ID based on youtube video id
+  options = Object.assign({}, options, parseInputUrlParams(url))
   const params = urlParams(options);
   let out =
     '<div id="' + id + '" ';

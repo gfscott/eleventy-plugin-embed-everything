@@ -69,6 +69,21 @@ const inlineJs = fs.readFileSync(liteJsFilePath, 'utf-8');
      '<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/hIs5StN8J-0?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
    );
  });
+ test(`Build embed default mode, override start time`, t => {
+   t.is(buildEmbed(videoData, override({startTime: '30s'})),
+     '<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/hIs5StN8J-0?start=30s" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
+   );
+ });
+ test(`Build embed default mode, override start time via URL`, t => {
+   t.is(buildEmbed(extractMatches('<p>https://www.youtube.com/watch?v=hIs5StN8J-0&t=30s</p>'), override({})),
+     '<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/hIs5StN8J-0?start=30s" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
+   );
+ });
+ test(`Build embed default mode, short link with override start time via URL`, t => {
+   t.is(buildEmbed(extractMatches('<p>https://youtu.be/hIs5StN8J-0?t=30</p>'), override({})),
+     '<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/hIs5StN8J-0?start=30" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
+   );
+ });
 
 /**
  * Lite mode, zero index (first instance on page includes script and CSS)
@@ -76,6 +91,11 @@ const inlineJs = fs.readFileSync(liteJsFilePath, 'utf-8');
 test(`Build embed lite mode, zero index, lite defaults`, t => {
   t.is(buildEmbed(videoData, override({lite: true}), 0),
   `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  );
+});
+test(`Build embed lite mode, zero index, lite defaults with URL start time param`, t => {
+  t.is(buildEmbed(extractMatches('<p>https://www.youtube.com/watch?v=hIs5StN8J-0&t=30s</p>'), override({lite: true}), 0),
+  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');" params="start=30s"><div class="lty-playbtn"></div></lite-youtube></div>`
   );
 });
 test(`Build embed lite mode, zero index, css disabled`, t => {
@@ -125,6 +145,11 @@ test(`Build embed lite mode, zero index, css AND js inline`, t => {
 test(`Build embed lite mode, 1+ index, lite defaults`, t => {
   t.is(buildEmbed(videoData, override({lite: true}), 1),
   `<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  );
+});
+test(`Build embed lite mode, 1+ index, lite defaults with URL start time param`, t => {
+  t.is(buildEmbed(extractMatches('<p>https://www.youtube.com/watch?v=hIs5StN8J-0&t=30s</p>'), override({lite: true}), 1),
+  `<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');" params="start=30s"><div class="lty-playbtn"></div></lite-youtube></div>`
   );
 });
 test(`Build embed lite mode, 1+ index, css disabled`, t => {
