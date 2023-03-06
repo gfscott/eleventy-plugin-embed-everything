@@ -5,7 +5,9 @@ exports.pluginDefaults = {
   embedClass: 'eleventy-plugin-youtube-embed',
   lazy: false,
   lite: false,
-  noCookie: true
+  modestBranding: false,
+  noCookie: true,
+  recommendSelfOnly: false,
 };
 
 exports.liteDefaults = {
