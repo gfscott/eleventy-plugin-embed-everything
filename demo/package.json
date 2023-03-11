@@ -1,0 +1,27 @@
+{
+  "name": "eleventy-plugin-embed-everything-demo",
+  "version": "1.0.0",
+  "description": "Eleventy site to demonstrate and test eleventy-plugin-embed-everything",
+  "private": true,
+  "scripts": {
+    "build": "npx @11ty/eleventy",
+    "dev": "npx @11ty/eleventy --serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gfscott/eleventy-plugin-embed-everything.git"
+  },
+  "keywords": [
+    "eleventy"
+  ],
+  "author": "Graham F. Scott",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues"
+  },
+  "homepage": "https://github.com/gfscott/eleventy-plugin-embed-everything#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.0",
+    "eleventy-plugin-embed-everything": "workspace:*"
+  }
+}
