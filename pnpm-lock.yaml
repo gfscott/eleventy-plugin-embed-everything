@@ -25,13 +25,14 @@ importers:
         version: 1.8.3
 
   demo:
+    specifiers:
+      '@11ty/eleventy': ^2.0.0
+      eleventy-plugin-embed-everything: workspace:*
+      eleventy-plugin-embed-ted: workspace:*
     devDependencies:
-      '@11ty/eleventy':
-        specifier: ^2.0.0
-        version: 2.0.0
-      eleventy-plugin-embed-everything:
-        specifier: workspace:*
-        version: link:../packages/everything
+      '@11ty/eleventy': 2.0.0
+      eleventy-plugin-embed-everything: link:../packages/everything
+      eleventy-plugin-embed-ted: link:../packages/ted
 
   packages/everything:
     dependencies:
@@ -73,7 +74,15 @@ importers:
 
   packages/spotify: {}
 
+<<<<<<< HEAD
   packages/tiktok: {}
+=======
+  packages/ted:
+    specifiers: {}
+
+  packages/tiktok:
+    specifiers: {}
+>>>>>>> cc85cc7 (Very basic implementation working)
 
   packages/twitch:
     devDependencies:

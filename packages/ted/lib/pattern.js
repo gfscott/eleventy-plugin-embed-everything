@@ -1,0 +1,1 @@
+module.exports = new RegExp("<p>(https:\/\/www\.ted\.com\/talks\/.+?)</p>", "g")

@@ -1,8 +1,11 @@
 const embeds = require('eleventy-plugin-embed-everything')
+const ted = require('eleventy-plugin-embed-ted')
 
 module.exports = function(eleventyConfig) {
   // Configure global layout template
   eleventyConfig.addGlobalData("layout", "layout.njk");
+  // Also watch package folders
+  eleventyConfig.addWatchTarget("../packages/**");
   
   // Add plugin
   eleventyConfig.addPlugin(embeds, {
@@ -17,6 +20,8 @@ module.exports = function(eleventyConfig) {
     }
   });
   
+  eleventyConfig.addPlugin(ted)
+
   return {
     dir: {
       input: "src",
