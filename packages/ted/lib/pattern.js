@@ -1,1 +1,1 @@
-module.exports = new RegExp("<p>(https:\/\/www\.ted\.com\/talks\/.+?)</p>", "g")
+module.exports = /<p>(?=(\s*))\1(?:<a [^>]*?>)??(?=(\s*))\2((?:https?:\/\/)??(?:w{3}\.)??(?:ted\.com\/talks\/)(?:[^\s<>]*))(?=(\s*))\4(?:<\/a>)??(?=(\s*))\5<\/p>/g;
