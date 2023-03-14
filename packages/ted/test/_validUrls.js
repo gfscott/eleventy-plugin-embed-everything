@@ -19,13 +19,14 @@ const validUrls = [
 /**
  * Non-core URL structures accepted by the plugin
  * Various protocol variants and URL parameters
- * NOTE: We currently don't test for strings starting with `//`,
- * since spotPattern.js does not actually detect that case.
- * We probably should, since other plugins in the family do.
- * Should be a non-breaking change.
+ * 
+ * Note: With TED, we test for a trailing "/c" because they use it
+ * for tracking internal site navigation (such as from the home page
+ * or recommendations in the sidebar). But embed.ted.com URLs that
+ * include this fake path directory fail to load.
  */
-const validPrefixes = ['', 'http://', 'https://', 'www.', 'http://www.', 'https://www.']
-const validSuffixes = ['?', '%3F', '?foo', '%3Ffoo', '?foo=bar', '%3Ffoo%3Dbar']
+const validPrefixes = ['', '//', 'http://', 'https://', 'www.', 'http://www.', 'https://www.']
+const validSuffixes = ['/c', '?', '%3F', '?foo', '%3Ffoo', '?foo=bar', '%3Ffoo%3Dbar']
 
 /**
  * Cumulative lists of all URL permutations.

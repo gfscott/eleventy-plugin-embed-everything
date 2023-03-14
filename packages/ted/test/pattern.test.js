@@ -4,7 +4,7 @@ const validUrls = require('./_validUrls.js');
 
 for (let [index, url] of validUrls.entries()) {
   
-  test(`Test ${index}-a: ${url}`, async t => {
+  test(`Regex test ${index}-a: ${url}`, async t => {
     /**
      * In testing, you have to reset the RegExp object's lastIndex 
      * property. This is because when you use the /g flag for
@@ -33,7 +33,7 @@ for (let [index, url] of validUrls.entries()) {
     t.regex(str, pattern);
   });
 
-  test(`Test ${index}-b: ${url}, whitespace`, async t => {
+  test(`Regex test ${index}-b: ${url}, with whitespace`, async t => {
     pattern.lastIndex = 0;
     let str = `<p>
                 ${url}
@@ -41,13 +41,13 @@ for (let [index, url] of validUrls.entries()) {
     t.regex(str, pattern);
   });
 
-  test(`Test ${index}-c: ${url}, link`, async t => {
+  test(`Regex test ${index}-c: ${url}, with link`, async t => {
     pattern.lastIndex = 0;
     let str = `<p><a href="${url}">${url}</a></p>`
     t.regex(str, pattern);
   });
 
-  test(`Test ${index}-d: ${url}, link and whitespace`, async t => {
+  test(`Regex test ${index}-d: ${url}, with link and whitespace`, async t => {
     pattern.lastIndex = 0;
     let str = `<p>
                 <a href="${url}">
