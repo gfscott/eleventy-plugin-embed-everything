@@ -26,7 +26,7 @@ const validUrls = [
  * include this fake path directory fail to load.
  */
 const validPrefixes = ['', '//', 'http://', 'https://', 'www.', 'http://www.', 'https://www.']
-const validSuffixes = ['/c', '?', '%3F', '?foo', '%3Ffoo', '?foo=bar', '%3Ffoo%3Dbar']
+const validSuffixes = ['/', '/c', '?', '%3F', '?foo', '%3Ffoo', '?foo=bar', '%3Ffoo%3Dbar']
 
 /**
  * Cumulative lists of all URL permutations.
