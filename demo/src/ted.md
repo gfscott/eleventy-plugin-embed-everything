@@ -2,4 +2,4 @@
 title: TED
 ---
 
-https://www.ted.com/talks/xiye_bastida_if_you_adults_won_t_save_the_world_we_will
+https://www.ted.com/talks/mena_trott_meet_the_founder_of_the_blog_revolution
