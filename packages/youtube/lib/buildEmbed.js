@@ -51,6 +51,7 @@ if(params.length > 0) {
 function liteEmbed({id, url}, options, index) {
   options = Object.assign({}, options, parseInputUrlParams(url))
   let liteOpt = liteConfig(options);
+  liteOpt.thumbnailQuality = validateThumbnailSize(liteOpt.thumbnailQuality);
   let out = '';
 
   const fs = require('fs');
@@ -71,7 +72,7 @@ function liteEmbed({id, url}, options, index) {
     out += liteOpt.js.inline ? `<script>${inlineJs}</script>\n` : `<script defer="defer" src="${liteOpt.js.path}"></script>\n`;
   }
   out += `<div id="${id}" class="${options.embedClass}">`;
-  out += `<lite-youtube videoid="${id}" style="background-image: url('https://i.ytimg.com/vi/${id}/hqdefault.jpg');"`
+  out += `<lite-youtube videoid="${id}" style="background-image: url('https://i.ytimg.com/vi/${id}/${liteOpt.thumbnailQuality}.jpg');"`
   out += params ? ` params="${params}"`: "";
   out += `>`;
   out += `<div class="lty-playbtn"></div>`;
@@ -120,3 +121,24 @@ function defaultEmbed({id, url}, options){
   out += '></iframe></div>';
   return out;
 }
+
+/**
+ * 
+ * @param {String} inputString 
+ * @returns {String} that is a valid thumbnail filename.
+ * 
+ * This does *not* check that an image of this size exists, simply
+ * that the filename matches a set of valid filenames. If an invalid
+ * string is passed, it returns the default value.
+ * 
+ */
+const { thumbnails } = require('./pluginDefaults.js');
+
+function validateThumbnailSize(inputString = thumbnails.defaultSize) { 
+  if ( !thumbnails.validSizes.includes(inputString) ) {
+    return thumbnails.defaultSize
+  }
+  return inputString;
+}
+
+module.exports.validateThumbnailSize = validateThumbnailSize;

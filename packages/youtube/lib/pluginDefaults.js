@@ -1,4 +1,4 @@
-exports.pluginDefaults = {
+const pluginDefaults = {
   allowAttrs: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
   allowAutoplay: false,
   allowFullscreen: true,
@@ -10,15 +10,25 @@ exports.pluginDefaults = {
   recommendSelfOnly: false,
 };
 
-exports.liteDefaults = {
+const thumbnails = {
+  validSizes: ["default", "hqdefault", "mqdefault", "sddefault", "maxresdefault"],
+  defaultSize: "hqdefault"
+}
+
+const liteDefaults = {
   css: {
     enabled: true,
     inline: false,
     path: 'https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.css'
   },
+  thumbnailQuality: thumbnails.defaultSize,
   js: {
     enabled: true,
     inline: false,
     path: 'https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.js'
   }
 };
+  
+module.exports.thumbnails = thumbnails;
+module.exports.liteDefaults = liteDefaults;
+module.exports.pluginDefaults = pluginDefaults;
