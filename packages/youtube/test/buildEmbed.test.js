@@ -2,7 +2,7 @@ const test = require('ava');
 const extractMatches = require('../lib/extractMatches.js');
 const buildEmbed = require('../lib/buildEmbed.js');
 const { validateThumbnailSize } = require('../lib/buildEmbed.js');
-const { pluginDefaults, thumbnails } = require('../lib/pluginDefaults.js');
+const { pluginDefaults } = require('../lib/pluginDefaults.js');
 
 const videoData = extractMatches('<p>https://www.youtube.com/watch?v=hIs5StN8J-0</p>');
 

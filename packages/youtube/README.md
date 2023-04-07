@@ -211,12 +211,6 @@ eleventyConfig.addPlugin(embedYouTube, {
       <td>Pass a custom URL to load the necessary CSS from the source of your choice.</td>
     </tr>
     <tr>
-      <td>✨ <b>New in v1.9.0!</b><br><code>lite.thumbnailQuality</code></td>
-      <td>String</td>
-      <td><code>hqdefault</code></td>
-      <td>Override the requested <a href="https://gist.github.com/protrolium/8831763">YouTube thumbnail image file</a>. Accepted values are <code>default</code>, <code>hqdefault</code>, <code>mqdefault</code>, <code>sddefault</code>, <code>maxresdefault</code>. Note that not all sizes are available for all videos. If the requested resolution isn’t available, YouTube shows a generic placeholder instead.</td>
-    </tr>
-    <tr>
       <td><code>lite.js.enabled</code></td>
       <td>Boolean</td>
       <td><code>true</code></td>
@@ -233,6 +227,12 @@ eleventyConfig.addPlugin(embedYouTube, {
       <td>String</td>
       <td><code>https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.js</code></td>
       <td>Pass a custom URL to load the necessary JavaScript from the source of your choice.</td>
+    </tr>
+    <tr>
+      <td>✨ <b>New in v1.9.0!</b><br><code>lite.thumbnailQuality</code></td>
+      <td>String</td>
+      <td><code>hqdefault</code></td>
+      <td>Override the requested <a href="https://gist.github.com/protrolium/8831763">YouTube thumbnail image file</a>. Accepted values are <code>default</code>, <code>hqdefault</code>, <code>mqdefault</code>, <code>sddefault</code>, <code>maxresdefault</code>. Note that not all sizes are available for all videos. If the requested resolution isn’t available, YouTube shows a generic placeholder instead.</td>
     </tr>
   </tbody>
 </table>

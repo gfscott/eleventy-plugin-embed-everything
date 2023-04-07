@@ -21,12 +21,12 @@ const liteDefaults = {
     inline: false,
     path: 'https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.css'
   },
-  thumbnailQuality: thumbnails.defaultSize,
   js: {
     enabled: true,
     inline: false,
     path: 'https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.js'
-  }
+  },
+  thumbnailQuality: thumbnails.defaultSize,
 };
   
 module.exports.thumbnails = thumbnails;
