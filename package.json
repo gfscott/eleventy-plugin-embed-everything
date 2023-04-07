@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Monorepo for Embed Everything: an Eleventy plugin that allows you to quickly add common web embeds to markdown posts, using only their URLs",
   "private": true,
+  "engines": {
+    "pnpm": ">=8.0.0"
+  },
   "scripts": {
     "build": "turbo run build",
     "coverage": "turbo run coverage",
