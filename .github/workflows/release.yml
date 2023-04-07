@@ -123,27 +123,17 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # Following Changesets prerelease procedures:
-      # https://github.com/changesets/changesets/blob/main/docs/prereleases.md
-      #
+      # Following Changesets snapshot release procedures:
+      # https://github.com/changesets/changesets/blob/main/docs/snapshot-releases.md
+      # 
+      # - Config values come from ./changeset/config.json
+      #   - Version will be X.x.x-unstable-{commit_hash}
       # - Currently not pushing git tags to keep things moderately cleaner in the repo
       #
-      # - `changeset pre enter next` adds the "next" suffix on the affected
-      #   package versions and also passes the "next" tag when publishing to
-      #   npm, which is why you don't have to manually add --tag next on the 
-      #   publish command
-      #
-      # - git username and email comes from the recommendation in this thread:
-      #   https://github.com/actions/checkout/issues/13#issuecomment-724415212
-      - name: Enter prerelease mode and publish to npm with changesets
+      - name: Enter snapshot mode and publish unstable versions to npm with changesets
         run: |
-          pnpm changeset pre enter next
-          pnpm changeset version
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "Enter prerelease mode and version packages"
-          pnpm changeset publish --no-git-tag
+          pnpm changeset version --snapshot unstable
+          pnpm changeset publish --no-git-tag --tag unstable
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
