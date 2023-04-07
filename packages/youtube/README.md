@@ -124,7 +124,7 @@ The plugin’s default settings reside in [lib/pluginDefaults.js](lib/pluginDefa
       <td>Setting this to <code>true</code> will use Paul Irish’s <a href="https://github.com/paulirish/lite-youtube-embed">Lite YouTube Embed</a> method. See the section on the <a href="#lite">Lite version</a> below for more details.</td>
     </tr>
     <tr>
-      <td>✨ <b>New in v1.7.0!</b><br> <code>modestBranding</code></td>
+      <td><code>modestBranding</code></td>
       <td>Boolean</td>
       <td><code>false</code></td>
       <td>Setting this to <code>true</code> will add a <code>modestbranding=1</code> attribute to the embed url. This will tell YouTube to show <a href="https://developers.google.com/youtube/player_parameters#modestbranding">minimal YouTube branding</a></td>
@@ -136,7 +136,7 @@ The plugin’s default settings reside in [lib/pluginDefaults.js](lib/pluginDefa
       <td>Defaults to the “<a href="https://support.google.com/youtube/answer/171780?hl=en#zippy=,turn-on-privacy-enhanced-mode">privacy-enhanced</a>” <code>www.youtube-nocookie.com</code> domain. Change this to <code>false</code> to use <code>www.youtube.com</code>.</td>
     </tr>
     <tr>
-      <td>✨ <b>New in v1.7.0!</b><br> <code>recommendSelfOnly</code></td>
+      <td><code>recommendSelfOnly</code></td>
       <td>Boolean</td>
       <td><code>false</code></td>
       <td>Setting this to <code>true</code> will add a <code>rel=0</code> attribute to the embed url. This will tell YouTube to <a href="https://developers.google.com/youtube/player_parameters#rel">recommend videos from the same channel.</a></td>
@@ -227,6 +227,12 @@ eleventyConfig.addPlugin(embedYouTube, {
       <td>String</td>
       <td><code>https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.js</code></td>
       <td>Pass a custom URL to load the necessary JavaScript from the source of your choice.</td>
+    </tr>
+    <tr>
+      <td>✨ <b>New in v1.9.0!</b><br><code>lite.thumbnailQuality</code></td>
+      <td>String</td>
+      <td><code>hqdefault</code></td>
+      <td>Override the requested <a href="https://gist.github.com/protrolium/8831763">YouTube thumbnail image file</a>. Accepted values are <code>default</code>, <code>hqdefault</code>, <code>mqdefault</code>, <code>sddefault</code>, <code>maxresdefault</code>. Note that not all sizes are available for all videos. If the requested resolution isn’t available, YouTube shows a generic placeholder instead.</td>
     </tr>
   </tbody>
 </table>

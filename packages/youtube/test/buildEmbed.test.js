@@ -1,6 +1,7 @@
 const test = require('ava');
 const extractMatches = require('../lib/extractMatches.js');
 const buildEmbed = require('../lib/buildEmbed.js');
+const { validateThumbnailSize } = require('../lib/buildEmbed.js');
 const { pluginDefaults } = require('../lib/pluginDefaults.js');
 
 const videoData = extractMatches('<p>https://www.youtube.com/watch?v=hIs5StN8J-0</p>');
@@ -93,6 +94,16 @@ test(`Build embed lite mode, zero index, lite defaults`, t => {
   `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
   );
 });
+test(`Build embed lite mode, zero index, valid thumbnail quality override`, t => {
+  t.is(buildEmbed(videoData, override({lite: { thumbnailQuality: 'maxresdefault'}}), 0),
+  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/maxresdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  );
+});
+test(`Build embed lite mode, zero index, invalid thumbnail quality override`, t => {
+  t.is(buildEmbed(videoData, override({lite: { thumbnailQuality: 'nope'}}), 0),
+  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  );
+});
 test(`Build embed lite mode, zero index, lite defaults with URL start time param`, t => {
   t.is(buildEmbed(extractMatches('<p>https://www.youtube.com/watch?v=hIs5StN8J-0&t=30s</p>'), override({lite: true}), 0),
   `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');" params="start=30s"><div class="lty-playbtn"></div></lite-youtube></div>`
@@ -176,4 +187,25 @@ test(`Build embed lite mode, 1+ index, js inline`, t => {
   t.is(buildEmbed(videoData, override({lite:{js:{inline: true}}}), 1),
   `<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
   );
+});
+
+/**
+ * In lite mode, test that the thumbnail size validator returns the expected values.
+*/
+test(`Thumbnail validator returns default value in response to empty parameter`, t => {
+  t.is(validateThumbnailSize(), 'hqdefault');
+});
+test(`Thumbnail validator returns default value in response to incorrect parameter types`, t => {
+  t.is(validateThumbnailSize(1), 'hqdefault');
+  t.is(validateThumbnailSize(true), 'hqdefault');
+});
+test(`Thumbnail validator returns default value in response to invalid string`, t => {
+  t.is(validateThumbnailSize('foo'), 'hqdefault');
+});
+test(`Thumbnail validator returns expected strings when passed expected strings`, t => {
+  t.is(validateThumbnailSize('default'), 'default');
+  t.is(validateThumbnailSize('hqdefault'), 'hqdefault');
+  t.is(validateThumbnailSize('mqdefault'), 'mqdefault');
+  t.is(validateThumbnailSize('sddefault'), 'sddefault');
+  t.is(validateThumbnailSize('maxresdefault'), 'maxresdefault');
 });
