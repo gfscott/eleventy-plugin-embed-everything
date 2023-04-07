@@ -21,6 +21,15 @@
  * - Parentheses: https://www.ted.com/talks/nithya_vaduganathan_5_hiring_tips_every_company_and_job_seeker_should_know
  * - Question marks: https://www.ted.com/talks/raymond_adkins_how_do_airplanes_stay_in_the_air
  * - Colons: https://www.ted.com/talks/cameron_sinclair_my_wish_a_call_for_open_source_architecture
+ * 
+ * The numbered capture groups are required for mimicking atomic groups
+ * in Javascript. See: https://blog.stevenlevithan.com/archives/mimic-atomic-groups
+ * 
+ * 1. Arbitrary whitespace
+ * 2. Arbitrary whitespace
+ * 3. The URL. It won't include anything after a trailing '/' character.
+ * 4. Arbitrary whitespace
+ * 5. Arbitrary whitespace 
  */
 
 module.exports = /<p>(?=(\s*))\1(?:<a [^>]*?>)??(?=(\s*))\2((?:https?:)??(?:\/\/)??(?:w{3}\.)??(?:ted\.com\/talks\/[0-9a-zA-Z_]+))(?:\/?[^\s<>]*?)??(?=(\s*))\4(?:<\/a>)??(?=(\s*))\5<\/p>/g
