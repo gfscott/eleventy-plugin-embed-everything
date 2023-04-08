@@ -5,6 +5,7 @@ const defaultOptions = {
 	activePlugins: [
 		"instagram",
 		"spotify",
+		"ted",
 		"tiktok",
 		"twitch",
 		"twitter",
@@ -14,6 +15,7 @@ const defaultOptions = {
 	activePluginOptions: {
 		instagram: {options: {}},
 		spotify: {options: {}},
+		ted: {options: {}},
 		tiktok: {options: {}},
 		twitch: {options: {}},
 		twitter: {options: {}},
