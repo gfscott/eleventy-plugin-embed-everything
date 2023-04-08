@@ -1,5 +1,7 @@
 module.exports = function(match, config) {
-  const {pathname} = new URL(match[3]);
+  const theUrl = match[3].startsWith('http') ? match[3] : `https://${match[3]}`;
+  
+  const {pathname} = new URL(theUrl);
   const embedUrl = `https://embed.ted.com${pathname}`
   
   let embed = `<div class="${config.embedClass}" style="${config.containerCss}">`
