@@ -1,5 +1,4 @@
 const embeds = require('eleventy-plugin-embed-everything')
-const ted = require('eleventy-plugin-embed-ted')
 
 module.exports = function(eleventyConfig) {
   // Configure global layout template
@@ -19,8 +18,6 @@ module.exports = function(eleventyConfig) {
       }
     }
   });
-  
-  eleventyConfig.addPlugin(ted)
 
   return {
     dir: {

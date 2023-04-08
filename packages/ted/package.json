@@ -1,7 +1,7 @@
 {
   "name": "eleventy-plugin-embed-ted",
-  "version": "0.0.1",
-  "description": "An Eleventy plugin to automatically embed Vimeo videos, using just their URLs.",
+  "version": "1.0.0",
+  "description": "An Eleventy plugin to automatically embed TED videos, using just their URLs.",
   "keywords": [
     "11ty",
     "eleventy",

@@ -2,6 +2,7 @@
 global.instagram = require("eleventy-plugin-embed-instagram");
 global.soundcloud = require("eleventy-plugin-embed-soundcloud");
 global.spotify = require("eleventy-plugin-embed-spotify");
+global.ted = require("eleventy-plugin-embed-ted");
 global.tiktok = require("eleventy-plugin-embed-tiktok");
 global.twitch = require("eleventy-plugin-embed-twitch");
 global.twitter = require("eleventy-plugin-embed-twitter");
