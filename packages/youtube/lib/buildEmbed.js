@@ -20,6 +20,10 @@ module.exports = function(videoData, options, index) {
  * is higher,so we let them override general plugin-level settings.
  */
 function parseInputUrlParams(url) {
+  // Regex accpets protocol-less URLs, but Node's URL constructor can't.
+  // So prepend https:// if it's missing.
+  url = url.startsWith('http') ? url : `https://${url}`;
+
   // URLSearchParams object doesn't escape HTML-encoded ampersands, 
   // so replace them before parsing
   let unescapedUrl = url.replace("&amp;", "&")
@@ -28,8 +32,10 @@ function parseInputUrlParams(url) {
   
   // YouTube treats 'start' and 't' params as synonymous but 't' is the
   // official param so if you pass both 't' wins by being parsed last.
-  if ( params.has('start') ) urlOptions.startTime = params.get('start');
-  if ( params.has('t') ) urlOptions.startTime = params.get('t');
+  // In addition, we parseInt these values to ensure they're numbers in seconds.
+  // YouTube's embed URLs don't accept a start time if the 's' is included.
+  if ( params.has('start') ) urlOptions.startTime = parseInt(params.get('start'));
+  if ( params.has('t') ) urlOptions.startTime = parseInt(params.get('t'));
 
   return urlOptions;
 }
