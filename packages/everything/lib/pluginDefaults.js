@@ -7,6 +7,7 @@ exports.validPlugins = [
 	"instagram",
 	"soundcloud",
 	"spotify",
+	"ted",
 	"tiktok",
 	"twitch",
 	"twitter",
@@ -22,6 +23,7 @@ exports.validPlugins = [
 exports.defaultPlugins = [
 	"instagram",
 	"spotify",
+	"ted",
 	"tiktok",
 	"twitch",
 	"twitter",

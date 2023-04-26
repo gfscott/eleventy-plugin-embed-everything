@@ -3,6 +3,7 @@ This is an example site to demonstrate and test the functionality of [Embed Ever
 - [Instagram example](/instagram/)
 - [Soundcloud example](/soundcloud/)
 - [Spotify example](/spotify/)
+- [TED example](/ted/)
 - [TikTok example](/tiktok/)
 - [Twitch example](/twitch/)
 - [Twitter example](/twitter/)

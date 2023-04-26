@@ -47,6 +47,9 @@ importers:
       eleventy-plugin-embed-spotify:
         specifier: workspace:^
         version: link:../spotify
+      eleventy-plugin-embed-ted:
+        specifier: workspace:^
+        version: link:../ted
       eleventy-plugin-embed-tiktok:
         specifier: workspace:^
         version: link:../tiktok
@@ -72,6 +75,8 @@ importers:
         version: 4.0.0
 
   packages/spotify: {}
+
+  packages/ted: {}
 
   packages/tiktok: {}
 
