@@ -1,4 +1,4 @@
-# eleventy-plugin-embed-tiktok
+# eleventy-plugin-embed-ted
 
 [![NPM Version](https://img.shields.io/npm/v/eleventy-plugin-embed-ted?style=for-the-badge)](https://www.npmjs.com/package/eleventy-plugin-embed-ted)
 [![Build test status](https://img.shields.io/github/actions/workflow/status/gfscott/eleventy-plugin-embed-everything/test.yml?branch=main&style=for-the-badge)](https://github.com/gfscott/eleventy-plugin-embed-everything/actions/workflows/test.yml?query=branch%3Amain)\
