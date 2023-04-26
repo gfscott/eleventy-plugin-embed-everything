@@ -1,5 +1,11 @@
 # eleventy-plugin-embed-tiktok
 
+## 1.1.7
+
+### Patch Changes
+
+- Update copyright year ([#170](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/170))
+
 ## 1.1.6
 
 ### Patch Changes
