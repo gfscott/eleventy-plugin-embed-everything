@@ -1,5 +1,11 @@
 # eleventy-plugin-embed-instagram
 
+## 1.2.7
+
+### Patch Changes
+
+- Update copyright year ([#170](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/170))
+
 ## 1.2.6
 
 ### Patch Changes

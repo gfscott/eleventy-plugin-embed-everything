@@ -1,5 +1,28 @@
 # eleventy-plugin-embed-everything
 
+## 1.16.0
+
+### Minor Changes
+
+- Allow control over YouTube video start time via URL parameter ([#167](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/167))
+
+- Adds support for embedding video from TED.com ([#178](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/178))
+
+### Patch Changes
+
+- Update copyright year ([#170](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/170))
+
+- Updated dependencies [[`1d54fb3`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/1d54fb3d7a9b76c17b6efb3520833712629ba157), [`c2b94fd`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/c2b94fd70bad4373f5b611c52fd4b18276c71b47), [`5ea7f13`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/5ea7f1391696b044f30534425f45ac574c4b4ef9), [`877b3b2`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/877b3b2a755182003adf70854df8afdd01ed1186), [`3c032f9`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/3c032f954bfe0cd92be0c7cf9e0a650da3e35823), [`96dbc5b`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/96dbc5bc6990806beadb66ba526080f4165c758e), [`94b9d33`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/94b9d332a7c5b2fff1d5029baafb89f06e7910ec), [`4cef38b`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/4cef38bce88f9b00d5f670fe0eb2165874868bd3), [`a3466fc`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/a3466fceeabc7b75c2a7b664989a20edcd158f0e), [`a619ba6`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/a619ba61d551b4f06a211f825e9d3b81991d0e72), [`e66523e`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/e66523eb7aee45ea61d23487930c08edc2f42ded)]:
+  - eleventy-plugin-youtube-embed@1.9.0
+  - eleventy-plugin-embed-instagram@1.2.7
+  - eleventy-plugin-embed-soundcloud@1.2.7
+  - eleventy-plugin-embed-spotify@1.2.7
+  - eleventy-plugin-embed-tiktok@1.1.7
+  - eleventy-plugin-embed-twitch@1.2.7
+  - eleventy-plugin-embed-twitter@1.3.7
+  - eleventy-plugin-vimeo-embed@1.3.7
+  - eleventy-plugin-embed-ted@1.0.0
+
 ## 1.15.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # eleventy-plugin-vimeo-embed
 
+## 1.3.7
+
+### Patch Changes
+
+- Update copyright year ([#170](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/170))
+
 ## 1.3.6
 
 ### Patch Changes
