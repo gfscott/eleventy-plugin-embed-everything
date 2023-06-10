@@ -35,4 +35,10 @@ module.exports = [
 		type: "Podcast episode",
 		str: "spotify.com/episode/7G5O2wWmch1ciYDPZS4a4O",
 	},
+	{
+		id: "3rDR8CfpIEMpITG2UC3w5W",
+		slug: "show",
+		type: "Podcast profile",
+		str: "spotify.com/show/3rDR8CfpIEMpITG2UC3w5W",
+	},
 ];
