@@ -72,3 +72,13 @@ test(
 		t.is(out, expected);
 	},
 );
+
+test(
+	"URL string returns expected HTML string for podcast profiles, default options",
+	(t) => {
+		let str = "<p>https://open.spotify.com/show/3rDR8CfpIEMpITG2UC3w5W</p>";
+		let expected = '<div id="spotify-show-3rDR8CfpIEMpITG2UC3w5W" class="eleventy-plugin-embed-spotify eleventy-plugin-embed-spotify-show"><iframe title="show on Spotify" src="https://open.spotify.com/embed/show/3rDR8CfpIEMpITG2UC3w5W" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>';
+		let out = buildEmbed(extractMatch(str), pluginDefaults);
+		t.is(out, expected);
+	},
+);
