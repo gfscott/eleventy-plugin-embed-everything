@@ -1,26 +1,14 @@
-const spotPattern = require("./lib/spotPattern.js");
-const extractMatches = require("./lib/extractMatches.js");
-const buildEmbedCodeString = require("./lib/buildEmbed.js");
-const pluginDefaults = require("./lib/pluginDefaults.js");
+const pattern = require("./lib/pattern.js");
+const replace = require('./lib/replace.js');
+const defaults = require("./lib/defaults.js");
 
-module.exports = function(eleventyConfig, options) {
-	const pluginConfig = Object.assign(pluginDefaults, options);
-	eleventyConfig.addTransform(
-		"embedSpotify",
-		async (content, outputPath) => {
-			if (outputPath && outputPath.endsWith(".html")) {
-				let matches = spotPattern(content);
-				if (!matches) {
-					return content;
-				}
-				matches.forEach(function(stringToReplace) {
-					let mediaId = extractMatches(stringToReplace);
-					let embedCode = buildEmbedCodeString(mediaId, pluginConfig);
-					content = content.replace(stringToReplace, embedCode);
-				});
-				return content;
-			}
-			return content;
-		},
-	);
+module.exports = function(eleventyConfig, options = {}) {
+  const config = Object.assign({}, defaults, options);
+  eleventyConfig.addTransform("embedSpotify", async function(content, outputPath) {
+    // Return content untouched if there's no output path or it's not HTML
+    if ( !outputPath || !outputPath.endsWith(".html")) {
+      return content;
+    }
+    return content.replace(pattern, (...match) => replace(match, config));
+  });
 };
