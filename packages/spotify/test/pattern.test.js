@@ -5,29 +5,8 @@ const {all} = require('./_validUrls.js');
 for (let [index, url] of all.entries()) {
   
   test(`Regex test ${index}-a: ${url}`, async t => {
-    /**
-     * In testing, you have to reset the RegExp object's lastIndex 
-     * property. This is because when you use the /g flag for
-     * global matches, the regular expression instance keeps track
-     * of where the previous match was found, then continues searching
-     * from that point. It resets to zero if the index value is more
-     * than the length of the input.
-     * 
-     * In this testing case, where we loop through a set of examples,
-     * the index is set to the length of the test string on its first
-     * match, but the second match fails because the search starts
-     * either partway through the string or the index is greater than
-     * the string length. In that case, the index is reset to zero
-     * and the third match succeeds.
-     * 
-     * This took a *long* time to debug. The solution is to reset
-     * the RegExp object's lastIndex value to zero before the
-     * test runs on the next loop.
-     * 
-     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/lastIndex
-     * @see https://stackoverflow.com/a/1520853
-     * 
-     */
+    // The whole deal with `lastIndex`:
+    // https://github.com/gfscott/eleventy-plugin-embed-everything/blob/2bbe639177606deead2f9583d9c34f5557727f6d/packages/ted/test/pattern.test.js#L8-L30
     pattern.lastIndex = 0;
     let str = `<p>${url}</p>`
     t.regex(str, pattern);
@@ -57,5 +36,29 @@ for (let [index, url] of all.entries()) {
     t.regex(str, pattern);
   });
 
-  
+  /**
+   * Invalid variations
+   * These should be ignored by the regular expression pattern.
+   * @see https://github.com/avajs/ava/blob/main/docs/03-assertions.md#notregexcontents-regex-message
+   */
+
+  test(`Regex test ${index}-e: ${url}, with invalid prepended text`, async t => {
+    pattern.lastIndex = 0;
+    let str = `<p>foo ${url}</p>`
+    t.notRegex(str, pattern);
+  })
+
+  test(`Regex test ${index}-e: ${url}, with invalid appended text`, async t => {
+    pattern.lastIndex = 0;
+    let str = `<p>${url} foo</p>`
+    t.notRegex(str, pattern);
+  })
+
+  test(`Regex test ${index}-e: ${url}, with invalid ID length`, async t => {
+    pattern.lastIndex = 0;
+    // Remove the last 14 characters from the URL. This accounts for the
+    // variants that have URL parameters, which max out at 12 characters.
+    let str = `<p>${url.slice(0, -14)}</p>`
+    t.notRegex(str, pattern);
+  })
 }
