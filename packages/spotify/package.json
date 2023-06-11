@@ -8,13 +8,13 @@
     "eleventy-plugin",
     "spotify"
   ],
-  "main": ".eleventy.js",
+  "main": "index.js",
   "scripts": {
     "test": "npx ava",
     "coverage": "nyc --reporter=lcov ava"
   },
   "files": [
-    ".eleventy.js",
+    "index.js",
     "lib/**"
   ],
   "ava": {
