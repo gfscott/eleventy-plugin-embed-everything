@@ -27,9 +27,9 @@
  * 
  * 1. Arbitrary whitespace
  * 2. Arbitrary whitespace
- * 3. The URL. It won't include anything after a trailing '/' character.
+ * 3. The URL path. It won't include anything after a trailing '/' character.
  * 4. Arbitrary whitespace
  * 5. Arbitrary whitespace 
  */
 
-module.exports = /<p>(?=(\s*))\1(?:<a [^>]*?>)??(?=(\s*))\2((?:https?:)??(?:\/\/)??(?:w{3}\.)??(?:ted\.com\/talks\/[0-9a-zA-Z_]+))(?:\/?[^\s<>]*?)??(?=(\s*))\4(?:<\/a>)??(?=(\s*))\5<\/p>/g
+module.exports = /<p>(?=(\s*))\1(?:<a [^>]*?>)??(?=(\s*))\2(?:https?:)??(?:\/\/)??(?:w{3}\.)??(ted\.com\/talks\/[0-9a-zA-Z_]+)(?:\/?[^\s<>]*?)??(?=(\s*))\4(?:<\/a>)??(?=(\s*))\5<\/p>/g
