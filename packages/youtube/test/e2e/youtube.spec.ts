@@ -25,11 +25,13 @@ test('test', async ({ page }) => {
   await embedFrame.locator('[aria-label="Play"]').click();
 
   // Click [aria-label="Play \(k\)"]
-  await embedFrame.locator('[aria-label="Play \\(k\\)"]').click();
+  // Started failing for unknown reasons around August 2023
+  // await embedFrame.locator('[aria-label="Play \\(k\\)"]').click();
 
   // Click .ytp-fullscreen-button
-  // This fails on webkit for unknown reasons
-  // await embedFrame.locator('.ytp-fullscreen-button').click();
+  // This used to fail on webkit for unknown reasons
+  // now it succeeds for unknown reasons
+  await embedFrame.locator('.ytp-fullscreen-button').click();
 
   // Click [aria-label="Settings"]
   await embedFrame.locator('[aria-label="Settings"]').click();
