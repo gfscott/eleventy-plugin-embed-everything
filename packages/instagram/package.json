@@ -28,5 +28,8 @@
     "type": "git",
     "url": "https://github.com/gfscott/eleventy-plugin-embed-everything.git"
   },
-  "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues"
+  "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues",
+  "dependencies": {
+    "re2": "^1.20.1"
+  }
 }
