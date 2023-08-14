@@ -30,7 +30,7 @@ for (let [index, str] of allStrings.flat().entries()) {
   test(`${index}: Embed string, no fullscreen`, async t => {
     const config = Object.assign({}, defaults, { allowFullscreen: false });
     let embed = str.replace(pattern, (...match) => replace(match, config));
-    t.is(embed, '<div id="vimeo-123456" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top:56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" frameborder="0" src="https://player.vimeo.com/video/123456?dnt=1" ></iframe></div>')
+    t.is(embed, '<div id="vimeo-123456" class="eleventy-plugin-vimeo-embed" style="position:relative;width:100%;padding-top:56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" frameborder="0" src="https://player.vimeo.com/video/123456?dnt=1"></iframe></div>')
   });
 
   test(`${index}: Embed string, custom dnt`, async t => {
