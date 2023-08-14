@@ -2,7 +2,7 @@ module.exports = {
   allowFullscreen: true,
   dnt: true,
   embedClass: 'eleventy-plugin-vimeo-embed',
-  
+
   /**
    * By default, uses the Intrinsic Aspect Ratio technique
    * https://codepen.io/gfscott/pen/qpKqZR?editors=1100
