@@ -1,5 +1,26 @@
 # eleventy-plugin-embed-everything
 
+## 1.17.0
+
+### Minor Changes
+
+- Support X.com URLs ([#195](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/195))
+
+- Bring Spotify embed defaults up to date ([#185](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/185))
+
+- Add support for embedding Podcast profiles. These embeds always display the latest episode of the Podcast. ([#183](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/183))
+
+### Patch Changes
+
+- Dependency bumps ([#187](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/187))
+
+- Updated dependencies [[`16d9f86`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/16d9f86e3dd60e2f8b7f48555e52428e7bfe443d), [`0c6a184`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/0c6a184a9a51b5fdd2f360d5c94b13560d61ef76), [`0381802`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/0381802a21ce756301975abf726a4d88dd8875c1), [`5e62025`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/5e62025ac48e5c06a7a7accb64b68543fb4f3f48), [`5c9b849`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/5c9b849397ef8296cba3341d6bd9b9c665efee16), [`e4ea0bb`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/e4ea0bbac806a4b27b8c723f9335bf4bc3b6be1f), [`da38457`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/da38457d087b64014daba12b9de864155b361a73), [`1b65638`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/1b6563809e559d70bd1d5d0a36185fbb5ed16408)]:
+  - eleventy-plugin-vimeo-embed@1.3.8
+  - eleventy-plugin-embed-spotify@1.3.0
+  - eleventy-plugin-embed-twitter@1.4.0
+  - eleventy-plugin-youtube-embed@1.9.1
+  - eleventy-plugin-embed-ted@1.0.1
+
 ## 1.16.0
 
 ### Minor Changes

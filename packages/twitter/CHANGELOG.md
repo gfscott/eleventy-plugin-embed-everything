@@ -1,5 +1,15 @@
 # eleventy-plugin-embed-twitter
 
+## 1.4.0
+
+### Minor Changes
+
+- Support X.com URLs ([#195](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/195))
+
+### Patch Changes
+
+- Dependency bumps ([#187](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/187))
+
 ## 1.3.7
 
 ### Patch Changes
