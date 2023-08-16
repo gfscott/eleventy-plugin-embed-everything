@@ -5,7 +5,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addGlobalData("layout", "layout.njk");
   // Also watch package folders
   eleventyConfig.addWatchTarget("../packages/**");
-  
+
   // Add plugin
   eleventyConfig.addPlugin(embeds, {
     // Enable soundcloud, which isn't on by default
