@@ -12,6 +12,7 @@ Service | Package | Setup instructions
 Instagram       | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-instagram)      | [Readme](/packages/instagram) 
 SoundCloud      | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-soundcloud)     | [Readme](/packages/soundcloud)
 Spotify         | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-spotify)        | [Readme](/packages/spotify)   
+TED             | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-ted)            | [Readme](/packages/ted)
 TikTok          | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-tiktok)         | [Readme](/packages/tiktok)    
 Twitch          | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitch)         | [Readme](/packages/twitch)    
 Twitter         | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitter)        | [Readme](/packages/twitter)   
