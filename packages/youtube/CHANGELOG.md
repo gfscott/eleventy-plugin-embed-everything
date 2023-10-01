@@ -1,5 +1,13 @@
 # eleventy-plugin-youtube-embed
 
+## 1.9.1
+
+### Patch Changes
+
+- Dependency bumps ([#187](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/187))
+
+- Remove misbehaving e2e test ([#191](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/191))
+
 ## 1.9.0
 
 ### Minor Changes

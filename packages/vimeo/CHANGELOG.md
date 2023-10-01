@@ -1,5 +1,11 @@
 # eleventy-plugin-vimeo-embed
 
+## 1.3.8
+
+### Patch Changes
+
+- Code refactor, no change to public APIs ([#196](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/196))
+
 ## 1.3.7
 
 ### Patch Changes
