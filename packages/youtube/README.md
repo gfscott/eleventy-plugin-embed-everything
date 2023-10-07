@@ -207,7 +207,7 @@ eleventyConfig.addPlugin(embedYouTube, {
     <tr>
       <td><code>lite.css.path</code></td>
       <td>String</td>
-      <td><code>https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.css</code></td>
+      <td><code>https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.0/src/lite-yt-embed.min.css</code></td>
       <td>Pass a custom URL to load the necessary CSS from the source of your choice.</td>
     </tr>
     <tr>
@@ -225,11 +225,17 @@ eleventyConfig.addPlugin(embedYouTube, {
     <tr>
       <td><code>lite.js.path</code></td>
       <td>String</td>
-      <td><code>https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@master/src/lite-yt-embed.min.js</code></td>
+      <td><code>https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.0/src/lite-yt-embed.min.js</code></td>
       <td>Pass a custom URL to load the necessary JavaScript from the source of your choice.</td>
     </tr>
     <tr>
-      <td>✨ <b>New in v1.9.0!</b><br><code>lite.thumbnailQuality</code></td>
+      <td>✨ <b>New in v1.10.0!</b><br><code>lite.responsive</code></td>
+      <td>Boolean</td>
+      <td><code>false</code></td>
+      <td>If you change this to <code>true</code>, then the plugin adds a CSS rule to override the default max-width of <code>&lt;lite-youtube&gt;</code> elements, which are <a href="https://github.com/paulirish/lite-youtube-embed/blob/f9fc3a2475ade166d0cf7bb3e3caa3ec236ee74e/src/lite-yt-embed.css#L9">hard coded</a> to a maximum of 720 pixels.</td>
+    </tr>
+    <tr>
+      <td><code>lite.thumbnailQuality</code></td>
       <td>String</td>
       <td><code>hqdefault</code></td>
       <td>Override the requested <a href="https://gist.github.com/protrolium/8831763">YouTube thumbnail image file</a>. Accepted values are <code>default</code>, <code>hqdefault</code>, <code>mqdefault</code>, <code>sddefault</code>, <code>maxresdefault</code>. Note that not all sizes are available for all videos. If the requested resolution isn’t available, YouTube shows a generic placeholder instead.</td>
