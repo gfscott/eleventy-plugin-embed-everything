@@ -72,10 +72,16 @@ function liteEmbed({id, url}, options, index) {
   const params = urlParams(options);
 
   if ( liteOpt.css.enabled && index === 0 ) {
-    out += liteOpt.css.inline ? `<style>${inlineCss}</style>\n` : `<link rel="stylesheet" href="${liteOpt.css.path}">\n`;
+    out += liteOpt.css.inline ? `<style>${inlineCss}</style>` : `<link rel="stylesheet" href="${liteOpt.css.path}">`;
+    out += '\n';
   }
   if ( liteOpt.js.enabled && index === 0 ) {
-    out += liteOpt.js.inline ? `<script>${inlineJs}</script>\n` : `<script defer="defer" src="${liteOpt.js.path}"></script>\n`;
+    out += liteOpt.js.inline ? `<script>${inlineJs}</script>` : `<script defer="defer" src="${liteOpt.js.path}"></script>`;
+    out += '\n';
+  }
+  if ( liteOpt.responsive && index === 0 ) {
+    out += `<style>.${options.embedClass} lite-youtube {max-width:100%}</style>`;
+    out += '\n';
   }
   out += `<div id="${id}" class="${options.embedClass}">`;
   out += `<lite-youtube videoid="${id}" style="background-image: url('https://i.ytimg.com/vi/${id}/${liteOpt.thumbnailQuality}.jpg');"`
