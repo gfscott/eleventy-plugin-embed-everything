@@ -22,9 +22,7 @@ module.exports = function(match, config, index) {
   // The regex omits the protocol so we can add it back for more consistency and predictability.
   const url = `https://${__url}`;
 
-  return config.lite 
-    ? liteEmbed({id, url}, config, index)
-    : defaultEmbed({id, url}, config);
+  return config.lite ? liteEmbed({id, url}, config, index) : defaultEmbed({id, url}, config);
 }
 
 /**
@@ -120,33 +118,21 @@ function liteConfig(options){
 }
 
 function defaultEmbed({id, url}, options){
-  // Build the string, using config data as we go
-  // unique ID based on youtube video id
   options = Object.assign({}, options, parseInputUrlParams(url))
   const params = urlParams(options);
-  let out =
-    '<div id="' + id + '" ';
-  // global class name for all embeds, use this for styling
-  out += 'class="' + options.embedClass + '" ';
+  const domain = options.noCookie ? "youtube-nocookie" : "youtube"
+
+  let out = `<div id="${id}" class="${options.embedClass}" `;
   // intrinsic aspect ratio; currently hard-coded to 16:9
   // TODO: make configurable somehow
   out += 'style="position:relative;width:100%;padding-top: 56.25%;">';
   out +=
-    '<iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" ';
-  out += 'width="100%" height="100%" frameborder="0" title="Embedded YouTube video" ';
-  out += 'src="https://www.';
-  // default to nocookie domain
-  out += options.noCookie ? "youtube-nocookie" : "youtube";
-  out += '.com/embed/';
-  out += id;
-  out += params ? `?${params}` : "";
-  out += '" ';
-  // configurable allow attributes
-  out += 'allow="' + options.allowAttrs + '"';
-  // configurable fullscreen capability
-  out += options.allowFullscreen ? ' allowfullscreen' : '';
-  //configurable iframe lazy-loading
-  out += options.lazy ? ' loading="lazy"' : '';
+    '<iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;"';
+  out += ' width="100%" height="100%" frameborder="0" title="Embedded YouTube video"';
+  out += ` src="https://www.${domain}.com/embed/${id}${ params ? `?${params}` : '' }"`;
+  out += ` allow="${options.allowAttrs}"`;
+  out += `${options.allowFullscreen ? ' allowfullscreen' : ''}`;
+  out += `${options.lazy ? ' loading="lazy"' : ''}`;
   out += '></iframe></div>';
   return out;
 }
