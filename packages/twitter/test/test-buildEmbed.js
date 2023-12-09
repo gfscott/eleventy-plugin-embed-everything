@@ -279,7 +279,7 @@ validStrings.forEach(function(obj) {
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
-			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n</div>';
+			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n\n</div>';
 			t.is(output, expected);
 		},
 	);
@@ -296,7 +296,7 @@ validStrings.forEach(function(obj) {
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 1);
-			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n</div>';
+			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n\n</div>';
 			t.is(output, expected);
 		},
 	);
@@ -321,7 +321,7 @@ validStrings.forEach(function(obj) {
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
-			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n</div>';
+			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n\n</div>';
 			t.is(output, expected);
 		},
 	);
@@ -344,7 +344,7 @@ validStrings.forEach(function(obj) {
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
-			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n</div>';
+			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n\n</div>';
 			t.is(output, expected);
 		},
 	);
@@ -367,7 +367,7 @@ validStrings.forEach(function(obj) {
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
-			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n</div>';
+			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n\n</div>';
 			t.is(output, expected);
 		},
 	);
@@ -390,7 +390,7 @@ validStrings.forEach(function(obj) {
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
-			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" align="center"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n</div>';
+			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" align="center"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n\n</div>';
 			t.is(output, expected);
 		},
 	);
@@ -413,7 +413,7 @@ validStrings.forEach(function(obj) {
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
-			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-cards="hidden"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n</div>';
+			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-cards="hidden"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n\n</div>';
 			t.is(output, expected);
 		},
 	);
@@ -439,7 +439,7 @@ validStrings.forEach(function(obj) {
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
-			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n</div>';
+			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n\n</div>';
 			t.is(output, expected);
 		},
 	);
@@ -465,7 +465,7 @@ test(
 		const idealCase = "<p>https://twitter.com/juanstoppa/status/1289865999425167360</p>";
 		const tweetObj = extractMatch(idealCase);
 		const output = await buildEmbed(tweetObj, oEmbedOption, 0);
-		const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">what is your preference?</p>&mdash; Juan Stoppa (@juanstoppa) <a href="https://twitter.com/juanstoppa/status/1289865999425167360?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n</div>';
+		const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">what is your preference?</p>&mdash; Juan Stoppa (@juanstoppa) <a href="https://twitter.com/juanstoppa/status/1289865999425167360?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n\n</div>';
 		t.is(output, expected);
 	},
 );
@@ -492,7 +492,7 @@ validStrings.forEach(function(obj) {
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
-			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-lang="es"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">2 de agosto de 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n</div>';
+			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-lang="es"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">2 de agosto de 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n\n</div>';
 			t.is(output, expected);
 		},
 	);
@@ -518,7 +518,7 @@ test(
 		const idealCase = "<p>https://twitter.com/ant_laguna/status/1250020567538905088</p>";
 		const tweetObj = extractMatch(idealCase);
 		const output = await buildEmbed(tweetObj, oEmbedOption, 0);
-		const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-lang="es"><p lang="es" dir="ltr">\xa1Eso me pareci\xf3 a mi!</p>&mdash; Antonio Laguna \u30c4 (@ant_laguna) <a href="https://twitter.com/ant_laguna/status/1250020567538905088?ref_src=twsrc%5Etfw">14 de abril de 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n</div>';
+		const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-lang="es"><p lang="es" dir="ltr">\xa1Eso me pareci\xf3 a mi!</p>&mdash; Antonio Laguna \u30c4 (@ant_laguna) <a href="https://twitter.com/ant_laguna/status/1250020567538905088?ref_src=twsrc%5Etfw">14 de abril de 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n\n</div>';
 		t.is(output, expected);
 	},
 );
@@ -540,7 +540,7 @@ validStrings.forEach(function(obj) {
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
-			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-width="325"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n</div>';
+			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-width="325"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n\n</div>';
 			t.is(output, expected);
 		},
 	);
