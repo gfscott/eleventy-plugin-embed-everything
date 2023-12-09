@@ -111,7 +111,7 @@ function liteEmbed({id, url}, options, index) {
 }
 
 function liteConfig(options){
-  const { liteDefaults } = require('./pluginDefaults.js');
+  const { liteDefaults } = require('./defaults.js');
   if ( options.lite && typeof options.lite === 'boolean') {
     return liteDefaults;
   } else {
@@ -161,7 +161,7 @@ function defaultEmbed({id, url}, options){
  * string is passed, it returns the default value.
  * 
  */
-const { thumbnails } = require('./pluginDefaults.js');
+const { thumbnails } = require('./defaults.js');
 
 function validateThumbnailSize(inputString = thumbnails.defaultSize) { 
   if ( !thumbnails.validSizes.includes(inputString) ) {

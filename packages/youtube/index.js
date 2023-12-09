@@ -1,10 +1,10 @@
 const pattern = require('./lib/pattern.js');
 const embed = require('./lib/embed.js');
-const { pluginDefaults } = require('./lib/pluginDefaults.js');
+const { defaults } = require('./lib/defaults.js');
 const deepmerge = require('deepmerge');
 
 module.exports = function (eleventyConfig, options = {}) {
-  const config = deepmerge(pluginDefaults, options);
+  const config = deepmerge(defaults, options);
   eleventyConfig.addTransform("embedYouTube", async (content, outputPath) => {
     if ( !outputPath || !outputPath.endsWith(".html")) {
       return content;

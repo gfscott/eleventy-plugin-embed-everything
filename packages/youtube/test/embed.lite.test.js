@@ -2,8 +2,8 @@ const test = require('ava');
 const merge = require('deepmerge');
 const pattern = require('../lib/pattern.js');
 const embed = require('../lib/embed.js');
-const {pluginDefaults} = require('../lib/pluginDefaults.js');
-const { validateThumbnailSize } = require('../lib/buildEmbed.js');
+const {defaults} = require('../lib/defaults.js');
+const { validateThumbnailSize } = require('../lib/embed.js');
 
 const fs = require('fs');
 const path = require('path');
@@ -31,7 +31,7 @@ const extract = (str) => {
  * @param {object} Object with user-configurable settings
  * @returns {object}
  */
-const override = (obj) => merge(pluginDefaults, obj);
+const override = (obj) => merge(defaults, obj);
 
 /**
  * Lite mode, zero index (first instance on page includes script and CSS)
