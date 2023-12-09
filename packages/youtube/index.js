@@ -1,24 +1,15 @@
-const patternPresent = require('./lib/spotPattern.js');
-const extractVideoId = require('./lib/extractMatches.js');
-const buildEmbed = require('./lib/buildEmbed.js');
+const pattern = require('./lib/pattern.js');
+const embed = require('./lib/embed.js');
 const { pluginDefaults } = require('./lib/pluginDefaults.js');
+const deepmerge = require('deepmerge');
 
-module.exports = function (eleventyConfig, options) {
-  const pluginConfig = Object.assign(pluginDefaults, options);
+module.exports = function (eleventyConfig, options = {}) {
+  const config = deepmerge(pluginDefaults, options);
   eleventyConfig.addTransform("embedYouTube", async (content, outputPath) => {
-    if (outputPath && outputPath.endsWith(".html")) {
-      let matches = patternPresent(content);
-      if (!matches) {
-        return content;
-      }
-      matches.forEach(function (stringToReplace, index) {
-        let videoData = extractVideoId(stringToReplace);
-        let embedCode = buildEmbed(videoData, pluginConfig, index);
-        content = content.replace(stringToReplace, embedCode);
-      });
+    if ( !outputPath || !outputPath.endsWith(".html")) {
       return content;
     }
-
-    return content;
+    let index = 0;
+    return content.replace(pattern, (...match) => embed(match, config, index++));
   });
 };
