@@ -1,5 +1,6 @@
 const merge = require('deepmerge');
 const { thumbnails } = require('./defaults.js');
+const Cache = require("@11ty/eleventy-fetch");
 
 /**
  * @typedef {Object} VideoObject
@@ -14,7 +15,7 @@ const { thumbnails } = require('./defaults.js');
  * @param {number} index - Index of the current match in the input string
  * @returns {string}
  */
-module.exports = function(match, config, index) {
+module.exports = async function(match, config, index) {
   [
     ,       // Full match
     ,       // Whitespace
@@ -28,9 +29,8 @@ module.exports = function(match, config, index) {
   // The regex omits the protocol so we can add it back for more consistency and predictability.
   const url = `https://${__url}`;
 
-  return config.lite ? liteEmbed({id, url}, config, index) : defaultEmbed({id, url}, config);
+  return await config.lite ? liteEmbed({id, url}, config, index) : defaultEmbed({id, url}, config);
 }
-
 
 /**
  * Default embed code generator
@@ -38,10 +38,13 @@ module.exports = function(match, config, index) {
  * @param {PluginOptions} options - User-configured options
  * @returns 
  */
-function defaultEmbed({id, url}, options){
-  options = merge(options, getInputUrlParams(url))
+async function defaultEmbed({id, url}, options){
+  options = merge(options, getInputUrlParams(url));
   const params = stringifyUrlParams(options);
-  const domain = options.noCookie ? "youtube-nocookie" : "youtube"
+  const domain = options.noCookie ? "youtube-nocookie" : "youtube";
+  if (options.titleOptions.download) {
+    options.title = await getVideoTitle(id, options);
+  }
 
   let out = `<div id="${id}" class="${options.embedClass}" `;
   // intrinsic aspect ratio; currently hard-coded to 16:9
@@ -49,7 +52,7 @@ function defaultEmbed({id, url}, options){
   out += 'style="position:relative;width:100%;padding-top: 56.25%;">';
   out +=
     '<iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;"';
-  out += ' width="100%" height="100%" frameborder="0" title="Embedded YouTube video"';
+  out += ` width="100%" height="100%" frameborder="0" title="${options.title}"`;
   out += ` src="https://www.${domain}.com/embed/${id}${ params ? `?${params}` : '' }"`;
   out += ` allow="${options.allowAttrs}"`;
   out += `${options.allowFullscreen ? ' allowfullscreen' : ''}`;
@@ -176,4 +179,26 @@ function validateThumbnailSize(inputString = thumbnails.defaultSize) {
   return inputString;
 }
 
+async function getVideoTitle(id, options) {
+  // If the user hasn't turned on the title download option,
+  // return the default title immediately.
+  if (!options.titleOptions.download) {
+    return options.title;
+  }
+
+  const videoUrl = encodeURI(`https://www.youtube.com/watch?v=${id}`);
+  const oembedUrl = `https://www.youtube.com/oembed?url=${videoUrl}&format=json`;
+  try {
+    const oembedResponse = await Cache(oembedUrl, {
+      duration: options.titleOptions.cacheDuration,
+      type: "json",
+    });
+    return oembedResponse.title;
+  } catch (error) {
+    return options.title;
+  }
+}
+
+// Exported for testing purposes
 module.exports.validateThumbnailSize = validateThumbnailSize;
+module.exports.getVideoTitle = getVideoTitle;
