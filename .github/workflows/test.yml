@@ -11,14 +11,14 @@ jobs:
     strategy:
       matrix:
         os: ["ubuntu-latest", "macos-latest", "windows-latest"]
-        node: ["14", "16", "18", "20"]
+        node: ["18", "20"]
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 7
+          version: 8
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -39,11 +39,11 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 7
+          version: 8
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: "20"
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
@@ -72,11 +72,11 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 7
+          version: 8
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: "20"
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
