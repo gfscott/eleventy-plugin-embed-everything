@@ -1,5 +1,5 @@
 /**
- * VALID URLS
+ * URLS
  * 
  * Starting with a short list of valid URL fragments, return
  * all possible valid URL permutations.
@@ -21,9 +21,6 @@ const validUrls_noparams = [
   // This isn't actually a valid YouTube url, but accepted by the plugin regex
   'youtube.com/hIs5StN8J-0',
 ]
-
-
-
  
  /**
   * Non-core URL structures accepted by the plugin
@@ -45,4 +42,14 @@ const validUrls_noparams = [
  
 const goodUrls = [].concat(goodUrls_params, goodUrls_noparams)
 
- module.exports = goodUrls;
+module.exports.valid = goodUrls;
+
+
+module.exports.invalid = [
+  // ID too short
+  'https://www.youtube.com/watch?v=hIs5St',
+  // Invalid protocol
+  'ftp://www.youtube.com/watch?v=hIs5StN8J-0',
+  // Playlist URL
+  'https://www.youtube.com/playlist?list=PLv0jwu7G_DFVP0SGNlBiBtFVkV5LZ7SOU',
+]

@@ -8,7 +8,11 @@
     "eleventy-plugin",
     "youtube"
   ],
-  "main": ".eleventy.js",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "lib"
+  ],
   "scripts": {
     "test": "npx ava",
     "coverage": "nyc --reporter=lcov ava"
