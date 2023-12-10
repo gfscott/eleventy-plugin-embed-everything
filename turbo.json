@@ -13,9 +13,6 @@
     },
     "coverage": {
       "outputs": ["coverage/**", ".nyc_output/**"]
-    },
-    "test:e2e": {
-      "outputs": []
     }
   }
 }
