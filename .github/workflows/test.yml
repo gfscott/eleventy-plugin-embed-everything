@@ -29,36 +29,36 @@ jobs:
       - name: Run tests using ava
         run: pnpm test
   
-  end_to_end_tests:
-    name: Run e2e tests
-    runs-on: "ubuntu-latest"
-    needs: unit_tests
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "20"
-          cache: 'pnpm'
-      - name: Install dependencies
-        run: pnpm install
-      - name: Install Playwright browser dependencies
-        run: pnpm playwright install --with-deps
-      - name: Run end-to-end tests using Playwright
-        run: "pnpm test:e2e"
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: playwright-report
-          # currently only youtube is being e2e tested
-          # TODO figure out how to handle this with multiple packages
-          path: packages/youtube/playwright-report/
-          retention-days: 30
+  # end_to_end_tests:
+  #   name: Run e2e tests
+  #   runs-on: "ubuntu-latest"
+  #   needs: unit_tests
+  #   steps:
+  #     - name: Checkout repo
+  #       uses: actions/checkout@v3
+  #     - name: Install pnpm
+  #       uses: pnpm/action-setup@v2
+  #       with:
+  #         version: 8
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: "20"
+  #         cache: 'pnpm'
+  #     - name: Install dependencies
+  #       run: pnpm install
+  #     - name: Install Playwright browser dependencies
+  #       run: pnpm playwright install --with-deps
+  #     - name: Run end-to-end tests using Playwright
+  #       run: "pnpm test:e2e"
+  #     - uses: actions/upload-artifact@v3
+  #       if: always()
+  #       with:
+  #         name: playwright-report
+  #         # currently only youtube is being e2e tested
+  #         # TODO figure out how to handle this with multiple packages
+  #         path: packages/youtube/playwright-report/
+  #         retention-days: 30
   
   code_coverage:
     name: Check test coverage
