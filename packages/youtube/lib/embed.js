@@ -200,5 +200,7 @@ async function getVideoTitle(id, options) {
 }
 
 // Exported for testing purposes
+module.exports.defaultEmbed = defaultEmbed;
+module.exports.liteEmbed = liteEmbed;
 module.exports.validateThumbnailSize = validateThumbnailSize;
 module.exports.getVideoTitle = getVideoTitle;
