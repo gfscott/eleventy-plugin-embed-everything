@@ -3,4 +3,4 @@
 "eleventy-plugin-embed-everything": minor
 ---
 
-Update Lite YouTube and add responsive option for lite embeds
+[YouTube] Update Lite YouTube and add responsive option for lite embeds

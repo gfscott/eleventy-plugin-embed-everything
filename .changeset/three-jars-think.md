@@ -1,5 +1,6 @@
 ---
 "eleventy-plugin-youtube-embed": patch
+"eleventy-plugin-embed-everything": patch
 ---
 
-Code refactor, with no change to public APIs
+[YouTube] Code refactor, with no change to public APIs
