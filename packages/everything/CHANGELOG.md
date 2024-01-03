@@ -1,5 +1,20 @@
 # eleventy-plugin-embed-everything
 
+## 1.18.0
+
+### Minor Changes
+
+- Add option to download and cache video title from YouTube ([#224](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/224))
+
+- [YouTube] Update Lite YouTube and add responsive option for lite embeds ([#203](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/203))
+
+### Patch Changes
+
+- [YouTube] Code refactor, with no change to public APIs ([#222](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/222))
+
+- Updated dependencies [[`6d158a76f8fa4d5b1c379627a1099e9001db9916`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/6d158a76f8fa4d5b1c379627a1099e9001db9916), [`888ef947f94354cbee118b2a3ad3350272e04867`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/888ef947f94354cbee118b2a3ad3350272e04867), [`128b0ceab85918325d11dcef6a9e5002af3a48bf`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/128b0ceab85918325d11dcef6a9e5002af3a48bf)]:
+  - eleventy-plugin-youtube-embed@1.10.0
+
 ## 1.17.0
 
 ### Minor Changes
