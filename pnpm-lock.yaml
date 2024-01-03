@@ -100,12 +100,22 @@ importers:
 
   packages/youtube:
     dependencies:
+      '@11ty/eleventy-fetch':
+        specifier: ^4.0.0
+        version: 4.0.0
       deepmerge:
         specifier: ^4.3.1
         version: 4.3.1
       lite-youtube-embed:
         specifier: ^0.3.0
         version: 0.3.0
+      string-replace-async:
+        specifier: 2.0.0
+        version: 2.0.0
+    devDependencies:
+      delay:
+        specifier: 5.0.0
+        version: 5.0.0
 
 packages:
 
@@ -1563,6 +1573,11 @@ packages:
       has-property-descriptors: 1.0.0
       object-keys: 1.1.1
     dev: false
+
+  /delay@5.0.0:
+    resolution: {integrity: sha512-ReEBKkIfe4ya47wlPYf/gu5ib6yUG0/Aez0JQZQz94kiWtRQvZIQbTiehsnwHvLSWJnQdhVeqYue7Id1dKr0qw==}
+    engines: {node: '>=10'}
+    dev: true
 
   /delegates@1.0.0:
     resolution: {integrity: sha512-bd2L678uiWATM6m5Z1VzNCErI3jiGzt6HGY8OVICs40JQq/HALfbyNJmp0UDakEY4pMMaN0Ly5om/B1VI/+xfQ==}
@@ -3878,6 +3893,11 @@ packages:
     resolution: {integrity: sha512-9GHUiM5hMiCi6Y03jD2ARC1ettBXkQBoQAe7nJsPknnI0ow10aXjTnew8QtYQmLjzn974BnmWEAJgCY6ZP1DeQ==}
     dependencies:
       mixme: 0.5.9
+    dev: false
+
+  /string-replace-async@2.0.0:
+    resolution: {integrity: sha512-AHMupZscUiDh07F1QziX7PLoB1DQ/pzu19vc8Xa8LwZcgnOXaw7yCgBuSYrxVEfaM2d8scc3Gtp+i+QJZV+spw==}
+    engines: {node: '>=0.12'}
     dev: false
 
   /string-width@4.2.3:
