@@ -41,6 +41,6 @@
     "string-replace-async": "2.0.0"
   },
   "devDependencies": {
-    "delay": "5.0.0"
+    "delay": "6.0.0"
   }
 }
