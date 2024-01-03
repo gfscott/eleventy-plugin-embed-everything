@@ -110,8 +110,8 @@ importers:
         specifier: ^0.3.0
         version: 0.3.0
       string-replace-async:
-        specifier: 2.0.0
-        version: 2.0.0
+        specifier: 3.0.2
+        version: 3.0.2
     devDependencies:
       delay:
         specifier: 5.0.0
@@ -3895,9 +3895,9 @@ packages:
       mixme: 0.5.9
     dev: false
 
-  /string-replace-async@2.0.0:
-    resolution: {integrity: sha512-AHMupZscUiDh07F1QziX7PLoB1DQ/pzu19vc8Xa8LwZcgnOXaw7yCgBuSYrxVEfaM2d8scc3Gtp+i+QJZV+spw==}
-    engines: {node: '>=0.12'}
+  /string-replace-async@3.0.2:
+    resolution: {integrity: sha512-s6hDtXJ7FKyRap/amefqrOMpkEQvxUDueyvJygQeHxCK5Za90dOMgdibCCrPdfdAYAkr8imrZ1PPXW7DOf0RzQ==}
+    engines: {node: '>= 14.0.0'}
     dev: false
 
   /string-width@4.2.3:
