@@ -1,5 +1,17 @@
 # eleventy-plugin-youtube-embed
 
+## 1.10.0
+
+### Minor Changes
+
+- Add option to download and cache video title from YouTube ([#224](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/224))
+
+- [YouTube] Update Lite YouTube and add responsive option for lite embeds ([#203](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/203))
+
+### Patch Changes
+
+- [YouTube] Code refactor, with no change to public APIs ([#222](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/222))
+
 ## 1.9.1
 
 ### Patch Changes
