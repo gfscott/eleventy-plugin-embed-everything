@@ -1,0 +1,12 @@
+---
+layout: layout.njk
+pagination:
+  alias: post
+  data: posts
+  size: 1
+  addAllPagesToCollections: true
+tags: posts
+title: A Post from {{content.source}}
+---
+
+{{ content | safe }}
