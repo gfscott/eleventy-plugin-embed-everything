@@ -75,7 +75,7 @@ eleventyConfig.addPlugin(embedYouTube, {
 
 ### Plugin default options
 
-The plugin’s default settings reside in [lib/defaults.js](lib/defaults.js). All of these values can be changed with an options object passed to the plugin.
+The plugin’s default settings reside in [lib/pluginDefaults.js](lib/pluginDefaults.js). All of these values can be changed with an options object passed to the plugin.
 
 <table style="width: 100%;">
   <thead>
@@ -141,27 +141,6 @@ The plugin’s default settings reside in [lib/defaults.js](lib/defaults.js). Al
       <td><code>false</code></td>
       <td>Setting this to <code>true</code> will add a <code>rel=0</code> attribute to the embed url. This will tell YouTube to <a href="https://developers.google.com/youtube/player_parameters#rel">recommend videos from the same channel.</a></td>
     </tr>
-    <tr>
-      <td><code>title</code><br>✨ <b>New in v1.10.0!</b></td>
-      <td>String</td>
-      <td><code>Embedded YouTube video</code></td>
-      <td>Edit this value to change the default <code>title</code> attribute for the embedded iframe.</td>
-    </tr>
-    <tr>
-      <td colspan="4"><code>titleOptions</code>✨ <b>New in v1.10.0!</b></td>
-    </tr>
-    <tr>
-      <td><code>titleOptions.download</code></td>
-      <td>Boolean</td>
-      <td><code>false</code></td>
-      <td>Setting this to true will download and cache the title of the video from YouTube, then override the default value of <code>title</code>. <b>Note:</b> Turning this feature on will cause a network call to YouTube’s servers.</td>
-    </tr>
-    <tr>
-      <td><code>titleOptions.cacheDuration</code></td>
-      <td>String</td>
-      <td><code>5m</code></td>
-      <td>The length of time to cache the data from YouTube when <code>titleOptions.download</code> is set to true. Use the cache duration syntax from <a href="https://www.11ty.dev/docs/plugins/fetch/#change-the-cache-duration">@11ty/eleventy-fetch</a> to set this value.</td>
-    </tr>
   </tbody>
 </table>
 
@@ -180,7 +159,6 @@ In addition, using the Lite version will cause several of the plugin’s setting
 - `allowFullscreen`
 - `lazy`
 - `noCookie`
-- `title` and `titleOptions`
 
 #### Lite embed options
 
@@ -251,7 +229,7 @@ eleventyConfig.addPlugin(embedYouTube, {
       <td>Pass a custom URL to load the necessary JavaScript from the source of your choice.</td>
     </tr>
     <tr>
-      <td><code>lite.responsive</code><br>✨ <b>New in v1.10.0!</b></td>
+      <td>✨ <b>New in v1.10.0!</b><br><code>lite.responsive</code></td>
       <td>Boolean</td>
       <td><code>false</code></td>
       <td>If you change this to <code>true</code>, then the plugin adds a CSS rule to override the default max-width of <code>&lt;lite-youtube&gt;</code> elements, which are <a href="https://github.com/paulirish/lite-youtube-embed/blob/f9fc3a2475ade166d0cf7bb3e3caa3ec236ee74e/src/lite-yt-embed.css#L9">hard coded</a> to a maximum of 720 pixels.</td>
