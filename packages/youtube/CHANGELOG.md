@@ -1,5 +1,11 @@
 # eleventy-plugin-youtube-embed
 
+## 1.10.1
+
+### Patch Changes
+
+- Bugfix for an issue that caused embeds to be duplicated. ([#231](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/231))
+
 ## 1.10.0
 
 ### Minor Changes
