@@ -100,12 +100,18 @@ importers:
 
   packages/youtube:
     dependencies:
+      '@11ty/eleventy-fetch':
+        specifier: ^4.0.0
+        version: 4.0.0
       deepmerge:
         specifier: ^4.3.1
         version: 4.3.1
       lite-youtube-embed:
         specifier: ^0.3.0
         version: 0.3.0
+      string-replace-async:
+        specifier: ^3.0.2
+        version: 3.0.2
 
 packages:
 
@@ -3878,6 +3884,11 @@ packages:
     resolution: {integrity: sha512-9GHUiM5hMiCi6Y03jD2ARC1ettBXkQBoQAe7nJsPknnI0ow10aXjTnew8QtYQmLjzn974BnmWEAJgCY6ZP1DeQ==}
     dependencies:
       mixme: 0.5.9
+    dev: false
+
+  /string-replace-async@3.0.2:
+    resolution: {integrity: sha512-s6hDtXJ7FKyRap/amefqrOMpkEQvxUDueyvJygQeHxCK5Za90dOMgdibCCrPdfdAYAkr8imrZ1PPXW7DOf0RzQ==}
+    engines: {node: '>= 14.0.0'}
     dev: false
 
   /string-width@4.2.3:

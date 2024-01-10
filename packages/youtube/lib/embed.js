@@ -1,5 +1,6 @@
 const merge = require('deepmerge');
 const { thumbnails } = require('./defaults.js');
+const downloadAndCache = require('@11ty/eleventy-fetch');
 
 /**
  * @typedef {Object} VideoObject
@@ -38,10 +39,11 @@ module.exports = function(match, config, index) {
  * @param {PluginOptions} options - User-configured options
  * @returns 
  */
-function defaultEmbed({id, url}, options){
+async function defaultEmbed({id, url}, options){
   options = merge(options, getInputUrlParams(url))
   const params = stringifyUrlParams(options);
   const domain = options.noCookie ? "youtube-nocookie" : "youtube"
+  const title = options.titleOptions.download ? await getYouTubeTitleViaOembed(id, options.titleOptions.cacheDuration) : options.title;
 
   let out = `<div id="${id}" class="${options.embedClass}" `;
   // intrinsic aspect ratio; currently hard-coded to 16:9
@@ -49,7 +51,7 @@ function defaultEmbed({id, url}, options){
   out += 'style="position:relative;width:100%;padding-top: 56.25%;">';
   out +=
     '<iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;"';
-  out += ' width="100%" height="100%" frameborder="0" title="Embedded YouTube video"';
+  out += ` width="100%" height="100%" frameborder="0" title="${title}"`;
   out += ` src="https://www.${domain}.com/embed/${id}${ params ? `?${params}` : '' }"`;
   out += ` allow="${options.allowAttrs}"`;
   out += `${options.allowFullscreen ? ' allowfullscreen' : ''}`;
@@ -176,4 +178,19 @@ function validateThumbnailSize(inputString = thumbnails.defaultSize) {
   return inputString;
 }
 
+/**
+ * Get the video title from YouTube's oembed API
+ * @param {string} id - YouTube video ID
+ * @returns {string} - Video title
+ */
+async function getYouTubeTitleViaOembed(id, cacheDuration) {
+  const url = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`;
+  const json = await downloadAndCache(url, {
+    duration: cacheDuration, 
+    type: "json" // @11ty/eleventy-fetch parses JSON by default
+  });
+  return json.title;
+}
+
 module.exports.validateThumbnailSize = validateThumbnailSize;
+module.exports.getYouTubeTitleViaOembed = getYouTubeTitleViaOembed;

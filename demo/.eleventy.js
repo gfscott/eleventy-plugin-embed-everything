@@ -16,6 +16,13 @@ module.exports = function(eleventyConfig) {
       options: {
         parent: ['localhost']
       }
+    },
+    youtube: {
+      options: {
+        titleOptions: {
+          download: true
+        }
+      }
     }
   });
 

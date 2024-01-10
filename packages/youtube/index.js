@@ -9,7 +9,10 @@ module.exports = function (eleventyConfig, options = {}) {
     if ( !outputPath || !outputPath.endsWith(".html")) {
       return content;
     }
+    const {default: asyncReplace} = await import('string-replace-async');
     let index = 0;
-    return content.replace(pattern, (...match) => embed(match, config, index++));
+    return await asyncReplace(content, pattern, async (...match) => {
+      return await embed(match, config, index++)
+    });
   });
 };

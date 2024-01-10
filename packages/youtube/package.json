@@ -35,7 +35,9 @@
   },
   "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues",
   "dependencies": {
+    "@11ty/eleventy-fetch": "^4.0.0",
     "deepmerge": "^4.3.1",
-    "lite-youtube-embed": "^0.3.0"
+    "lite-youtube-embed": "^0.3.0",
+    "string-replace-async": "^3.0.2"
   }
 }
