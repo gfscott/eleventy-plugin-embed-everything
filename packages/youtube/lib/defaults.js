@@ -9,6 +9,10 @@
  * @property {boolean} [modestBranding] - Whether modest branding is enabled.
  * @property {boolean} [noCookie] - Whether cookies are disabled.
  * @property {boolean} [recommendSelfOnly] - Whether to only recommend self videos.
+ * @property {string} [title] - The default title for the embed iframe.
+ * @property {Object} [titleOptions] - Title options.
+ * @property {boolean} [titleOptions.download] - Whether to download the video title from YouTube.
+ * @property {string} [titleOptions.cacheDuration] - How long to cache the video title.
  */
 const defaults = {
   allowAttrs: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
@@ -20,6 +24,11 @@ const defaults = {
   modestBranding: false,
   noCookie: true,
   recommendSelfOnly: false,
+  title: 'Embedded YouTube video',
+  titleOptions: {
+    download: false,
+    cacheDuration: '5m',
+  }
 };
 
 /**

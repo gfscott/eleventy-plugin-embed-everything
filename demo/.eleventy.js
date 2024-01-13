@@ -16,7 +16,7 @@ module.exports = function(eleventyConfig) {
       options: {
         parent: ['localhost']
       }
-    }
+    },
   });
 
   return {
