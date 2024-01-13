@@ -43,7 +43,7 @@ async function defaultEmbed({id, url}, options){
   options = merge(options, getInputUrlParams(url))
   const params = stringifyUrlParams(options);
   const domain = options.noCookie ? "youtube-nocookie" : "youtube"
-  const title = options.titleOptions.download ? await getYouTubeTitleViaOembed(id, options.titleOptions.cacheDuration) : options.title;
+  const title = options.titleOptions.download ? await getYouTubeTitleViaOembed(id, options) : options.title;
 
   let out = `<div id="${id}" class="${options.embedClass}" `;
   // intrinsic aspect ratio; currently hard-coded to 16:9
@@ -181,15 +181,21 @@ function validateThumbnailSize(inputString = thumbnails.defaultSize) {
 /**
  * Get the video title from YouTube's oembed API
  * @param {string} id - YouTube video ID
- * @returns {string} - Video title
+ * @returns {string} - Video title, with fallback to plugin default
  */
-async function getYouTubeTitleViaOembed(id, cacheDuration) {
+async function getYouTubeTitleViaOembed(id, options) {
+  const cacheDuration = options.titleOptions.cacheDuration;
   const url = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`;
-  const json = await downloadAndCache(url, {
-    duration: cacheDuration, 
-    type: "json" // @11ty/eleventy-fetch parses JSON by default
-  });
-  return json.title;
+  try {
+    const json = await downloadAndCache(url, {
+      duration: cacheDuration, 
+      type: "json" // @11ty/eleventy-fetch parses JSON by default
+    });
+    return await json.title;
+  } catch (error) {
+    console.info(error);
+    return options.title;
+  }
 }
 
 module.exports.validateThumbnailSize = validateThumbnailSize;
