@@ -1,5 +1,14 @@
 # eleventy-plugin-embed-everything
 
+## 1.18.2
+
+### Patch Changes
+
+- Restore option to download and cache video title from YouTube ([#233](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/233))
+
+- Updated dependencies [[`cb5cc3aeaf03f29392a34714b5365798d8c31174`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/cb5cc3aeaf03f29392a34714b5365798d8c31174)]:
+  - eleventy-plugin-youtube-embed@1.10.2
+
 ## 1.18.1
 
 ### Patch Changes
