@@ -10,7 +10,8 @@ test('Very basic proof of concept', t => {
 });
 
 test('longlat', t => {
-  const str = '<p>https://www.openstreetmap.org/#map=8/21.42242/39.82621</p>';
+  const str = '<p>https://www.openstreetmap.org/#map=16/62.1103/-7.4393</p>';
+  const expected = '-7.451734542846681%2C62.103039201617996%2C-7.426950931549073%2C62.117492893935236'
   const {groups} = pattern.exec(str);
   const {long, lat, zoom} = groups;
   // Hard-coding the width and height because it mimics the default embed size
@@ -18,11 +19,9 @@ test('longlat', t => {
   // then the zoom level looks wrong.
   // Even with these bounding box size values, you can set the iframe width
   // and height to 100% and the map will still look OK.
-  console.log(longLatToBbox(long, lat, zoom, 425, 350));
+  const bbox = longLatToBbox(long, lat, zoom, 425, 350);
+  t.is(bbox, expected);
 
-  t.pass();
+  // t.pass();
 
 });
-
-
-// -85.51757812500001,42.86791248391533,-79.17297363281251,48.39273786659243
