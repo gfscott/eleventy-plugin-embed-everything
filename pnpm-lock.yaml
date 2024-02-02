@@ -36,6 +36,9 @@ importers:
       eleventy-plugin-embed-everything:
         specifier: workspace:*
         version: link:../packages/everything
+      eleventy-plugin-embed-openstreetmap:
+        specifier: workspace:*
+        version: link:../packages/openstreetmap
 
   packages/everything:
     dependencies:

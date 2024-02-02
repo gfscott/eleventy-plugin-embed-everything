@@ -1,8 +1,13 @@
 module.exports = function(match, config) {
 
-  return "foo";
-
-
+  const {long, lat, zoom} = match.pop();
+  const bbox = longLatToBbox(long, lat, zoom, 425, 350);
+  
+  let out = `<div class="${config.embedClass}" style="aspect-ratio: 1/1">`;
+  out += `<iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik"></iframe>`;
+  out += `</div>`;
+  
+  return out;
 }
 
 
@@ -36,7 +41,7 @@ function getTileNumber(lon, lat, zoom) {
   return [xtile, ytile];
 }
 
-module.exports.longLatToBbox = function lonLatToBbox(lon, lat, zoom, embedWidth, embedHeight) {  
+function longLatToBbox(lon, lat, zoom, embedWidth, embedHeight) {  
   const [xtile, ytile] = getTileNumber(parseFloat(lon), parseFloat(lat), zoom);
   const tileSize = 256;
 
@@ -48,6 +53,7 @@ module.exports.longLatToBbox = function lonLatToBbox(lon, lat, zoom, embedWidth,
 	const [lon_s, lat_s] = getLonLat(xtile_s, ytile_s, zoom);
 	const [lon_e, lat_e] = getLonLat(xtile_e, ytile_e, zoom);
   
-  return `${lon_s},${lat_e},${lon_e},${lat_s}`;
+  return encodeURIComponent(`${lon_s},${lat_e},${lon_e},${lat_s}`);
 }
 
+module.exports.longLatToBbox = longLatToBbox;
