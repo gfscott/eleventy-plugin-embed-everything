@@ -30,7 +30,7 @@
     "@svitejs/changesets-changelog-github-compact": "^1.1.0",
     "ava": "^6.1.1",
     "nyc": "^15.1.0",
-    "turbo": "^1.12.2"
+    "turbo": "^1.12.3"
   },
   "dependencies": {
     "@changesets/cli": "^2.27.1"
