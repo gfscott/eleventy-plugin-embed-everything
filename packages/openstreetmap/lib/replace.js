@@ -1,5 +1,10 @@
-module.exports = function(match, config) {
+const defaults = require('./defaults.js');
+const merge = require('deepmerge');
 
+module.exports = function(match, options = {}) {
+
+  const config = merge(defaults, options);
+  
   const {long, lat, zoom} = match.pop();
   const {long_s, lat_e, long_e, lat_s} = getBoundingBox(long, lat, zoom, 425, 350);
   const bbox = encodeURIComponent(`${long_s},${lat_e},${long_e},${lat_s}`);
