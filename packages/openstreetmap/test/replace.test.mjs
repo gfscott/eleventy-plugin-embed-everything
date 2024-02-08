@@ -1,5 +1,6 @@
 import test from 'ava';
 import pattern from '../lib/pattern.js';
+import replace from '../lib/replace.js';
 import { getBoundingBox } from '../lib/replace.js';
 
 test('Custom bounding box calculation is within acceptable variance from OSM', t => {
@@ -36,4 +37,32 @@ test('Custom bounding box calculation is within acceptable variance from OSM', t
   t.is(Math.abs(long_e - expected.long_e) < acceptableDrift, true);
   t.is(Math.abs(lat_s - expected.lat_s) < acceptableDrift, true);
 
+});
+
+test('Input produces expected output with default options', t => {
+  const input = '<p>https://www.openstreetmap.org/#map=11/47.9012/106.8911</p>';
+  const output = input.replace(pattern, (...match) => replace(match));
+  const expected = '<div class="eleventy-plugin-embed-openstreetmap" style="aspect-ratio: 16/9"><iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=106.59927565917968%2C47.73983206904563%2C107.1829243408203%2C48.06206649357146&layer=mapnik"></iframe></div>';
+  t.is(output, expected);
+});
+
+test('Input produces expected output with custom class name', t => {
+  const input = '<p>https://www.openstreetmap.org/#map=11/47.9012/106.8911</p>';
+  const output = input.replace(pattern, (...match) => replace(match, {embedClass: 'foo'}));
+  const expected = '<div class="foo" style="aspect-ratio: 16/9"><iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=106.59927565917968%2C47.73983206904563%2C107.1829243408203%2C48.06206649357146&layer=mapnik"></iframe></div>';
+  t.is(output, expected);
+});
+
+test('Input produces expected output with custom wrapper style', t => {
+  const input = '<p>https://www.openstreetmap.org/#map=11/47.9012/106.8911</p>';
+  const output = input.replace(pattern, (...match) => replace(match, { wrapperStyle: 'width: 100%; height: 500px;' }));
+  const expected = '<div class="eleventy-plugin-embed-openstreetmap" style="width: 100%; height: 500px;"><iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=106.59927565917968%2C47.73983206904563%2C107.1829243408203%2C48.06206649357146&layer=mapnik"></iframe></div>';
+  t.is(output, expected);
+});
+
+test('Input produces expected output with custom map layer', t => {
+  const input = '<p>https://www.openstreetmap.org/#map=11/47.9012/106.8911</p>';
+  const output = input.replace(pattern, (...match) => replace(match, {layer: 'cycle'}));
+  const expected = '<div class="eleventy-plugin-embed-openstreetmap" style="aspect-ratio: 16/9"><iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=106.59927565917968%2C47.73983206904563%2C107.1829243408203%2C48.06206649357146&layer=cycle"></iframe></div>';
+  t.is(output, expected);
 });
