@@ -1,15 +1,15 @@
 module.exports = function(match, config) {
 
   const {long, lat, zoom} = match.pop();
-  const bbox = longLatToBbox(long, lat, zoom, 425, 350);
+  const {long_s, lat_e, long_e, lat_s} = getBoundingBox(long, lat, zoom, 425, 350);
+  const bbox = encodeURIComponent(`${long_s},${lat_e},${long_e},${lat_s}`);
   
-  let out = `<div class="${config.embedClass}" style="aspect-ratio: 1/1">`;
-  out += `<iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik"></iframe>`;
+  let out = `<div class="${config.embedClass}" style="${config.wrapperStyle}">`;
+  out += `<iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=${config.layer}"></iframe>`;
   out += `</div>`;
   
   return out;
 }
-
 
 
 
@@ -28,32 +28,38 @@ function sec(num) {
   return 1 / Math.cos(num);
 }
 
-function getLonLat(xtile, ytile, zoom) {
+function getLongLat(xtile, ytile, zoom) {
   const n = Math.pow(2, zoom);
-  const lonDegree = xtile / n * 360.0 - 180.0;
+  const longDegree = xtile / n * 360.0 - 180.0;
   const latDegree = rad2deg(Math.atan(Math.sinh(Math.PI * (1 - 2 * ytile / n))));
-  return [lonDegree, latDegree];
+  return [longDegree, latDegree];
 }
 
-function getTileNumber(lon, lat, zoom) {
-  const xtile = (lon + 180)/360 * Math.pow(2, zoom);
-  const ytile = (1 - Math.log(Math.tan(deg2rad(lat)) + sec(deg2rad(lat)))/Math.PI)/2 * Math.pow(2,zoom);
+function getTileNumber(long, lat, zoom) {
+  const xtile = (long + 180)/360 * Math.pow(2, zoom);
+  const ytile = (1 - Math.log(Math.tan(deg2rad(lat)) + sec(deg2rad(lat)))/Math.PI)/2 * Math.pow(2, zoom);
   return [xtile, ytile];
 }
 
-function longLatToBbox(lon, lat, zoom, embedWidth, embedHeight) {  
-  const [xtile, ytile] = getTileNumber(parseFloat(lon), parseFloat(lat), zoom);
+function getBoundingBox(long, lat, zoom, width, height) {  
+  const [xtile, ytile] = getTileNumber(parseFloat(long), parseFloat(lat), zoom);
+  
   const tileSize = 256;
 
-	const xtile_s = (xtile * tileSize - embedWidth) / tileSize;
-	const ytile_s = (ytile * tileSize - embedHeight) / tileSize;
-	const xtile_e = (xtile * tileSize + embedWidth) / tileSize;
-	const ytile_e = (ytile * tileSize + embedHeight) / tileSize;
+	const xtile_s = (xtile * tileSize - width) / tileSize;
+	const ytile_s = (ytile * tileSize - height) / tileSize;
+	const xtile_e = (xtile * tileSize + width) / tileSize;
+	const ytile_e = (ytile * tileSize + height) / tileSize;
 
-	const [lon_s, lat_s] = getLonLat(xtile_s, ytile_s, zoom);
-	const [lon_e, lat_e] = getLonLat(xtile_e, ytile_e, zoom);
+	const [long_s, lat_s] = getLongLat(xtile_s, ytile_s, zoom);
+	const [long_e, lat_e] = getLongLat(xtile_e, ytile_e, zoom);
   
-  return encodeURIComponent(`${lon_s},${lat_e},${lon_e},${lat_s}`);
+  return {
+    long_s,
+    lat_e,
+    long_e,
+    lat_s
+  }
 }
 
-module.exports.longLatToBbox = longLatToBbox;
+module.exports.getBoundingBox = getBoundingBox;
