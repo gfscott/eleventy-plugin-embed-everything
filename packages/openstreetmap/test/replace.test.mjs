@@ -5,7 +5,6 @@ import { getBoundingBox } from '../lib/replace.js';
 
 test('Custom bounding box calculation is within acceptable variance from OSM', t => {
   
-  
   // These are values produced by the OSM embed service
   const expected = {
     long_s: -7.451734542846681,
@@ -15,8 +14,7 @@ test('Custom bounding box calculation is within acceptable variance from OSM', t
   }
   
   const str = '<p>https://www.openstreetmap.org/#map=16/62.1103/-7.4393</p>';
-  const {groups} = pattern.exec(str);
-  const {long, lat, zoom} = groups;
+  const { groups: { zoom, lat, long } } = pattern.exec(str);
 
   // Hard-coding the width and height because it mimics the default embed size
   // returned by the OSM embed code. If you substantially change these values,
