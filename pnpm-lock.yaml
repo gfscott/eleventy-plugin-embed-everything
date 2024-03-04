@@ -107,8 +107,8 @@ importers:
         specifier: ^4.3.1
         version: 4.3.1
       lite-youtube-embed:
-        specifier: ^0.3.0
-        version: 0.3.0
+        specifier: ^0.3.1
+        version: 0.3.1
       string-replace-async:
         specifier: ^3.0.2
         version: 3.0.2
@@ -2690,8 +2690,8 @@ packages:
     resolution: {integrity: sha512-+dAZZ2mM+/m+vY9ezfoueVvrgnHIGi5FvgSymbIgJOFwiznWyA59mav95L+Mc6xPtL3s9gm5eNTlNtxJLbNM1g==}
     dev: true
 
-  /lite-youtube-embed@0.3.0:
-    resolution: {integrity: sha512-3DUqE1C4s/+a8PVM4ik8anBsmHOW0zUavPyFQWugBulKyQpbZFE+/268Aq/pDNW7hRQJXkXpk4QjdSCpwf7Cvg==}
+  /lite-youtube-embed@0.3.1:
+    resolution: {integrity: sha512-FKGosMCkPsv4IHanvbYq76MhgRXlBTi4zDLee1Z0vFmKWxmwo8MFe/ESbBOidE/Ni0Q3QIdUkVmagWJ270mpyQ==}
     dev: false
 
   /load-json-file@7.0.1:
