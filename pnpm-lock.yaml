@@ -72,8 +72,8 @@ importers:
   packages/soundcloud:
     dependencies:
       '@11ty/eleventy-fetch':
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.0.1
+        version: 4.0.1
 
   packages/spotify: {}
 
@@ -90,8 +90,8 @@ importers:
   packages/twitter:
     dependencies:
       '@11ty/eleventy-fetch':
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.0.1
+        version: 4.0.1
       deepmerge:
         specifier: ^4.3.1
         version: 4.3.1
@@ -101,8 +101,8 @@ importers:
   packages/youtube:
     dependencies:
       '@11ty/eleventy-fetch':
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.0.1
+        version: 4.0.1
       deepmerge:
         specifier: ^4.3.1
         version: 4.3.1
@@ -141,13 +141,13 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@11ty/eleventy-fetch@4.0.0:
-    resolution: {integrity: sha512-wGAd0r+8DUWr22fK5r07dOKuNY6ltA7hX+sJzngGZL1yJmuUVdM/xPQZ+iq0BFgf/ZeRdpVEzf2D0cpVZUuiTg==}
+  /@11ty/eleventy-fetch@4.0.1:
+    resolution: {integrity: sha512-yIiLM5ziBmg86i4TlXpBdcIygJHvh/GgPJyAiFOckO9H4y9cQDM8eIcJCUQ4Mum0NEVui/OjhEut2R08xw0vlQ==}
     engines: {node: '>=14'}
     dependencies:
       debug: 4.3.4
       flat-cache: 3.0.4
-      node-fetch: 2.6.11
+      node-fetch: 2.6.12
       p-queue: 6.6.2
     transitivePeerDependencies:
       - encoding
@@ -2978,18 +2978,6 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
-  /node-fetch@2.6.11:
-    resolution: {integrity: sha512-4I6pdBY1EthSqDmJkiNk3JIT8cswwR9nfeW/cPdUagJYEQG7R95WRH74wpz7ma8Gh/9dI9FP+OU+0E4FvtA55w==}
-    engines: {node: 4.x || >=6.0.0}
-    peerDependencies:
-      encoding: ^0.1.0
-    peerDependenciesMeta:
-      encoding:
-        optional: true
-    dependencies:
-      whatwg-url: 5.0.0
-    dev: false
-
   /node-fetch@2.6.12:
     resolution: {integrity: sha512-C/fGU2E8ToujUivIO0H+tpQ6HWo4eEmchoPIoXtxCrVghxdKq+QOHqEZW7tuP3KlV3bC8FRMO5nMCC7Zm1VP6g==}
     engines: {node: 4.x || >=6.0.0}
@@ -3000,7 +2988,6 @@ packages:
         optional: true
     dependencies:
       whatwg-url: 5.0.0
-    dev: true
 
   /node-gyp-build@4.7.1:
     resolution: {integrity: sha512-wTSrZ+8lsRRa3I3H8Xr65dLWSgCvY2l4AOnaeKdPA9TB/WYMPaTcrzf3rXvFoVvjKNVnu0CcWSx54qq9GKRUYg==}
