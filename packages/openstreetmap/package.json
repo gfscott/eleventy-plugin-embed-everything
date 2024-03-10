@@ -32,5 +32,8 @@
   "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues",
   "dependencies": {
     "deepmerge": "^4.3.1"
+  },
+  "devDependencies": {
+    "permute-arrays": "workspace:^"
   }
 }
