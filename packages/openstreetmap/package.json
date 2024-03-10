@@ -1,7 +1,6 @@
 {
   "name": "eleventy-plugin-embed-openstreetmap",
   "version": "1.0.0",
-  "private": true,
   "description": "An Eleventy plugin to automatically embed OpenStreetMap maps, using just their URLs.",
   "keywords": [
     "11ty",
