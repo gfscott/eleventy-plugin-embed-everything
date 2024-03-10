@@ -22,7 +22,6 @@
   "homepage": "https://github.com/gfscott/eleventy-plugin-embed-everything#readme",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "eleventy-plugin-embed-everything": "workspace:*",
-    "eleventy-plugin-embed-openstreetmap": "workspace:*"
+    "eleventy-plugin-embed-everything": "workspace:*"
   }
 }
