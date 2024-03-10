@@ -1,5 +1,4 @@
 const embeds = require('eleventy-plugin-embed-everything')
-const osm = require('eleventy-plugin-embed-openstreetmap')
 
 module.exports = function(eleventyConfig) {
   // Configure global layout template
@@ -7,8 +6,6 @@ module.exports = function(eleventyConfig) {
   // Also watch package folders
   eleventyConfig.addWatchTarget("../packages/**");
   
-  eleventyConfig.addPlugin(osm)
-
   // Add plugin
   eleventyConfig.addPlugin(embeds, {
     // Enable soundcloud, which isn't on by default
