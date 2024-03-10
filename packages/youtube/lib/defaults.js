@@ -35,10 +35,14 @@ const defaults = {
  * @typedef {Object} Thumbnails
  * @property {string[]} validSizes - An array of valid sizes.
  * @property {string} defaultSize - The default size.
+ * @property {string[]} validFormats - An array of valid formats.
+ * @property {string} defaultFormat - The default format.
  */
 const thumbnails = {
   validSizes: ["default", "hqdefault", "mqdefault", "sddefault", "maxresdefault"],
-  defaultSize: "hqdefault"
+  defaultSize: "hqdefault",
+  validFormats: ["jpg", "webp"],
+  defaultFormat: "jpg",
 }
 
 /**
@@ -58,15 +62,16 @@ const liteDefaults = {
   css: {
     enabled: true,
     inline: false,
-    path: 'https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.0/src/lite-yt-embed.min.css'
+    path: 'https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css'
   },
   js: {
     enabled: true,
     inline: false,
-    path: 'https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.0/src/lite-yt-embed.min.js'
+    path: 'https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js'
   },
   responsive: false,
   thumbnailQuality: thumbnails.defaultSize,
+  thumbnailFormat: thumbnails.defaultFormat,
 };
   
 module.exports.thumbnails = thumbnails;

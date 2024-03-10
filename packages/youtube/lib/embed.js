@@ -73,8 +73,15 @@ function liteEmbed({id, url}, options, index) {
   options = merge(options, getInputUrlParams(url))
   const liteOpt = liteConfig(options);
         liteOpt.thumbnailQuality = validateThumbnailSize(liteOpt.thumbnailQuality);
+        liteOpt.thumbnailFormat = validateThumbnailFormat(liteOpt.thumbnailFormat);
   const params = stringifyUrlParams(options);
   
+  const thumbnailUrl = () => {
+    const fileTypePath = liteOpt.thumbnailFormat === 'webp' ? 'vi_webp' : 'vi';
+    const fileName = `${liteOpt.thumbnailQuality}.${liteOpt.thumbnailFormat}`;
+    return `https://i.ytimg.com/${fileTypePath}/${id}/${fileName}`;
+  }
+
   // Access the file system to read the lite embed CSS and JS
   const fs = require('fs');
   const path = require('path');
@@ -96,7 +103,7 @@ function liteEmbed({id, url}, options, index) {
   out += index === 0 && liteOpt.responsive ? `<style>.${options.embedClass} lite-youtube {max-width:100%}</style>\n` : '';
   
   out += `<div id="${id}" class="${options.embedClass}">`;
-  out += `<lite-youtube videoid="${id}" style="background-image: url('https://i.ytimg.com/vi/${id}/${liteOpt.thumbnailQuality}.jpg');"${params ? ` params="${params}"` : ''}>`;
+  out += `<lite-youtube videoid="${id}" style="background-image: url('${thumbnailUrl()}');"${params ? ` params="${params}"` : ''}>`;
   out += '<div class="lty-playbtn"></div></lite-youtube></div>';
   return out;
 }
@@ -198,5 +205,20 @@ async function getYouTubeTitleViaOembed(id, options) {
   }
 }
 
+/**
+ * Validates the thumbnail format and returns the format if it is valid, otherwise returns the default format.
+ *
+ * @param {string} format - The thumbnail format to validate.
+ * @param {object} options - The options object containing the valid thumbnail formats.
+ * @returns {string} - The validated thumbnail format.
+ */
+function validateThumbnailFormat(format) {
+  if ( !thumbnails.validFormats.includes(format) ) {
+    return thumbnails.defaultFormat
+  }
+  return format;
+}
+
 module.exports.validateThumbnailSize = validateThumbnailSize;
+module.exports.validateThumbnailFormat = validateThumbnailFormat;
 module.exports.getYouTubeTitleViaOembed = getYouTubeTitleViaOembed;
