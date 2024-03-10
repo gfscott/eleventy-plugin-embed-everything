@@ -251,6 +251,12 @@ eleventyConfig.addPlugin(embedYouTube, {
       <td>Pass a custom URL to load the necessary JavaScript from the source of your choice.</td>
     </tr>
     <tr>
+      <td><code>lite.jsApi</code><br>✨ <b>New in v1.11.0!</b></td>
+      <td>Boolean</td>
+      <td><code>false</code></td>
+      <td>If you change this to true, then the plugin adds a `js-api` parameter to the custom element that enables access to YouTube's IFrame Player API. See <a href="https://github.com/paulirish/lite-youtube-embed?tab=readme-ov-file#access-the-youtube-iframe-player-api">usage example</a> and <a href="https://paulirish.github.io/lite-youtube-embed/variants/js-api.html">demo</a>.</td>
+    </tr>
+    <tr>
       <td><code>lite.responsive</code><br>✨ <b>New in v1.10.0!</b></td>
       <td>Boolean</td>
       <td><code>false</code></td>
