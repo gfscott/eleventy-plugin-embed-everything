@@ -55,6 +55,7 @@ const thumbnails = {
  * @property {boolean} [js.enabled] - Whether JS is enabled.
  * @property {boolean} [js.inline] - Whether JS is inline.
  * @property {string} [js.path] - The path to the JS file.
+ * 
  * @property {boolean} [responsive] - Whether the layout is responsive.
  * @property {string} [thumbnailQuality] - The quality of the thumbnail.
  */
@@ -69,6 +70,7 @@ const liteDefaults = {
     inline: false,
     path: 'https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js'
   },
+  jsApi: false,
   responsive: false,
   thumbnailQuality: thumbnails.defaultSize,
   thumbnailFormat: thumbnails.defaultFormat,

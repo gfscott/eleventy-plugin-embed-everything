@@ -103,7 +103,7 @@ function liteEmbed({id, url}, options, index) {
   out += index === 0 && liteOpt.responsive ? `<style>.${options.embedClass} lite-youtube {max-width:100%}</style>\n` : '';
   
   out += `<div id="${id}" class="${options.embedClass}">`;
-  out += `<lite-youtube videoid="${id}" style="background-image: url('${thumbnailUrl()}');"${params ? ` params="${params}"` : ''}>`;
+  out += `<lite-youtube videoid="${id}" style="background-image: url('${thumbnailUrl()}');"${params ? ` params="${params}"` : ''}${liteOpt.jsApi ? ' js-api' : ''}>`;
   out += '<div class="lty-playbtn"></div></lite-youtube></div>';
   return out;
 }

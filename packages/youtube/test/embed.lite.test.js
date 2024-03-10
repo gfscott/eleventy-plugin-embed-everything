@@ -41,6 +41,11 @@ test(`Build embed lite mode, zero index, lite defaults`, t => {
   `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
   );
 });
+test(`Build embed lite mode, zero index, JS API enabled`, t => {
+  t.is(embed(extract(testString), override({lite: {jsApi: true}}), 0),
+  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');" js-api><div class="lty-playbtn"></div></lite-youtube></div>`
+  );
+});
 test(`Build embed lite mode, zero index, valid thumbnail format override`, t => {
   t.is(embed(extract(testString), override({lite: {thumbnailFormat: 'webp'}}), 0),
   `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi_webp/hIs5StN8J-0/hqdefault.webp');"><div class="lty-playbtn"></div></lite-youtube></div>`
@@ -119,6 +124,11 @@ test(`Build embed lite mode, zero index, responsive true`, t => {
 test(`Build embed lite mode, 1+ index, lite defaults`, t => {
   t.is(embed(extract(testString), override({lite: true}), 1),
   `<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  );
+});
+test(`Build embed lite mode, 1+ index, JS API enabled`, t => {
+  t.is(embed(extract(testString), override({lite: {jsApi: true}}), 1),
+  `<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');" js-api><div class="lty-playbtn"></div></lite-youtube></div>`
   );
 });
 test(`Build embed lite mode, 1+ index, valid thumbnail quality override`, t => {
