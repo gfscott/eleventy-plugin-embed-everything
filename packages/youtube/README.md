@@ -257,6 +257,12 @@ eleventyConfig.addPlugin(embedYouTube, {
       <td>If you change this to <code>true</code>, then the plugin adds a CSS rule to override the default max-width of <code>&lt;lite-youtube&gt;</code> elements, which are <a href="https://github.com/paulirish/lite-youtube-embed/blob/f9fc3a2475ade166d0cf7bb3e3caa3ec236ee74e/src/lite-yt-embed.css#L9">hard coded</a> to a maximum of 720 pixels.</td>
     </tr>
     <tr>
+      <td><code>lite.thumbnailFormat</code><br>✨ <b>New in v1.11.0!</b></td>
+      <td>String</td>
+      <td><code>jpg</code></td>
+      <td>If you change this to <code>webp</code>, then the plugin will load the YouTube thumbnail image in WebP format instead of JPEG.</td>
+    </tr>
+    <tr>
       <td><code>lite.thumbnailQuality</code></td>
       <td>String</td>
       <td><code>hqdefault</code></td>
