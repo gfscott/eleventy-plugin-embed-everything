@@ -1,6 +1,6 @@
 {
   "name": "eleventy-plugin-embed-openstreetmap",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "description": "An Eleventy plugin to automatically embed OpenStreetMap maps, using just their URLs.",
   "keywords": [
@@ -32,8 +32,5 @@
   "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues",
   "dependencies": {
     "deepmerge": "^4.3.1"
-  },
-  "devDependencies": {
-    "permute-arrays": "workspace:^"
   }
 }
