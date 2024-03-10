@@ -251,10 +251,22 @@ eleventyConfig.addPlugin(embedYouTube, {
       <td>Pass a custom URL to load the necessary JavaScript from the source of your choice.</td>
     </tr>
     <tr>
+      <td><code>lite.jsApi</code><br>✨ <b>New in v1.11.0!</b></td>
+      <td>Boolean</td>
+      <td><code>false</code></td>
+      <td>If you change this to true, then the plugin adds a `js-api` parameter to the custom element that enables access to YouTube's IFrame Player API. See <a href="https://github.com/paulirish/lite-youtube-embed?tab=readme-ov-file#access-the-youtube-iframe-player-api">usage example</a> and <a href="https://paulirish.github.io/lite-youtube-embed/variants/js-api.html">demo</a>.</td>
+    </tr>
+    <tr>
       <td><code>lite.responsive</code><br>✨ <b>New in v1.10.0!</b></td>
       <td>Boolean</td>
       <td><code>false</code></td>
       <td>If you change this to <code>true</code>, then the plugin adds a CSS rule to override the default max-width of <code>&lt;lite-youtube&gt;</code> elements, which are <a href="https://github.com/paulirish/lite-youtube-embed/blob/f9fc3a2475ade166d0cf7bb3e3caa3ec236ee74e/src/lite-yt-embed.css#L9">hard coded</a> to a maximum of 720 pixels.</td>
+    </tr>
+    <tr>
+      <td><code>lite.thumbnailFormat</code><br>✨ <b>New in v1.11.0!</b></td>
+      <td>String</td>
+      <td><code>jpg</code></td>
+      <td>If you change this to <code>webp</code>, then the plugin will load the YouTube thumbnail image in WebP format instead of JPEG.</td>
     </tr>
     <tr>
       <td><code>lite.thumbnailQuality</code></td>

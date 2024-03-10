@@ -3,7 +3,7 @@ const merge = require('deepmerge');
 const pattern = require('../lib/pattern.js');
 const embed = require('../lib/embed.js');
 const {defaults} = require('../lib/defaults.js');
-const { validateThumbnailSize } = require('../lib/embed.js');
+const { validateThumbnailSize, validateThumbnailFormat } = require('../lib/embed.js');
 
 const fs = require('fs');
 const path = require('path');
@@ -38,47 +38,62 @@ const override = (obj) => merge(defaults, obj);
  */
 test(`Build embed lite mode, zero index, lite defaults`, t => {
   t.is(embed(extract(testString), override({lite: true}), 0),
-  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.0/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.0/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  );
+});
+test(`Build embed lite mode, zero index, JS API enabled`, t => {
+  t.is(embed(extract(testString), override({lite: {jsApi: true}}), 0),
+  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');" js-api><div class="lty-playbtn"></div></lite-youtube></div>`
+  );
+});
+test(`Build embed lite mode, zero index, valid thumbnail format override`, t => {
+  t.is(embed(extract(testString), override({lite: {thumbnailFormat: 'webp'}}), 0),
+  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi_webp/hIs5StN8J-0/hqdefault.webp');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  );
+});
+test(`Build embed lite mode, zero index, invalid thumbnail format override`, t => {
+  t.is(embed(extract(testString), override({lite: {thumbnailFormat: 'no'}}), 0),
+  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
   );
 });
 test(`Build embed lite mode, zero index, valid thumbnail quality override`, t => {
   t.is(embed(extract(testString), override({lite: { thumbnailQuality: 'maxresdefault'}}), 0),
-  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.0/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.0/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/maxresdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/maxresdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
   );
 });
 test(`Build embed lite mode, zero index, invalid thumbnail quality override`, t => {
   t.is(embed(extract(testString), override({lite: { thumbnailQuality: 'nope'}}), 0),
-  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.0/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.0/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
   );
 });
 test(`Build embed lite mode, zero index, lite defaults with URL start time param`, t => {
   t.is(embed(extract('<p>https://www.youtube.com/watch?v=hIs5StN8J-0&t=30s</p>'), override({lite: true}), 0),
-  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.0/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.0/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');" params="start=30"><div class="lty-playbtn"></div></lite-youtube></div>`
+  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');" params="start=30"><div class="lty-playbtn"></div></lite-youtube></div>`
   );
 });
 test(`Build embed lite mode, zero index, css disabled`, t => {
   t.is(embed(extract(testString), override({lite:{css:{enabled: false}}}), 0),
-  `<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.0/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  `<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
   );
 });
 test(`Build embed lite mode, zero index, css inline`, t => {
   t.is(embed(extract(testString), override({lite:{css:{inline: true}}}), 0),
-  `<style>${inlineCss}</style>\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.0/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  `<style>${inlineCss}</style>\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
   );
 });
 test(`Build embed lite mode, zero index, css path override`, t => {
   t.is(embed(extract(testString), override({lite:{css:{path: 'foo'}}}), 0),
-  `<link rel="stylesheet" href="foo">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.0/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  `<link rel="stylesheet" href="foo">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
   );
 });
 test(`Build embed lite mode, zero index, js disabled`, t => {
   t.is(embed(extract(testString), override({lite:{js:{enabled: false}}}), 0),
-  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.0/src/lite-yt-embed.min.css">\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css">\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
   );
 });
 test(`Build embed lite mode, zero index, js inline`, t => {
   t.is(embed(extract(testString), override({lite:{js:{inline: true}}}), 0),
-  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.0/src/lite-yt-embed.min.css">\n<script>${inlineJs}</script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css">\n<script>${inlineJs}</script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
   );
 });
 test(`Build embed lite mode, zero index, css AND js disabled`, t => {
@@ -98,7 +113,7 @@ test(`Build embed lite mode, zero index, css AND js inline`, t => {
 });
 test(`Build embed lite mode, zero index, responsive true`, t => {
   t.is(embed(extract(testString), override({lite: { responsive: true }}), 0),
-  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.0/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.0/src/lite-yt-embed.min.js"></script>\n<style>.eleventy-plugin-youtube-embed lite-youtube {max-width:100%}</style>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js"></script>\n<style>.eleventy-plugin-youtube-embed lite-youtube {max-width:100%}</style>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
   );
 });
 
@@ -108,6 +123,31 @@ test(`Build embed lite mode, zero index, responsive true`, t => {
  */
 test(`Build embed lite mode, 1+ index, lite defaults`, t => {
   t.is(embed(extract(testString), override({lite: true}), 1),
+  `<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  );
+});
+test(`Build embed lite mode, 1+ index, JS API enabled`, t => {
+  t.is(embed(extract(testString), override({lite: {jsApi: true}}), 1),
+  `<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');" js-api><div class="lty-playbtn"></div></lite-youtube></div>`
+  );
+});
+test(`Build embed lite mode, 1+ index, valid thumbnail quality override`, t => {
+  t.is(embed(extract(testString), override({lite: { thumbnailQuality: 'maxresdefault'}}), 1),
+  `<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/maxresdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  );
+});
+test(`Build embed lite mode, 1+ index, invalid thumbnail quality override`, t => {
+  t.is(embed(extract(testString), override({lite: { thumbnailQuality: 'nope'}}), 1),
+  `<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  );
+});
+test(`Build embed lite mode, 1+ index, valid thumbnail format override`, t => {
+  t.is(embed(extract(testString), override({lite: {thumbnailFormat: 'webp'}}), 1),
+  `<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi_webp/hIs5StN8J-0/hqdefault.webp');"><div class="lty-playbtn"></div></lite-youtube></div>`
+  );
+});
+test(`Build embed lite mode, 1+ index, invalid thumbnail format override`, t => {
+  t.is(embed(extract(testString), override({lite: {thumbnailFormat: 'foo'}}), 1),
   `<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
   );
 });
@@ -148,22 +188,37 @@ test(`Build embed lite mode, 1+ index, responsive true`, t => {
 });
 
 /**
- * In lite mode, test that the thumbnail size validator returns the expected values.
+ * In lite mode, test that the thumbnail validators return the expected values.
 */
-test(`Thumbnail validator returns default value in response to empty parameter`, t => {
+test(`Thumbnail size validator returns default value in response to empty parameter`, t => {
   t.is(validateThumbnailSize(), 'hqdefault');
 });
-test(`Thumbnail validator returns default value in response to incorrect parameter types`, t => {
+test(`Thumbnail size validator returns default value in response to incorrect parameter types`, t => {
   t.is(validateThumbnailSize(1), 'hqdefault');
   t.is(validateThumbnailSize(true), 'hqdefault');
 });
-test(`Thumbnail validator returns default value in response to invalid string`, t => {
+test(`Thumbnail size validator returns default value in response to invalid string`, t => {
   t.is(validateThumbnailSize('foo'), 'hqdefault');
 });
-test(`Thumbnail validator returns expected strings when passed expected strings`, t => {
+test(`Thumbnail size validator returns expected strings when passed expected strings`, t => {
   t.is(validateThumbnailSize('default'), 'default');
   t.is(validateThumbnailSize('hqdefault'), 'hqdefault');
   t.is(validateThumbnailSize('mqdefault'), 'mqdefault');
   t.is(validateThumbnailSize('sddefault'), 'sddefault');
   t.is(validateThumbnailSize('maxresdefault'), 'maxresdefault');
+});
+
+test(`Thumbnail format validator returns default value in response to empty parameter`, t => {
+  t.is(validateThumbnailFormat(), 'jpg');
+})
+test(`Thumbnail format validator returns default value in response to incorrect parameter types`, t => {
+  t.is(validateThumbnailFormat(1), 'jpg');
+  t.is(validateThumbnailFormat(true), 'jpg');
+});
+test(`Thumbnail format validator returns default value in response to invalid string`, t => {
+  t.is(validateThumbnailFormat('avif'), 'jpg');
+});
+test(`Thumbnail format validator returns expected strings when passed expected strings`, t => {
+  t.is(validateThumbnailFormat('jpg'), 'jpg');
+  t.is(validateThumbnailFormat('webp'), 'webp');
 });
