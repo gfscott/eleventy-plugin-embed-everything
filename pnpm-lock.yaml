@@ -21,6 +21,9 @@ importers:
       nyc:
         specifier: ^15.1.0
         version: 15.1.0
+      permute-arrays:
+        specifier: workspace:^
+        version: link:utils/permute-arrays
       turbo:
         specifier: ^1.12.5
         version: 1.12.5
@@ -112,6 +115,8 @@ importers:
       string-replace-async:
         specifier: ^3.0.2
         version: 3.0.2
+
+  utils/permute-arrays: {}
 
 packages:
 

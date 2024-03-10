@@ -30,6 +30,7 @@
     "@svitejs/changesets-changelog-github-compact": "^1.1.0",
     "ava": "^6.1.2",
     "nyc": "^15.1.0",
+    "permute-arrays": "workspace:^",
     "turbo": "^1.12.5"
   },
   "dependencies": {

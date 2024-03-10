@@ -1,0 +1,22 @@
+{
+  "name": "permute-arrays",
+  "version": "0.1.0",
+  "description": "A utility to generate all possible permutations of an array of arrays.",
+  "main": "index.js",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "npx ava",
+    "coverage": "nyc --reporter=lcov ava"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [],
+  "author": {
+    "name": "Graham F. Scott",
+    "email": "gfscott@gmail.com",
+    "url": "https://gfscott.com"
+  },
+  "license": "MIT"
+}
