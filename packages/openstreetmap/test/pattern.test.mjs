@@ -10,7 +10,7 @@ const suffixes = [
   '/search?whereami=1&query=52.147%2C104.106#map=8/46.195/-81.362'
 ];
 // Use set to remove duplicates; slice to remove URLs without paths
-const validUrls = new Set(permuteArrays(base, prefixes, suffixes).slice(8))
+const validUrls = new Set(permuteArrays(base, prefixes, suffixes).slice(prefixes.length))
 
 for (let url of validUrls) {
   test(`${url} is a valid URL`, t => {
