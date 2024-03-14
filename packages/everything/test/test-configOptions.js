@@ -4,6 +4,7 @@ const config = require("../lib/configOptions.js");
 const defaultOptions = {
 	activePlugins: [
 		"instagram",
+		"openstreetmap",
 		"spotify",
 		"ted",
 		"tiktok",
@@ -14,6 +15,7 @@ const defaultOptions = {
 	],
 	activePluginOptions: {
 		instagram: {options: {}},
+		openstreetmap: {options: {}},
 		spotify: {options: {}},
 		ted: {options: {}},
 		tiktok: {options: {}},
@@ -62,7 +64,7 @@ test(
 			add: ["soundcloud"],
 		});
 		let expected = clone(defaultOptions);
-		expected.activePlugins.splice(1, 0, "soundcloud");
+		expected.activePlugins = [...expected.activePlugins, "soundcloud"].sort();
 		expected.activePluginOptions.soundcloud = {options: {}};
 		t.deepEqual(output, expected);
 	},
@@ -222,7 +224,7 @@ test(
 			soundcloud: {options: {small: true}},
 		});
 		let expected = clone(defaultOptions);
-		expected.activePlugins.splice(1, 0, "soundcloud");
+		expected.activePlugins = [...expected.activePlugins, "soundcloud"].sort();
 		expected.activePluginOptions.soundcloud = {options: {small: true}};
 		t.deepEqual(output, expected);
 	},
