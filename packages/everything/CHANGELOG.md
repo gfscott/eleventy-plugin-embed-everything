@@ -1,5 +1,14 @@
 # eleventy-plugin-embed-everything
 
+## 1.18.3
+
+### Patch Changes
+
+- Updated dependencies [[`629863458e440dc8672cb2892ad9085469a749ee`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/629863458e440dc8672cb2892ad9085469a749ee), [`c0389e47befc11ffc87a4fc09f7ec1a59bdbd552`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/c0389e47befc11ffc87a4fc09f7ec1a59bdbd552)]:
+  - eleventy-plugin-embed-soundcloud@1.2.8
+  - eleventy-plugin-embed-twitter@1.4.1
+  - eleventy-plugin-youtube-embed@1.11.0
+
 ## 1.18.2
 
 ### Patch Changes
