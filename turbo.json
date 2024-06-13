@@ -1,18 +1,25 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
+  "tasks": {
     "build": {
-      "outputs": ["_site/**"]
+      "outputs": [
+        "_site/**"
+      ]
     },
     "dev": {
-      "outputs": ["_site/**"],
+      "outputs": [
+        "_site/**"
+      ],
       "cache": false
     },
     "test": {
       "outputs": []
     },
     "coverage": {
-      "outputs": ["coverage/**", ".nyc_output/**"]
+      "outputs": [
+        "coverage/**",
+        ".nyc_output/**"
+      ]
     }
   }
 }
