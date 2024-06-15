@@ -62,6 +62,7 @@ Currently, the plugin supports the following embed services (listed alphabetical
 
 **On by default:**
 - Instagram
+- OpenStreetMap
 - Spotify
 - TikTok
 - Twitch
@@ -83,7 +84,7 @@ The plugin supports a number of frequently used services by default, and they ha
 
  You can configure which services you want active by passing an options object to the `addPlugin` function:
 
-**Example (✨ New in 1.11.0):** configure the plugin to embed all default services _plus_ SoundCloud
+**Example:** configure the plugin to embed all default services _plus_ SoundCloud
 
 ```javascript
 eleventyConfig.addPlugin(embedEverything, {
@@ -129,10 +130,11 @@ For more about each [supported service](#supported-services), consult this table
 | Service | Package | Repository | Options |
 | ------- | ------- | ---------- | ------- |
 | Instagram | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-instagram) | [GitHub](/packages/instagram) | [Options](/packages/instagram/lib/pluginDefaults.js) |
+| OpenStreetMap | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-openstreetmap) | [GitHub](/packages/openstreetmap) | [Options](/packages/openstreetmap/lib/defaults.js) |
 | SoundCloud | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-soundcloud) | [GitHub](/packages/soundcloud) | [Options](/packages/soundcloud/lib/pluginDefaults.js) |
-| Spotify | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-spotify) | [GitHub](/packages/spotify) | [Options](/packages/spotify/lib/pluginDefaults.js) |
+| Spotify | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-spotify) | [GitHub](/packages/spotify) | [Options](/packages/spotify/lib/defaults.js) |
 | TikTok | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-tiktok) | [GitHub](/packages/tiktok) | [Options](/packages/tiktok/lib/pluginDefaults.js) |
 | Twitch | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitch) | [GitHub](/packages/twitch) | [Options](/packages/twitch/lib/pluginDefaults.js) |
 | Twitter | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitter) | [GitHub](/packages/twitter) | [Options](/packages/twitter/lib/pluginDefaults.js) |
-| Vimeo | [npm](https://www.npmjs.com/package/eleventy-plugin-vimeo-embed) | [GitHub](/packages/vimeo) | [Options](/packages/vimeo/lib/pluginDefaults.js) |
-| YouTube | [npm](https://www.npmjs.com/package/eleventy-plugin-youtube-embed) | [GitHub](/packages/youtube) | [Options](/packages/youtube/lib/pluginDefaults.js) |
+| Vimeo | [npm](https://www.npmjs.com/package/eleventy-plugin-vimeo-embed) | [GitHub](/packages/vimeo) | [Options](/packages/vimeo/lib/defaults.js) |
+| YouTube | [npm](https://www.npmjs.com/package/eleventy-plugin-youtube-embed) | [GitHub](/packages/youtube) | [Options](/packages/youtube/lib/defaults.js) |
