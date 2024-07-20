@@ -5,7 +5,7 @@
  * all possible valid URL permutations.
  */
 
- const permute = require('./permuteArrays.js');
+ import permute from "permute-arrays";
 
  /**
   * Core URL structures accepted by the plugin
@@ -40,12 +40,10 @@ const validUrls_noparams = [
  const goodUrls_params = permute(validUrls_params, validPrefixes, validSuffixes_params);
  const goodUrls_noparams = permute(validUrls_noparams, validPrefixes, validSuffixes_noparams);
  
-const goodUrls = [].concat(goodUrls_params, goodUrls_noparams)
-
-module.exports.valid = goodUrls;
+export const valid = [...goodUrls_params, ...goodUrls_noparams]
 
 
-module.exports.invalid = [
+export const invalid = [
   // ID too short
   'https://www.youtube.com/watch?v=hIs5St',
   // Invalid protocol
