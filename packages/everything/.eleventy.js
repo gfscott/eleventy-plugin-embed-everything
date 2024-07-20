@@ -1,5 +1,6 @@
 // Needs to be in global context to be accessed by module
 global.instagram = require("eleventy-plugin-embed-instagram");
+global.openstreetmap = require("eleventy-plugin-embed-openstreetmap");
 global.soundcloud = require("eleventy-plugin-embed-soundcloud");
 global.spotify = require("eleventy-plugin-embed-spotify");
 global.ted = require("eleventy-plugin-embed-ted");

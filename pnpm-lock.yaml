@@ -45,6 +45,9 @@ importers:
       eleventy-plugin-embed-instagram:
         specifier: workspace:^
         version: link:../instagram
+      eleventy-plugin-embed-openstreetmap:
+        specifier: workspace:^
+        version: link:../openstreetmap
       eleventy-plugin-embed-soundcloud:
         specifier: workspace:^
         version: link:../soundcloud
@@ -71,6 +74,12 @@ importers:
         version: link:../youtube
 
   packages/instagram: {}
+
+  packages/openstreetmap:
+    dependencies:
+      deepmerge:
+        specifier: ^4.3.1
+        version: 4.3.1
 
   packages/soundcloud:
     dependencies:

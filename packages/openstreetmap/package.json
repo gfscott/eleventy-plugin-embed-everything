@@ -1,0 +1,35 @@
+{
+  "name": "eleventy-plugin-embed-openstreetmap",
+  "version": "0.1.0",
+  "description": "An Eleventy plugin to automatically embed OpenStreetMap maps, using just their URLs.",
+  "keywords": [
+    "11ty",
+    "eleventy",
+    "eleventy-plugin",
+    "openstreetmap"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "npx ava",
+    "coverage": "nyc --reporter=lcov ava"
+  },
+  "files": [
+    "index.js",
+    "lib/**"
+  ],
+  "author": {
+    "name": "Graham F. Scott",
+    "email": "gfscott@gmail.com",
+    "url": "https://gfscott.com"
+  },
+  "license": "MIT",
+  "homepage": "https://gfscott.com/embed-everything/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gfscott/eleventy-plugin-embed-everything.git"
+  },
+  "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues",
+  "dependencies": {
+    "deepmerge": "^4.3.1"
+  }
+}
