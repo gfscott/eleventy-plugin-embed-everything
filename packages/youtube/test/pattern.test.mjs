@@ -1,7 +1,7 @@
-const test = require('ava');
-const {valid, invalid} = require('./_inc/strings.js');
-const {invalid: invalidUrls} = require('./_inc/urls.js');
-const pattern = require('../lib/pattern.js');
+import test from 'ava';
+import { valid, invalid } from './_strings.mjs';
+import { invalid as invalidUrls } from './_urls.mjs';
+import pattern from '../lib/pattern.js';
 
 for (let [index, str] of valid.entries()) {
   test(`Valid-${index}: (${str})`, async t => {

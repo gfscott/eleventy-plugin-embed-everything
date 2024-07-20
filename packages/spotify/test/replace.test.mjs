@@ -1,8 +1,8 @@
-const test = require('ava');
-const defaults = require('../lib/defaults.js');
-const pattern = require('../lib/pattern.js');
-const replace = require('../lib/replace.js');
-const {album, artist, playlist, userPlaylist, track, episode, show} = require('./_validUrls.js');
+import test from 'ava';
+import defaults from '../lib/defaults.js';
+import pattern from '../lib/pattern.js';
+import replace from '../lib/replace.js';
+import { album, artist, playlist, userPlaylist, track, episode, show } from './_validUrls.mjs';
 
 const allStrings = {
   album: paragraphs(album),

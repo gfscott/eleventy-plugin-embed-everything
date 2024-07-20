@@ -17,11 +17,6 @@
     "test": "npx ava",
     "coverage": "nyc --reporter=lcov ava"
   },
-  "ava": {
-    "files": [
-      "!test/_inc"
-    ]
-  },
   "author": {
     "name": "Graham F. Scott",
     "email": "gfscott@gmail.com",

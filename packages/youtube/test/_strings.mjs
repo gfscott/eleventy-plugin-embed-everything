@@ -1,6 +1,6 @@
-const {valid, invalid} = require('./urls.js');
+import {valid as validUrls, invalid as invalidUrls} from './_urls.mjs';
 
-module.exports.valid = valid.map(u => {
+export const valid = validUrls.map(u => {
   return [
     // Default
     `<p>${u}</p>`,
@@ -22,7 +22,7 @@ module.exports.valid = valid.map(u => {
 }).flat();
 
 // URL is valid, but the string is not. These should be rejected.
-validUrl_invalidString = valid.map(u => {
+const validUrl_invalidString = validUrls.map(u => {
   return [
     // Prepended text
     `<p>Foo ${u}</p>`,
@@ -50,7 +50,7 @@ validUrl_invalidString = valid.map(u => {
 }).flat();
 
 // String is valid, but the URL is not. These should be rejected.
-invalidUrl_validString = invalid.map(u => {
+const invalidUrl_validString = invalidUrls.map(u => {
   return [
     // Default
     `<p>${u}</p>`,
@@ -72,4 +72,4 @@ invalidUrl_validString = invalid.map(u => {
 }).flat();
 
 // Combine the invalid strings before export
-module.exports.invalid = [].concat(validUrl_invalidString, invalidUrl_validString);
+export const invalid = [...validUrl_invalidString, ...invalidUrl_validString];

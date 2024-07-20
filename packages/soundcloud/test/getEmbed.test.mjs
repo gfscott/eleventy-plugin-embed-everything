@@ -1,6 +1,6 @@
-const test = require('ava');
-const getEmbed = require('../lib/getEmbed.js');
-const pluginDefaults = require('../lib/pluginDefaults.js');
+import test from 'ava';
+import getEmbed from '../lib/getEmbed.js';
+import pluginDefaults from '../lib/pluginDefaults.js';
 
 const artistUrl = '<p>https://soundcloud.com/earlxsweatshirtmusic</p>';
 const trackUrl = '<p>https://soundcloud.com/earlxsweatshirtmusic/tisktisk-cookies</p>';

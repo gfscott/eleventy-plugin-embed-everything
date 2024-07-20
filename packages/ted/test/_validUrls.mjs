@@ -5,7 +5,7 @@
  * all possible valid URL permutations.
  */
 
-const permute = require('./_permuteArrays.js');
+import permute from 'permute-arrays';
 
 /**
  * Core URL structures accepted by the plugin
@@ -31,6 +31,4 @@ const validSuffixes = ['/', '/c', '?', '%3F', '?foo', '%3Ffoo', '?foo=bar', '%3F
 /**
  * Cumulative lists of all URL permutations.
  */
-const goodUrls = permute(validUrls, validPrefixes, validSuffixes);
-
-module.exports = goodUrls;
+export default permute(validUrls, validPrefixes, validSuffixes);
