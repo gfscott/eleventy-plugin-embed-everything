@@ -1,6 +1,6 @@
 const test = require("ava");
 const extractMatch = require("../lib/extractMatch.js");
-const validStrings = require("./inc/validStrings.js");
+const validStrings = require("./_validStrings.js");
 
 /**
  * Expected object when extracting from valid strings

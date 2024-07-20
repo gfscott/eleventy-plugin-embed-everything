@@ -1,7 +1,7 @@
 const test = require("ava");
 const patternPresent = require("../lib/spotPattern.js");
-const validStrings = require("./inc/validStrings.js");
-// const invalidStrings = require("./inc/invalidStrings.js");
+const validStrings = require("./_validStrings.js");
+// const invalidStrings = require("./_invalidStrings.js");
 
 /**
  * TEST: Recognizes valid strings wrapped in paragraph tags

@@ -3,7 +3,7 @@ const merge = require("deepmerge");
 const extractMatch = require("../lib/extractMatch.js");
 const buildEmbed = require("../lib/buildEmbed.js");
 const pluginDefaults = require("../lib/pluginDefaults.js");
-const validStrings = require("./inc/validStrings.js");
+const validStrings = require("./_validStrings.js");
 
 /**
  * TEST: Build script returns expected HTML string, given valid input and default options
