@@ -5,7 +5,7 @@
  * all possible valid URL permutations.
  */
 
-const permute = require('./_permuteArrays.js');
+import permute from 'permute-arrays';
 
 /**
  * Core URL structures accepted by the plugin
@@ -35,12 +35,12 @@ const validSuffixes = ['/', '?', '%3F', '?foo', '%3Ffoo', '?foo=bar', '%3Ffoo%3D
 /**
  * Cumulative lists of all URL permutations.
  */
-module.exports.album = permute(validUrls[0], validPrefixes, validSuffixes);
-module.exports.artist = permute(validUrls[1], validPrefixes, validSuffixes);
-module.exports.playlist = permute(validUrls[2], validPrefixes, validSuffixes);
-module.exports.userPlaylist = permute(validUrls[3], validPrefixes, validSuffixes);
-module.exports.track = permute(validUrls[4], validPrefixes, validSuffixes);
-module.exports.episode = permute(validUrls[5], validPrefixes, validSuffixes);
-module.exports.show = permute(validUrls[6], validPrefixes, validSuffixes);
-module.exports.all = permute(validUrls, validPrefixes, validSuffixes);
+export const album = permute(validUrls[0], validPrefixes, validSuffixes);
+export const artist = permute(validUrls[1], validPrefixes, validSuffixes);
+export const playlist = permute(validUrls[2], validPrefixes, validSuffixes);
+export const userPlaylist = permute(validUrls[3], validPrefixes, validSuffixes);
+export const track = permute(validUrls[4], validPrefixes, validSuffixes);
+export const episode = permute(validUrls[5], validPrefixes, validSuffixes);
+export const show = permute(validUrls[6], validPrefixes, validSuffixes);
+export const all = permute(validUrls, validPrefixes, validSuffixes);
 
