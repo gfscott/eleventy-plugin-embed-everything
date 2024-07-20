@@ -1,7 +1,7 @@
-const test = require('ava');
-const spotPattern = require('../lib/spotPattern.js');
-const validUrls = require('./inc/validUrls.js');
-const invalidUrls = require('./inc/invalidUrls.js');
+import test from 'ava';
+import spotPattern from '../lib/spotPattern.js';
+import validUrls from './_validUrls.mjs';
+import invalidUrls from './_invalidUrls.mjs';
 
 /**
  * =====================================================

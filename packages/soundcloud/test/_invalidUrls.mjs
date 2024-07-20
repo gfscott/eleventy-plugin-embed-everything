@@ -5,7 +5,7 @@
  * invalid strings with text prepended or appended.
  */
 
-const validUrls = require('./validUrls.js');
+import validUrls from './_validUrls.mjs';
 
 const prependedText = validUrls.map(url => {
   return `Foo ${url}`;
@@ -14,6 +14,6 @@ const appendedText = validUrls.map(url => {
   return `${url} Foo`;
 });
 
-const invalidUrls = prependedText.concat(appendedText);
+const bad = prependedText.concat(appendedText);
 
-module.exports = invalidUrls;
+export default bad;

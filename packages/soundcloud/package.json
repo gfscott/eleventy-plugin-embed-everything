@@ -17,11 +17,6 @@
     ".eleventy.js",
     "lib/**"
   ],
-  "ava": {
-    "files": [
-      "!test/inc"
-    ]
-  },
   "author": {
     "name": "Graham F. Scott",
     "email": "gfscott@gmail.com",
