@@ -1,6 +1,6 @@
-const test = require('ava');
-const pattern = require('../lib/pattern.js');
-const validUrls = require('./_validUrls.js');
+import test from 'ava';
+import pattern from '../lib/pattern.js';
+import validUrls from './_validUrls.mjs';
 
 for (let [index, url] of validUrls.entries()) {
   
