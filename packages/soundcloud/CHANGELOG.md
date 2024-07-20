@@ -1,5 +1,11 @@
 # eleventy-plugin-embed-soundcloud
 
+## 1.2.8
+
+### Patch Changes
+
+- Bump @11ty/eleventy-fetch to v4.0.1 ([#245](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/245))
+
 ## 1.2.7
 
 ### Patch Changes
