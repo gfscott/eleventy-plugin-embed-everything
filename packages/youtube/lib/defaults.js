@@ -63,12 +63,12 @@ const liteDefaults = {
   css: {
     enabled: true,
     inline: false,
-    path: 'https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.css'
+    path: 'https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.css'
   },
   js: {
     enabled: true,
     inline: false,
-    path: 'https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.2/src/lite-yt-embed.min.js'
+    path: 'https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.js'
   },
   jsApi: false,
   responsive: false,
