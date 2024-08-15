@@ -1,5 +1,11 @@
 # eleventy-plugin-embed-everything-demo
 
+## 1.0.3
+
+### Patch Changes
+
+- Add OpenStreetMap support ([#250](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/250))
+
 ## 1.0.2
 
 ### Patch Changes

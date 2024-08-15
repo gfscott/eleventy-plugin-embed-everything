@@ -1,5 +1,17 @@
 # eleventy-plugin-youtube-embed
 
+## 1.11.0
+
+### Minor Changes
+
+- Add lite-mode options for thumbnail format and YouTube JS API access ([#248](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/248))
+
+### Patch Changes
+
+- Bump @11ty/eleventy-fetch to v4.0.1 ([#245](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/245))
+
+- Bump lite-youtube-embed dependency ([#283](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/283))
+
 ## 1.10.2
 
 ### Patch Changes
