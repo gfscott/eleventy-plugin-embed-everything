@@ -35,6 +35,6 @@
     "turbo": "^2.1.2"
   },
   "dependencies": {
-    "@changesets/cli": "^2.27.7"
+    "@changesets/cli": "^2.27.8"
   }
 }
