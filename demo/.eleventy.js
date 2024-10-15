@@ -1,6 +1,6 @@
-const embeds = require('eleventy-plugin-embed-everything')
+import embeds from 'eleventy-plugin-embed-everything';
 
-module.exports = function(eleventyConfig) {
+export default function(eleventyConfig) {
   // Configure global layout template
   eleventyConfig.addGlobalData("layout", "layout.njk");
   // Also watch package folders

@@ -3,6 +3,7 @@
   "version": "1.0.3",
   "description": "Eleventy site to demonstrate and test eleventy-plugin-embed-everything",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "npx @11ty/eleventy",
     "dev": "npx @11ty/eleventy --serve"
