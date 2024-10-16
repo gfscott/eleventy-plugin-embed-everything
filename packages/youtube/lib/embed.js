@@ -3,12 +3,6 @@ const { thumbnails } = require('./defaults.js');
 const downloadAndCache = require('@11ty/eleventy-fetch');
 
 /**
- * @typedef {Object} VideoObject
- * @property {string} id - The YouTube video ID.
- * @property {string} url - The YouTube URL.
- */ 
-
-/**
  * Create the embed code for a YouTube video
  * @param {RegExpMatchArray} match - Array of matches from the RegExp
  * @param {PluginOptions} config - Object of user-configurable options 
@@ -29,38 +23,43 @@ module.exports = function(match, config, index) {
   // The regex omits the protocol so we can add it back for more consistency and predictability.
   const url = `https://${__url}`;
 
-  return config.lite ? liteEmbed({id, url}, config, index) : defaultEmbed({id, url}, config);
+  if ( config.lite ) return liteEmbed({id, url}, config, index);
+
+  return defaultEmbed(url, config);
+  
 }
 
 
 /**
  * Default embed code generator
- * @param {VideoObject} video - Video ID and URL
+ * @param {URL} url - YouTube URL
  * @param {PluginOptions} options - User-configured options
  * @returns 
  */
-async function defaultEmbed({id, url}, options){
-  options = merge(options, getInputUrlParams(url))
-  const params = stringifyUrlParams(options);
-  const domain = options.noCookie ? "youtube-nocookie" : "youtube"
-  const title = options.titleOptions.download ? await getYouTubeTitleViaOembed(id, options) : options.title;
+async function defaultEmbed(url, options){
+  // 11ty or markdown-it or *something* is escaping URL params. Honestly
+  // not sure which, but this monkeypatches it if it happens.
+  url = url.replace(/&amp;/g, "&");
 
-  let out = `<div id="${id}" class="${options.embedClass}" `;
+  options = merge(options, getInputUrlParams(url))
+  const {id, playlist} = __getIdsFromUrl(url);
+  const title = await __constructTitle(id, options);
+  const embedSrc = __constructEmbedSrc(url, options);
+
+  let out = `<div id="${id ?? playlist}" class="${options.embedClass}" `;
   // intrinsic aspect ratio; currently hard-coded to 16:9
   // TODO: make configurable somehow
   out += 'style="position:relative;width:100%;padding-top: 56.25%;">';
   out +=
     '<iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;"';
   out += ` width="100%" height="100%" frameborder="0" title="${title}"`;
-  out += ` src="https://www.${domain}.com/embed/${id}${ params ? `?${params}` : '' }"`;
+  out += ` src="${embedSrc}"`;
   out += ` allow="${options.allowAttrs}"`;
   out += `${options.allowFullscreen ? ' allowfullscreen' : ''}`;
   out += `${options.lazy ? ' loading="lazy"' : ''}`;
   out += '></iframe></div>';
   return out;
 }
-
-
 /**
  * Lite embed code generator
  * @param {VideoObject} video - Object with video ID and URL
@@ -138,7 +137,7 @@ function getInputUrlParams(url) {
 /**
  * Stringify plugin options that get passed as URL params
  * @param {PluginOptions} options - Object with user-configurable options
- * @returns {String | null} 
+ * @returns {string} - URL params string
  */
 function stringifyUrlParams(options){
   let params = []
@@ -149,9 +148,11 @@ function stringifyUrlParams(options){
   if(options.modestBranding) params.push('modestbranding=1');
   if(options.startTime) params.push(`start=${options.startTime}`);
 
-  if (params.length === 0) return null;
-  
-  return params.join("&amp;");
+  if (params.length === 0) return '';
+  // In lite mode, params are passed as attribute values,
+  // so you need to leave out the question mark
+  if (options.lite) return params.join("&amp;");
+  return '?' + params.join("&amp;");
 }
 
 
@@ -187,10 +188,11 @@ function validateThumbnailSize(inputString = thumbnails.defaultSize) {
 
 /**
  * Get the video title from YouTube's oembed API
+ * @private
  * @param {string} id - YouTube video ID
  * @returns {string} - Video title, with fallback to plugin default
  */
-async function getYouTubeTitleViaOembed(id, options) {
+async function __getYouTubeTitleViaOembed(id, options) {
   const cacheDuration = options.titleOptions.cacheDuration;
   const url = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`;
   try {
@@ -219,6 +221,106 @@ function validateThumbnailFormat(format) {
   return format;
 }
 
+/**
+ * Construct the base URL for YouTube embeds
+ * @private
+ * @param {PluginOptions} opt - User-configured options 
+ * @returns {string} Base URL for YouTube embeds
+ */
+function __constructEmbedUrlBase(opt) {
+  const domain = opt.noCookie ? "youtube-nocookie" : "youtube";
+  return `https://www.${domain}.com/`;
+}
+
+/**
+ * Construct embed title
+ * @private
+ * @param {string} id - YouTube video ID
+ * @param {PluginOptions} opt - User-configured options
+ * @returns {string} - Video title, either the default or fetched via oEmbed
+ */
+async function __constructTitle(id, opt) {
+  if (opt.titleOptions.download) {
+    const oEmbedTitle = await __getYouTubeTitleViaOembed(id, opt);
+    return oEmbedTitle;
+  } else {
+    return opt.title;
+  }
+}
+
+/**
+ * Get video and playlist IDs from a YouTube URL
+ * @private
+ * @param {URL} url YouTube URL
+ * @returns {VideoIds} Object with video and playlist IDs
+ */
+function __getIdsFromUrl(url) {
+  // Check whether it's a youtu.be URL
+  const dotBe = /youtu\.be\/([a-zA-Z0-9_-]{11})/;
+  const dotBeID = url.match(dotBe);
+
+  // URL object params
+  const params = new URL(url).searchParams;
+  const v = params.get('v');
+  const list = params.get('list');
+  const index = params.get('index');
+
+  return {
+    id: dotBeID ? dotBeID[1] : v,
+    playlist: list,
+    index: index
+  }
+}
+
+/**
+ * 
+ * @param {*} url 
+ * @param {*} opt 
+ * @returns 
+ */
+function __constructEmbedSrc(url, opt) {
+  const embedUrl = new URL(__constructEmbedUrlBase(opt));
+  const {id, playlist} = __getIdsFromUrl(url);
+
+  // Playlist embeds include a "videoseries" pathname, while
+  // single video embeds use the video ID as the pathname.
+  embedUrl.pathname = playlist && !id ? 'embed/videoseries' : `embed/${id}`;
+
+  const params = {
+    list: playlist,
+    autoplay: opt.allowAutoplay ? 1 : 0,
+    rel: opt.recommendSelfOnly ? 1 : 0,
+    modestbranding: opt.modestBranding ? 1 : 0,
+    start: opt.startTime || 0
+  };
+
+  for (const [key, value] of Object.entries(params)) {
+    if (value) {
+      embedUrl.searchParams.append(key, value);
+    }
+  }
+
+  return embedUrl.toString();
+}
+
+
+// These are only exported for testing purposes
 module.exports.validateThumbnailSize = validateThumbnailSize;
 module.exports.validateThumbnailFormat = validateThumbnailFormat;
-module.exports.getYouTubeTitleViaOembed = getYouTubeTitleViaOembed;
+module.exports.getYouTubeTitleViaOembed = __getYouTubeTitleViaOembed;
+
+/**
+ * @typedef {Object} VideoObject
+ * @property {string} id - The YouTube video ID.
+ * @property {URL} url - The YouTube URL.
+ */
+
+/**
+ * @typedef {Object} VideoIds
+ * @property {string | null} id - The YouTube video ID.
+ * @property {string | null} playlist - The YouTube playlist ID.
+ */
+
+/**
+ * @typedef {import('./defaults.js').PluginOptions} PluginOptions
+ */
