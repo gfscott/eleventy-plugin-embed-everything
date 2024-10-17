@@ -20,11 +20,16 @@ module.exports = function(match, config, index) {
     ,       // Whitespace
   ] = match;
 
-  // The regex omits the protocol so we can add it back for more consistency and predictability.
-  const url = `https://${__url}`;
+  // 1. The regex deliberately doesn't capture the protocol, so that 
+  //    we can manually guarantee it will be present; otherwise an 
+  //    invalid URL will error when passed to the URL constructor.
+  // 2. The URL constructor doesn't correct escaped ampersands, so we
+  //    do that ourselves.
+  const url = __removeEscapedAmpersands(`https://${__url}`);
 
-  if ( config.lite ) return liteEmbed({id, url}, config, index);
-
+  if ( config.lite ) {
+    return liteEmbed({id, url}, config, index);
+  }
   return defaultEmbed(url, config);
   
 }
@@ -37,10 +42,6 @@ module.exports = function(match, config, index) {
  * @returns 
  */
 async function defaultEmbed(url, options){
-  // 11ty or markdown-it or *something* is escaping URL params. Honestly
-  // not sure which, but this monkeypatches it if it happens.
-  url = url.replace(/&amp;/g, "&");
-
   options = merge(options, getInputUrlParams(url))
   const {id, playlist} = __getIdsFromUrl(url);
   const title = await __constructTitle(id, options);
@@ -273,10 +274,21 @@ function __getIdsFromUrl(url) {
 }
 
 /**
- * 
- * @param {*} url 
- * @param {*} opt 
- * @returns 
+ * Remove escaped ampersands from a URL
+ * @private
+ * @param {URL} url URL that might contain escaped ampersands
+ * @returns {URL} URL with escaped ampersands converted to regular ones
+ */
+function __removeEscapedAmpersands(url) {
+  return url.replace(/&amp;/g, "&");
+}
+
+/**
+ * Construct the embed URL for a YouTube video
+ * @private
+ * @param {URL} url The URL of the YouTube video
+ * @param {PluginOptions} opt The user-configured options
+ * @returns {URL} The URL of the YouTube video embed
  */
 function __constructEmbedSrc(url, opt) {
   const embedUrl = new URL(__constructEmbedUrlBase(opt));
@@ -291,7 +303,7 @@ function __constructEmbedSrc(url, opt) {
     autoplay: opt.allowAutoplay ? 1 : 0,
     rel: opt.recommendSelfOnly ? 1 : 0,
     modestbranding: opt.modestBranding ? 1 : 0,
-    start: opt.startTime || 0
+    start: opt.startTime || 0,
   };
 
   for (const [key, value] of Object.entries(params)) {
