@@ -42,8 +42,7 @@ module.exports = function(match, config, index) {
  * @returns 
  */
 async function defaultEmbed(url, options){
-  options = merge(options, getInputUrlParams(url))
-  const {id, playlist} = __getIdsFromUrl(url);
+  const {v: id, list: playlist} = __getParamsFromUrl(url);
   const title = await __constructTitle(id, options);
   const embedSrc = __constructEmbedSrc(url, options);
 
@@ -210,7 +209,6 @@ async function __getYouTubeTitleViaOembed(id, options) {
 
 /**
  * Validates the thumbnail format and returns the format if it is valid, otherwise returns the default format.
- *
  * @param {string} format - The thumbnail format to validate.
  * @param {object} options - The options object containing the valid thumbnail formats.
  * @returns {string} - The validated thumbnail format.
@@ -253,24 +251,18 @@ async function __constructTitle(id, opt) {
  * Get video and playlist IDs from a YouTube URL
  * @private
  * @param {URL} url YouTube URL
- * @returns {VideoIds} Object with video and playlist IDs
+ * @returns {Object} Object containing all URL parameters
+ * @todo Handle with a single URL constructor, drop the regex?
  */
-function __getIdsFromUrl(url) {
+function __getParamsFromUrl(url) {  
   // Check whether it's a youtu.be URL
-  const dotBe = /youtu\.be\/([a-zA-Z0-9_-]{11})/;
-  const dotBeID = url.match(dotBe);
+  const dotBeID = url.match(/youtu\.be\/([a-zA-Z0-9_-]{11})/);
 
-  // URL object params
   const params = new URL(url).searchParams;
-  const v = params.get('v');
-  const list = params.get('list');
-  const index = params.get('index');
-
-  return {
-    id: dotBeID ? dotBeID[1] : v,
-    playlist: list,
-    index: index
-  }
+  // If it's a youtu.be URL, the video ID is in the pathname
+  // Add it as a search param so we can return all params together
+  if (dotBeID) params.set('v', dotBeID[1]);
+  return Object.fromEntries(params.entries());
 }
 
 /**
@@ -292,18 +284,18 @@ function __removeEscapedAmpersands(url) {
  */
 function __constructEmbedSrc(url, opt) {
   const embedUrl = new URL(__constructEmbedUrlBase(opt));
-  const {id, playlist} = __getIdsFromUrl(url);
+  const {v: id, list: playlist, start, t} = __getParamsFromUrl(url);
 
   // Playlist embeds include a "videoseries" pathname, while
   // single video embeds use the video ID as the pathname.
-  embedUrl.pathname = playlist && !id ? 'embed/videoseries' : `embed/${id}`;
+  embedUrl.pathname = (playlist && !id) ? 'embed/videoseries' : `embed/${id}`;
 
   const params = {
     list: playlist,
     autoplay: opt.allowAutoplay ? 1 : 0,
     rel: opt.recommendSelfOnly ? 1 : 0,
     modestbranding: opt.modestBranding ? 1 : 0,
-    start: opt.startTime || 0,
+    start: parseInt(opt.startTime ?? t ?? start),
   };
 
   for (const [key, value] of Object.entries(params)) {
@@ -314,7 +306,6 @@ function __constructEmbedSrc(url, opt) {
 
   return embedUrl.toString();
 }
-
 
 // These are only exported for testing purposes
 module.exports.validateThumbnailSize = validateThumbnailSize;
