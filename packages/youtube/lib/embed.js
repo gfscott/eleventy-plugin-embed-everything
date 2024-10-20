@@ -27,11 +27,9 @@ module.exports = function(match, config, index) {
   //    do that ourselves.
   const url = __removeEscapedAmpersands(`https://${__url}`);
 
-  if ( config.lite ) {
-    return liteEmbed({id, url}, config, index);
-  }
-  return defaultEmbed(url, config);
-  
+  return config.lite
+    ? liteEmbed(url, config, index)
+    : defaultEmbed(url, config);  
 }
 
 
@@ -67,9 +65,12 @@ async function defaultEmbed(url, options){
  * @param {number} index - Index of the current match in the input string
  * @returns 
  */
-function liteEmbed({id, url}, options, index) {
-  // Sort out all the various lite embed options
-  options = merge(options, getInputUrlParams(url))
+function liteEmbed(url, options, index) {
+  const {v: id, list: playlist, start, t} = __getParamsFromUrl(url);
+
+  // override start time if it's set in the URL
+  if (start || t) options.startTime = parseInt(start ?? t);
+
   const liteOpt = liteConfig(options);
         liteOpt.thumbnailQuality = validateThumbnailSize(liteOpt.thumbnailQuality);
         liteOpt.thumbnailFormat = validateThumbnailFormat(liteOpt.thumbnailFormat);
@@ -78,7 +79,7 @@ function liteEmbed({id, url}, options, index) {
   const thumbnailUrl = () => {
     const fileTypePath = liteOpt.thumbnailFormat === 'webp' ? 'vi_webp' : 'vi';
     const fileName = `${liteOpt.thumbnailQuality}.${liteOpt.thumbnailFormat}`;
-    return `https://i.ytimg.com/${fileTypePath}/${id}/${fileName}`;
+    return `https://i.ytimg.com/${fileTypePath}/${id ?? playlist}/${fileName}`;
   }
 
   // Access the file system to read the lite embed CSS and JS
@@ -101,8 +102,8 @@ function liteEmbed({id, url}, options, index) {
   }
   out += index === 0 && liteOpt.responsive ? `<style>.${options.embedClass} lite-youtube {max-width:100%}</style>\n` : '';
   
-  out += `<div id="${id}" class="${options.embedClass}">`;
-  out += `<lite-youtube videoid="${id}" style="background-image: url('${thumbnailUrl()}');"${params ? ` params="${params}"` : ''}${liteOpt.jsApi ? ' js-api' : ''}>`;
+  out += `<div id="${id ?? playlist}" class="${options.embedClass}">`;
+  out += `<lite-youtube videoid="${id ?? playlist}" style="background-image: url('${thumbnailUrl()}');"${params ? ` params="${params}"` : ''}${liteOpt.jsApi ? ' js-api' : ''}>`;
   out += '<div class="lty-playbtn"></div></lite-youtube></div>';
   return out;
 }
@@ -250,7 +251,7 @@ async function __constructTitle(id, opt) {
 /**
  * Get video and playlist IDs from a YouTube URL
  * @private
- * @param {URL} url YouTube URL
+ * @param {string} url YouTube URL
  * @returns {Object} Object containing all URL parameters
  * @todo Handle with a single URL constructor, drop the regex?
  */
