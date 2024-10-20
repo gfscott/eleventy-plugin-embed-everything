@@ -1,13 +1,18 @@
 const merge = require('deepmerge');
-const { thumbnails } = require('./defaults.js');
 const downloadAndCache = require('@11ty/eleventy-fetch');
+const { thumbnails, liteDefaults } = require('./defaults.js');
+/**
+ * @typedef {import('./defaults.js').PluginOptions} PluginOptions
+ * @typedef {import('./defaults.js').LiteDefaults} LiteDefaults
+ */
+
 
 /**
  * Create the embed code for a YouTube video
  * @param {RegExpMatchArray} match - Array of matches from the RegExp
  * @param {PluginOptions} config - Object of user-configurable options 
  * @param {number} index - Index of the current match in the input string
- * @returns {string}
+ * @returns {string} - The embed code for the YouTube video
  */
 module.exports = function(match, config, index) {
   [
@@ -35,7 +40,7 @@ module.exports = function(match, config, index) {
 
 /**
  * Default embed code generator
- * @param {URL} url - YouTube URL
+ * @param {string} url - YouTube URL
  * @param {PluginOptions} options - User-configured options
  * @returns 
  */
@@ -60,7 +65,7 @@ async function defaultEmbed(url, options){
 }
 /**
  * Lite embed code generator
- * @param {VideoObject} video - Object with video ID and URL
+ * @param {string} url - Object with video ID and URL
  * @param {PluginOptions} options - Object with user-configurable options
  * @param {number} index - Index of the current match in the input string
  * @returns 
@@ -129,19 +134,16 @@ function stringifyUrlParams(options){
   return '?' + params.join("&amp;");
 }
 
-
 /**
  * Create the lite embed options object
- * @param {PluginOptions} options 
- * @returns Object with user-configured lite embed options
+ * @param {PluginOptions} options - User-configured options
+ * @param {LiteDefaults} [defaults=liteDefaults] - Default lite embed options
+ * @returns {Object} Object with user-configured lite embed options
  */
-function liteConfig(options){
-  const { liteDefaults } = require('./defaults.js');
-  if ( options.lite && typeof options.lite === 'boolean') {
-    return liteDefaults;
-  } else {
-    return merge(liteDefaults, options.lite);
-  }
+function liteConfig(options, defaults = liteDefaults){
+  return typeof options.lite == 'object'
+    ? merge(defaults, options.lite) 
+    : defaults;
 }
 
 /**
@@ -170,28 +172,27 @@ async function __getYouTubeTitleViaOembed(id, options) {
   const cacheDuration = options.titleOptions.cacheDuration;
   const url = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`;
   try {
-    const json = await downloadAndCache(url, {
+    const {title} = await downloadAndCache(url, {
       duration: cacheDuration, 
       type: "json" // @11ty/eleventy-fetch parses JSON by default
     });
-    return await json.title;
+    return title;
   } catch (error) {
-    console.info(error);
+    console.info("Couldn’t fetch video title. Falling back to default...\n", error);
     return options.title;
   }
 }
 
 /**
- * Validates the thumbnail format and returns the format if it is valid, otherwise returns the default format.
+ * Thumbnail format validator
  * @param {string} format - The thumbnail format to validate.
- * @param {object} options - The options object containing the valid thumbnail formats.
+ * @todo Make this more functional, "thumbnails" makes this non-pure.
  * @returns {string} - The validated thumbnail format.
  */
 function validateThumbnailFormat(format) {
-  if ( !thumbnails.validFormats.includes(format) ) {
-    return thumbnails.defaultFormat
-  }
-  return format;
+  return thumbnails.validFormats.includes(format) 
+  ? format 
+  : thumbnails.defaultFormat;
 }
 
 /**
@@ -285,19 +286,3 @@ function __constructEmbedSrc(url, opt) {
 module.exports.validateThumbnailSize = validateThumbnailSize;
 module.exports.validateThumbnailFormat = validateThumbnailFormat;
 module.exports.getYouTubeTitleViaOembed = __getYouTubeTitleViaOembed;
-
-/**
- * @typedef {Object} VideoObject
- * @property {string} id - The YouTube video ID.
- * @property {URL} url - The YouTube URL.
- */
-
-/**
- * @typedef {Object} VideoIds
- * @property {string | null} id - The YouTube video ID.
- * @property {string | null} playlist - The YouTube playlist ID.
- */
-
-/**
- * @typedef {import('./defaults.js').PluginOptions} PluginOptions
- */
