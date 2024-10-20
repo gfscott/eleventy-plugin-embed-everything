@@ -15,7 +15,7 @@ module.exports = function(match, config, index) {
     ,       // Whitespace
     ,       // Whitespace
     __url,  // YouTube URL without protocol
-    id,     // YouTube video ID
+    __id,   // YouTube video ID; TODO remove this and refactor regex
     ,       // Whitespace
     ,       // Whitespace
   ] = match;
@@ -106,33 +106,6 @@ function liteEmbed(url, options, index) {
   out += `<lite-youtube videoid="${id ?? playlist}" style="background-image: url('${thumbnailUrl()}');"${params ? ` params="${params}"` : ''}${liteOpt.jsApi ? ' js-api' : ''}>`;
   out += '<div class="lty-playbtn"></div></lite-youtube></div>';
   return out;
-}
-
-/**
- * Parse params from input URL
- * 
- * @param {URL} url - The full YouTube URL the user pasted.
- * 
- * There are some embed options that can be configured directly 
- * through URL params. The specificity of these per-video options 
- * is higher,so we let them override general plugin-level settings.
- */
-function getInputUrlParams(url) {
-
-  // URLSearchParams object doesn't escape HTML-encoded ampersands, 
-  // so replace them before parsing
-  let unescapedUrl = url.replace("&amp;", "&")
-  let params = new URL(unescapedUrl).searchParams;
-  let urlOptions = new Object;
-  
-  // YouTube treats 'start' and 't' params as synonymous but 't' is the
-  // official param so if you pass both 't' wins by being parsed last.
-  // In addition, we parseInt these values to ensure they're numbers in seconds.
-  // YouTube's embed URLs don't accept a start time if the 's' is included.
-  if ( params.has('start') ) urlOptions.startTime = parseInt(params.get('start'));
-  if ( params.has('t') ) urlOptions.startTime = parseInt(params.get('t'));
-
-  return urlOptions;
 }
 
 /**
