@@ -182,7 +182,7 @@ test(`Build embed lite mode, 1+ index, js inline`, t => {
   );
 });
 test(`Build embed lite mode, 1+ index, responsive true`, t => {
-  t.is(embed(extract(testString), override({lite: { responive: true }}), 1),
+  t.is(embed(extract(testString), override({lite: { responsive: true }}), 1),
   `<div id="PLCbA9r6ecYWU6SVyvb32a0YHIzpr9jxnW" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="PLCbA9r6ecYWU6SVyvb32a0YHIzpr9jxnW" style="background-image: url('https://i.ytimg.com/vi/PLCbA9r6ecYWU6SVyvb32a0YHIzpr9jxnW/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
   );
 });
