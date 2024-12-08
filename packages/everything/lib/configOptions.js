@@ -21,8 +21,9 @@ module.exports = function(options = {}) {
 function setActivePlugins(obj) {
 	let active = [...defaultPlugins]; // default
 	// Add to default plugin list
+	// The `Set` ensures there are no duplicates
 	if (obj.add) {
-		active = [...defaultPlugins, ...obj.add];
+		active = [...new Set([...defaultPlugins, ...obj.add])];
 	}
 	// Define custom plugin list from scratch.
 	// Will always override `add`

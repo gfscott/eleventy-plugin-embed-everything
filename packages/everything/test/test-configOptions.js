@@ -71,6 +71,17 @@ test(
 );
 
 test(
+	`Config "add" option returns deduplicated output when adding plugins already included by default`,
+	(t) => {
+		let output = config({
+			// These are already active by default, so `add`ing should do nothing
+			add: ["youtube", "vimeo"],
+		});
+		t.deepEqual(output, defaultOptions);
+	},
+)
+
+test(
 	`Config returns expected output with valid "use" option`,
 	(t) => {
 		let output = config({
