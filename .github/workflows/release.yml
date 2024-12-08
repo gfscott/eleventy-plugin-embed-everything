@@ -9,9 +9,6 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
-permissions:
-  id-token: write
-
 jobs:
   
   changesets_release:
@@ -80,6 +77,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: sync_next
     if: github.repository == 'gfscott/eleventy-plugin-embed-everything'
+    # id-token write permission required for package provenance
+    permissions:
+      id-token: write
 
     steps:
       - name: Checkout repo
