@@ -1,5 +1,11 @@
 # eleventy-plugin-embed-everything
 
+## 1.19.1
+
+### Patch Changes
+
+- Deduplicate list of active plugins when using the 'add' option ([#298](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/298))
+
 ## 1.19.0
 
 ### Minor Changes
