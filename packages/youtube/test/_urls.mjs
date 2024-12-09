@@ -15,6 +15,8 @@ const validUrls_params = [
   'youtube.com/watch?v=hIs5StN8J-0',
   // This isn't actually a valid YouTube url, but accepted by the plugin regex
   'youtu.be/watch?v=hIs5StN8J-0',
+  // Playlist URL
+  'youtube.com/playlist?list=PLv0jwu7G_DFVP0SGNlBiBtFVkV5LZ7SOU',
 ]
 const validUrls_noparams = [
   'youtu.be/hIs5StN8J-0',
@@ -48,6 +50,4 @@ export const invalid = [
   'https://www.youtube.com/watch?v=hIs5St',
   // Invalid protocol
   'ftp://www.youtube.com/watch?v=hIs5StN8J-0',
-  // Playlist URL
-  'https://www.youtube.com/playlist?list=PLv0jwu7G_DFVP0SGNlBiBtFVkV5LZ7SOU',
 ]
