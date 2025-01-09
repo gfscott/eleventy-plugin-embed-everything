@@ -75,6 +75,18 @@ importers:
 
   packages/instagram: {}
 
+  packages/mastodon:
+    dependencies:
+      '@11ty/eleventy-fetch':
+        specifier: ^4.0.1
+        version: 4.0.1
+      deepmerge:
+        specifier: ^4.3.1
+        version: 4.3.1
+      regex:
+        specifier: ^5.1.1
+        version: 5.1.1
+
   packages/openstreetmap:
     dependencies:
       deepmerge:
@@ -1677,6 +1689,12 @@ packages:
   regenerator-runtime@0.14.1:
     resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
 
+  regex-utilities@2.3.0:
+    resolution: {integrity: sha512-8VhliFJAWRaUiVvREIiW2NXXTmHs4vMNnSzuJVhscgmGav3g9VDxLrQndI3dZZVVdp0ZO/5v0xmX516/7M9cng==}
+
+  regex@5.1.1:
+    resolution: {integrity: sha512-dN5I359AVGPnwzJm2jN1k0W9LPZ+ePvoOeVMMfqIMFz53sSwXkxaJoxr50ptnsC771lK95BnTrVSZxq0b9yCGw==}
+
   release-zalgo@1.0.0:
     resolution: {integrity: sha512-gUAyHVHPPC5wdqX/LG4LWtRYtgjxyX78oanFNTMMyFEfOqdC54s3eE82imuWKbOeqYht2CrNf64Qb8vgmmtZGA==}
     engines: {node: '>=4'}
@@ -2084,7 +2102,7 @@ snapshots:
 
   '@11ty/eleventy-fetch@4.0.1':
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.7
       flat-cache: 3.0.4
       node-fetch: 2.6.12
       p-queue: 6.6.2
@@ -3731,6 +3749,12 @@ snapshots:
       picomatch: 2.3.1
 
   regenerator-runtime@0.14.1: {}
+
+  regex-utilities@2.3.0: {}
+
+  regex@5.1.1:
+    dependencies:
+      regex-utilities: 2.3.0
 
   release-zalgo@1.0.0:
     dependencies:
