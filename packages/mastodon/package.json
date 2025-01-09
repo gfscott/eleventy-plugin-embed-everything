@@ -10,7 +10,7 @@
   ],
   "main": "index.js",
   "scripts": {
-    "test": "npx ava",
+    "test": "vitest run",
     "coverage": "nyc --reporter=lcov ava"
   },
   "files": [
