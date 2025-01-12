@@ -89,6 +89,9 @@ importers:
       regex:
         specifier: ^5.1.1
         version: 5.1.1
+      string-replace-async:
+        specifier: ^3.0.2
+        version: 3.0.2
 
   packages/openstreetmap:
     dependencies:
