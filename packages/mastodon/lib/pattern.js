@@ -1,7 +1,7 @@
 const {regex} = require('regex');
 
 module.exports = function(hostname) {
-  return regex`
+  return regex('g')`
 	<p>
 	(?>\s*+)?
 	(?><a [^>]*?>)?

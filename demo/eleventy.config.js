@@ -1,11 +1,12 @@
 import embeds from 'eleventy-plugin-embed-everything';
+import mastodon from 'eleventy-plugin-embed-mastodon';
 
 export default function(eleventyConfig) {
   // Configure global layout template
   eleventyConfig.addGlobalData("layout", "layout.njk");
   // Also watch package folders
   eleventyConfig.addWatchTarget("../packages/**");
-  
+
   // Add plugin
   eleventyConfig.addPlugin(embeds, {
     // Enable soundcloud, which isn't on by default
@@ -18,6 +19,8 @@ export default function(eleventyConfig) {
       }
     },
   });
+
+	eleventyConfig.addPlugin(mastodon, {server: 'social.vivaldi.net'});
 
   return {
     dir: {

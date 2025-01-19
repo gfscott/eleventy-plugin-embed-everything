@@ -15,7 +15,9 @@ describe('URL valid pattern tests', () => {
 describe('Destructuring works as expected', () => {
 
 		it('Captures expected data for federated toots', () => {
-			const match = '<p>https://social.vivaldi.net/@foo@example.com/123</p>'.match(pattern);
+			// Reset the pattern's lastIndex property to 0
+			pattern.lastIndex = 0;
+			const match = pattern.exec('<p>https://social.vivaldi.net/@foo@example.com/123</p>');
 			const { hostname, user, server, id } = match.groups;
 			expect(hostname).toBe('social.vivaldi.net');
 			expect(user).toBe('foo');
@@ -24,7 +26,9 @@ describe('Destructuring works as expected', () => {
 		});
 
 		it('Federated server is absent for non-federated toots', () => {
-			const match = '<p>https://social.vivaldi.net/@foo/123</p>'.match(pattern);
+			// Reset the pattern's lastIndex property to 0
+			pattern.lastIndex = 0;
+			const match = pattern.exec('<p>https://social.vivaldi.net/@foo/123</p>');
 			const { hostname, user, server, id } = match.groups;
 			expect(hostname).toBe('social.vivaldi.net');
 			expect(user).toBe('foo');
