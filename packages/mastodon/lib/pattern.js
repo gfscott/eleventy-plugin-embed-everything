@@ -9,7 +9,7 @@ module.exports = function(hostname) {
 	(?>https?:)?
 	(?>/{2})?
 	(?>w{3}\.)?
-	(
+	(?<url>
 		(?<hostname>${hostname})
 		/@(?<user>\w+)
 		 @?(?<server>[\w\.]+)?
