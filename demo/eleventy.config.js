@@ -20,7 +20,10 @@ export default function(eleventyConfig) {
     },
   });
 
-	eleventyConfig.addPlugin(mastodon, {server: 'social.vivaldi.net'});
+	eleventyConfig.addPlugin(mastodon, {
+		maxWidth: 600,
+		server: 'social.vivaldi.net'
+	});
 
   return {
     dir: {

@@ -11,7 +11,7 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest run",
-    "coverage": "nyc --reporter=lcov ava"
+    "coverage": "vitest run --coverage"
   },
   "files": [
     "index.js",

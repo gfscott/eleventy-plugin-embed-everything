@@ -7,7 +7,7 @@ module.exports = async function(match, config) {
 	// Get the hostname of the originating server
 	const {hostname: originHostname} = new URL(originStatusUrl);
 	// Query the originating server for its oembed data
-	return await _getOriginOembed(originHostname, originStatusUrl);
+	return await _getOriginOembed(originHostname, originStatusUrl, config);
 }
 
 
@@ -15,36 +15,65 @@ module.exports = async function(match, config) {
  * Query the 11ty user's Mastodon instance about a status.
  * @param {string} hostname - Hostname of the Mastodon instance to query about the status.
  * @param {string} id - Status ID.
- * @returns {string} - URL of the status.
+ * @returns {string|null} - URL of the status.
  * @see https://docs.joinmastodon.org/methods/statuses/#get
  * @todo Better error handling.
  */
 async function _getFederatedStatus(hostname, id) {
+	if (!hostname || !id) {
+		console.error("Missing Mastodon instance or status ID.");
+		return null;
+	}
 	const federatedStatusQuery = `https://${hostname}/api/v1/statuses/${id}`;
-	const {url} = await Fetch(federatedStatusQuery, {
-		duration: "1d",
-		type: "json",
-		// verbose: true,
-	});
-	return url;
+	try {
+		const {url} = await Fetch(federatedStatusQuery, {
+			duration: "1d",
+			type: "json",
+			// verbose: true,
+		});
+		return url ?? null;
+	} catch (error) {
+		console.error(error);
+		return null;
+	}
 }
 
 /**
  * Query the originating Mastodon server for oembed data.
  * @param {string} hostname - Hostname of the originating Mastodon server.
  * @param {string} url - URL of the status on the originating Mastodon server.
- * @returns {string} - HTML to embed the status.
+ * @param {object} config - Configuration object for the Mastodon embed.
+ * @returns {string|null} - HTML to embed the status.
  * @see https://docs.joinmastodon.org/methods/oembed/
  * @todo Better error handling.
  */
-async function _getOriginOembed(hostname, url) {
-	const oembedQuery = `https://${hostname}/api/oembed?url=${url}`;
-	const {html} = await Fetch(oembedQuery, {
-		duration: "1d",
-		type: "json",
-		// verbose: true,
-	});
-	return html;
+async function _getOriginOembed(hostname, url, config) {
+	if(!hostname || !url) {
+		console.error("Missing hostname or URL.");
+		return null;
+	}
+
+	let oembedUrl = new URL(`https://${hostname}/api/oembed`);
+			oembedUrl.searchParams.append("url", url);
+
+	if (config?.maxWidth && config.maxWidth !== 400) {
+		oembedUrl.searchParams.append("maxwidth", config.maxWidth);
+	}
+	if (config?.maxHeight) {
+		oembedUrl.searchParams.append("maxheight", config.maxHeight);
+	}
+
+	try {
+		const {html} = await Fetch(oembedUrl.toString(), {
+			duration: "1d",
+			type: "json",
+			// verbose: true,
+		});
+		return html ?? null;
+	} catch (error) {
+		console.error(error);
+		return null;
+	}
 }
 
 module.exports._getFederatedStatus = _getFederatedStatus;
