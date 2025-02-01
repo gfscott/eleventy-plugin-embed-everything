@@ -1,0 +1,29 @@
+{
+  "name": "eleventy-plugin-embed-bluesky",
+  "version": "1.0.0",
+  "description": "Embed Bluesky posts in Eleventy sites",
+  "main": ".eleventy.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "keywords": [
+    "eleventy",
+    "eleventy-plugin",
+    "bluesky",
+    "embed"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@11ty/eleventy-fetch": "^4.0.0",
+    "deepmerge": "^4.3.1"
+  },
+  "devDependencies": {
+    "ava": "^6.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gfscott/eleventy-plugin-embed-everything.git"
+  },
+  "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues"
+}
