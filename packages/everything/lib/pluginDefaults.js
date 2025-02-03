@@ -4,6 +4,7 @@
  * The definitive list of all plugins that _can_ be aggregated by this plugin.
  */
 exports.validPlugins = [
+	"bluesky",
 	"instagram",
 	"openstreetmap",
 	"soundcloud",
@@ -22,6 +23,7 @@ exports.validPlugins = [
   * The list of all plugins that are active by default.
   */
 exports.defaultPlugins = [
+	"bluesky",
 	"instagram",
 	"openstreetmap",
 	"spotify",

@@ -37,11 +37,16 @@ importers:
         specifier: workspace:*
         version: link:../packages/everything
 
+  packages/bluesky: {}
+
   packages/everything:
     dependencies:
       deepmerge:
         specifier: ^4.3.1
         version: 4.3.1
+      eleventy-plugin-embed-bluesky:
+        specifier: workspace:^
+        version: link:../bluesky
       eleventy-plugin-embed-instagram:
         specifier: workspace:^
         version: link:../instagram
