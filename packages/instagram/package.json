@@ -1,35 +1,32 @@
 {
-  "name": "eleventy-plugin-embed-instagram",
-  "version": "1.2.7",
-  "description": "An Eleventy plugin to automatically embed Instagram photos and videos, using just their URLs.",
-  "keywords": [
-    "11ty",
-    "eleventy",
-    "eleventy-plugin",
-    "instagram"
-  ],
-  "main": ".eleventy.js",
-  "scripts": {
-    "test": "npx ava",
-    "coverage": "nyc --reporter=lcov ava"
-  },
-  "files": [
-    ".eleventy.js",
-    "lib/**"
-  ],
-  "author": {
-    "name": "Graham F. Scott",
-    "email": "gfscott@gmail.com",
-    "url": "https://gfscott.com"
-  },
-  "license": "MIT",
-  "homepage": "https://gfscott.com/embed-everything/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gfscott/eleventy-plugin-embed-everything.git"
-  },
-  "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues",
-  "devDependencies": {
-    "ava": "^6.2.0"
-  }
+	"name": "eleventy-plugin-embed-instagram",
+	"version": "1.2.7",
+	"description": "An Eleventy plugin to automatically embed Instagram photos and videos, using just their URLs.",
+	"keywords": [
+		"11ty",
+		"eleventy",
+		"eleventy-plugin",
+		"instagram"
+	],
+	"main": ".eleventy.js",
+	"scripts": {
+		"test": "npx ava",
+		"coverage": "nyc --reporter=lcov ava"
+	},
+	"files": [
+		".eleventy.js",
+		"lib/**"
+	],
+	"author": {
+		"name": "Graham F. Scott",
+		"email": "gfscott@gmail.com",
+		"url": "https://gfscott.com"
+	},
+	"license": "MIT",
+	"homepage": "https://gfscott.com/embed-everything/",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/gfscott/eleventy-plugin-embed-everything.git"
+	},
+	"bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues"
 }
