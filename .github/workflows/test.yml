@@ -79,4 +79,4 @@ jobs:
       - name: Run tests using ava
         run: pnpm coverage
       - name: Upload coverage to Codecov.io
-        uses: codecov/codecov-action@v4    
+        uses: codecov/codecov-action@v5    
