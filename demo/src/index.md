@@ -1,5 +1,6 @@
 This is an example site to demonstrate and test the functionality of [Embed Everything](https://gfscott.com/embed-everything).
 
+- [Bluesky example](/bluesky/)
 - [Instagram example](/instagram/)
 - [Mastodon example](/mastodon/)
 - [OpenStreetMap example](/osm/)
