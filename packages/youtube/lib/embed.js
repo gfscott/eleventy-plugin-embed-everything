@@ -10,7 +10,7 @@ const { thumbnails, liteDefaults } = require('./defaults.js');
 /**
  * Create the embed code for a YouTube video
  * @param {RegExpMatchArray} match - Array of matches from the RegExp
- * @param {PluginOptions} config - Object of user-configurable options 
+ * @param {PluginOptions} config - Object of user-configurable options
  * @param {number} index - Index of the current match in the input string
  * @returns {string} - The embed code for the YouTube video
  */
@@ -25,8 +25,8 @@ module.exports = function(match, config, index) {
     ,       // Whitespace
   ] = match;
 
-  // 1. The regex deliberately doesn't capture the protocol, so that 
-  //    we can manually guarantee it will be present; otherwise an 
+  // 1. The regex deliberately doesn't capture the protocol, so that
+  //    we can manually guarantee it will be present; otherwise an
   //    invalid URL will error when passed to the URL constructor.
   // 2. The URL constructor doesn't correct escaped ampersands, so we
   //    do that ourselves.
@@ -34,7 +34,7 @@ module.exports = function(match, config, index) {
 
   return config.lite
     ? liteEmbed(url, config, index)
-    : defaultEmbed(url, config);  
+    : defaultEmbed(url, config);
 }
 
 
@@ -42,7 +42,7 @@ module.exports = function(match, config, index) {
  * Default embed code generator
  * @param {string} url - YouTube URL
  * @param {PluginOptions} options - User-configured options
- * @returns 
+ * @returns {string} - The embed code for the YouTube video
  */
 async function defaultEmbed(url, options){
   const {v: id, list: playlist} = __getParamsFromUrl(url);
@@ -65,13 +65,20 @@ async function defaultEmbed(url, options){
 }
 /**
  * Lite embed code generator
- * @param {string} url - Object with video ID and URL
+ * @param {string} url - YouTube URL
  * @param {PluginOptions} options - Object with user-configurable options
  * @param {number} index - Index of the current match in the input string
- * @returns 
+ * @returns {string} - The lite-mode embed code for the YouTube video
  */
 function liteEmbed(url, options, index) {
   const {v: id, list: playlist, start, t} = __getParamsFromUrl(url);
+
+	// Lite mode doesn't support playlists, so if there's no
+	// video ID, bail out and just return the plain URL.
+	if (!id) {
+		console.error(`Lite mode doesn't support YouTube playlists. Skipping ${url}`);
+		return `<p>${url}</p>`;
+	}
 
   // override start time if it's set in the URL
   if (start || t) options.startTime = parseInt(start ?? t);
@@ -80,7 +87,7 @@ function liteEmbed(url, options, index) {
         liteOpt.thumbnailQuality = validateThumbnailSize(liteOpt.thumbnailQuality);
         liteOpt.thumbnailFormat = validateThumbnailFormat(liteOpt.thumbnailFormat);
   const params = stringifyUrlParams(options);
-  
+
   const thumbnailUrl = () => {
     const fileTypePath = liteOpt.thumbnailFormat === 'webp' ? 'vi_webp' : 'vi';
     const fileName = `${liteOpt.thumbnailQuality}.${liteOpt.thumbnailFormat}`;
@@ -96,7 +103,7 @@ function liteEmbed(url, options, index) {
   const liteJsFilePath = path.join(basePath, 'lite-youtube-embed/src/lite-yt-embed.js');
   const inlineCss = fs.readFileSync(liteCssFilePath, 'utf-8');
   const inlineJs = fs.readFileSync(liteJsFilePath, 'utf-8');
-  
+
   // Build the lite embed code
   let out = '';
   if ( index === 0 && liteOpt.css.enabled) {
@@ -106,7 +113,7 @@ function liteEmbed(url, options, index) {
     out += liteOpt.js.inline ? `<script>${inlineJs}</script>\n` : `<script defer="defer" src="${liteOpt.js.path}"></script>\n`;
   }
   out += index === 0 && liteOpt.responsive ? `<style>.${options.embedClass} lite-youtube {max-width:100%}</style>\n` : '';
-  
+
   out += `<div id="${id ?? playlist}" class="${options.embedClass}">`;
   out += `<lite-youtube videoid="${id ?? playlist}" style="background-image: url('${thumbnailUrl()}');"${params ? ` params="${params}"` : ''}${liteOpt.jsApi ? ' js-api' : ''}>`;
   out += '<div class="lty-playbtn"></div></lite-youtube></div>';
@@ -142,7 +149,7 @@ function stringifyUrlParams(options){
  */
 function liteConfig(options, defaults = liteDefaults){
   return typeof options.lite == 'object'
-    ? merge(defaults, options.lite) 
+    ? merge(defaults, options.lite)
     : defaults;
 }
 
@@ -150,12 +157,12 @@ function liteConfig(options, defaults = liteDefaults){
  * Validate that the thumbnail size is one of the valid options
  * @param {string} inputString - Thumbnail size string
  * @returns {string} - Valid thumbnail size.
- * 
+ *
  * This does *not* check that an image of this size exists, simply
  * that the filename matches a set of valid filenames. If an invalid
  * string is passed, it returns the default value.
  */
-function validateThumbnailSize(inputString = thumbnails.defaultSize) { 
+function validateThumbnailSize(inputString = thumbnails.defaultSize) {
   if ( !thumbnails.validSizes.includes(inputString) ) {
     return thumbnails.defaultSize
   }
@@ -173,7 +180,7 @@ async function __getYouTubeTitleViaOembed(id, options) {
   const url = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`;
   try {
     const {title} = await downloadAndCache(url, {
-      duration: cacheDuration, 
+      duration: cacheDuration,
       type: "json" // @11ty/eleventy-fetch parses JSON by default
     });
     return title;
@@ -190,15 +197,15 @@ async function __getYouTubeTitleViaOembed(id, options) {
  * @returns {string} - The validated thumbnail format.
  */
 function validateThumbnailFormat(format) {
-  return thumbnails.validFormats.includes(format) 
-  ? format 
+  return thumbnails.validFormats.includes(format)
+  ? format
   : thumbnails.defaultFormat;
 }
 
 /**
  * Construct the base URL for YouTube embeds
  * @private
- * @param {PluginOptions} opt - User-configured options 
+ * @param {PluginOptions} opt - User-configured options
  * @returns {string} Base URL for YouTube embeds
  */
 function __constructEmbedUrlBase(opt) {
@@ -229,7 +236,7 @@ async function __constructTitle(id, opt) {
  * @returns {Object} Object containing all URL parameters
  * @todo Handle with a single URL constructor, drop the regex?
  */
-function __getParamsFromUrl(url) {  
+function __getParamsFromUrl(url) {
   // Check whether it's a youtu.be URL
   const dotBeID = url.match(/youtu\.be\/([a-zA-Z0-9_-]{11})/);
 
