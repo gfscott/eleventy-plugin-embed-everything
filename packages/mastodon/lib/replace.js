@@ -7,7 +7,7 @@ module.exports = async function(match, config) {
 	/**
 	 * If there's a server value in the matched URL...
 	 * ...Then this is a Federated status, and we have to query the
-	 * 		origin server for the original status URL.
+	 * 		federated server for the original status URL.
 	 * ...Otherwise, this is *not* a Federated status, and we can query
 	 * 		the oEmbed directly.
 	 */
@@ -15,11 +15,21 @@ module.exports = async function(match, config) {
 		? await _getFederatedStatus(hostname, id)
 		: `https://${url}`;
 
+	/** If _getFederatedStatus returned null due to 404, bail out and return the match unchanged */
+	if (!originStatusUrl) {
+		return match[0];
+	}
+
 	/** Get the hostname of the origin server */
 	const {hostname: originHostname} = new URL(originStatusUrl);
 
-	/** Query the originating server for its oembed data */
+	/** Query the originating server for its oEmbed data */
 	const oembedHtml = await _getOriginOembed(originHostname, originStatusUrl);
+
+	/** If getting the oEmbed failed, just return the original match unchanged */
+	if (!oembedHtml) {
+		return match[0];
+	}
 
 	return `<div class="${config.embedClass}">${oembedHtml}</div>`;
 }
@@ -31,7 +41,6 @@ module.exports = async function(match, config) {
  * @param {string} id - Status ID.
  * @returns {string|null} - URL of the status.
  * @see https://docs.joinmastodon.org/methods/statuses/#get
- * @todo Better error handling.
  */
 async function _getFederatedStatus(hostname, id) {
 	if (!hostname || !id) {
@@ -43,7 +52,7 @@ async function _getFederatedStatus(hostname, id) {
 		const {url} = await Fetch(federatedStatusQuery, {
 			duration: "1d",
 			type: "json",
-			// verbose: true,
+			verbose: env.DEBUG,
 		});
 		return url ?? null;
 	} catch (error) {
@@ -59,7 +68,6 @@ async function _getFederatedStatus(hostname, id) {
  * @param {object} config - Configuration object for the Mastodon embed.
  * @returns {string|null} - HTML to embed the status.
  * @see https://docs.joinmastodon.org/methods/oembed/
- * @todo Better error handling.
  */
 async function _getOriginOembed(hostname, url) {
 	if(!hostname || !url) {
@@ -73,7 +81,7 @@ async function _getOriginOembed(hostname, url) {
 		const {html} = await Fetch(oembedUrl, {
 			duration: "1d",
 			type: "json",
-			// verbose: true,
+			verbose: env.DEBUG,
 		});
 		return html ?? null;
 	} catch (error) {
