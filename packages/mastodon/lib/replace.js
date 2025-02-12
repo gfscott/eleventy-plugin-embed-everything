@@ -1,13 +1,27 @@
 const Fetch = require("@11ty/eleventy-fetch");
+const { env } = require('node:process');
 
 module.exports = async function(match, config) {
 	const { hostname, id, server, url } = match.at(-1);
-	// If there's a server, it's federated and requires a query for the original status URL.
-	const originStatusUrl = server ? await _getFederatedStatus(hostname, id) : `https://${url}`;
-	// Get the hostname of the originating server
+
+	/**
+	 * If there's a server value in the matched URL...
+	 * ...Then this is a Federated status, and we have to query the
+	 * 		origin server for the original status URL.
+	 * ...Otherwise, this is *not* a Federated status, and we can query
+	 * 		the oEmbed directly.
+	 */
+	const originStatusUrl = server
+		? await _getFederatedStatus(hostname, id)
+		: `https://${url}`;
+
+	/** Get the hostname of the origin server */
 	const {hostname: originHostname} = new URL(originStatusUrl);
-	// Query the originating server for its oembed data
-	return await _getOriginOembed(originHostname, originStatusUrl, config);
+
+	/** Query the originating server for its oembed data */
+	const oembedHtml = await _getOriginOembed(originHostname, originStatusUrl);
+
+	return `<div class="${config.embedClass}">${oembedHtml}</div>`;
 }
 
 
@@ -47,24 +61,16 @@ async function _getFederatedStatus(hostname, id) {
  * @see https://docs.joinmastodon.org/methods/oembed/
  * @todo Better error handling.
  */
-async function _getOriginOembed(hostname, url, config) {
+async function _getOriginOembed(hostname, url) {
 	if(!hostname || !url) {
 		console.error("Missing hostname or URL.");
 		return null;
 	}
 
-	let oembedUrl = new URL(`https://${hostname}/api/oembed`);
-			oembedUrl.searchParams.append("url", url);
-
-	if (config?.maxWidth && config.maxWidth !== 400) {
-		oembedUrl.searchParams.append("maxwidth", config.maxWidth);
-	}
-	if (config?.maxHeight) {
-		oembedUrl.searchParams.append("maxheight", config.maxHeight);
-	}
+	let oembedUrl = `https://${hostname}/api/oembed?url=${url}`;
 
 	try {
-		const {html} = await Fetch(oembedUrl.toString(), {
+		const {html} = await Fetch(oembedUrl, {
 			duration: "1d",
 			type: "json",
 			// verbose: true,
