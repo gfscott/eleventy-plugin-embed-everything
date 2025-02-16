@@ -1,5 +1,4 @@
 import embeds from 'eleventy-plugin-embed-everything';
-import mastodon from 'eleventy-plugin-embed-mastodon';
 
 export default function(eleventyConfig) {
   // Configure global layout template
@@ -9,9 +8,15 @@ export default function(eleventyConfig) {
 
   // Add plugin
   eleventyConfig.addPlugin(embeds, {
-    // Enable soundcloud, which isn't on by default
-    add: ['soundcloud'],
-    // Add the mandatory "parent" value required by Twitch.
+    // Enable plugins that aren't active by default
+    add: ['mastodon', 'soundcloud'],
+    // Add the mandatory "server" value required for Mastodon.
+		mastodon: {
+			options: {
+				server: 'social.vivaldi.net',
+			}
+		},
+		// Add the mandatory "parent" value required by Twitch.
     // See https://bit.ly/11ty-plugin-twitch-parent-error for details
     twitch: {
       options: {
@@ -19,11 +24,6 @@ export default function(eleventyConfig) {
       }
     },
   });
-
-	eleventyConfig.addPlugin(mastodon, {
-		maxWidth: 600,
-		server: 'social.vivaldi.net'
-	});
 
   return {
     dir: {

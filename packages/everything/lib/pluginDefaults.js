@@ -5,6 +5,7 @@
  */
 exports.validPlugins = [
 	"instagram",
+	"mastodon",
 	"openstreetmap",
 	"soundcloud",
 	"spotify",

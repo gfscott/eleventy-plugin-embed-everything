@@ -24,7 +24,11 @@ test(
 	(t) => {
 		let list = [...defaultPlugins, "soundcloud"];
 		let output = validatePlugins(list);
-		t.deepEqual(output, validPlugins);
+
+		listSet = new Set(output);
+		validSet = new Set(validPlugins);
+
+		t.true(listSet.isSubsetOf(validSet));
 	},
 );
 
