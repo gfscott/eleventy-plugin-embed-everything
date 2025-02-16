@@ -24,11 +24,9 @@ test(
 	(t) => {
 		let list = [...defaultPlugins, "soundcloud"];
 		let output = validatePlugins(list);
-
-		listSet = new Set(output);
-		validSet = new Set(validPlugins);
-
-		t.true(listSet.isSubsetOf(validSet));
+		for (let p of output) {
+			t.true(validPlugins.includes(p));
+		}
 	},
 );
 
