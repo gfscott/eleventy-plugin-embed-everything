@@ -72,7 +72,7 @@ describe('Graceful failures', () => {
 
 		const output = await asyncReplace(content, pattern, (...match) => replace(match, config));
 		expect(output).toBe(content);
-	});
+	}, 10000);
 
 	it('Returns original input config.server is not set', async () => {
 		const config = defaults;
@@ -81,7 +81,7 @@ describe('Graceful failures', () => {
 
 		const output = await asyncReplace(content, pattern, (...match) => replace(match, config));
 		expect(output).toBe(content);
-	});
+	}, 10000);
 
 	it('Status not found', async () => {
 		const config = merge(defaults, {server: 'social.vivaldi.net'});
@@ -90,7 +90,7 @@ describe('Graceful failures', () => {
 
 		const output = await asyncReplace(content, pattern, (...match) => replace(match, config));
 		expect(output).toBe(content);
-	});
+	}, 10000);
 
 
 });
@@ -106,7 +106,7 @@ describe('Returns expected HTML', () => {
 
 		const output = await asyncReplace(content, pattern, (...match) => replace(match, config));
 		expect(output).toBe(expectedOEmbed);
-	});
+	}, 10000);
 
 	it('Federated server status', async () => {
 		const config = merge(defaults, {server: 'social.vivaldi.net'});
@@ -115,7 +115,7 @@ describe('Returns expected HTML', () => {
 
 		const output = await asyncReplace(content, pattern, (...match) => replace(match, config));
 		expect(output).toBe(expectedOEmbed);
-	});
+	}, 10000);
 
 	it('With extraneous URL params', async () => {
 		const config = merge(defaults, {server: 'social.vivaldi.net'});
@@ -124,7 +124,7 @@ describe('Returns expected HTML', () => {
 
 		const output = await asyncReplace(content, pattern, (...match) => replace(match, config));
 		expect(output).toBe(expectedOEmbed);
-	});
+	}, 10000);
 
 	it('Custom wrapper class', async () => {
 		const config = merge(defaults, {embedClass: 'foo', server: 'social.vivaldi.net'});
@@ -135,6 +135,6 @@ describe('Returns expected HTML', () => {
 
 		const output = await asyncReplace(content, pattern, (...match) => replace(match, config));
 		expect(output).toBe(expectedOEmbed);
-	});
+	}, 10000);
 
 });
