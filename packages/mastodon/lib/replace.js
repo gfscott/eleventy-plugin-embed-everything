@@ -54,7 +54,7 @@ async function _getFederatedStatus(hostname, id) {
 			type: "json",
 			verbose: env.DEBUG,
 		});
-		return url ?? null;
+		return url;
 	} catch (error) {
 		console.error(error);
 		return null;
@@ -83,7 +83,7 @@ async function _getOriginOembed(hostname, url) {
 			type: "json",
 			verbose: env.DEBUG,
 		});
-		return html ?? null;
+		return html;
 	} catch (error) {
 		console.error(error);
 		return null;
