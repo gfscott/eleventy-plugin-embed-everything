@@ -18,7 +18,9 @@
     "embeds",
     "embedding",
     "instagram",
+    "mastodon",
     "media",
+    "openstreetmap",
     "soundcloud",
     "spotify",
     "tiktok",
@@ -31,6 +33,7 @@
   "dependencies": {
     "deepmerge": "^4.3.1",
     "eleventy-plugin-embed-instagram": "workspace:^",
+    "eleventy-plugin-embed-mastodon": "workspace:^",
     "eleventy-plugin-embed-openstreetmap": "workspace:^",
     "eleventy-plugin-embed-soundcloud": "workspace:^",
     "eleventy-plugin-embed-spotify": "workspace:^",
