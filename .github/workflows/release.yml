@@ -4,26 +4,29 @@ on:
   push:
     branches:
       - main
-    paths: 
+    paths:
       - packages/**
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  
+
   changesets_release:
     name: Release
     runs-on: ubuntu-latest
     # Only runs in the main repo, not in forks
     if: github.repository == 'gfscott/eleventy-plugin-embed-everything'
-    
+		# id-token write permission required for package provenance
+    permissions:
+      id-token: write
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -63,7 +66,7 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-      
+
       # Source: modified from a shopify/hydrogen workflow:
       # https://github.com/Shopify/hydrogen/blob/main/.github/workflows/sync_main.yml
       - name: Push to next branch
@@ -71,7 +74,7 @@ jobs:
           git show-ref
           git push origin HEAD:next --force
 
-  
+
   changesets_prerelease:
     name: Prerelease packages
     runs-on: ubuntu-latest
@@ -90,7 +93,7 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -109,7 +112,7 @@ jobs:
       # this step creates that .npmrc file so the registry and token
       # information is available when running `changeset publish` in
       # the project's root directory context.
-      # 
+      #
       # As I discovered through trial and error, you can’t just put a
       # static .npmrc file here because then it messes up other GitHub
       # Actions workflows.
@@ -125,7 +128,7 @@ jobs:
 
       # Following Changesets snapshot release procedures:
       # https://github.com/changesets/changesets/blob/main/docs/snapshot-releases.md
-      # 
+      #
       # - Config values come from ./changeset/config.json
       #   - Version will be X.x.x-unstable-{commit_hash}
       # - Currently not pushing git tags to keep things moderately cleaner in the repo
