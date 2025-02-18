@@ -19,6 +19,7 @@ jobs:
     # id-token write permission required for package provenance
     permissions:
       id-token: write
+      contents: write
 
     steps:
       - name: Checkout repo
