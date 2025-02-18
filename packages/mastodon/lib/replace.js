@@ -12,7 +12,7 @@ module.exports = async function(match, config) {
 	 * 		the oEmbed directly.
 	 */
 	const originStatusUrl = server
-		? await _getFederatedStatus(hostname, id)
+		? await _getFederatedStatus(hostname, id, config.cacheDuration)
 		: `https://${url}`;
 
 	/** If _getFederatedStatus returned null due to 404, bail out and return the match unchanged */
@@ -24,7 +24,7 @@ module.exports = async function(match, config) {
 	const {hostname: originHostname} = new URL(originStatusUrl);
 
 	/** Query the originating server for its oEmbed data */
-	const oembedHtml = await _getOriginOembed(originHostname, originStatusUrl);
+	const oembedHtml = await _getOriginOembed(originHostname, originStatusUrl, config.cacheDuration);
 
 	/** If getting the oEmbed failed, just return the original match unchanged */
 	if (!oembedHtml) {
@@ -42,7 +42,7 @@ module.exports = async function(match, config) {
  * @returns {string|null} - URL of the status.
  * @see https://docs.joinmastodon.org/methods/statuses/#get
  */
-async function _getFederatedStatus(hostname, id) {
+async function _getFederatedStatus(hostname, id, cacheDuration) {
 	if (!hostname || !id) {
 		console.error("Missing Mastodon instance or status ID.");
 		return null;
@@ -50,7 +50,7 @@ async function _getFederatedStatus(hostname, id) {
 	const federatedStatusQuery = `https://${hostname}/api/v1/statuses/${id}`;
 	try {
 		const {url} = await Fetch(federatedStatusQuery, {
-			duration: "1d",
+			duration: cacheDuration,
 			type: "json",
 			verbose: env.DEBUG,
 		});
@@ -69,7 +69,7 @@ async function _getFederatedStatus(hostname, id) {
  * @returns {string|null} - HTML to embed the status.
  * @see https://docs.joinmastodon.org/methods/oembed/
  */
-async function _getOriginOembed(hostname, url) {
+async function _getOriginOembed(hostname, url, cacheDuration) {
 	if(!hostname || !url) {
 		console.error("Missing hostname or URL.");
 		return null;
@@ -79,7 +79,7 @@ async function _getOriginOembed(hostname, url) {
 
 	try {
 		const {html} = await Fetch(oembedUrl, {
-			duration: "1d",
+			duration: cacheDuration,
 			type: "json",
 			verbose: env.DEBUG,
 		});

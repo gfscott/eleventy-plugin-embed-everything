@@ -11,7 +11,7 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest run",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage --coverage.include='lib/**'"
   },
   "files": [
     "index.js",

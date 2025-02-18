@@ -74,6 +74,7 @@ The plugin’s default settings reside in [lib/defaults.js](lib/defaults.js). Al
 Option | Type | Default | Notes
 ---|---|---|---
 `server` <br><span style="background-color: crimson; color: white">Required</span> | String | `undefined` | Hostname of the Mastodon server you log into to view your timeline. The plugin will recognize Mastodon URLs based on this value, and query this server for required information about federated posts from other Mastodon instances.
+`cacheDuration` | String | `60m` | How long to cache Mastodon API data. Use the [Eleventy Fetch syntax](https://www.11ty.dev/docs/plugins/fetch/#change-the-cache-duration) to set the duration.
 `embedClass` | String | `"eleventy-plugin-embed-mastodon"` | CSS class applied to the container `<div>` that wraps the embedded video.
 
 ## Notes and caveats
