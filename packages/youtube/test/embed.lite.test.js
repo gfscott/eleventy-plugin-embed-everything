@@ -3,7 +3,7 @@ const merge = require('deepmerge');
 const pattern = require('../lib/pattern.js');
 const embed = require('../lib/embed.js');
 const {defaults} = require('../lib/defaults.js');
-const { validateThumbnailSize, validateThumbnailFormat } = require('../lib/embed.js');
+const { validateThumbnailSize, validateThumbnailFormat, stringifyUrlParams } = require('../lib/embed.js');
 
 const fs = require('fs');
 const path = require('path');
@@ -16,7 +16,7 @@ const testString = '<p>https://www.youtube.com/watch?v=hIs5StN8J-0</p>';
 
 /**
  * Extract matches from the string
- * @param {string} str 
+ * @param {string} str
  * @returns {Array} An array of matches
  */
 const extract = (str) => {
@@ -222,3 +222,57 @@ test(`Thumbnail format validator returns expected strings when passed expected s
   t.is(validateThumbnailFormat('jpg'), 'jpg');
   t.is(validateThumbnailFormat('webp'), 'webp');
 });
+
+/**
+ * Test that the URL parameters are correctly stringified
+ */
+test(`Stringify URL params returns empty string in response to empty object`, t => {
+	t.is(stringifyUrlParams({}), '');
+});
+test(`Stringify URL params returns expected string in default mode, autoplay`, t => {
+	t.is(stringifyUrlParams({allowAutoplay: true}), '?autoplay=1');
+});
+test(`Stringify URL params returns expected string in default mode, recommendations`, t => {
+	t.is(stringifyUrlParams({recommendSelfOnly: true}), '?rel=0');
+});
+test(`Stringify URL params returns expected string in default mode, modest branding`, t => {
+	t.is(stringifyUrlParams({modestBranding: true}), '?modestbranding=1');
+});
+test(`Stringify URL params returns expected string in default mode, multiple values`, t => {
+	const o = {
+		allowAutoplay: true,
+		recommendSelfOnly: true,
+	}
+	t.is(stringifyUrlParams(o), '?autoplay=1&amp;rel=0');
+});
+
+test(`Stringify URL params returns expected string in lite mode, autoplay`, t => {
+	const o = {
+		lite: true,
+		allowAutoplay: true,
+	}
+	t.is(stringifyUrlParams(o), 'autoplay=1');
+});
+test(`Stringify URL params returns expected string in lite mode, recommendations`, t => {
+	const o = {
+		lite: true,
+		recommendSelfOnly: true,
+	}
+	t.is(stringifyUrlParams(o), 'rel=0');
+});
+test(`Stringify URL params returns expected string in lite mode, modest branding`, t => {
+	const o = {
+		lite: true,
+		modestBranding: true,
+	}
+	t.is(stringifyUrlParams(o), 'modestbranding=1');
+});
+test(`Stringify URL params returns expected string in lite mode, multiple values`, t => {
+	const o = {
+		lite: true,
+		allowAutoplay: true,
+		recommendSelfOnly: true,
+	}
+	t.is(stringifyUrlParams(o), 'autoplay=1&amp;rel=0');
+});
+

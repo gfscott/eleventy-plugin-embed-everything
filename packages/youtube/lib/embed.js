@@ -293,3 +293,4 @@ function __constructEmbedSrc(url, opt) {
 module.exports.validateThumbnailSize = validateThumbnailSize;
 module.exports.validateThumbnailFormat = validateThumbnailFormat;
 module.exports.getYouTubeTitleViaOembed = __getYouTubeTitleViaOembed;
+module.exports.stringifyUrlParams = stringifyUrlParams;
