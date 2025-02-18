@@ -1,6 +1,6 @@
 {
   "name": "eleventy-plugin-embed-everything-demo",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Eleventy site to demonstrate and test eleventy-plugin-embed-everything",
   "private": true,
   "type": "module",
