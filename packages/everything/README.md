@@ -71,6 +71,7 @@ Currently, the plugin supports the following embed services (listed alphabetical
 - YouTube
 
 **Off by default** ([How to activate](#configure-which-embed-services-are-active))
+- Mastodon
 - SoundCloud
 
 _More are planned!_
@@ -78,7 +79,7 @@ _More are planned!_
 <span id="settings"></span>
 ## ⚙️ Settings
 
-The plugin supports a number of frequently used services by default, and they have default settings of their own. 
+The plugin supports a number of frequently used services by default, and they have default settings of their own.
 
 ### Configure which embed services are active
 
@@ -130,9 +131,11 @@ For more about each [supported service](#supported-services), consult this table
 | Service | Package | Repository | Options |
 | ------- | ------- | ---------- | ------- |
 | Instagram | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-instagram) | [GitHub](/packages/instagram) | [Options](/packages/instagram/lib/pluginDefaults.js) |
+| Mastodon | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-mastodon) | [GitHub](/packages/mastodon) | [Options](/packages/mastodon/lib/defaults.js) |
 | OpenStreetMap | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-openstreetmap) | [GitHub](/packages/openstreetmap) | [Options](/packages/openstreetmap/lib/defaults.js) |
 | SoundCloud | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-soundcloud) | [GitHub](/packages/soundcloud) | [Options](/packages/soundcloud/lib/pluginDefaults.js) |
 | Spotify | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-spotify) | [GitHub](/packages/spotify) | [Options](/packages/spotify/lib/defaults.js) |
+| TED | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-ted) | [GitHub](/packages/ted) | [Options](/packages/ted/lib/defaults.js) |
 | TikTok | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-tiktok) | [GitHub](/packages/tiktok) | [Options](/packages/tiktok/lib/pluginDefaults.js) |
 | Twitch | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitch) | [GitHub](/packages/twitch) | [Options](/packages/twitch/lib/pluginDefaults.js) |
 | Twitter | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitter) | [GitHub](/packages/twitter) | [Options](/packages/twitter/lib/pluginDefaults.js) |

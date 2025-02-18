@@ -9,12 +9,13 @@ This is the monorepo for [Embed Everything](https://gfscott.com/embed-everything
 Service | Package | Setup instructions
 ------- | ------- | ------------------
 **Everything**  | **[npm](https://www.npmjs.com/package/eleventy-plugin-embed-everything)** | **[Readme](/packages/everything)**
-Instagram       | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-instagram)      | [Readme](/packages/instagram) 
+Instagram       | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-instagram)      | [Readme](/packages/instagram)
+Mastodon       | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-mastodon)      	| [Readme](/packages/mastodon)
 SoundCloud      | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-soundcloud)     | [Readme](/packages/soundcloud)
-Spotify         | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-spotify)        | [Readme](/packages/spotify)   
+Spotify         | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-spotify)        | [Readme](/packages/spotify)
 TED             | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-ted)            | [Readme](/packages/ted)
-TikTok          | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-tiktok)         | [Readme](/packages/tiktok)    
-Twitch          | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitch)         | [Readme](/packages/twitch)    
-Twitter         | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitter)        | [Readme](/packages/twitter)   
-Vimeo           | [npm](https://www.npmjs.com/package/eleventy-plugin-vimeo-embed)          | [Readme](/packages/vimeo)     
-YouTube         | [npm](https://www.npmjs.com/package/eleventy-plugin-youtube-embed)        | [Readme](/packages/youtube)   
+TikTok          | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-tiktok)         | [Readme](/packages/tiktok)
+Twitch          | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitch)         | [Readme](/packages/twitch)
+Twitter         | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitter)        | [Readme](/packages/twitter)
+Vimeo           | [npm](https://www.npmjs.com/package/eleventy-plugin-vimeo-embed)          | [Readme](/packages/vimeo)
+YouTube         | [npm](https://www.npmjs.com/package/eleventy-plugin-youtube-embed)        | [Readme](/packages/youtube)
