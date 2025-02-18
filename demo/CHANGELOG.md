@@ -1,5 +1,15 @@
 # eleventy-plugin-embed-everything-demo
 
+## 2.0.1
+
+### Patch Changes
+
+- Add examples of Reels and TV to Instagram demo ([#305](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/305))
+
+- Add support for embedding playlists ([#296](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/296))
+
+- Add support for embedding Mastodon posts ([#307](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/307))
+
 ## 2.0.0
 
 ### Patch Changes

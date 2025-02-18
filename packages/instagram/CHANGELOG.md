@@ -1,5 +1,11 @@
 # eleventy-plugin-embed-instagram
 
+## 1.3.0
+
+### Minor Changes
+
+- Add support for embedding Instagram Reels and TV embeds. (🏅 Special thanks to [@shellen](https://github.com/shellen)!) ([#303](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/303))
+
 ## 1.2.7
 
 ### Patch Changes

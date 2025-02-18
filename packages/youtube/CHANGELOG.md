@@ -1,5 +1,11 @@
 # eleventy-plugin-youtube-embed
 
+## 1.12.0
+
+### Minor Changes
+
+- Add support for embedding playlists ([#296](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/296))
+
 ## 1.11.0
 
 ### Minor Changes

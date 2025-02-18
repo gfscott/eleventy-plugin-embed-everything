@@ -1,5 +1,24 @@
 # eleventy-plugin-embed-everything
 
+## 1.20.0
+
+### Minor Changes
+
+- Add support for embedding Instagram Reels and TV embeds. (🏅 Special thanks to [@shellen](https://github.com/shellen)!) ([#303](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/303))
+
+- Add support for embedding playlists ([#296](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/296))
+
+- Add support for embedding Mastodon posts ([#307](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/307))
+
+### Patch Changes
+
+- Deduplicate list of active plugins when using the 'add' option ([#298](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/298))
+
+- Updated dependencies [[`a38735a`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/a38735abd4096b1887653cd186e1fbffcb6adc62), [`139618f`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/139618f5f52fa8583d56535351652d4b3644bb39), [`43880b6`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/43880b67aaad724b1437b66d0c5f04a440d99289)]:
+  - eleventy-plugin-embed-instagram@1.3.0
+  - eleventy-plugin-youtube-embed@1.12.0
+  - eleventy-plugin-embed-mastodon@1.0.0
+
 ## 1.19.0
 
 ### Minor Changes
