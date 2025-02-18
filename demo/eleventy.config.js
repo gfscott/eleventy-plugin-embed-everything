@@ -5,12 +5,18 @@ export default function(eleventyConfig) {
   eleventyConfig.addGlobalData("layout", "layout.njk");
   // Also watch package folders
   eleventyConfig.addWatchTarget("../packages/**");
-  
+
   // Add plugin
   eleventyConfig.addPlugin(embeds, {
-    // Enable soundcloud, which isn't on by default
-    add: ['soundcloud'],
-    // Add the mandatory "parent" value required by Twitch.
+    // Enable plugins that aren't active by default
+    add: ['mastodon', 'soundcloud'],
+    // Add the mandatory "server" value required for Mastodon.
+		mastodon: {
+			options: {
+				server: 'social.vivaldi.net',
+			}
+		},
+		// Add the mandatory "parent" value required by Twitch.
     // See https://bit.ly/11ty-plugin-twitch-parent-error for details
     twitch: {
       options: {

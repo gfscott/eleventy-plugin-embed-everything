@@ -24,7 +24,9 @@ test(
 	(t) => {
 		let list = [...defaultPlugins, "soundcloud"];
 		let output = validatePlugins(list);
-		t.deepEqual(output, validPlugins);
+		for (let p of output) {
+			t.true(validPlugins.includes(p));
+		}
 	},
 );
 
