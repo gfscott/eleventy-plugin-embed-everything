@@ -8,13 +8,13 @@
     "eleventy-plugin",
     "tiktok"
   ],
-  "main": ".eleventy.js",
+  "main": "index.js",
   "scripts": {
-    "test": "npx ava",
-    "coverage": "nyc --reporter=lcov ava"
+    "test": "npx vitest run",
+    "coverage": "vitest run --coverage --coverage.include='lib/**'"
   },
   "files": [
-    ".eleventy.js",
+    "index.js",
     "lib/**"
   ],
   "author": {
@@ -28,5 +28,9 @@
     "type": "git",
     "url": "https://github.com/gfscott/eleventy-plugin-embed-everything.git"
   },
-  "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues"
+  "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues",
+  "dependencies": {
+    "deepmerge": "^4.3.1",
+    "regex": "^5.1.1"
+  }
 }
