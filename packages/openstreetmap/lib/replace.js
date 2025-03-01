@@ -4,15 +4,19 @@ const merge = require('deepmerge');
 module.exports = function(match, options = {}) {
 
   const config = merge(defaults, options);
-  
+
   const {long, lat, zoom} = match.pop();
   const {long_s, lat_e, long_e, lat_s} = getBoundingBox(long, lat, zoom, 425, 350);
   const bbox = encodeURIComponent(`${long_s},${lat_e},${long_e},${lat_s}`);
-  
+
+	// `marker` parameter isn't active by default in the embed code provided by OSM.
+	// https://wiki.openstreetmap.org/wiki/Export#Embeddable_HTML_with_an_added_Marker
+	const marker = options.includeMarker ? '&marker=' + encodeURIComponent(`${lat},${long}`) : '';
+
   let out = `<div class="${config.embedClass}" style="${config.wrapperStyle}">`;
-  out += `<iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=${config.layer}"></iframe>`;
+  out += `<iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=${config.layer}${marker}"></iframe>`;
   out += `</div>`;
-  
+
   return out;
 }
 
@@ -46,9 +50,9 @@ function getTileNumber(long, lat, zoom) {
   return [xtile, ytile];
 }
 
-function getBoundingBox(long, lat, zoom, width, height) {  
+function getBoundingBox(long, lat, zoom, width, height) {
   const [xtile, ytile] = getTileNumber(parseFloat(long), parseFloat(lat), zoom);
-  
+
   const tileSize = 256;
 
 	const xtile_s = (xtile * tileSize - width) / tileSize;
@@ -58,7 +62,7 @@ function getBoundingBox(long, lat, zoom, width, height) {
 
 	const [long_s, lat_s] = getLongLat(xtile_s, ytile_s, zoom);
 	const [long_e, lat_e] = getLongLat(xtile_e, ytile_e, zoom);
-  
+
   return {
     long_s,
     lat_e,
