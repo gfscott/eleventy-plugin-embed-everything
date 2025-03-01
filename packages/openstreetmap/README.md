@@ -66,6 +66,7 @@ The plugin’s default settings reside in [lib/defaults.js](lib/defaults.js). Al
 Option | Type | Default | Notes
 ---|---|---|---
 `embedClass` | String | `"eleventy-plugin-embed-openstreetmap"` | CSS class applied to the container `<div>` that wraps the embedded map.
+`includeMarker` | Boolean | `false` | Whether to include a map marker in the embedded map.
 `layer` | String | `mapnik` | Selected [tile layer](https://wiki.openstreetmap.org/wiki/Featured_tile_layers) style applied to the map.
 `wrapperStyle` | String | `aspect-ratio: 16/9` | Inline CSS `style` parameter applied to the container `div`.
 

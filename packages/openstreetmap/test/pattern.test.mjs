@@ -7,7 +7,8 @@ const prefixes = ['', '//', 'www.', '//www.', 'https://', 'http://', 'https://ww
 const suffixes = [
   '/#map=8/46.195/-81.362',
   '/way/1147323572#map=8/46.195/-81.362',
-  '/search?whereami=1&query=52.147%2C104.106#map=8/46.195/-81.362'
+  '/search?whereami=1&query=52.147%2C104.106#map=8/46.195/-81.362',
+  '/?mlat=46.195&mlon=-81.362#map=8/46.195/-81.362'
 ];
 // Use set to remove duplicates; slice to remove URLs without paths
 const validUrls = new Set(permuteArrays(base, prefixes, suffixes).slice(prefixes.length))
