@@ -8,6 +8,10 @@ on:
       - packages/**
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
+# id-token write permission required for package provenance
+permissions:
+  id-token: write
+  contents: write
 
 jobs:
 
@@ -16,10 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     # Only runs in the main repo, not in forks
     if: github.repository == 'gfscott/eleventy-plugin-embed-everything'
-    # id-token write permission required for package provenance
-    permissions:
-      id-token: write
-      contents: write
 
     steps:
       - name: Checkout repo
