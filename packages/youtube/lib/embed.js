@@ -70,7 +70,7 @@ async function defaultEmbed(url, options){
  * @param {number} index - Index of the current match in the input string
  * @returns {string} - The lite-mode embed code for the YouTube video
  */
-function liteEmbed(url, options, index) {
+async function liteEmbed(url, options, index) {
   const {v: id, list: playlist, start, t} = __getParamsFromUrl(url);
 
 	// Lite mode doesn't support playlists, so if there's no
@@ -94,6 +94,23 @@ function liteEmbed(url, options, index) {
     return `https://i.ytimg.com/${fileTypePath}/${id ?? playlist}/${fileName}`;
   }
 
+
+	let title = undefined;
+	/**
+	 * In Lite mode, the title is overlaid on the thumbnail.
+	 * It's only worth showing it if it's the actual name of the video,
+	 * So we only fetch it if the user has configured the plugin to download
+	 * the actual title from YouTube via oEmbed.
+	 */
+	if ( options.titleOptions.download ) {
+		const oembedTitle = await __getYouTubeTitleViaOembed(id, options);
+		// If fetching oEmbed fails for any reason, it falls back to the configured default title.
+		// So only set the title if it's different from the default.
+		if ( oembedTitle !== options.title) {
+			title =  ` title="${oembedTitle}"`;
+		}
+	}
+
   // Access the file system to read the lite embed CSS and JS
   const fs = require('fs');
   const path = require('path');
@@ -115,7 +132,7 @@ function liteEmbed(url, options, index) {
   out += index === 0 && liteOpt.responsive ? `<style>.${options.embedClass} lite-youtube {max-width:100%}</style>\n` : '';
 
   out += `<div id="${id ?? playlist}" class="${options.embedClass}">`;
-  out += `<lite-youtube videoid="${id ?? playlist}" style="background-image: url('${thumbnailUrl()}');"${params ? ` params="${params}"` : ''}${liteOpt.jsApi ? ' js-api' : ''}>`;
+  out += `<lite-youtube videoid="${id ?? playlist}" style="background-image: url('${thumbnailUrl()}');"${params ? ` params="${params}"` : ''}${liteOpt.jsApi ? ' js-api' : ''}${title ?? ''}>`;
   out += '<div class="lty-playbtn"></div></lite-youtube></div>';
   return out;
 }
