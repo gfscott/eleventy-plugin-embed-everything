@@ -8,9 +8,10 @@ on:
       - packages/**
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
-# id-token write permission required for package provenance
+
 permissions:
-  id-token: write
+  actions: write
+  id-token: write # required for package provenance
   contents: write
 
 jobs:
