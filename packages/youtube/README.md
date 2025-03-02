@@ -142,16 +142,16 @@ The plugin’s default settings reside in [lib/defaults.js](lib/defaults.js). Al
       <td>Setting this to <code>true</code> will add a <code>rel=0</code> attribute to the embed url. This will tell YouTube to <a href="https://developers.google.com/youtube/player_parameters#rel">recommend videos from the same channel.</a></td>
     </tr>
     <tr>
-      <td><code>title</code><br>✨ <b>New in v1.10.0!</b></td>
+      <td><code>title</code></td>
       <td>String</td>
       <td><code>Embedded YouTube video</code></td>
       <td>Edit this value to change the default <code>title</code> attribute for the embedded iframe.</td>
     </tr>
     <tr>
-      <td colspan="4"><code>titleOptions</code>✨ <b>New in v1.10.0!</b></td>
+      <td colspan="4"><code>titleOptions</code></td>
     </tr>
     <tr>
-      <td><code>titleOptions.download</code></td>
+      <td><code>titleOptions.download</code><br>✨ <b>Works in Lite mode <a href="#showing-titles-in-lite-mode">as of v1.13.0</a>!</b></td>
       <td>Boolean</td>
       <td><code>false</code></td>
       <td>Setting this to true will download and cache the title of the video from YouTube, then override the default value of <code>title</code>. <b>Note:</b> Turning this feature on will cause a network call to YouTube’s servers.</td>
@@ -180,7 +180,7 @@ In addition, using the Lite version will cause several of the plugin’s setting
 - `allowFullscreen`
 - `lazy`
 - `noCookie`
-- `title` and `titleOptions`
+- `title` (but [`titleOptions.download` works](#showing-titles-in-lite-mode))
 
 #### Lite embed options
 
@@ -191,6 +191,23 @@ eleventyConfig.addPlugin(embedYouTube, {
   lite: true
 });
 ```
+
+#### Showing titles in Lite mode
+
+✨ **Added in 1.13.0**
+
+By default, Lite embeds don't display a title. As of v1.13.0, you can opt to download the video title from YouTube in Lite mode:
+
+```javascript
+eleventyConfig.addPlugin(embedYouTube, {
+  lite: true,
+	titleOptions: {
+		download: true
+	}
+});
+```
+
+This option works basically the same way it does for the default mode, with one exception: Lite mode always ignores the default `title` value, since using it would result in every embed having the same title. If fetching the title data from YouTube fails for any reason, the title is omitted.
 
 #### Configuring lite embed options
 
@@ -251,19 +268,19 @@ eleventyConfig.addPlugin(embedYouTube, {
       <td>Pass a custom URL to load the necessary JavaScript from the source of your choice.</td>
     </tr>
     <tr>
-      <td><code>lite.jsApi</code><br>✨ <b>New in v1.11.0!</b></td>
+      <td><code>lite.jsApi</code></td>
       <td>Boolean</td>
       <td><code>false</code></td>
       <td>If you change this to true, then the plugin adds a `js-api` parameter to the custom element that enables access to YouTube's IFrame Player API. See <a href="https://github.com/paulirish/lite-youtube-embed?tab=readme-ov-file#access-the-youtube-iframe-player-api">usage example</a> and <a href="https://paulirish.github.io/lite-youtube-embed/variants/js-api.html">demo</a>.</td>
     </tr>
     <tr>
-      <td><code>lite.responsive</code><br>✨ <b>New in v1.10.0!</b></td>
+      <td><code>lite.responsive</code></td>
       <td>Boolean</td>
       <td><code>false</code></td>
       <td>If you change this to <code>true</code>, then the plugin adds a CSS rule to override the default max-width of <code>&lt;lite-youtube&gt;</code> elements, which are <a href="https://github.com/paulirish/lite-youtube-embed/blob/f9fc3a2475ade166d0cf7bb3e3caa3ec236ee74e/src/lite-yt-embed.css#L9">hard coded</a> to a maximum of 720 pixels.</td>
     </tr>
     <tr>
-      <td><code>lite.thumbnailFormat</code><br>✨ <b>New in v1.11.0!</b></td>
+      <td><code>lite.thumbnailFormat</code></td>
       <td>String</td>
       <td><code>jpg</code></td>
       <td>If you change this to <code>webp</code>, then the plugin will load the YouTube thumbnail image in WebP format instead of JPEG.</td>
