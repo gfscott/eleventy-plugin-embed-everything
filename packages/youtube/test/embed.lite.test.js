@@ -192,7 +192,7 @@ test(`Build embed lite mode, 1+ index, js inline`, async t => {
 	);
 });
 test(`Build embed lite mode, 1+ index, responsive true`, async t => {
-	t.is(await embed(extract(testString), override({lite: { responive: true }}), 1),
+	t.is(await embed(extract(testString), override({lite: { responsive: true }}), 1),
 	`<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`
 	);
 });
