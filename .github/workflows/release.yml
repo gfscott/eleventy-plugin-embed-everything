@@ -9,10 +9,11 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
+# Originally modeled on https://github.com/sveltejs/kit/blob/main/.github/workflows/release.yml#L13-L16
 permissions:
-  actions: write
-  id-token: write # required for package provenance
-  contents: write
+  contents: write # to create release (changesets/action)
+  id-token: write # OpenID Connect token needed for provenance
+  pull-requests: write # to create pull request (changesets/action)
 
 jobs:
 
