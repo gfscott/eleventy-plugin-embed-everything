@@ -14,8 +14,8 @@ module.exports = function(hostname) {
 		/@(?<user>\w+)
 		 @?(?<server>[\w\.]+)?
 		/(?<id>\d+)
-		\S*
 	)
+	(?>[^\s<>]*)?
 	(?>\s*+)?
 	(?><\/a>)?
 	(?>\s*+)?
