@@ -35,7 +35,7 @@
     "nyc": "^17.1.0",
     "permute-arrays": "workspace:^",
     "turbo": "^2.4.4",
-    "vitest": "^3.0.6"
+    "vitest": "^3.0.8"
   },
   "dependencies": {
     "@changesets/cli": "^2.28.1"
