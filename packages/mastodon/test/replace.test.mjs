@@ -1,4 +1,4 @@
-import { describe, it, expect, afterEach, beforeAll, afterAll, vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, beforeAll, afterAll, vi } from 'vitest';
 import merge from 'deepmerge';
 import { _getFederatedStatus, _getOriginOembed } from '../lib/replace.js';
 import asyncReplace from 'string-replace-async';
@@ -18,8 +18,8 @@ describe('Query Mastodon status', () => {
 
 	// https://stackoverflow.com/a/76271250/26829947
 	const consoleMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
-  afterEach(() => {
-    consoleMock.mockReset();
+  beforeEach(() => {
+    vi.resetAllMocks();
   });
 
 	it('Returns null if missing hostname', async () => {
@@ -54,8 +54,8 @@ describe('Query Mastodon status', () => {
 describe('Query oembed data', () => {
 
 	const consoleMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
-  afterEach(() => {
-    consoleMock.mockReset();
+  beforeEach(() => {
+    vi.resetAllMocks();
   });
 
 	it('Returns null if missing hostname', async () =>{
