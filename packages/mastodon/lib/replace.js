@@ -39,7 +39,7 @@ module.exports = async function(match, config) {
  * Query the 11ty user's Mastodon instance about a status.
  * @param {string} hostname - Hostname of the Mastodon instance to query about the status.
  * @param {string} id - Status ID.
- * @returns {string|null} - URL of the status.
+ * @returns {Promise<string|null>} - URL of the status.
  * @see https://docs.joinmastodon.org/methods/statuses/#get
  */
 async function _getFederatedStatus(hostname, id, cacheDuration) {
@@ -66,7 +66,7 @@ async function _getFederatedStatus(hostname, id, cacheDuration) {
  * @param {string} hostname - Hostname of the originating Mastodon server.
  * @param {string} url - URL of the status on the originating Mastodon server.
  * @param {object} config - Configuration object for the Mastodon embed.
- * @returns {string|null} - HTML to embed the status.
+ * @returns {Promise<string|null>} - HTML to embed the status.
  * @see https://docs.joinmastodon.org/methods/oembed/
  */
 async function _getOriginOembed(hostname, url, cacheDuration) {
