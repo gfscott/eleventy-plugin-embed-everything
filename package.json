@@ -29,7 +29,7 @@
   "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues",
   "devDependencies": {
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
-    "@vitest/coverage-istanbul": "^3.0.6",
+    "@vitest/coverage-istanbul": "^3.0.8",
     "ava": "^6.2.0",
     "msw": "^2.7.0",
     "nyc": "^17.1.0",
