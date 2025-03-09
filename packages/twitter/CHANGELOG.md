@@ -1,5 +1,11 @@
 # eleventy-plugin-embed-twitter
 
+## 1.4.2
+
+### Patch Changes
+
+- Dependency bumps ([#322](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/322))
+
 ## 1.4.1
 
 ### Patch Changes
