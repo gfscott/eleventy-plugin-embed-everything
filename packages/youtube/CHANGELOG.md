@@ -1,5 +1,15 @@
 # eleventy-plugin-youtube-embed
 
+## 1.13.0
+
+### Minor Changes
+
+- Add option to display a video title in Lite mode ([#319](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/319))
+
+### Patch Changes
+
+- Dependency bumps ([#322](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/322))
+
 ## 1.12.0
 
 ### Minor Changes
