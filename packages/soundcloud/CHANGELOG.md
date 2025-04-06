@@ -1,5 +1,11 @@
 # eleventy-plugin-embed-soundcloud
 
+## 1.2.9
+
+### Patch Changes
+
+- Dependency bumps ([#322](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/322))
+
 ## 1.2.8
 
 ### Patch Changes
