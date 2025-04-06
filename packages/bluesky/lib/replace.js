@@ -1,4 +1,7 @@
-module.exports = function(match, config) {
+const Fetch = require("@11ty/eleventy-fetch");
+const { env } = require('node:process');
+
+module.exports = async function(match, config) {
 	try {
 		if (!match || !match[0]) {
 			return "";
@@ -14,18 +17,42 @@ module.exports = function(match, config) {
 			return match[0];
 		}
 
-		// Create the embed URL using Bluesky's embed endpoint
-		const embedDomain = match[0].includes("staging.bsky.app") ? "staging.bsky.app" : config.embedDomain;
-		const embedUrl = `https://${embedDomain}/profile/${handle}/post/${postId}/embed`;
+		const postUrl = `https://bsky.app/profile/${handle}/post/${postId}`;
+		const html = await _getPostOembed(postUrl, config.cacheDuration);
 
-		// Build the embed HTML
-		let embed = `<div class="${config.embedClass}" style="${config.containerCss}">`;
-		embed += `<iframe src="${embedUrl}" style="${config.iframeCss}" width="${config.iframeWidth}" height="${config.iframeHeight}" frameborder="${config.iframeFrameborder}" scrolling="${config.iframeScrolling}" ${config.allowFullscreen ? "allowfullscreen" : ""}></iframe>`;
-		embed += "</div>";
+		// Return the oEmbed HTML
+		return `<div class="${config.embedClass}">${html}</div>`;
 
-		return embed;
 	} catch (error) {
 		console.warn("Error creating Bluesky embed:", error);
 		return match[0] || "";
 	}
 };
+
+/**
+ * Query Bluesky for oembed data.
+ * @param {string} url - Bluesky post URL.
+ * @param {object} config - Configuration object for the Mastodon embed.
+ * @returns {Promise<string|null>} - HTML to embed the status.
+ * @see https://embed.bsky.app/oembed
+ */
+async function _getPostOembed(url, cacheDuration) {
+	if(!url) {
+		console.error("Missing URL.");
+		return null;
+	}
+
+	let oembedUrl = `https://embed.bsky.app/oembed?url=${url}`;
+
+	try {
+		const {html} = await Fetch(oembedUrl, {
+			duration: cacheDuration,
+			type: "json",
+			verbose: env.DEBUG,
+		});
+		return html;
+	} catch (error) {
+		console.error(error);
+		return null;
+	}
+}

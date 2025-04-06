@@ -2,4 +2,4 @@
 title: Bluesky
 ---
 
-https://bsky.app/profile/bsky.app/post/3lgu4lg6j2k2v
+https://bsky.app/profile/shellen.com/post/3ldmp5qd6es2p

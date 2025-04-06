@@ -13,8 +13,10 @@ module.exports = function (eleventyConfig, options = {}) {
 				return content;
 			}
 
+			const {default: asyncReplace} = await import('string-replace-async');
+
 			try {
-				return content.replace(pattern, (...match) => replace(match, config));
+				return await asyncReplace(content, pattern, (...match) => replace(match, config));
 			} catch (error) {
 				console.warn("Error processing Bluesky embeds:", error);
 				return content;
