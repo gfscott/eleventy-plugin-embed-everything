@@ -1,128 +1,45 @@
-import test from "ava";
-import pattern from "../lib/pattern.js";
-import replace from "../lib/replace.js";
-import { validUrls } from "./_validUrls.mjs";
+import { describe, it, expect, beforeEach, afterEach, beforeAll, afterAll, vi } from 'vitest';
+import { _getPostOembed } from '../lib/replace';
 
-test("Creates valid embed HTML with default domain", (t) => {
-	const url = "https://bsky.app/profile/bsky.app/post/3lgu4lg6j2k2v";
-	const matches = pattern.exec(`<p>${url}</p>`);
-	const result = replace(matches, {
-		embedDomain: "bsky.app",
-		embedClass: "eleventy-plugin-embed-bluesky",
-		containerCss: "width: 100%;",
-		iframeCss: "width: 100%; border: 0;",
-		iframeWidth: "550",
-		iframeHeight: "300",
-		iframeFrameborder: "0",
-		iframeScrolling: "no",
-		allowFullscreen: true,
+// Mock API responses
+import {server} from './_mocking.mjs';
+beforeAll(() => server.listen())
+afterAll(() => server.close())
+afterEach(() => server.resetHandlers())
+
+describe('Query Bluesky posts via oEmbed', () => {
+
+	// https://stackoverflow.com/a/76271250/26829947
+	const consoleMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+	beforeEach(() => {
+    vi.resetAllMocks();
+  });
+
+	it('Returns null if URL is missing', async () =>{
+		const noHostname = await _getPostOembed(undefined);
+		expect(noHostname).toBe(null);
+		expect(consoleMock).toHaveBeenCalledOnce()
+		expect(consoleMock).toHaveBeenCalledWith('Missing URL.')
 	});
 
-	t.true(
-		result.includes('class="eleventy-plugin-embed-bluesky"'),
-		"Should include the default class",
-	);
-	t.true(
-		result.includes(
-			'src="https://bsky.app/profile/bsky.app/post/3lgu4lg6j2k2v/embed"',
-		),
-		"Should use correct embed URL",
-	);
-	t.true(result.includes('width="550"'), "Should include width");
-	t.true(result.includes('height="300"'), "Should include height");
-	t.true(result.includes("allowfullscreen"), "Should include allowfullscreen");
-});
-
-test("Supports staging domain", (t) => {
-	const url = "https://staging.bsky.app/profile/bsky.app/post/3lgu4lg6j2k2v";
-	const matches = pattern.exec(`<p>${url}</p>`);
-	const result = replace(matches, {
-		embedDomain: "staging.bsky.app",
-		embedClass: "eleventy-plugin-embed-bluesky",
-		containerCss: "width: 100%;",
-		iframeCss: "width: 100%; border: 0;",
-		iframeWidth: "550",
-		iframeHeight: "300",
-		iframeFrameborder: "0",
-		iframeScrolling: "no",
-		allowFullscreen: true,
+	it('Returns null if URL is invalid', async () =>{
+		const noHostname = await _getPostOembed('https://example.com/invalid');
+		expect(noHostname).toBe(null);
+		expect(consoleMock).toHaveBeenCalledOnce()
+		expect(consoleMock).toHaveBeenCalledWith('Error fetching post data from Bluesky', expect.any(Error))
 	});
 
-	t.true(
-		result.includes(
-			'src="https://staging.bsky.app/profile/bsky.app/post/3lgu4lg6j2k2v/embed"',
-		),
-		"Should use staging domain for embed",
-	);
-});
-
-test("Supports custom domain", (t) => {
-	const url = "https://bsky.app/profile/bsky.app/post/3lgu4lg6j2k2v";
-	const matches = pattern.exec(`<p>${url}</p>`);
-	const result = replace(matches, {
-		embedDomain: "custom.example.com",
-		embedClass: "eleventy-plugin-embed-bluesky",
-		containerCss: "width: 100%;",
-		iframeCss: "width: 100%; border: 0;",
-		iframeWidth: "550",
-		iframeHeight: "300",
-		iframeFrameborder: "0",
-		iframeScrolling: "no",
-		allowFullscreen: true,
+	it('Returns null if post is not found', async () =>{
+		const noHostname = await _getPostOembed('https://bsky.app/profile/bsky.app/post/0000000000000');
+		expect(noHostname).toBe(null);
+		expect(consoleMock).toHaveBeenCalledOnce()
+		expect(consoleMock).toHaveBeenCalledWith('Error fetching post data from Bluesky', expect.any(Error))
 	});
 
-	t.true(
-		result.includes(
-			'src="https://custom.example.com/profile/bsky.app/post/3lgu4lg6j2k2v/embed"',
-		),
-		"Should use custom domain for embed",
-	);
-});
-
-test("Handles invalid match gracefully", (t) => {
-	const result = replace(null, {
-		embedDomain: "bsky.app",
-		embedClass: "eleventy-plugin-embed-bluesky",
+	it('Returns mock HTML if post exists', async () =>{
+		const html = await _getPostOembed('https://bsky.app/profile/bsky.app/post/3lgu4lg6j2k2v');
+		expect(html).toBe('VALID_HTML');
 	});
 
-	t.is(result, "", "Should return empty string for invalid match");
-});
 
-/**
- * Test embed generation with valid strings
- */
-validUrls.forEach((str) => {
-	test(`Generates valid embed: ${str}`, (t) => {
-		const matches = pattern.exec(`<p>${str}</p>`);
-		t.truthy(matches, "Should find pattern matches");
-
-		const result = replace(matches, {
-			embedDomain: "bsky.app",
-			embedClass: "eleventy-plugin-embed-bluesky",
-			containerCss: "width: 100%;",
-			iframeCss: "width: 100%; border: 0;",
-			iframeWidth: "550",
-			iframeHeight: "300",
-			iframeFrameborder: "0",
-			iframeScrolling: "no",
-			allowFullscreen: true,
-		});
-
-		t.true(
-			result.includes('class="eleventy-plugin-embed-bluesky"'),
-			"Should include default class",
-		);
-		t.true(result.includes("iframe"), "Should create iframe element");
-		t.true(result.includes('/embed"'), "Should use embed endpoint");
-
-		// Extract handle and post ID from the URL for verification
-		const urlParts = str.match(/\/profile\/([^/]+)\/post\/([^/?]+)/);
-		t.truthy(urlParts, "Should be able to parse URL parts");
-
-		const [_, handle, postId] = urlParts;
-		t.true(
-			result.includes(`/profile/${handle}/post/${postId}/embed`),
-			"Should use correct handle and post ID",
-		);
-	});
 });

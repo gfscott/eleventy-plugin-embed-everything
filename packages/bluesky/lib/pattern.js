@@ -14,4 +14,4 @@
  * 2. The post ID
  */
 
-module.exports = /<p>\s*(?:<a [^>]*?>)?\s*(?:https?:)?(?:\/\/)?(?:w{3}\.)?(?:staging\.)?bsky\.app\/profile\/([^/\s]+)\/post\/([a-zA-Z0-9]{10,})(?:\/|\?[^<>\s]*)?\s*(?:<\/a>)?\s*<\/p>/;
+module.exports = /<p>\s*(?:<a [^>]*?>)?\s*(?:https?:)?(?:\/\/)?(?:w{3}\.)?(?:staging\.)?bsky\.app\/profile\/([^\/\s]+)\/post\/([a-zA-Z0-9]{10,})(?:[^<>\s]*)?\s*(?:<\/a>)?\s*<\/p>/;

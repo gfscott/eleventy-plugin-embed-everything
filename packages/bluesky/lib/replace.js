@@ -32,11 +32,11 @@ module.exports = async function(match, config) {
 /**
  * Query Bluesky for oembed data.
  * @param {string} url - Bluesky post URL.
- * @param {object} config - Configuration object for the Mastodon embed.
+ * @param {string} [cacheDuration="60m"] - Cache duration for the fetch.
  * @returns {Promise<string|null>} - HTML to embed the status.
  * @see https://embed.bsky.app/oembed
  */
-async function _getPostOembed(url, cacheDuration) {
+async function _getPostOembed(url, cacheDuration = "60m") {
 	if(!url) {
 		console.error("Missing URL.");
 		return null;
@@ -52,7 +52,9 @@ async function _getPostOembed(url, cacheDuration) {
 		});
 		return html;
 	} catch (error) {
-		console.error(error);
+		console.error("Error fetching post data from Bluesky", error);
 		return null;
 	}
 }
+
+module.exports._getPostOembed = _getPostOembed;
