@@ -10,7 +10,7 @@ test('getYouTubeTitleViaOembed returns a string', async (t) => {
 
 test('getYouTubeTitleViaOembed returns the correct title', async (t) => {
   const result = await getYouTubeTitleViaOembed('hIs5StN8J-0', defaults);
-  t.is(result, 'Animotion - Obsession (Official Music Video)');
+  t.is(result, 'Animotion - Obsession');
 });
 
 test('getYouTubeTitleViaOembed returns the default title on network error', async (t) => {

@@ -118,7 +118,7 @@ test(`Build embed lite mode, zero index, responsive true`, async t => {
 });
 test(`Build embed lite mode, zero index, fetch title via oembed`, async t => {
 	t.is(await embed(extract(testString), override({lite: { responsive: true }, titleOptions: {download: true}}), 0),
-	`<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.js"></script>\n<style>.eleventy-plugin-youtube-embed lite-youtube {max-width:100%}</style>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');" title="Animotion - Obsession (Official Music Video)"><div class="lty-playbtn"></div></lite-youtube></div>`
+	`<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.js"></script>\n<style>.eleventy-plugin-youtube-embed lite-youtube {max-width:100%}</style>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');" title="Animotion - Obsession"><div class="lty-playbtn"></div></lite-youtube></div>`
 	);
 });
 test(`Build embed lite mode, zero index, default title set but should be ignored`, async t => {
@@ -198,7 +198,7 @@ test(`Build embed lite mode, 1+ index, responsive true`, async t => {
 });
 test(`Build embed lite mode, 1+ index, fetch title via oembed`, async t => {
 	t.is(await embed(extract(testString), override({lite: { responsive: true }, titleOptions: {download: true}}), 1),
-	`<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');" title="Animotion - Obsession (Official Music Video)"><div class="lty-playbtn"></div></lite-youtube></div>`
+	`<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');" title="Animotion - Obsession"><div class="lty-playbtn"></div></lite-youtube></div>`
 	);
 });
 test(`Build embed lite mode, 1+ index, default title set but should be ignored`, async t => {
