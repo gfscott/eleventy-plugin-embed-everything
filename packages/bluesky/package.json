@@ -10,9 +10,9 @@
 	],
 	"main": "index.js",
 	"scripts": {
-		"test": "npx ava",
-		"coverage": "nyc --reporter=lcov ava"
-	},
+    "test": "vitest run",
+    "coverage": "vitest run --coverage --coverage.include='lib/**'"
+  },
 	"files": [
 		"index.js",
 		"lib/**"
