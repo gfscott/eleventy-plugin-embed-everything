@@ -24,7 +24,6 @@ exports.validPlugins = [
   * The list of all plugins that are active by default.
   */
 exports.defaultPlugins = [
-	"bluesky",
 	"instagram",
 	"openstreetmap",
 	"spotify",
