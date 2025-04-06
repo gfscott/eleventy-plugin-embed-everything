@@ -1,5 +1,25 @@
 # eleventy-plugin-embed-everything
 
+## 1.20.1
+
+### Patch Changes
+
+- Add option to display a video title in Lite mode ([#319](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/319))
+
+- Correctly handle trailing </a> in urls ([#321](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/321))
+
+- Add `includeMarker` option in OpenStreetMap ([#318](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/318))
+
+- Dependency bumps ([#322](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/322))
+
+- Updated dependencies [[`fa2ce90`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/fa2ce90f703dbe7e906c34ed06a38af8c479db95), [`d39ac5e`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/d39ac5e6717ed9a4f70f3394f08657b3f203635c), [`e8200a1`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/e8200a141c5845775011c016a3d51ae0818dd97b), [`ab190f3`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/ab190f36ef92b75f5747d29e74c7a72c265f0152), [`468e04d`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/468e04d831081f5f30a050241fed41a74884978e)]:
+  - eleventy-plugin-youtube-embed@1.13.0
+  - eleventy-plugin-embed-tiktok@1.1.8
+  - eleventy-plugin-embed-mastodon@1.0.1
+  - eleventy-plugin-embed-openstreetmap@1.1.0
+  - eleventy-plugin-embed-soundcloud@1.2.9
+  - eleventy-plugin-embed-twitter@1.4.2
+
 ## 1.20.0
 
 ### Minor Changes
