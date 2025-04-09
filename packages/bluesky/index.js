@@ -1,5 +1,5 @@
 const pattern = require("./lib/pattern.js");
-const replace = require("./lib/replace.js");
+const _replace = require("./lib/replace.js");
 const defaults = require("./lib/defaults.js");
 
 module.exports = function (eleventyConfig, options = {}) {
@@ -16,7 +16,7 @@ module.exports = function (eleventyConfig, options = {}) {
 			const {default: asyncReplace} = await import('string-replace-async');
 
 			try {
-				return await asyncReplace(content, pattern, (...match) => replace(match, config));
+				return await asyncReplace(content, pattern, (...match) => _replace(match, config));
 			} catch (error) {
 				console.warn("Error processing Bluesky embeds:", error);
 				return content;

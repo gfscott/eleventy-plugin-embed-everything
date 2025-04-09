@@ -62,6 +62,6 @@ async function _getPostOembed(url, cacheDuration = "60m", __forceError = false) 
 }
 
 
-module.exports.default = _replace;
+module.exports = _replace;  // Default export
 module.exports._replace = _replace;
 module.exports._getPostOembed = _getPostOembed;
