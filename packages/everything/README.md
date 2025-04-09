@@ -60,27 +60,33 @@ The same principle applies to the other supported services.
 
 Currently, the plugin supports the following embed services (listed alphabetically):
 
-**On by default:**
-- Instagram
-- OpenStreetMap
-- Spotify
-- TikTok
-- Twitch
-- Twitter
-- Vimeo
-- YouTube
+Service | Handle | Active by default?<br>([How to activate](#activate))
+---|---|---
+Bluesky | `bluesky` | ❌ No
+Instagram | `instagram` | ✅ Yes
+Mastodon | `mastodon` | ❌ No
+OpenStreetMap | `openstreetmap` | ✅ Yes
+SoundCloud | `soundcloud` | ❌ No
+Spotify | `spotify` | ✅ Yes
+TED | `ted` | ✅ Yes
+TikTok | `tiktok` | ✅ Yes
+Twitch | `twitch` | ✅ Yes
+Twitter | `twitter` | ✅ Yes
+Vimeo | `vimeo` | ✅ Yes
+YouTube | `youtube` | ✅ Yes
 
-**Off by default** ([How to activate](#configure-which-embed-services-are-active))
-- Mastodon
-- SoundCloud
+> [!NOTE]
+> **Why are some plugins not active by default?**
+> Some services require API calls to fetch the relevant embed data. Because these network calls can affect build times, you'll have to [opt-in to using them](#activate).
 
-_More are planned!_
+Got a suggestion? [File an issue](https://github.com/gfscott/eleventy-plugin-embed-everything/issues/new?title=Feature%20Request:%20&labels=enhancement)!
 
 <span id="settings"></span>
 ## ⚙️ Settings
 
 The plugin supports a number of frequently used services by default, and they have default settings of their own.
 
+<span id="activate"></span>
 ### Configure which embed services are active
 
  You can configure which services you want active by passing an options object to the `addPlugin` function:
@@ -114,7 +120,7 @@ eleventyConfig.addPlugin(embedEverything, {
   }
 });
 ```
-Substitute `vimeo`, `instagram`, and so on in place of `youtube`. Consult the [individual plugin packages](#aggregated-plugins) for their relevant defaults and options.
+Substitute the plugin **Handle** (`vimeo`, `instagram`, and so on) in place of `youtube`. Consult the [individual plugin packages](#aggregated-plugins) for their relevant defaults and options.
 
 <span id="notes-and-caveats"></span>
 ## ⚠️ Notes and caveats
@@ -122,7 +128,7 @@ Substitute `vimeo`, `instagram`, and so on in place of `youtube`. Consult the [i
 - This plugin does very little on its own. Instead, it _aggregates_ other embed plugins in a single place.
 - Each service is itself a standalone Eleventy plugin, each of which you can install individually.
 - If there’s a specific service you’d want added, please [open an issue](https://github.com/gfscott/eleventy-plugin-embed-everything/issues).
-- This plugin is not tested against Node.js < 14 (since [ava](https://github.com/avajs/ava) doesn’t support it). I believe the plugin still works on older, officially unsupported Node.js versions but this can’t be guaranteed.
+- We aim to match 11ty's supported Node.js versions. It may work on older versions but this isn't tested or guaranteed.
 
 ### Aggregated plugins
 
@@ -130,6 +136,7 @@ For more about each [supported service](#supported-services), consult this table
 
 | Service | Package | Repository | Options |
 | ------- | ------- | ---------- | ------- |
+| Bluesky | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-bluesky) | [GitHub](/packages/bluesky) | [Options](/packages/instagram/lib/defaults.js) |
 | Instagram | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-instagram) | [GitHub](/packages/instagram) | [Options](/packages/instagram/lib/pluginDefaults.js) |
 | Mastodon | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-mastodon) | [GitHub](/packages/mastodon) | [Options](/packages/mastodon/lib/defaults.js) |
 | OpenStreetMap | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-openstreetmap) | [GitHub](/packages/openstreetmap) | [Options](/packages/openstreetmap/lib/defaults.js) |

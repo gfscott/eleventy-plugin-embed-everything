@@ -27,11 +27,13 @@
     "twitch",
     "twitter",
     "youtube",
-    "vimeo"
+    "vimeo",
+    "bluesky"
   ],
   "license": "MIT",
   "dependencies": {
     "deepmerge": "^4.3.1",
+    "eleventy-plugin-embed-bluesky": "workspace:^",
     "eleventy-plugin-embed-instagram": "workspace:^",
     "eleventy-plugin-embed-mastodon": "workspace:^",
     "eleventy-plugin-embed-openstreetmap": "workspace:^",
