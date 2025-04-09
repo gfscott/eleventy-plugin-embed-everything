@@ -38,6 +38,10 @@ Maecenas non velit nibh. Aenean eu justo et odio commodo ornare. In scelerisque 
 ...
 ```
 
+### Result:
+
+![Bluesky embed from @shellen.com reading “We never should have let that sink in”](https://github.com/user-attachments/assets/07ec869b-80dc-4e34-9b28-33b8d90cbef9)
+
 ## Settings
 
 You can configure the plugin to change its behavior by passing an options object to the `addPlugin` function:
@@ -46,7 +50,6 @@ You can configure the plugin to change its behavior by passing an options object
 eleventyConfig.addPlugin(embedBluesky, {
 	// just an example, see default values below:
 	embedClass: "custom-classname",
-	embedDomain: "staging.bsky.app",
 });
 ```
 
@@ -54,17 +57,10 @@ eleventyConfig.addPlugin(embedBluesky, {
 
 The plugin's default settings reside in [lib/defaults.js](lib/defaults.js). All of these values can be customized with an options object passed to the plugin.
 
-| Option              | Type    | Default                                                 | Notes                                                                                                                |
-| ------------------- | ------- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `allowFullscreen`   | Boolean | `true`                                                  | Set to false to prevent the embedded post from being viewed in fullscreen mode.                                      |
-| `containerCss`      | String  | `"position: relative; width: 100%; padding-bottom: 0;"` | CSS applied to the container `<div>` that wraps the embedded post.                                                   |
-| `embedClass`        | String  | `"eleventy-plugin-embed-bluesky"`                       | CSS class applied to the container `<div>` that wraps the embedded post.                                             |
-| `iframeCss`         | String  | `"border: 0; position: relative; width: 100%;"`         | CSS applied to the `<iframe>` that contains the embedded post.                                                       |
-| `iframeFrameborder` | String  | `"0"`                                                   | Width of the `iframe`'s border in pixels.                                                                            |
-| `iframeHeight`      | String  | `"300"`                                                 | Height of the `iframe`.                                                                                              |
-| `iframeScrolling`   | String  | `"no"`                                                  | Whether the `iframe` should have scrollbars.                                                                         |
-| `iframeWidth`       | String  | `"550"`                                                 | Width of the `iframe`.                                                                                               |
-| `embedDomain`       | String  | `"bsky.app"`                                            | Domain to use for embeds. Can be set to `staging.bsky.app` for staging or a custom domain for self-hosted instances. |
+Option | Type | Default | Notes
+---|---|---|---
+`cacheDuration` | String | `60m` | How long to cache Bluesky API data. Use the [Eleventy Fetch syntax](https://www.11ty.dev/docs/plugins/fetch/#change-the-cache-duration) to set the duration.
+`embedClass` | String  | `eleventy-plugin-embed-bluesky` | CSS class applied to the container `<div>` that wraps the embedded post.
 
 ### Supported URL patterns
 
@@ -90,11 +86,11 @@ https://bsky.app/profile/bsky.app/post/3lgu4lg6j2k2v?foo=bar
 
 ## Notes and caveats
 
+- 📞 Due to Bluesky's distributed architecture, this plugin must make network requests at build time to retrieve the relevant embed data, which is cached locally. If the plugin experiences any network failure (such as if you're not connected to the internet), then it simply won’t complete the embed and the URL will be rendered as plain text.
 - This plugin is deliberately designed _only_ to embed when the URL is on its own line, and not inline with other text.
 - To do this, it uses a regular expression to recognize Bluesky URLs, wrapped in an HTML `<p>` tag. If your Markdown parser produces any other output, it won't be recognized.
 - The plugin supports both standard handles (e.g., `bsky.app`) and DID-based handles (e.g., `did:plc:yc6gmb3bo56qotdsywnsxrxp`).
 - Post IDs must be at least 10 characters long and can contain letters and numbers.
-- You can use the `embedDomain` option to embed posts from a staging environment or a self-hosted Bluesky instance. The custom domain must implement the Bluesky embed endpoint at `/profile/:handle/post/:id/embed`.
 - This plugin uses [transforms](https://www.11ty.dev/docs/config/#transforms), so it alters Eleventy's HTML output as it's generated. It doesn't alter the source markdown.
 
 ## Credits
