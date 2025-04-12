@@ -4,6 +4,7 @@
  * The definitive list of all plugins that _can_ be aggregated by this plugin.
  */
 exports.validPlugins = [
+	"bluesky",
 	"instagram",
 	"mastodon",
 	"openstreetmap",

@@ -1,0 +1,35 @@
+{
+	"name": "eleventy-plugin-embed-bluesky",
+	"version": "0.1.0",
+	"description": "An Eleventy plugin to automatically embed Bluesky posts, using just their URLs.",
+	"keywords": [
+		"11ty",
+		"eleventy",
+		"eleventy-plugin",
+		"bluesky"
+	],
+	"main": "index.js",
+	"scripts": {
+    "test": "vitest run",
+    "coverage": "vitest run --coverage --coverage.include='lib/**'"
+  },
+	"files": [
+		"index.js",
+		"lib/**"
+	],
+	"author": {
+		"name": "Jason Shellen",
+		"url": "https://shellen.com"
+	},
+	"license": "MIT",
+	"homepage": "https://gfscott.com/embed-everything/",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/gfscott/eleventy-plugin-embed-everything.git"
+	},
+	"bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues",
+	"dependencies": {
+		"@11ty/eleventy-fetch": "^5.0.2",
+		"string-replace-async": "^3.0.2"
+	}
+}

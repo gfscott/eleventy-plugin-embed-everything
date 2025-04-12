@@ -9,7 +9,7 @@ export default function(eleventyConfig) {
   // Add plugin
   eleventyConfig.addPlugin(embeds, {
     // Enable plugins that aren't active by default
-    add: ['mastodon', 'soundcloud'],
+    add: ['bluesky', 'mastodon', 'soundcloud'],
     // Add the mandatory "server" value required for Mastodon.
 		mastodon: {
 			options: {
