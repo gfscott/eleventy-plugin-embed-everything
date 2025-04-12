@@ -15,7 +15,7 @@
  * @property {string} [titleOptions.cacheDuration] - How long to cache the video title.
  */
 const defaults = {
-  allowAttrs: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
+  allowAttrs: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share',
   allowAutoplay: false,
   allowFullscreen: true,
   embedClass: 'eleventy-plugin-youtube-embed',
@@ -55,7 +55,6 @@ const thumbnails = {
  * @property {boolean} [js.enabled] - Whether JS is enabled.
  * @property {boolean} [js.inline] - Whether JS is inline.
  * @property {string} [js.path] - The path to the JS file.
- * 
  * @property {boolean} [responsive] - Whether the layout is responsive.
  * @property {string} [thumbnailQuality] - The quality of the thumbnail.
  */
@@ -75,7 +74,7 @@ const liteDefaults = {
   thumbnailQuality: thumbnails.defaultSize,
   thumbnailFormat: thumbnails.defaultFormat,
 };
-  
+
 module.exports.thumbnails = thumbnails;
 module.exports.liteDefaults = liteDefaults;
 module.exports.defaults = defaults;
