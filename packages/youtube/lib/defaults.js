@@ -21,7 +21,6 @@ const defaults = {
   embedClass: 'eleventy-plugin-youtube-embed',
   lazy: false,
   lite: false,
-  modestBranding: false,
   noCookie: true,
   recommendSelfOnly: false,
   title: 'Embedded YouTube video',
