@@ -1,5 +1,15 @@
 # eleventy-plugin-embed-everything-demo
 
+## 2.1.0
+
+### Minor Changes
+
+- [Bluesky] Add support for Bluesky embeds (🏅 Special thanks to @shellen!) ([#326](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/326))
+
+### Patch Changes
+
+- [Demo] Clean up unused package import ([#327](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/327))
+
 ## 2.0.1
 
 ### Patch Changes
