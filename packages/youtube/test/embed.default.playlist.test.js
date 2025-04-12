@@ -67,12 +67,6 @@ test(`Playlist embed default mode, override noCookie`, async t => {
   );
 });
 
-test(`Playlist embed default mode, override modestBranding`, async t => {
-  t.is(await embed(extract(testString), override({modestBranding: true})),
-    '<div id="PLCbA9r6ecYWU6SVyvb32a0YHIzpr9jxnW" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/videoseries?list=PLCbA9r6ecYWU6SVyvb32a0YHIzpr9jxnW&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>'
-  );
-});
-
 test(`Playlist embed default mode, override recommendSelfOnly`, async t => {
   t.is(await embed(extract(testString), override({recommendSelfOnly: true})),
     '<div id="PLCbA9r6ecYWU6SVyvb32a0YHIzpr9jxnW" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/videoseries?list=PLCbA9r6ecYWU6SVyvb32a0YHIzpr9jxnW&rel=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>'

@@ -255,9 +255,6 @@ test(`Stringify URL params returns expected string in default mode, autoplay`, t
 test(`Stringify URL params returns expected string in default mode, recommendations`, t => {
 	t.is(stringifyUrlParams({recommendSelfOnly: true}), '?rel=0');
 });
-test(`Stringify URL params returns expected string in default mode, modest branding`, t => {
-	t.is(stringifyUrlParams({modestBranding: true}), '?modestbranding=1');
-});
 test(`Stringify URL params returns expected string in default mode, multiple values`, t => {
 	const o = {
 		allowAutoplay: true,
@@ -279,13 +276,6 @@ test(`Stringify URL params returns expected string in lite mode, recommendations
 		recommendSelfOnly: true,
 	}
 	t.is(stringifyUrlParams(o), 'rel=0');
-});
-test(`Stringify URL params returns expected string in lite mode, modest branding`, t => {
-	const o = {
-		lite: true,
-		modestBranding: true,
-	}
-	t.is(stringifyUrlParams(o), 'modestbranding=1');
 });
 test(`Stringify URL params returns expected string in lite mode, multiple values`, t => {
 	const o = {

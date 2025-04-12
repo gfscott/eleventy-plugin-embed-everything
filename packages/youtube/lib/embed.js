@@ -145,7 +145,6 @@ function stringifyUrlParams(options){
   // autoplay is _technically_ possible, but be cool, don't do this
   if(options.allowAutoplay) params.push('autoplay=1');
   if(options.recommendSelfOnly) params.push('rel=0');
-  if(options.modestBranding) params.push('modestbranding=1');
   if(options.startTime) params.push(`start=${options.startTime}`);
 
   if (params.length === 0) return '';
@@ -290,7 +289,6 @@ function __constructEmbedSrc(url, opt) {
     list: playlist,
     autoplay: opt.allowAutoplay ? 1 : 0,
     rel: opt.recommendSelfOnly ? 1 : 0,
-    modestbranding: opt.modestBranding ? 1 : 0,
     start: parseInt(opt.startTime ?? t ?? start),
   };
 
