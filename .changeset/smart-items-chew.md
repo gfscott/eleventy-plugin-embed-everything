@@ -3,4 +3,4 @@
 "eleventy-plugin-embed-everything": patch
 ---
 
-Update default value of Youtube allow attribute
+[YouTube] Update default value of Youtube `allow` attribute

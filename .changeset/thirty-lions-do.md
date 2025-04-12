@@ -4,4 +4,4 @@
 "eleventy-plugin-embed-everything-demo": minor
 ---
 
-Add support for Bluesky embeds
+[Bluesky] Add support for Bluesky embeds (🏅 Special thanks to @shellen!)

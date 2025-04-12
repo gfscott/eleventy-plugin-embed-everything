@@ -3,4 +3,4 @@
 "eleventy-plugin-embed-everything": patch
 ---
 
-Add option to display a video title in Lite mode
+[YouTube] Add option to display a video title in Lite mode

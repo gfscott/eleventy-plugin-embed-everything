@@ -3,4 +3,4 @@
 "eleventy-plugin-embed-everything": patch
 ---
 
-Drop “modestbranding” config since YouTube no longer supports it
+[YouTube] Drop “modestbranding” config since YouTube no longer supports it

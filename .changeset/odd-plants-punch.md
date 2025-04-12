@@ -3,4 +3,4 @@
 "eleventy-plugin-embed-everything": patch
 ---
 
-Correctly handle trailing </a> in urls
+[Mastodon] Correctly handle trailing `</a>` in urls

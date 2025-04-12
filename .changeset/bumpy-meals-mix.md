@@ -3,4 +3,4 @@
 "eleventy-plugin-embed-everything": minor
 ---
 
-Make YouTube inline CSS configurable
+[YouTube] Make inline CSS configurable

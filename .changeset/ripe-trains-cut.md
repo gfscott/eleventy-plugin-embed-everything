@@ -2,4 +2,4 @@
 "eleventy-plugin-embed-everything-demo": patch
 ---
 
-Clean up unused package import
+[Demo] Clean up unused package import

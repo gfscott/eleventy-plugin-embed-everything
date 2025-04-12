@@ -3,4 +3,4 @@
 "eleventy-plugin-embed-everything": patch
 ---
 
-Add `includeMarker` option in OpenStreetMap
+[OpenStreetMap] Add `includeMarker` option in OpenStreetMap
