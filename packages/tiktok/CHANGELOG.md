@@ -1,5 +1,11 @@
 # eleventy-plugin-embed-tiktok
 
+## 1.1.8
+
+### Patch Changes
+
+- [TikTok] Under-the-hood refactor, no change to public APIs ([#324](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/324))
+
 ## 1.1.7
 
 ### Patch Changes

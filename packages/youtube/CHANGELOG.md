@@ -1,5 +1,21 @@
 # eleventy-plugin-youtube-embed
 
+## 1.13.0
+
+### Minor Changes
+
+- [YouTube] Add option to display a video title in Lite mode ([#319](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/319))
+
+- [YouTube] Make inline CSS configurable ([#329](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/329))
+
+### Patch Changes
+
+- [YouTube] Drop “modestbranding” config since YouTube no longer supports it ([#330](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/330))
+
+- [YouTube] Update default value of Youtube `allow` attribute ([#328](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/328))
+
+- Dependency bumps ([#322](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/322))
+
 ## 1.12.0
 
 ### Minor Changes
