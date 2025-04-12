@@ -50,11 +50,8 @@ async function defaultEmbed(url, options){
   const embedSrc = __constructEmbedSrc(url, options);
 
   let out = `<div id="${id ?? playlist}" class="${options.embedClass}" `;
-  // intrinsic aspect ratio; currently hard-coded to 16:9
-  // TODO: make configurable somehow
-  out += 'style="position:relative;width:100%;padding-top: 56.25%;">';
-  out +=
-    '<iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;"';
+  out += `style="${options.cssWrapper}">`;
+  out += `<iframe style="${options.cssIframe}"`;
   out += ` width="100%" height="100%" frameborder="0" title="${title}"`;
   out += ` src="${embedSrc}"`;
   out += ` allow="${options.allowAttrs}"`;

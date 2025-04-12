@@ -3,6 +3,8 @@
  * @property {string} [allowAttrs] - Allowed attributes.
  * @property {boolean} [allowAutoplay] - Whether autoplay is allowed.
  * @property {boolean} [allowFullscreen] - Whether fullscreen is allowed.
+ * @property {string} [cssWrapper] - Inline CSS for the wrapper.
+ * @property {string} [cssIframe] - Inline CSS for the iframe.
  * @property {string} [embedClass] - The class for the embed.
  * @property {boolean} [lazy] - Whether lazy loading is enabled.
  * @property {boolean} [lite] - Whether lite mode is enabled.
@@ -18,7 +20,9 @@ const defaults = {
   allowAttrs: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
   allowAutoplay: false,
   allowFullscreen: true,
-  embedClass: 'eleventy-plugin-youtube-embed',
+  cssWrapper: 'position:relative;width:100%;padding-top: 56.25%;',
+	cssIframe: 'position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;',
+	embedClass: 'eleventy-plugin-youtube-embed',
   lazy: false,
   lite: false,
   modestBranding: false,
