@@ -55,7 +55,6 @@ const thumbnails = {
  * @property {boolean} [js.enabled] - Whether JS is enabled.
  * @property {boolean} [js.inline] - Whether JS is inline.
  * @property {string} [js.path] - The path to the JS file.
- *
  * @property {boolean} [responsive] - Whether the layout is responsive.
  * @property {string} [thumbnailQuality] - The quality of the thumbnail.
  */
