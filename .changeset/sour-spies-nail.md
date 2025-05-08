@@ -7,4 +7,4 @@
 "eleventy-plugin-embed-everything": patch
 ---
 
-Bump @11ty/fetch dependency to v5.1.0
+Bump @11ty/eleventy-fetch dependency to v5.1.0
