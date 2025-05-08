@@ -30,7 +30,7 @@
   },
   "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues",
   "dependencies": {
-    "@11ty/eleventy-fetch": "^5.0.2",
+    "@11ty/eleventy-fetch": "^5.1.0",
     "deepmerge": "^4.3.1"
   }
 }
