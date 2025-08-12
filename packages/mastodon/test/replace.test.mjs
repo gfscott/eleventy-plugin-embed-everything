@@ -17,9 +17,12 @@ afterEach(() => server.resetHandlers())
 describe('Query Mastodon status', () => {
 
 	// https://stackoverflow.com/a/76271250/26829947
-	const consoleMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+	let consoleMock;
   beforeEach(() => {
-    vi.resetAllMocks();
+    consoleMock = vi.spyOn(console, 'error');
+  });
+  afterEach(() => {
+    vi.restoreAllMocks();
   });
 
 	it('Returns null if missing hostname', async () => {
@@ -53,9 +56,12 @@ describe('Query Mastodon status', () => {
 
 describe('Query oembed data', () => {
 
-	const consoleMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+	let consoleMock;
   beforeEach(() => {
-    vi.resetAllMocks();
+    consoleMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+  });
+  afterEach(() => {
+    vi.restoreAllMocks();
   });
 
 	it('Returns null if missing hostname', async () =>{
