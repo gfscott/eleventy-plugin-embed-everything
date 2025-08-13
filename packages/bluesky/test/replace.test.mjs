@@ -11,9 +11,9 @@ afterEach(() => server.resetHandlers())
 describe('Query Bluesky posts via oEmbed', () => {
 
 	// https://stackoverflow.com/a/76271250/26829947
-	const consoleMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
-	beforeEach(() => {
-    vi.resetAllMocks();
+	let consoleMock;
+  beforeEach(() => {
+    consoleMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
   });
 
 	it('Returns null if URL is missing', async () =>{
@@ -47,9 +47,9 @@ describe('Query Bluesky posts via oEmbed', () => {
 describe('Returns expected output', () => {
 
 	// https://stackoverflow.com/a/76271250/26829947
-	const consoleMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
-	beforeEach(() => {
-    vi.resetAllMocks();
+	let consoleMock;
+  beforeEach(() => {
+    consoleMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
   });
 
 	it('Empty string on no match', async () =>{
@@ -99,9 +99,12 @@ describe('Returns expected output', () => {
 });
 
 describe('Forced error handling', () => {
-	const consoleMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+	let consoleMock;
 	beforeEach(() => {
-		vi.resetAllMocks();
+		consoleMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+	});
+	afterEach(() => {
+		vi.restoreAllMocks();
 	});
 
 	it('Returns original string on forced error', async () =>{
