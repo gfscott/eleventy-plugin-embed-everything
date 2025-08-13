@@ -21,9 +21,6 @@ describe('Query Mastodon status', () => {
   beforeEach(() => {
     consoleMock = vi.spyOn(console, 'error');
   });
-  afterEach(() => {
-    vi.restoreAllMocks();
-  });
 
 	it('Returns null if missing hostname', async () => {
 		const noHostname = await _getFederatedStatus(undefined, '123')
@@ -59,9 +56,6 @@ describe('Query oembed data', () => {
 	let consoleMock;
   beforeEach(() => {
     consoleMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
-  });
-  afterEach(() => {
-    vi.restoreAllMocks();
   });
 
 	it('Returns null if missing hostname', async () =>{

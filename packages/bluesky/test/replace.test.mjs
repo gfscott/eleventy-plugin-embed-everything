@@ -15,9 +15,6 @@ describe('Query Bluesky posts via oEmbed', () => {
   beforeEach(() => {
     consoleMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
   });
-  afterEach(() => {
-    vi.restoreAllMocks();
-  });
 
 	it('Returns null if URL is missing', async () =>{
 		const urlMissing = await _getPostOembed(undefined);
@@ -53,9 +50,6 @@ describe('Returns expected output', () => {
 	let consoleMock;
   beforeEach(() => {
     consoleMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
-  });
-  afterEach(() => {
-    vi.restoreAllMocks();
   });
 
 	it('Empty string on no match', async () =>{
