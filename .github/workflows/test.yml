@@ -1,4 +1,6 @@
 name: CI
+permissions:
+  contents: read
 on:
   push:
     paths-ignore:
@@ -24,7 +26,7 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
-      - name: Run tests using ava
+      - name: Run unit tests
         run: pnpm test
 
   # end_to_end_tests:
@@ -76,7 +78,7 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
-      - name: Run tests using ava
+      - name: Run unit tests
         run: pnpm coverage
       - name: Upload coverage to Codecov.io
         uses: codecov/codecov-action@v5
