@@ -16,7 +16,7 @@ jobs:
         node: ["20", "22", "24"]
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Install pnpm
         uses: pnpm/action-setup@v4
       - name: Setup Node.js
@@ -35,7 +35,7 @@ jobs:
   #   needs: unit_tests
   #   steps:
   #     - name: Checkout repo
-  #       uses: actions/checkout@v4
+  #       uses: actions/checkout@v5
   #     - name: Install pnpm
   #       uses: pnpm/action-setup@v2
   #       with:
@@ -68,7 +68,7 @@ jobs:
     if: github.repository == 'gfscott/eleventy-plugin-embed-everything'
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Install pnpm
         uses: pnpm/action-setup@v4
       - name: Setup Node.js
