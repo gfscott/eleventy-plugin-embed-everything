@@ -1,5 +1,3 @@
-const kleur = require('kleur');
-
 module.exports = function(media, options) {
 
   /**
@@ -9,11 +7,14 @@ module.exports = function(media, options) {
    * We coerce the empty string to falsy with the triple-bang trick.
    */
   if ( !!!options.parent ) {
-    console.error(`⚠️  ${ kleur.red('Error embedding Twitch video') }
-  Eleventy plugin ${kleur.cyan('eleventy-plugin-embed-twitch')} requires a \`parent\` option to be set.
-  🔗  See ${kleur.cyan().underline('https://bit.ly/11ty-plugin-twitch-parent-error')} for details.`);
-}
-  
+    console.warn(
+			"", // Blank line for spacing, also works around console quirk in monorepo
+			"\n⚠️ \x1b[31mError embedding Twitch video",
+			"\nEleventy plugin '\x1b[36meleventy-plugin-embed-twitch\x1b[0m' requires a \`parent\` option to be set.",
+			"\n🔗  See \x1b[36m\x1b[4m'https://bit.ly/11ty-plugin-twitch-parent-error'\x1b[0m for details."
+		);
+	}
+
   // Build the string, using config data as we go
   // id based on channel or video id
   // TODO:
@@ -25,7 +26,7 @@ module.exports = function(media, options) {
   // intrinsic aspect ratio; currently hard-coded to 16:9
   // TODO: make configurable somehow
   out += `style="position:relative;width:100%;padding-top: 56.25%;">`;
-  
+
   out +=
     `<iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" `;
   out += `width="100%" height="100%" frameborder="0" scrolling="no" `;
