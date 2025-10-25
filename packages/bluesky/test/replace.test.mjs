@@ -6,7 +6,10 @@ import config from '../lib/defaults.js';
 import {server} from './_mocking.mjs';
 beforeAll(() => server.listen())
 afterAll(() => server.close())
-afterEach(() => server.resetHandlers())
+afterEach(() => {
+	server.resetHandlers()
+	vi.restoreAllMocks()
+})
 
 describe('Query Bluesky posts via oEmbed', () => {
 
@@ -112,6 +115,6 @@ describe('Forced error handling', () => {
 		const customConfig = Object.assign({}, config, {__forceError: true});
 		const html = await _replace(match, customConfig);
 		expect(html).toBe('https://bsky.app/profile/bsky.app/post/3lgu4lg6j2k2v');
-		expect(consoleMock).toHaveBeenCalledOnce()
+	expect(consoleMock).toHaveBeenCalledOnce()
 	});
 });

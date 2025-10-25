@@ -12,7 +12,11 @@ import patternGenerator from '../lib/pattern.js';
 import {server} from './_mocking.mjs';
 beforeAll(() => server.listen())
 afterAll(() => server.close())
-afterEach(() => server.resetHandlers())
+afterEach(() => {
+	server.resetHandlers();
+	// Restore any spies/mocks created by vi.spyOn between tests so calls don't accumulate
+	vi.restoreAllMocks();
+})
 
 describe('Query Mastodon status', () => {
 
