@@ -78,19 +78,20 @@ async function liteEmbed(url, options, index) {
 	}
 
   // override start time if it's set in the URL
-  if (start || t) options.startTime = parseInt(start ?? t);
+  const optionsWithParamOverrides = {...options};
+  if (start || t) optionsWithParamOverrides.startTime = parseInt(start ?? t);
+
+  const params = stringifyUrlParams(optionsWithParamOverrides);
 
   const liteOpt = liteConfig(options);
         liteOpt.thumbnailQuality = validateThumbnailSize(liteOpt.thumbnailQuality);
         liteOpt.thumbnailFormat = validateThumbnailFormat(liteOpt.thumbnailFormat);
-  const params = stringifyUrlParams(options);
 
   const thumbnailUrl = () => {
     const fileTypePath = liteOpt.thumbnailFormat === 'webp' ? 'vi_webp' : 'vi';
     const fileName = `${liteOpt.thumbnailQuality}.${liteOpt.thumbnailFormat}`;
     return `https://i.ytimg.com/${fileTypePath}/${id ?? playlist}/${fileName}`;
   }
-
 
 	let title = undefined;
 	/**
