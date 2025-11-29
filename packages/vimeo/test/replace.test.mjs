@@ -2,9 +2,9 @@ import test from 'ava';
 import defaults from '../lib/defaults.js';
 import pattern from '../lib/pattern.js';
 import replace from '../lib/replace.js';
-import validUrls from './_validUrls.mjs';
+import {publicUrls} from './_validUrls.mjs';
 
-const allStrings = validUrls.map(url => {
+const allStrings = publicUrls.map(url => {
   let out = [];
   out.push(`<p>${url}</p>`); // no whitespace
   out.push(`<p>

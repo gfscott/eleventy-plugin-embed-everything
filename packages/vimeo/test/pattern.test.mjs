@@ -1,6 +1,8 @@
 import test from 'ava';
 import pattern from '../lib/pattern.js';
-import validUrls from './_validUrls.mjs';
+import {publicUrls, privateUrls} from './_validUrls.mjs';
+
+const validUrls = [...publicUrls, ...privateUrls];
 
 for (let [index, url] of validUrls.entries()) {
 
