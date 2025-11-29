@@ -13,6 +13,7 @@ import permute from 'permute-arrays';
  */
 const validUrls = [
  'vimeo.com/123456',
+ 'vimeo.com/123456/abc123xyz789',
 ]
 
 
