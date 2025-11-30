@@ -81,7 +81,7 @@ Edit any of the default values in this options object to override the plugin beh
 
 ### Supported URL patterns
 
-The plugin supports common Vimeo URL variants as well. These should also work in your Markdown files.:
+The plugin supports common Vimeo URL variants as well, including [unlisted videos](https://help.vimeo.com/hc/en-us/articles/12426199699985-About-video-privacy-settings) available on paid plans. These should also work in your Markdown files:
 
 ```markdown
 <!-- No protocol: -->
