@@ -8,7 +8,7 @@
 
 This [Eleventy](https://11ty.dev) plugin will automatically embed common media formats in your pages, requiring only a URL in your markdown files.
 
-It currently supports **Instagram**, **SoundCloud**, **Spotify**, **TikTok**, **Twitch**, **Twitter**, **Vimeo**, and **YouTube**, with more planned.
+It currently supports a [range of services](#supported-services).
 
 - ⚡️ [Installation](#installation)
 - 🛠 [Usage](#usage)
@@ -49,7 +49,7 @@ https://www.youtube.com/watch?v=dQw4w9WgXcQ
 Maecenas non velit nibh. Aenean eu justo et odio commodo ornare. In scelerisque sapien at.
 ```
 
-The same principle applies to the other supported services.
+The same principle applies to all [supported services](#supported-services).
 
 ### Result:
 
@@ -58,22 +58,22 @@ The same principle applies to the other supported services.
 <span id="supported-services"></span>
 ## 🌈 Supported services
 
-Currently, the plugin supports the following embed services (listed alphabetically):
+Currently, the plugin supports the following embed services (listed alphabetically). You can also install them individually, check their npm pages for details.
 
-Service | Handle | Active by default?<br>([How to activate](#activate))
----|---|---
-Bluesky | `bluesky` | ❌ No
-Instagram | `instagram` | ✅ Yes
-Mastodon | `mastodon` | ❌ No
-OpenStreetMap | `openstreetmap` | ✅ Yes
-SoundCloud | `soundcloud` | ❌ No
-Spotify | `spotify` | ✅ Yes
-TED | `ted` | ✅ Yes
-TikTok | `tiktok` | ✅ Yes
-Twitch | `twitch` | ✅ Yes
-Twitter | `twitter` | ✅ Yes
-Vimeo | `vimeo` | ✅ Yes
-YouTube | `youtube` | ✅ Yes
+Service | Handle | Active by default?<br>([How to activate](#activate)) | 🔗 npm | 🔗 GitHub | Options
+---|---|---|---|---|---
+Bluesky | `bluesky` | ❌ No | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-bluesky) | [GitHub](/packages/bluesky) | [Options](/packages/instagram/lib/defaults.js)
+Instagram | `instagram` | ✅ Yes | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-instagram) | [GitHub](/packages/instagram) | [Options](/packages/instagram/lib/pluginDefaults.js)
+Mastodon | `mastodon` | ❌ No | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-mastodon) | [GitHub](/packages/mastodon) | [Options](/packages/mastodon/lib/defaults.js)
+OpenStreetMap | `openstreetmap` | ✅ Yes | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-openstreetmap) | [GitHub](/packages/openstreetmap) | [Options](/packages/openstreetmap/lib/defaults.js)
+SoundCloud | `soundcloud` | ❌ No | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-soundcloud) | [GitHub](/packages/soundcloud) | [Options](/packages/soundcloud/lib/pluginDefaults.js)
+Spotify | `spotify` | ✅ Yes | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-spotify) | [GitHub](/packages/spotify) | [Options](/packages/spotify/lib/defaults.js)
+TED | `ted` | ✅ Yes | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-ted) | [GitHub](/packages/ted) | [Options](/packages/ted/lib/defaults.js)
+TikTok | `tiktok` | ✅ Yes | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-tiktok) | [GitHub](/packages/tiktok) | [Options](/packages/tiktok/lib/pluginDefaults.js)
+Twitch | `twitch` | ✅ Yes | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitch) | [GitHub](/packages/twitch) | [Options](/packages/twitch/lib/pluginDefaults.js)
+Twitter | `twitter` | ✅ Yes | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitter) | [GitHub](/packages/twitter) | [Options](/packages/twitter/lib/pluginDefaults.js)
+Vimeo | `vimeo` | ✅ Yes | [npm](https://www.npmjs.com/package/eleventy-plugin-vimeo-embed) | [GitHub](/packages/vimeo) | [Options](/packages/vimeo/lib/defaults.js)
+YouTube | `youtube` | ✅ Yes | [npm](https://www.npmjs.com/package/eleventy-plugin-youtube-embed) | [GitHub](/packages/youtube) | [Options](/packages/youtube/lib/defaults.js)
 
 > [!NOTE]
 > **Why are some plugins not active by default?**
@@ -108,7 +108,7 @@ eleventyConfig.addPlugin(embedEverything, {
 
 ### Configure embed services individually
 
-Each service comes with some useful defaults, but you can also configure each one individually. Override each plugin’s defaults by passing an options object that includes its fully-lowercase name as the key:
+Each service comes with some useful defaults, but you can also configure each one individually. Override each plugin’s defaults by passing an options object that includes its [handle](#supported-services) as the key:
 
 ```javascript
 // configure YouTube videos to prohibit fullscreen
@@ -120,7 +120,7 @@ eleventyConfig.addPlugin(embedEverything, {
   }
 });
 ```
-Substitute the plugin **Handle** (`vimeo`, `instagram`, and so on) in place of `youtube`. Consult the [individual plugin packages](#aggregated-plugins) for their relevant defaults and options.
+Substitute the plugin **Handle** (`vimeo`, `instagram`, and so on) in place of `youtube`. Consult the [individual plugin packages](#supported-services) for their relevant defaults and options.
 
 <span id="notes-and-caveats"></span>
 ## ⚠️ Notes and caveats
@@ -129,22 +129,3 @@ Substitute the plugin **Handle** (`vimeo`, `instagram`, and so on) in place of `
 - Each service is itself a standalone Eleventy plugin, each of which you can install individually.
 - If there’s a specific service you’d want added, please [open an issue](https://github.com/gfscott/eleventy-plugin-embed-everything/issues).
 - We aim to match 11ty's supported Node.js versions. It may work on older versions but this isn't tested or guaranteed.
-
-### Aggregated plugins
-
-For more about each [supported service](#supported-services), consult this table of relevant links.
-
-| Service | Package | Repository | Options |
-| ------- | ------- | ---------- | ------- |
-| Bluesky | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-bluesky) | [GitHub](/packages/bluesky) | [Options](/packages/instagram/lib/defaults.js) |
-| Instagram | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-instagram) | [GitHub](/packages/instagram) | [Options](/packages/instagram/lib/pluginDefaults.js) |
-| Mastodon | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-mastodon) | [GitHub](/packages/mastodon) | [Options](/packages/mastodon/lib/defaults.js) |
-| OpenStreetMap | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-openstreetmap) | [GitHub](/packages/openstreetmap) | [Options](/packages/openstreetmap/lib/defaults.js) |
-| SoundCloud | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-soundcloud) | [GitHub](/packages/soundcloud) | [Options](/packages/soundcloud/lib/pluginDefaults.js) |
-| Spotify | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-spotify) | [GitHub](/packages/spotify) | [Options](/packages/spotify/lib/defaults.js) |
-| TED | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-ted) | [GitHub](/packages/ted) | [Options](/packages/ted/lib/defaults.js) |
-| TikTok | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-tiktok) | [GitHub](/packages/tiktok) | [Options](/packages/tiktok/lib/pluginDefaults.js) |
-| Twitch | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitch) | [GitHub](/packages/twitch) | [Options](/packages/twitch/lib/pluginDefaults.js) |
-| Twitter | [npm](https://www.npmjs.com/package/eleventy-plugin-embed-twitter) | [GitHub](/packages/twitter) | [Options](/packages/twitter/lib/pluginDefaults.js) |
-| Vimeo | [npm](https://www.npmjs.com/package/eleventy-plugin-vimeo-embed) | [GitHub](/packages/vimeo) | [Options](/packages/vimeo/lib/defaults.js) |
-| YouTube | [npm](https://www.npmjs.com/package/eleventy-plugin-youtube-embed) | [GitHub](/packages/youtube) | [Options](/packages/youtube/lib/defaults.js) |
