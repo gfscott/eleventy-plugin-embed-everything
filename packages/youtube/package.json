@@ -32,7 +32,7 @@
   "dependencies": {
     "@11ty/eleventy-fetch": "^5.1.0",
     "deepmerge": "^4.3.1",
-    "lite-youtube-embed": "^0.3.3",
+    "lite-youtube-embed": "^0.3.4",
     "string-replace-async": "^3.0.2"
   }
 }
