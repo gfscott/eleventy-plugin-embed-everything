@@ -1,5 +1,15 @@
 # eleventy-plugin-youtube-embed
 
+## 1.13.1
+
+### Patch Changes
+
+- Fix issue with lite embed where start time in one URL bleeds into subsequent embeds ([#348](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/348))
+
+- Bump @11ty/eleventy-fetch dependency to v5.1.0 ([#333](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/333))
+
+- Bump lite-youtube-embed dependency ([#351](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/351))
+
 ## 1.13.0
 
 ### Minor Changes

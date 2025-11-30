@@ -1,5 +1,22 @@
 # eleventy-plugin-embed-everything
 
+## 1.21.1
+
+### Patch Changes
+
+- Update readme ([#352](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/352))
+
+- Bump @11ty/eleventy-fetch dependency to v5.1.0 ([#333](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/333))
+
+- Updated dependencies [[`a65c4f9`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/a65c4f9e98ae4b4a9e16c3fe5e7420fb2797bf4c), [`683f797`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/683f7977337194fe0aa40b8b0fbb92770d5de185), [`3853d6c`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/3853d6cfed303df4f298a0c3835a400c70bf1d29), [`e5abc6f`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/e5abc6f041d92152bd93369b8952a77b0f496130), [`1e105cc`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/1e105ccdaa60f9f27a0fd6eee7a74b73fd3f87ec), [`fba5003`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/fba500395f0207c93cdaf73e6ddf0af8f299588f)]:
+  - eleventy-plugin-embed-twitch@1.2.8
+  - eleventy-plugin-vimeo-embed@1.4.0
+  - eleventy-plugin-youtube-embed@1.13.1
+  - eleventy-plugin-embed-soundcloud@1.2.10
+  - eleventy-plugin-embed-mastodon@1.0.2
+  - eleventy-plugin-embed-bluesky@1.0.1
+  - eleventy-plugin-embed-twitter@1.4.3
+
 ## 1.21.0
 
 ### Minor Changes

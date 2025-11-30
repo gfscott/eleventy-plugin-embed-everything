@@ -1,5 +1,15 @@
 # eleventy-plugin-vimeo-embed
 
+## 1.4.0
+
+### Minor Changes
+
+- Enable embeds for unlisted Vimeo videos ([#349](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/349))
+
+### Patch Changes
+
+- Update readme ([#353](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/353))
+
 ## 1.3.8
 
 ### Patch Changes
