@@ -1,11 +1,11 @@
 module.exports = function(match, config) {
 	const id = match[4];
-	let hash = getHashIfExists(match)
-	let params = '?' + addEmbedUrlParams({...config, hash})
+	let hash = getHashIfExists(match);
+	let params = '?' + addEmbedUrlParams({...config, hash});
 
   let embed = `<div id="vimeo-${id}" class="${config.embedClass}" style="${config.wrapperStyle}">`;
   embed += `<iframe style="${config.iframeStyle}" frameborder="0"`;
-  embed += ` src="https://player.vimeo.com/video/${id}${params}"`;
+  embed += ` src="https://player.vimeo.com/video/${id + params}"`;
   embed += `${config.allowFullscreen ? ' allowfullscreen' : ''}></iframe></div>`;
 
 	return embed;
@@ -49,6 +49,8 @@ function addEmbedUrlParams(obj) {
 	// Privacy hash if present
 	if (obj?.hash) params.set("h", obj.hash);
 
+	// URLSearchParams.toString() method doesn't add leading `?`.
+	// Stick with that behavior and handle elsewhere.
 	return params.toString();
 
 }

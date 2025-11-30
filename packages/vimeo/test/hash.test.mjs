@@ -25,3 +25,15 @@ test("Hash returned correctly via param, multiple params", t => {
 	t.is(getHashIfExists(match), "asdf1234");
 	pattern.lastIndex = 0;
 });
+
+test("Hash returned correctly via regex, with additional params", t => {
+	const match = pattern.exec("<p>https://vimeo.com/123456/asdf1234?foo=bar</p>");
+	t.is(getHashIfExists(match), "asdf1234");
+	pattern.lastIndex = 0;
+});
+
+test("Hash returned correctly with both", t => {
+	const match = pattern.exec("<p>https://vimeo.com/123456/asdf1234?h=asdf1234</p>");
+	t.is(getHashIfExists(match), "asdf1234");
+	pattern.lastIndex = 0;
+});
