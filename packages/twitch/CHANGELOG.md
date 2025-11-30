@@ -1,5 +1,11 @@
 # eleventy-plugin-embed-twitch
 
+## 1.2.8
+
+### Patch Changes
+
+- Remove kleur dependency in favor of native console colors ([#341](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/341))
+
 ## 1.2.7
 
 ### Patch Changes

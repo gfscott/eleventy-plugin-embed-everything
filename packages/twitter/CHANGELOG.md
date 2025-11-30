@@ -1,5 +1,11 @@
 # eleventy-plugin-embed-twitter
 
+## 1.4.3
+
+### Patch Changes
+
+- Bump @11ty/eleventy-fetch dependency to v5.1.0 ([#333](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/333))
+
 ## 1.4.2
 
 ### Patch Changes
