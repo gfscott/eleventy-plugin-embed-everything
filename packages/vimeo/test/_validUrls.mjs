@@ -11,10 +11,13 @@ import permute from 'permute-arrays';
  * Core URL structures accepted by the plugin
  * Domain and path only
  */
-const validUrls = [
+const coreUrlsPublic = [
  'vimeo.com/123456',
 ]
 
+const coreUrlsPrivate = [
+	'vimeo.com/123456/abc123xyz789',
+]
 
 /**
  * Non-core URL structures accepted by the plugin
@@ -26,4 +29,5 @@ const validSuffixes = ['/', '?', '%3F', '?foo', '%3Ffoo', '?foo=bar', '%3Ffoo%3D
 /**
  * Cumulative lists of all URL permutations.
  */
-export default permute(validUrls, validPrefixes, validSuffixes);
+export const publicUrls =  permute(coreUrlsPublic, validPrefixes, validSuffixes);
+export const privateUrls =  permute('vimeo.com/123456/asdf1234', validPrefixes, validSuffixes);
