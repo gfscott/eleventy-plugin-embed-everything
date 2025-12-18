@@ -29,13 +29,13 @@
   "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues",
   "devDependencies": {
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
-    "@vitest/coverage-istanbul": "^4.0.14",
+    "@vitest/coverage-istanbul": "^4.0.16",
     "ava": "^6.4.1",
     "msw": "^2.12.3",
     "nyc": "^17.1.0",
     "permute-arrays": "workspace:^",
     "turbo": "^2.6.1",
-    "vitest": "^4.0.14"
+    "vitest": "^4.0.16"
   },
   "dependencies": {
     "@changesets/cli": "^2.29.8"
