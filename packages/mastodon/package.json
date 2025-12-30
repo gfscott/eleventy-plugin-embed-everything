@@ -32,7 +32,7 @@
   "dependencies": {
     "@11ty/eleventy-fetch": "^5.1.0",
     "deepmerge": "^4.3.1",
-    "regex": "^6.0.1",
+    "regex": "^6.1.0",
     "string-replace-async": "^3.0.2"
   }
 }
