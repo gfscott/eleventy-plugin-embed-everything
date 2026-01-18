@@ -4,6 +4,21 @@ import {federatedStrings, originStrings} from './_validStrings.mjs';
 
 const pattern = patternGenerator('social.vivaldi.net');
 
+/**
+ * The `regex` library outputs a native RegExp object.
+ * This test snapshots that output, and will fail if the
+ * output changes between regex library versions.
+ * That's not necessarily a problem, but should be reviewed
+ * for compatibility.
+ */
+describe('Snapshot regex library output', () => {
+  it('Produces the same RegExp output across regex versions', () => {
+    const pattern = patternGenerator('social.vivaldi.net');
+    expect(pattern.toString()).toMatchSnapshot();
+  });
+});
+
+
 const allStrings = [...federatedStrings, ...originStrings];
 
 describe('Valid federated URL patterns', () => {
