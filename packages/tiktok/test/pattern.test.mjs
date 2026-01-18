@@ -2,6 +2,19 @@ import { describe, it, expect } from "vitest";
 import pattern from "../lib/pattern.js";
 import validUrls from "./_validUrls.mjs";
 
+/**
+ * The `regex` library outputs a native RegExp object.
+ * This test snapshots that output, and will fail if the
+ * output changes between regex library versions.
+ * That's not necessarily a problem, but should be reviewed
+ * for compatibility.
+ */
+describe('Snapshot regex library output', () => {
+  it('Produces the same RegExp output across regex versions', () => {
+    expect(pattern.toString()).toMatchSnapshot();
+  });
+});
+
 describe("Valid URL pattern tests", () => {
 	for( let url of validUrls) {
 		it(`Ideal case (<p>${url}</p>)`, () => {
