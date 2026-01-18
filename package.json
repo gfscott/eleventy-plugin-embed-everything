@@ -39,5 +39,10 @@
   },
   "dependencies": {
     "@changesets/cli": "^2.29.8"
+  },
+  "pnpm": {
+    "overrides": {
+      "tar@<=7.5.2": ">=7.5.3"
+    }
   }
 }
