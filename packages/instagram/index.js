@@ -1,24 +1,14 @@
-const patternPresent = require('./lib/spotPattern.js');
-const extractId = require('./lib/extractMatches.js');
-const buildEmbed = require('./lib/buildEmbed.js');
-const pluginDefaults = require('./lib/pluginDefaults.js');
+const pattern = require("./lib/pattern.js");
+const replace = require('./lib/replace.js');
+const defaults = require("./lib/defaults.js");
 
-module.exports = function (eleventyConfig, options) {
-  const pluginConfig = Object.assign(pluginDefaults, options);
-  eleventyConfig.addTransform("embedInstagram", async (content, outputPath) => {
-    if (outputPath && outputPath.endsWith(".html")) {
-      let matches = patternPresent(content);
-      if (!matches) {
-        return content;
-      }
-      // index is used to limit the number of script tags added to each page to one
-      matches.forEach(function (stringToReplace, index) {
-        let mediaId = extractId(stringToReplace);
-        let embedCode = buildEmbed(mediaId, pluginConfig, index);
-        content = content.replace(stringToReplace, embedCode);
-      });
+module.exports = function(eleventyConfig, options = {}) {
+  const config = Object.assign({}, defaults, options);
+	eleventyConfig.addTransform("embedVimeo", async function(content, outputPath) {
+    if ( !outputPath || !outputPath.endsWith(".html")) {
       return content;
     }
-    return content;
+		let index = 0;
+		return content.replace(pattern, (...match) => replace(match, config, index++));
   });
 };

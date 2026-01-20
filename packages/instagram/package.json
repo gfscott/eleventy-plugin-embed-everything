@@ -14,7 +14,7 @@
 		"coverage": "nyc --reporter=lcov ava"
 	},
 	"files": [
-		".eleventy.js",
+		"index.js",
 		"lib/**"
 	],
 	"author": {

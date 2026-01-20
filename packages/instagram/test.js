@@ -1,8 +1,7 @@
 const test = require('ava');
-const patternPresent = require('./lib/spotPattern.js');
-const extractId = require('./lib/extractMatches.js');
-const buildEmbed = require('./lib/buildEmbed.js');
-const pluginDefaults = require('./lib/pluginDefaults.js');
+const pattern = require('./lib/pattern.js');
+const defaults = require('./lib/defaults.js')
+const replace = require('./lib/replace.js')
 
 /**
  * Valid strings to test
