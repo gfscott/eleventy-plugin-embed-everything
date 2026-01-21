@@ -38,3 +38,23 @@ describe("Subsequent embeds", () => {
 		});
 	}
 });
+
+describe("Custom class", () => {
+	for (const u of valid) {
+		it(`${u}`, () => {
+			const match = pattern.exec(u);
+			pattern.lastIndex = 0;
+			const customDefaults = Object.assign({}, defaults, {
+				embedClass: "foo",
+			});
+			const embedCode = replace(match, customDefaults, 0);
+			const extracted = {
+				type: match[3],
+				id: match[4],
+			};
+			expect(embedCode).toBe(
+				`<blockquote class="foo instagram-media" data-instgrm-permalink="https://www.instagram.com/${extracted.type}/${extracted.id}"></blockquote><script async defer src="https://www.instagram.com/embed.js"></script>`
+			);
+		});
+	}
+});
