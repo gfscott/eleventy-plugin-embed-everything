@@ -6,7 +6,7 @@
   "engines": {
     "pnpm": ">=7.0.0"
   },
-  "packageManager": "pnpm@9.0.3",
+  "packageManager": "pnpm@10.28.1",
   "scripts": {
     "build": "turbo run build",
     "coverage": "turbo run coverage",
@@ -42,7 +42,8 @@
   },
   "pnpm": {
     "overrides": {
-      "tar@<=7.5.2": ">=7.5.3"
+      "tar@<=7.5.3": ">=7.5.4",
+      "lodash@>=4.0.0 <=4.17.22": ">=4.17.23"
     }
   }
 }
