@@ -4,7 +4,7 @@ const defaults = require("./lib/defaults.js");
 
 module.exports = function(eleventyConfig, options = {}) {
   const config = Object.assign({}, defaults, options);
-	eleventyConfig.addTransform("embedVimeo", async function(content, outputPath) {
+	eleventyConfig.addTransform("embedInstagram", async function(content, outputPath) {
     if ( !outputPath || !outputPath.endsWith(".html")) {
       return content;
     }
