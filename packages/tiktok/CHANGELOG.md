@@ -1,5 +1,13 @@
 # eleventy-plugin-embed-tiktok
 
+## 1.1.9
+
+### Patch Changes
+
+- Bump regex from 6.0.1 to 6.1.0 ([#356](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/356))
+
+- Validate regex output (tests only) ([#365](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/365))
+
 ## 1.1.8
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # eleventy-plugin-embed-instagram
 
+## 1.3.1
+
+### Patch Changes
+
+- Refactor under the hood, no change to public APIs ([#367](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/367))
+
 ## 1.3.0
 
 ### Minor Changes
