@@ -1,44 +1,26 @@
-const patternPresent = require('./lib/spotPattern.js');
-const getEmbed = require('./lib/getEmbed.js');
-const pluginDefaults = require('./lib/pluginDefaults.js');
+const pattern = require("./lib/pattern.js");
+const _replace = require("./lib/replace.js");
+const defaults = require("./lib/defaults.js");
 
-// module.exports = function(eleventyConfig, options) {
-//   const pluginConfig = Object.assign({}, pluginDefaults, options);
-//   eleventyConfig.addTransform("embedSoundCloud", async (content, outputPath) => {
-//     if (!outputPath.endsWith(".html")) {
-//       return content;
-//     }
-//     let matches = patternPresent(content);
-//     if (!matches) {
-//       return content;
-//     }
-//     // modern for loop instead of array.forEach, to enable await
-//     // https://stackoverflow.com/a/37576787
-//     for ( const match of matches ) {
-//       let embedCode = await getEmbed(match, pluginConfig);
-//       content = content.replace(match, embedCode);
-//     }
-//     return content;
-//   });
-// };
+module.exports = function (eleventyConfig, options = {}) {
+	const config = Object.assign({}, defaults, options);
 
-module.exports = function (eleventyConfig, options) {
-  const pluginConfig = Object.assign(pluginDefaults, options);
-  eleventyConfig.addTransform("embedSoundCloud", async (content, outputPath) => {
-    if (outputPath && outputPath.endsWith(".html")) {
-      let matches = patternPresent(content);
-      if (!matches) {
-        return content;
-      }
-      // modern for loop instead of array.forEach, to enable await
-      // https://stackoverflow.com/a/37576787
-      for ( const match of matches ) {
-        let embedCode = await getEmbed(match, pluginConfig);
-        content = content.replace(match, embedCode);
-      }
-      return content;
-    }
+	eleventyConfig.addTransform(
+		"embedSoundCloud",
+		async function (content, outputPath) {
+			// Return content untouched if there's no output path or it's not HTML
+			if (!outputPath || !outputPath.endsWith(".html")) {
+				return content;
+			}
 
-    return content;
-  });
+			const {default: asyncReplace} = await import('string-replace-async');
+
+			try {
+				return await asyncReplace(content, pattern, (...match) => _replace(match, config));
+			} catch (error) {
+				console.warn("Error processing SoundCloud embeds:", error);
+				return content;
+			}
+		},
+	);
 };
