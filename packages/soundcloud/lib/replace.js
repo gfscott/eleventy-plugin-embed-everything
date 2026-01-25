@@ -7,29 +7,37 @@ async function _replace(match, config) {
 			return "";
 		}
 
+		if (config.small) {
+			config.visual = false;
+			config.height = 166;
+		}
+
 		// Used only for testing
 		if (config.__forceError) throw new Error("Forced error for testing");
 
-		// URL path
-		const path = match[3];
+		// URL path + query string, captured by the regex pattern, return if absent
+		const regexPathMatch = match[3];
+		if (!regexPathMatch) return match[0];
 
-		if (!path) {
-			return match[0];
-		}
+		// Regex excludes protocol and domain, so we can ensure a valid URL here
+		const u = new URL(`https://soundcloud.com${regexPathMatch}`);
 
-		const fullUrl = new URL(`https://soundcloud.com${path}`);
-		const html = await _getPostOembed(`https://soundcloud.com${fullUrl.pathname}`, config.cacheDuration)
-
-		// If no HTML is returned, return the original match
+		// Get oEmbed HTML from SoundCloud, return original match if absent
+		const {html, title} = await _getPostOembed(u.origin + u.pathname, config)
 		if (!html) return match[0];
 
-		// TODO update to extract iframe src to match existing API
-		// instead of just returning the raw HTML from SC oembed
-		// const srcMatch = html.match(/src="(.+?)"/);
-		// const iframeSrc = srcMatch ? srcMatch[1] : null;
+		// Extract iframe src from oEmbed HTML, return original match if absent
+		const iframeSrc = html.match(/src="(.+?)"/)[1] || null;
+		if (!iframeSrc) return match[0];
+
+		const scApiUrl = new URLSearchParams(iframeSrc);
 
 		// Return the oEmbed HTML
-		return `<div class="${config.embedClass}">${html}</div>`;
+		let out = `<div class="${config.embedClass}">`;
+		out += `<iframe title="${config.iframeTitle || title || 'SoundCloud Embed'}" width="${config.width}" height="${config.height}" scrolling="no" frameborder="no" allow="autoplay"`;
+		out += ` src="https://w.soundcloud.com/player/?url=${encodeURIComponent(scApiUrl.get('url'))}&${_getParamsFromOptions(config)}"></iframe>`;
+		out += `</div>`;
+		return out;
 
 	} catch (error) {
 		console.error("Error creating SoundCloud embed:", error);
@@ -40,25 +48,26 @@ async function _replace(match, config) {
 /**
  * Query SoundCloud for oembed data.
  * @param {string} url - SoundCloud URL.
- * @param {string} [cacheDuration="60m"] - Cache duration for the fetch.
+ * @param {object} opt - Options object.
  * @returns {Promise<string|null>} - HTML to embed the status.
  * @see https://developers.soundcloud.com/docs/oembed
  */
-async function _getPostOembed(url, cacheDuration = "60m", __forceError = false) {
+async function _getPostOembed(url, opt) {
 	if(!url) {
 		console.error("Missing URL.");
 		return null;
 	}
 
-	let oembedUrl = `https://soundcloud.com/oembed?url=${url}`;
+	const params = _getParamsFromOptions(opt);
+	const oembedUrl = `https://soundcloud.com/oembed?url=${url}&${params}&format=json`;
 
 	try {
-		const {html} = await Fetch(oembedUrl, {
-			duration: cacheDuration,
+		const {html, title} = await Fetch(oembedUrl, {
+			duration: opt.cacheDuration,
 			type: "json",
 			verbose: env.DEBUG,
 		});
-		return html;
+		return {html, title};
 	} catch (error) {
 		console.error("Error fetching post data from SoundCloud", error);
 		return null;
@@ -66,16 +75,12 @@ async function _getPostOembed(url, cacheDuration = "60m", __forceError = false) 
 }
 
 function _getParamsFromOptions(config) {
-
-	let params = new URLSearchParams();
-	for ( let option in config ){
-		// stuff not set with URL params
-		const exclude = ['height', 'width', 'small', 'embedClass', 'iframeTitle', 'cacheDuration', '__forceError'];
-		if ( exclude.indexOf(option) < 0 ) {
-			params.append(option, config[option]);
-		}
-	}
-
+	// Excluded because they aren't handled by URL params
+	const excludedOpts = ['height', 'width', 'small', 'embedClass', 'iframeTitle', 'cacheDuration', '__forceError'];
+	const paramOpts = Object.fromEntries(
+		Object.entries(config).filter(([key]) => !excludedOpts.includes(key))
+	);
+	return new URLSearchParams(paramOpts).toString();
 }
 
 
