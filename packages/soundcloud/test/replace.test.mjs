@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach, beforeAll, afterAll, vi } from 'vitest';
 import { _getPostOembed, _getParamsFromOptions, _getApiUrlFromOembedHtml } from '../lib/replace.js';
 import defaults from '../lib/defaults.js';
+import _replace from '../lib/replace.js';
 
 
 
@@ -96,5 +97,24 @@ describe('_getParamsFromOptions', () => {
 		expect(params.get('embedClass')).toBe(null); // Excluded
 		expect(params.get('iframeTitle')).toBe(null); // Excluded
 		expect(params.get('cacheDuration')).toBe(null); // Excluded
+	});
+});
+
+describe('Forced error handling', () => {
+	let consoleMock;
+	beforeEach(() => {
+		consoleMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+	});
+	afterEach(() => {
+		vi.restoreAllMocks();
+	});
+
+	it('Returns original string on forced error', async () =>{
+		const match = ['INPUT_STRING', '', '', '/earlxsweatshirtmusic'];
+		const customConfig = Object.assign({}, defaults, {__forceError: true});
+		const html = await _replace(match, customConfig);
+		expect(html).toBe('INPUT_STRING');
+		expect(consoleMock).toHaveBeenCalledOnce();
+		expect(consoleMock).toHaveBeenCalledWith('Error creating SoundCloud embed:', expect.objectContaining({ message: 'Forced error for testing' }));
 	});
 });
