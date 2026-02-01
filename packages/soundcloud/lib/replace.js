@@ -26,16 +26,14 @@ async function _replace(match, config) {
 		const {html, title} = await _getPostOembed(u.origin + u.pathname, config)
 		if (!html) return match[0];
 
-		// Extract iframe src from oEmbed HTML, return original match if absent
-		const iframeSrc = html.match(/src="(.+?)"/)[1] || null;
-		if (!iframeSrc) return match[0];
-
-		const scApiUrl = new URLSearchParams(iframeSrc);
+		// Get the SoundCloud API URL from the oEmbed HTML, return original match if absent
+		const apiUrl = _getApiUrlFromOembedHtml(html);
+		if (!apiUrl) return match[0];
 
 		// Return the oEmbed HTML
 		let out = `<div class="${config.embedClass}">`;
 		out += `<iframe title="${config.iframeTitle || title || 'SoundCloud Embed'}" width="${config.width}" height="${config.height}" scrolling="no" frameborder="no" allow="autoplay"`;
-		out += ` src="https://w.soundcloud.com/player/?url=${encodeURIComponent(scApiUrl.get('url'))}&${_getParamsFromOptions(config)}"></iframe>`;
+		out += ` src="https://w.soundcloud.com/player/?url=${encodeURIComponent(apiUrl)}&${_getParamsFromOptions(config)}"></iframe>`;
 		out += `</div>`;
 		return out;
 
@@ -86,10 +84,18 @@ function _getParamsFromOptions(config) {
 	return new URLSearchParams(paramOpts).toString();
 }
 
+function _getApiUrlFromOembedHtml(html) {
+	const match = html.match(/src="(.+?)"/);
+	const iframeSrc = match ? match[1] : null;
+	if (!iframeSrc) return null;
 
+	const scApiUrl = new URL(iframeSrc);
+	return scApiUrl.searchParams.get('url');
+}
 
 
 module.exports = _replace;  // Default export
 module.exports._replace = _replace;
 module.exports._getPostOembed = _getPostOembed;
 module.exports._getParamsFromOptions = _getParamsFromOptions;
+module.exports._getApiUrlFromOembedHtml = _getApiUrlFromOembedHtml;

@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, beforeAll, afterAll, vi } from 'vitest';
-import { _getPostOembed, _getParamsFromOptions } from '../lib/replace.js';
+import { _getPostOembed, _getParamsFromOptions, _getApiUrlFromOembedHtml } from '../lib/replace.js';
 import defaults from '../lib/defaults.js';
 
 
@@ -35,6 +35,20 @@ describe('Query SoundCloud oembed', () => {
 
 });
 
+
+describe('_getApiUrlFromOembedHtml', () => {
+	it('Extracts API URL from oEmbed HTML', () => {
+		const html = '<iframe src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Fusers%2F24883142&visual=true"></iframe>';
+		const apiUrl = _getApiUrlFromOembedHtml(html);
+		expect(apiUrl).toBe('https://api.soundcloud.com/users/24883142');
+	});
+
+	it('Returns null if iframe src is absent', () => {
+		const html = '<div>No iframe here</div>';
+		const apiUrl = _getApiUrlFromOembedHtml(html);
+		expect(apiUrl).toBe(null);
+	});
+});
 
 describe('_getParamsFromOptions', () => {
 	it('Converts options to URL params as expected', () => {
