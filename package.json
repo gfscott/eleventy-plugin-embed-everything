@@ -32,7 +32,7 @@
     "@vitest/coverage-istanbul": "^4.0.18",
     "ava": "^6.4.1",
     "msw": "^2.12.10",
-    "nyc": "^17.1.0",
+    "nyc": "^18.0.0",
     "permute-arrays": "workspace:^",
     "turbo": "^2.8.10",
     "vitest": "^4.0.18"
