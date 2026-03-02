@@ -34,7 +34,7 @@
     "msw": "^2.12.10",
     "nyc": "^18.0.0",
     "permute-arrays": "workspace:^",
-    "turbo": "^2.8.10",
+    "turbo": "^2.8.12",
     "vitest": "^4.0.18"
   },
   "dependencies": {
