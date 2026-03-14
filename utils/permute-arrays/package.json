@@ -6,8 +6,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "test": "vitest run",
-    "coverage": "vitest run --coverage"
+    "test": "node --test",
+    "coverage": "node --test --experimental-test-coverage"
   },
   "files": [
     "index.js"
