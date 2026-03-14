@@ -1,5 +1,9 @@
 packages:
-  - "packages/*"
-  - "demo"
-  - "utils/*"
-  
+  - packages/*
+  - demo
+  - utils/*
+
+overrides:
+  flatted@<3.4.0: '>=3.4.0'
+  liquidjs@<10.25.0: '>=10.25.0'
+  tar@<=7.5.10: '>=7.5.11'
