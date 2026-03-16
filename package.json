@@ -31,7 +31,7 @@
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
     "@vitest/coverage-istanbul": "^4.1.0",
     "ava": "^7.0.0",
-    "msw": "^2.12.10",
+    "msw": "^2.12.11",
     "nyc": "^18.0.0",
     "permute-arrays": "workspace:^",
     "turbo": "^2.8.17",
