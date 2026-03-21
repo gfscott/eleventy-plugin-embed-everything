@@ -54,8 +54,8 @@ importers:
   packages/bluesky:
     dependencies:
       '@11ty/eleventy-fetch':
-        specifier: ^5.1.0
-        version: 5.1.0
+        specifier: ^5.1.2
+        version: 5.1.2
       string-replace-async:
         specifier: ^3.0.2
         version: 3.0.2
@@ -107,8 +107,8 @@ importers:
   packages/mastodon:
     dependencies:
       '@11ty/eleventy-fetch':
-        specifier: ^5.1.0
-        version: 5.1.0
+        specifier: ^5.1.2
+        version: 5.1.2
       deepmerge:
         specifier: ^4.3.1
         version: 4.3.1
@@ -128,8 +128,8 @@ importers:
   packages/soundcloud:
     dependencies:
       '@11ty/eleventy-fetch':
-        specifier: ^5.1.0
-        version: 5.1.0
+        specifier: ^5.1.2
+        version: 5.1.2
 
   packages/spotify: {}
 
@@ -149,8 +149,8 @@ importers:
   packages/twitter:
     dependencies:
       '@11ty/eleventy-fetch':
-        specifier: ^5.1.0
-        version: 5.1.0
+        specifier: ^5.1.2
+        version: 5.1.2
       deepmerge:
         specifier: ^4.3.1
         version: 4.3.1
@@ -160,8 +160,8 @@ importers:
   packages/youtube:
     dependencies:
       '@11ty/eleventy-fetch':
-        specifier: ^5.1.0
-        version: 5.1.0
+        specifier: ^5.1.2
+        version: 5.1.2
       deepmerge:
         specifier: ^4.3.1
         version: 4.3.1
@@ -187,8 +187,8 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  '@11ty/eleventy-fetch@5.1.0':
-    resolution: {integrity: sha512-gSmCA3olJxRwtTkXyS+KIanq1kEufCC+JsHyTa7ta5NqmeUQlWA8zEngtXrDl+ebrAvFz2bNaxLd+0ERpnnSPQ==}
+  '@11ty/eleventy-fetch@5.1.2':
+    resolution: {integrity: sha512-YxDARdR3S9UT4gOGRWgGNyokYT9jkCAjJge3OVKFdNMv1cyvWg1NHCvj9NVvK9XHenCLFy3cwvM/YYpZZTZopw==}
     engines: {node: '>=18'}
 
   '@11ty/eleventy-plugin-bundle@3.0.7':
@@ -1192,8 +1192,8 @@ packages:
     resolution: {integrity: sha512-PpOwAdQ/YlXQ2vj8a3h8IipDuYRi3wceVQQGYWxNINccq40Anw7BlsEXCMbt1Zt+OLA6Fq9suIpIWD0OsnISlw==}
     engines: {node: '>=8'}
 
-  flatted@3.4.1:
-    resolution: {integrity: sha512-IxfVbRFVlV8V/yRaGzk0UVIcsKKHMSfYw66T/u4nTwlWteQePsxe//LjudR1AMX4tZW3WFCh3Zqa/sjlqpbURQ==}
+  flatted@3.4.2:
+    resolution: {integrity: sha512-PjDse7RzhcPkIJwy5t7KPWQSZ9cAbzQXcafsetQoD7sOJRQlGikNbx7yZp2OotDnJyrDcbyRq3Ttb18iYOqkxA==}
 
   foreground-child@2.0.0:
     resolution: {integrity: sha512-dCIq9FpEcyQyXKCkyzmlPTFNgrCzPudOe+mhvJU5zAtlBnGVy2yKxtfsxK2tQBThwq225jcvBjpw1Gr40uzZCA==}
@@ -2457,12 +2457,12 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@11ty/eleventy-fetch@5.1.0':
+  '@11ty/eleventy-fetch@5.1.2':
     dependencies:
       '@11ty/eleventy-utils': 2.0.7
       '@rgrove/parse-xml': 4.2.0
       debug: 4.4.3
-      flatted: 3.4.1
+      flatted: 3.4.2
       p-queue: 6.6.2
     transitivePeerDependencies:
       - supports-color
@@ -3583,7 +3583,7 @@ snapshots:
       locate-path: 5.0.0
       path-exists: 4.0.0
 
-  flatted@3.4.1: {}
+  flatted@3.4.2: {}
 
   foreground-child@2.0.0:
     dependencies:
