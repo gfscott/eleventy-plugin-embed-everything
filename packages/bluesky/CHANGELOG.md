@@ -1,5 +1,11 @@
 # eleventy-plugin-embed-bluesky
 
+## 1.0.2
+
+### Patch Changes
+
+- Bump @11ty/eleventy-fetch from 5.1.0 to 5.1.2 ([#399](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/399))
+
 ## 1.0.1
 
 ### Patch Changes
