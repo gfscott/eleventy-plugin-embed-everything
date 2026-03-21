@@ -66,40 +66,40 @@ importers:
         specifier: ^4.3.1
         version: 4.3.1
       eleventy-plugin-embed-bluesky:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../bluesky
       eleventy-plugin-embed-instagram:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../instagram
       eleventy-plugin-embed-mastodon:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../mastodon
       eleventy-plugin-embed-openstreetmap:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../openstreetmap
       eleventy-plugin-embed-soundcloud:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../soundcloud
       eleventy-plugin-embed-spotify:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../spotify
       eleventy-plugin-embed-ted:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../ted
       eleventy-plugin-embed-tiktok:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../tiktok
       eleventy-plugin-embed-twitch:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../twitch
       eleventy-plugin-embed-twitter:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../twitter
       eleventy-plugin-vimeo-embed:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../vimeo
       eleventy-plugin-youtube-embed:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../youtube
 
   packages/instagram: {}
