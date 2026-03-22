@@ -1,5 +1,15 @@
 # eleventy-plugin-embed-mastodon
 
+## 1.0.3
+
+### Patch Changes
+
+- Bump regex from 6.0.1 to 6.1.0 ([#356](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/356))
+
+- Bump @11ty/eleventy-fetch from 5.1.0 to 5.1.2 ([#399](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/399))
+
+- Validate regex output (tests only) ([#365](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/365))
+
 ## 1.0.2
 
 ### Patch Changes

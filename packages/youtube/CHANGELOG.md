@@ -1,5 +1,11 @@
 # eleventy-plugin-youtube-embed
 
+## 1.13.2
+
+### Patch Changes
+
+- Bump @11ty/eleventy-fetch from 5.1.0 to 5.1.2 ([#399](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/399))
+
 ## 1.13.1
 
 ### Patch Changes
