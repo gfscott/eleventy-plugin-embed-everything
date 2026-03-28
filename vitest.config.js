@@ -5,7 +5,8 @@ export default defineConfig({
 		//  Hide console error messages from passing tests
 		silent: 'passed-only',
     coverage: {
-      provider: 'istanbul'
+      provider: 'istanbul',
+      reporter: ['lcov'],
     },
   },
 })
