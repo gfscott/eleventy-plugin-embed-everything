@@ -1,0 +1,41 @@
+component_management:
+  individual_components:
+    - component_id: bluesky
+      paths:
+        - packages/bluesky/**
+    - component_id: everything
+      paths:
+        - packages/everything/**
+    - component_id: instagram
+      paths:
+        - packages/instagram/**
+    - component_id: mastodon
+      paths:
+        - packages/mastodon/**
+    - component_id: openstreetmap
+      paths:
+        - packages/openstreetmap/**
+    - component_id: soundcloud
+      paths:
+        - packages/soundcloud/**
+    - component_id: spotify
+      paths:
+        - packages/spotify/**
+    - component_id: ted
+      paths:
+        - packages/ted/**
+    - component_id: tiktok
+      paths:
+        - packages/tiktok/**
+    - component_id: twitch
+      paths:
+        - packages/twitch/**
+    - component_id: twitter
+      paths:
+        - packages/twitter/**
+    - component_id: vimeo
+      paths:
+        - packages/vimeo/**
+    - component_id: youtube
+      paths:
+        - packages/youtube/**
