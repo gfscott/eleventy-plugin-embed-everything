@@ -1,4 +1,5 @@
-import test from 'ava';
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
 import spotPattern from '../lib/spotPattern.js';
 import validUrls from './_validUrls.mjs';
 import invalidUrls from './_invalidUrls.mjs';
@@ -13,22 +14,22 @@ import invalidUrls from './_invalidUrls.mjs';
  */
 for (let [index, url] of validUrls.entries()) {
   
-  test(`Valid-${index}: without link, without whitespace`, t => {
-    t.truthy(spotPattern(`<p>${url}</p>`));
+  test(`Valid-${index}: without link, without whitespace`, () => {
+    assert.ok(spotPattern(`<p>${url}</p>`));
   }); 
   
-  test(`Valid-${index}: without link, with whitespace`, t => {
-    t.truthy(spotPattern(`<p>
+  test(`Valid-${index}: without link, with whitespace`, () => {
+    assert.ok(spotPattern(`<p>
       ${url}
     </p>`));
   }); 
   
-  test(`Valid-${index}: with link, without whitespace`, t => {
-    t.truthy(spotPattern(`<p><a href="${url}">${url}</a></p>`));
+  test(`Valid-${index}: with link, without whitespace`, () => {
+    assert.ok(spotPattern(`<p><a href="${url}">${url}</a></p>`));
   }); 
 
-  test(`Valid-${index}: with link, with whitespace`, t => {
-    t.truthy(spotPattern(`<p>
+  test(`Valid-${index}: with link, with whitespace`, () => {
+    assert.ok(spotPattern(`<p>
       <a href="${url}">
         ${url}
       </a>
@@ -47,22 +48,22 @@ for (let [index, url] of validUrls.entries()) {
  */
  for (let [index, url] of invalidUrls.entries()) {
   
-  test(`Invalid-${index}: without link, without whitespace`, t => {
-    t.falsy(spotPattern(`<p>${url}</p>`));
+  test(`Invalid-${index}: without link, without whitespace`, () => {
+    assert.ok(!spotPattern(`<p>${url}</p>`));
   }); 
   
-  test(`Invalid-${index}: without link, with whitespace`, t => {
-    t.falsy(spotPattern(`<p>
+  test(`Invalid-${index}: without link, with whitespace`, () => {
+    assert.ok(!spotPattern(`<p>
       ${url}
     </p>`));
   }); 
   
-  test(`Invalid-${index}: with link, without whitespace`, t => {
-    t.falsy(spotPattern(`<p><a href="${url}">${url}</a></p>`));
+  test(`Invalid-${index}: with link, without whitespace`, () => {
+    assert.ok(!spotPattern(`<p><a href="${url}">${url}</a></p>`));
   }); 
 
-  test(`Invalid-${index}: with link, with whitespace`, t => {
-    t.falsy(spotPattern(`<p>
+  test(`Invalid-${index}: with link, with whitespace`, () => {
+    assert.ok(!spotPattern(`<p>
       <a href="${url}">
         ${url}
       </a>
