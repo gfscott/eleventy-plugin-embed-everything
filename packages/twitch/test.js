@@ -1,4 +1,5 @@
-const test = require('ava');
+const test = require('node:test');
+const assert = require('node:assert/strict');
 const patternPresent = require('./lib/spotPattern.js');
 // TODO: Finish tests for extracting ID strings and correct outputs
 const extractVideoId = require('./lib/extractMatches.js');
@@ -31,40 +32,40 @@ const invalidStrings = [
 ]
 
 validStrings.forEach(function(obj){
-  test(`${obj.type} ideal case`, t => {
+  test(`${obj.type} ideal case`, () => {
     let idealCase = `<p>${obj.str}</p>`;
-    t.truthy(patternPresent(idealCase));
+    assert.ok(patternPresent(idealCase));
   });
-  test(`${obj.type} with links`, t => {
+  test(`${obj.type} with links`, () => {
     let withLinks = `<p><a href="">${obj.str}</a></p>`;
-    t.truthy(patternPresent(withLinks));
+    assert.ok(patternPresent(withLinks));
   });
-  test(`${obj.type} with whitespace`, t => {
+  test(`${obj.type} with whitespace`, () => {
     let withWhitespace = `<p>
       ${obj.str}
     </p>`;
-    t.truthy(patternPresent(withWhitespace));
+    assert.ok(patternPresent(withWhitespace));
   });
-  test(`${obj.type} with links and whitespace`, t => {
+  test(`${obj.type} with links and whitespace`, () => {
     let withLinksAndWhitespace = `<p>
       <a href="">
         ${obj.str}
       </a>
     </p>`;
-    t.truthy(patternPresent(withLinksAndWhitespace));
+    assert.ok(patternPresent(withLinksAndWhitespace));
   });
 });
 
 invalidStrings.forEach(function(obj){
-  test(`${obj.type} ideal case`, t => {
+  test(`${obj.type} ideal case`, () => {
     let idealCase = `<p>${obj.str}</p>`;
-    t.falsy(patternPresent(idealCase));
+    assert.ok(!patternPresent(idealCase));
   });
-  test(`${obj.type} with whitespace`, t => {
+  test(`${obj.type} with whitespace`, () => {
     let withWhitespace = `<p>
       ${obj.str}
     </p>`;
-    t.falsy(patternPresent(withWhitespace));
+    assert.ok(!patternPresent(withWhitespace));
   });
 });
 
@@ -73,34 +74,34 @@ invalidStrings.forEach(function(obj){
  * type and ID.
  */
 validStrings.forEach(function(obj){
-  test(`Extract ID, ${obj.type}, ideal case`, t => {
+  test(`Extract ID, ${obj.type}, ideal case`, () => {
     let idealCase = `<p>${obj.str}</p>`;
     let out = extractVideoId(idealCase);
-    t.assert(['channel', 'video'].includes(out.type));
-    t.assert(['vixella', '597008599'].includes(out.id));
+    assert.ok(['channel', 'video'].includes(out.type));
+    assert.ok(['vixella', '597008599'].includes(out.id));
   });
-  test(`Extract ID, ${obj.type}, with links`, t => {
+  test(`Extract ID, ${obj.type}, with links`, () => {
     let withLinks = `<p><a href="">${obj.str}</a></p>`;
     let out = extractVideoId(withLinks);
-    t.assert(['channel', 'video'].includes(out.type));
-    t.assert(['vixella', '597008599'].includes(out.id));
+    assert.ok(['channel', 'video'].includes(out.type));
+    assert.ok(['vixella', '597008599'].includes(out.id));
   });
-  test(`Extract ID, ${obj.type}, with whitespace`, t => {
+  test(`Extract ID, ${obj.type}, with whitespace`, () => {
     let withWhitespace = `<p>
       ${obj.str}
     </p>`;
     let out = extractVideoId(withWhitespace);
-    t.assert(['channel', 'video'].includes(out.type));
-    t.assert(['vixella', '597008599'].includes(out.id));
+    assert.ok(['channel', 'video'].includes(out.type));
+    assert.ok(['vixella', '597008599'].includes(out.id));
   });
-  test(`Extract ID, ${obj.type}, with links and whitespace`, t => {
+  test(`Extract ID, ${obj.type}, with links and whitespace`, () => {
     let withLinksAndWhitespace = `<p>
       <a href="">
         ${obj.str}
       </a>
     </p>`;
     let out = extractVideoId(withLinksAndWhitespace);
-    t.assert(['channel', 'video'].includes(out.type));
-    t.assert(['vixella', '597008599'].includes(out.id));
+    assert.ok(['channel', 'video'].includes(out.type));
+    assert.ok(['vixella', '597008599'].includes(out.id));
   });
 });
