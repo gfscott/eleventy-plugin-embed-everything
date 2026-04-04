@@ -1,4 +1,5 @@
-const test = require("ava");
+const test = require("node:test");
+const assert = require("node:assert/strict");
 const merge = require("deepmerge");
 const extractMatch = require("../lib/extractMatch.js");
 const buildEmbed = require("../lib/buildEmbed.js");
@@ -11,12 +12,12 @@ const validStrings = require("./_validStrings.js");
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} default embed behavior`,
-		(t) => {
+		() => {
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = buildEmbed(tweetObj, pluginDefaults, 0);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote id="tweet-1289865845053652994" class="twitter-tweet"><a href="https://twitter.com/SaraSoueidan/status/1289865845053652994"></a></blockquote></div><script src="https://platform.twitter.com/widgets.js" charset="utf-8" async></script>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -27,12 +28,12 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} default embed behavior, nonzero array index`,
-		(t) => {
+		() => {
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = buildEmbed(tweetObj, pluginDefaults, 1);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote id="tweet-1289865845053652994" class="twitter-tweet"><a href="https://twitter.com/SaraSoueidan/status/1289865845053652994"></a></blockquote></div>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -43,7 +44,7 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} default embed, synchronous twitter script`,
-		(t) => {
+		() => {
 			const twitterAsyncFalse = {
 				twitterScript: {
 					async: false,
@@ -54,7 +55,7 @@ validStrings.forEach(function(obj) {
 			const tweetObj = extractMatch(idealCase);
 			const output = buildEmbed(tweetObj, customOpt, 0);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote id="tweet-1289865845053652994" class="twitter-tweet"><a href="https://twitter.com/SaraSoueidan/status/1289865845053652994"></a></blockquote></div><script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -65,7 +66,7 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} default embed, deferred twitter script`,
-		(t) => {
+		() => {
 			const twitterDeferTrue = {
 				twitterScript: {
 					defer: true,
@@ -76,7 +77,7 @@ validStrings.forEach(function(obj) {
 			const tweetObj = extractMatch(idealCase);
 			const output = buildEmbed(tweetObj, customOpt, 0);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote id="tweet-1289865845053652994" class="twitter-tweet"><a href="https://twitter.com/SaraSoueidan/status/1289865845053652994"></a></blockquote></div><script src="https://platform.twitter.com/widgets.js" charset="utf-8" async defer></script>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -87,7 +88,7 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} default embed, disabled twitter script`,
-		(t) => {
+		() => {
 			const twitterScriptEnabledFalse = {
 				twitterScript: {
 					enabled: false,
@@ -98,7 +99,7 @@ validStrings.forEach(function(obj) {
 			const tweetObj = extractMatch(idealCase);
 			const output = buildEmbed(tweetObj, customOpt, 0);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote id="tweet-1289865845053652994" class="twitter-tweet"><a href="https://twitter.com/SaraSoueidan/status/1289865845053652994"></a></blockquote></div>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -109,7 +110,7 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} default embed, dark theme`,
-		(t) => {
+		() => {
 			const darkTheme = {
 				theme: "dark",
 			};
@@ -118,7 +119,7 @@ validStrings.forEach(function(obj) {
 			const tweetObj = extractMatch(idealCase);
 			const output = buildEmbed(tweetObj, customOpt, 0);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote id="tweet-1289865845053652994" class="twitter-tweet" data-theme="dark"><a href="https://twitter.com/SaraSoueidan/status/1289865845053652994"></a></blockquote></div><script src="https://platform.twitter.com/widgets.js" charset="utf-8" async></script>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -129,7 +130,7 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} default embed, do not track`,
-		(t) => {
+		() => {
 			const doNotTrack = {
 				doNotTrack: true,
 			};
@@ -138,7 +139,7 @@ validStrings.forEach(function(obj) {
 			const tweetObj = extractMatch(idealCase);
 			const output = buildEmbed(tweetObj, customOpt, 0);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote id="tweet-1289865845053652994" class="twitter-tweet" data-dnt="true"><a href="https://twitter.com/SaraSoueidan/status/1289865845053652994"></a></blockquote></div><script src="https://platform.twitter.com/widgets.js" charset="utf-8" async></script>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -149,7 +150,7 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} default embed, dark mode`,
-		(t) => {
+		() => {
 			const darkMode = {
 				theme: "dark",
 			};
@@ -158,7 +159,7 @@ validStrings.forEach(function(obj) {
 			const tweetObj = extractMatch(idealCase);
 			const output = buildEmbed(tweetObj, customOpt, 0);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote id="tweet-1289865845053652994" class="twitter-tweet" data-theme="dark"><a href="https://twitter.com/SaraSoueidan/status/1289865845053652994"></a></blockquote></div><script src="https://platform.twitter.com/widgets.js" charset="utf-8" async></script>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -169,7 +170,7 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} default embed, custom alignment`,
-		(t) => {
+		() => {
 			const align = {
 				align: "right",
 			};
@@ -178,7 +179,7 @@ validStrings.forEach(function(obj) {
 			const tweetObj = extractMatch(idealCase);
 			const output = buildEmbed(tweetObj, customOpt, 0);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote id="tweet-1289865845053652994" class="twitter-tweet" data-align="right"><a href="https://twitter.com/SaraSoueidan/status/1289865845053652994"></a></blockquote></div><script src="https://platform.twitter.com/widgets.js" charset="utf-8" async></script>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -189,7 +190,7 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} default embed, disable cards/media`,
-		(t) => {
+		() => {
 			const cards = {
 				cards: "hidden",
 			};
@@ -198,7 +199,7 @@ validStrings.forEach(function(obj) {
 			const tweetObj = extractMatch(idealCase);
 			const output = buildEmbed(tweetObj, customOpt, 0);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote id="tweet-1289865845053652994" class="twitter-tweet" data-cards="hidden"><a href="https://twitter.com/SaraSoueidan/status/1289865845053652994"></a></blockquote></div><script src="https://platform.twitter.com/widgets.js" charset="utf-8" async></script>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -209,7 +210,7 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} default embed, disable conversation/threading`,
-		(t) => {
+		() => {
 			const conversation = {
 				conversation: "none",
 			};
@@ -218,7 +219,7 @@ validStrings.forEach(function(obj) {
 			const tweetObj = extractMatch(idealCase);
 			const output = buildEmbed(tweetObj, customOpt, 0);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote id="tweet-1289865845053652994" class="twitter-tweet" data-conversation="none"><a href="https://twitter.com/SaraSoueidan/status/1289865845053652994"></a></blockquote></div><script src="https://platform.twitter.com/widgets.js" charset="utf-8" async></script>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -229,7 +230,7 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} default embed, custom language`,
-		(t) => {
+		() => {
 			const lang = {
 				lang: "es",
 			};
@@ -238,7 +239,7 @@ validStrings.forEach(function(obj) {
 			const tweetObj = extractMatch(idealCase);
 			const output = buildEmbed(tweetObj, customOpt, 0);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote id="tweet-1289865845053652994" class="twitter-tweet" data-lang="es"><a href="https://twitter.com/SaraSoueidan/status/1289865845053652994"></a></blockquote></div><script src="https://platform.twitter.com/widgets.js" charset="utf-8" async></script>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -249,7 +250,7 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} default embed, custom width`,
-		(t) => {
+		() => {
 			const width = {
 				width: 329,
 			};
@@ -258,7 +259,7 @@ validStrings.forEach(function(obj) {
 			const tweetObj = extractMatch(idealCase);
 			const output = buildEmbed(tweetObj, customOpt, 0);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote id="tweet-1289865845053652994" class="twitter-tweet" data-width="329"><a href="https://twitter.com/SaraSoueidan/status/1289865845053652994"></a></blockquote></div><script src="https://platform.twitter.com/widgets.js" charset="utf-8" async></script>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -274,13 +275,13 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} cached oembed behavior`,
-		async (t) => {
+		async () => {
 			const oEmbedOption = merge(pluginDefaults, {cacheText: true});
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n\n</div>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -291,13 +292,13 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} cached oembed behavior, nonzero array index`,
-		async (t) => {
+		async () => {
 			const oEmbedOption = merge(pluginDefaults, {cacheText: true});
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 1);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n\n</div>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -308,7 +309,7 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} cached oembed behavior, disabled twitter script`,
-		async (t) => {
+		async () => {
 			const oEmbedOption = merge(
 				pluginDefaults,
 				{
@@ -322,7 +323,7 @@ validStrings.forEach(function(obj) {
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n\n</div>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -333,7 +334,7 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} cached oembed behavior, dark theme`,
-		async (t) => {
+		async () => {
 			const oEmbedOption = merge(
 				pluginDefaults,
 				{
@@ -345,7 +346,7 @@ validStrings.forEach(function(obj) {
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n\n</div>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -356,7 +357,7 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} cached oembed behavior, do not track`,
-		async (t) => {
+		async () => {
 			const oEmbedOption = merge(
 				pluginDefaults,
 				{
@@ -368,7 +369,7 @@ validStrings.forEach(function(obj) {
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n\n</div>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -379,7 +380,7 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} cached oembed behavior, custom alignment`,
-		async (t) => {
+		async () => {
 			const oEmbedOption = merge(
 				pluginDefaults,
 				{
@@ -391,7 +392,7 @@ validStrings.forEach(function(obj) {
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" align="center"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n\n</div>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -402,7 +403,7 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} cached oembed behavior, cards deactivated`,
-		async (t) => {
+		async () => {
 			const oEmbedOption = merge(
 				pluginDefaults,
 				{
@@ -414,7 +415,7 @@ validStrings.forEach(function(obj) {
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-cards="hidden"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n\n</div>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -428,7 +429,7 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} cached oembed behavior, conversations deactivated`,
-		async (t) => {
+		async () => {
 			const oEmbedOption = merge(
 				pluginDefaults,
 				{
@@ -440,7 +441,7 @@ validStrings.forEach(function(obj) {
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n\n</div>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -454,7 +455,7 @@ validStrings.forEach(function(obj) {
 
 test(
 	"Response tweet, cached oembed behavior, conversation deactivated for a response",
-	async (t) => {
+	async () => {
 		const oEmbedOption = merge(
 			pluginDefaults,
 			{
@@ -466,7 +467,7 @@ test(
 		const tweetObj = extractMatch(idealCase);
 		const output = await buildEmbed(tweetObj, oEmbedOption, 0);
 		const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">what is your preference?</p>&mdash; Juan Stoppa (@juanstoppa) <a href="https://twitter.com/juanstoppa/status/1289865999425167360?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n\n</div>';
-		t.is(output, expected);
+		assert.equal(output, expected);
 	},
 );
 
@@ -481,7 +482,7 @@ test(
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} cached oembed behavior, custom language`,
-		async (t) => {
+		async () => {
 			const oEmbedOption = merge(
 				pluginDefaults,
 				{
@@ -493,7 +494,7 @@ validStrings.forEach(function(obj) {
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-lang="es"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">2 de agosto de 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n\n</div>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -507,7 +508,7 @@ validStrings.forEach(function(obj) {
  */
 test(
 	"Non-English tweet, cached oembed behavior, custom language",
-	async (t) => {
+	async () => {
 		const oEmbedOption = merge(
 			pluginDefaults,
 			{
@@ -519,7 +520,7 @@ test(
 		const tweetObj = extractMatch(idealCase);
 		const output = await buildEmbed(tweetObj, oEmbedOption, 0);
 		const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-lang="es"><p lang="es" dir="ltr">\xa1Eso me pareci\xf3 a mi!</p>&mdash; Antonio Laguna \u30c4 (@ant_laguna) <a href="https://twitter.com/ant_laguna/status/1250020567538905088?ref_src=twsrc%5Etfw">14 de abril de 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n\n</div>';
-		t.is(output, expected);
+		assert.equal(output, expected);
 	},
 );
 
@@ -529,7 +530,7 @@ test(
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} cached oembed behavior, custom width`,
-		async (t) => {
+		async () => {
 			const oEmbedOption = merge(
 				pluginDefaults,
 				{
@@ -541,7 +542,7 @@ validStrings.forEach(function(obj) {
 			const tweetObj = extractMatch(idealCase);
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
 			const expected = '<div class="eleventy-plugin-embed-twitter"><blockquote class="twitter-tweet" data-width="325"><p lang="en" dir="ltr">I&#39;ve been increasingly feeling like Grid or Flex has become the new Tabs or Spaces.</p>&mdash; Sara Soueidan (@SaraSoueidan) <a href="https://twitter.com/SaraSoueidan/status/1289865845053652994?ref_src=twsrc%5Etfw">August 2, 2020</a></blockquote>\n<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n\n</div>';
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
@@ -552,7 +553,7 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} network failure case`,
-		async (t) => {
+		async () => {
 			const oEmbedOption = merge(pluginDefaults, {cacheText: true});
 			const idealCase = `<p>${obj.str}</p>`;
 			const tweetObj = extractMatch(idealCase);
@@ -561,7 +562,7 @@ validStrings.forEach(function(obj) {
 			const output = await buildEmbed(tweetObj, oEmbedOption, 0);
 			// Remember, the expected returned value is still an invalid URL for the purposes of this test!
 			const expected = "https://twitter.com/SaraSoueidan/status/1289865845053652900";
-			t.is(output, expected);
+			assert.equal(output, expected);
 		},
 	);
 });
