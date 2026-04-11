@@ -51,3 +51,5 @@ jobs:
         run: pnpm coverage
       - name: Upload coverage to Codecov.io
         uses: codecov/codecov-action@v6
+        with:
+          codecov_yml_path: ./codecov.yml

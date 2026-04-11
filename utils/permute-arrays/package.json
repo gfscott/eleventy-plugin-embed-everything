@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "test": "node --test",
-    "coverage": "node --test --experimental-test-coverage"
+    "coverage": "node --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=lcov.info"
   },
   "files": [
     "index.js"
