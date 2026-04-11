@@ -1,11 +1,12 @@
-import { describe, it, expect } from "vitest";
-import pattern from "../lib/pattern";
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+import pattern from "../lib/pattern.js";
 import { valid } from "./_strings.mjs";
 
 describe("Pattern matches valid strings", () => {
 	for (const u of valid) {
 		it(`${u}`, () => {
-			expect(u).toMatch(pattern);
+			pattern.lastIndex = 0; assert.match(u, pattern);
 		});
 	}
 });
@@ -17,32 +18,32 @@ describe("Pattern matches valid strings", () => {
 describe("Pattern doesn't match invalid strings", () => {
 	it("Incomplete photo ID", () => {
 		const str = '<p>https://www.instagram.com/p/abcde/</p>';
-		expect(str).not.toMatch(pattern);
+		pattern.lastIndex = 0; assert.doesNotMatch(str, pattern);
 	}
 	);
 	it("Prepended text", () => {
 		const str = '<p>foo https://www.instagram.com/p/B-rRt1MjKZD/</p>';
-		expect(str).not.toMatch(pattern);
+		pattern.lastIndex = 0; assert.doesNotMatch(str, pattern);
 	}
 	);
 	it("Malformed protocol", () => {
 		const str = '<p>https//www.instagram.com/p/B-rRt1MjKZD/</p>';
-		expect(str).not.toMatch(pattern);
+		pattern.lastIndex = 0; assert.doesNotMatch(str, pattern);
 	}
 	);
 	it("Prepended text, with link", () => {
 		const str = '<p>foo <a href="">https://www.instagram.com/p/B-rRt1MjKZD/</a></p>';
-		expect(str).not.toMatch(pattern);
+		pattern.lastIndex = 0; assert.doesNotMatch(str, pattern);
 	}
 	);
 	it("Appended text", () => {
 		const str = '<p>https://www.instagram.com/p/B-rRt1MjKZD/ bar</p>';
-		expect(str).not.toMatch(pattern);
+		pattern.lastIndex = 0; assert.doesNotMatch(str, pattern);
 	}
 	);
 	it("Appended text, with link", () => {
 		const str = '<p><a href="">https://www.instagram.com/p/B-rRt1MjKZD/</a> bar</p>';
-		expect(str).not.toMatch(pattern);
+		pattern.lastIndex = 0; assert.doesNotMatch(str, pattern);
 	}
 	);
 });
