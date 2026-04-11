@@ -1,4 +1,5 @@
-import { describe, it, expect } from "vitest";
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
 import pattern from "../lib/pattern.js";
 import validUrls from "./_validUrls.mjs";
 
@@ -9,34 +10,34 @@ import validUrls from "./_validUrls.mjs";
  * That's not necessarily a problem, but should be reviewed
  * for compatibility.
  */
-describe('Snapshot regex library output', () => {
-  it('Produces the same RegExp output across regex versions', () => {
-    expect(pattern.toString()).toMatchSnapshot();
-  });
+describe("Snapshot regex library output", () => {
+	it("Produces the same RegExp output across regex versions", (t) => {
+		t.assert.snapshot(String(pattern));
+	});
 });
 
 describe("Valid URL pattern tests", () => {
 	for( let url of validUrls) {
 		it(`Ideal case (<p>${url}</p>)`, () => {
-			expect(`<p>${url}</p>`).toMatch(pattern);
+			pattern.lastIndex = 0; assert.match(`<p>${url}</p>`, pattern);
 		});
 
 		it(`Links (${url})`, () => {
-			expect(`<p><a href="${url}">${url}</a></p>`).toMatch(pattern);
+			pattern.lastIndex = 0; assert.match(`<p><a href="${url}">${url}</a></p>`, pattern);
 		});
 
 		it(`Whitespace (${url})`, () => {
-			expect(`<p>
+			pattern.lastIndex = 0; assert.match(`<p>
 				${url}
-			</p>`).toMatch(pattern);
+			</p>`, pattern);
 		});
 
 		it(`Whitespace and links (${url})`, () => {
-			expect(`<p>
+			pattern.lastIndex = 0; assert.match(`<p>
 				<a href="${url}">
 					${url}
 				</a>
-			</p>`).toMatch(pattern);
+			</p>`, pattern);
 		});
 	}
 });
@@ -44,22 +45,22 @@ describe("Valid URL pattern tests", () => {
 
 describe("Invalid URL pattern tests", () => {
 	it("Prepended text", () => {
-		expect("<p>Foo https://www.tiktok.com/@guiltyaesthetic/video/6806676200652655877</p>").not.toMatch(pattern);
+		pattern.lastIndex = 0; assert.doesNotMatch("<p>Foo https://www.tiktok.com/@guiltyaesthetic/video/6806676200652655877</p>", pattern);
 	});
 	it("Appended text", () => {
-		expect("<p>https://www.tiktok.com/@guiltyaesthetic/video/6806676200652655877 bar</p>").not.toMatch(pattern);
+		pattern.lastIndex = 0; assert.doesNotMatch("<p>https://www.tiktok.com/@guiltyaesthetic/video/6806676200652655877 bar</p>", pattern);
 	});
 	it("Incomplete video ID", () => {
-		expect("<p>https://www.tiktok.com/@guiltyaesthetic/video/6806676200</p>").not.toMatch(pattern);
+		pattern.lastIndex = 0; assert.doesNotMatch("<p>https://www.tiktok.com/@guiltyaesthetic/video/6806676200</p>", pattern);
 	});
 });
 
 describe("Correct metadata extracted from URL", () => {
 	const match = pattern.exec('<p>tiktok.com/@guiltyaesthetic/video/6806676200652655877</p>');
 	it("Should contain the correct user", () => {
-		expect(match.groups.user).toBe("@guiltyaesthetic");
+		assert.equal(match.groups.user, "@guiltyaesthetic");
 	});
 	it("Should contain the correct video ID", () => {
-		expect(match.groups.id).toBe("6806676200652655877");
+		assert.equal(match.groups.id, "6806676200652655877");
 	});
 });
