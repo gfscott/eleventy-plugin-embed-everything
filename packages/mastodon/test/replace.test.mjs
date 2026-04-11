@@ -1,4 +1,5 @@
-import { describe, it, expect, beforeEach, afterEach, beforeAll, afterAll, vi } from 'vitest';
+import { describe, it, beforeEach, afterEach, before, after, mock } from 'node:test';
+import assert from 'node:assert/strict';
 import merge from 'deepmerge';
 import { _getFederatedStatus, _getOriginOembed } from '../lib/replace.js';
 import asyncReplace from 'string-replace-async';
@@ -10,12 +11,12 @@ import patternGenerator from '../lib/pattern.js';
 // Mostly mocking is beneficial because Mastodon API response times and reliability
 // are all over the place.
 import {server} from './_mocking.mjs';
-beforeAll(() => server.listen())
-afterAll(() => server.close())
+before(() => server.listen())
+after(() => server.close())
 afterEach(() => {
 	server.resetHandlers();
 	// Restore any spies/mocks created by vi.spyOn between tests so calls don't accumulate
-	vi.restoreAllMocks();
+	mock.restoreAll();
 })
 
 describe('Query Mastodon status', () => {
@@ -23,35 +24,35 @@ describe('Query Mastodon status', () => {
 	// https://stackoverflow.com/a/76271250/26829947
 	let consoleMock;
   beforeEach(() => {
-    consoleMock = vi.spyOn(console, 'error');
+    consoleMock = mock.method(console, 'error', () => undefined);
   });
 
 	it('Returns null if missing hostname', async () => {
 		const noHostname = await _getFederatedStatus(undefined, '123')
-		expect(noHostname).toBe(null)
-		expect(consoleMock).toHaveBeenCalledOnce();
-		expect(consoleMock).toHaveBeenCalledWith('Missing Mastodon instance or status ID.');
+		assert.equal(noHostname, null)
+		assert.equal(consoleMock.mock.calls.length, 1);
+		assert.deepEqual(consoleMock.mock.calls[0].arguments, ['Missing Mastodon instance or status ID.']);
 	});
 	it('Returns null if missing id', async () => {
 		const noId = await _getFederatedStatus('social.vivaldi.net', undefined)
-		expect(noId).toBe(null)
-		expect(consoleMock).toHaveBeenCalledOnce()
-		expect(consoleMock).toHaveBeenCalledWith('Missing Mastodon instance or status ID.')
+		assert.equal(noId, null)
+		assert.equal(consoleMock.mock.calls.length, 1);
+		assert.deepEqual(consoleMock.mock.calls[0].arguments, ['Missing Mastodon instance or status ID.']);
 	});
 	it('Returns null if missing both parameters', async () => {
 		const neither = await _getFederatedStatus()
-		expect(neither).toBe(null)
-		expect(consoleMock).toHaveBeenCalledOnce()
-		expect(consoleMock).toHaveBeenCalledWith('Missing Mastodon instance or status ID.')
+		assert.equal(neither, null)
+		assert.equal(consoleMock.mock.calls.length, 1);
+		assert.deepEqual(consoleMock.mock.calls[0].arguments, ['Missing Mastodon instance or status ID.']);
 	});
 	it('Queries federated server for original URL', async () => {
 		const originUrl = await _getFederatedStatus('social.vivaldi.net', '123')
-		expect(originUrl).toBe("https://fosstodon.org/@eleventy/113198584376721364")
+		assert.equal(originUrl, "https://fosstodon.org/@eleventy/113198584376721364")
 	});
 
 	it('Returns null on HTTP 404 status', async () => {
 		const originUrl = await _getFederatedStatus('social.vivaldi.net', '000000000000000000')
-		expect(originUrl).toBe(null)
+		assert.equal(originUrl, null)
 	});
 });
 
@@ -59,36 +60,36 @@ describe('Query oembed data', () => {
 
 	let consoleMock;
   beforeEach(() => {
-    consoleMock = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+    consoleMock = mock.method(console, 'error', () => undefined);
   });
 
 	it('Returns null if missing hostname', async () =>{
 		const noHostname = await _getOriginOembed(undefined, 'https://fosstodon.org');
-		expect(noHostname).toBe(null);
-		expect(consoleMock).toHaveBeenCalledOnce()
-		expect(consoleMock).toHaveBeenCalledWith('Missing hostname or URL.')
+		assert.equal(noHostname, null);
+		assert.equal(consoleMock.mock.calls.length, 1);
+		assert.deepEqual(consoleMock.mock.calls[0].arguments, ['Missing hostname or URL.']);
 
 	});
 	it('Returns null if missing url', async () =>{
 		const noUrl = await _getOriginOembed('fosstodon.org', undefined);
-		expect(noUrl).toBe(null);
-		expect(consoleMock).toHaveBeenCalledOnce()
-		expect(consoleMock).toHaveBeenCalledWith('Missing hostname or URL.')
+		assert.equal(noUrl, null);
+		assert.equal(consoleMock.mock.calls.length, 1);
+		assert.deepEqual(consoleMock.mock.calls[0].arguments, ['Missing hostname or URL.']);
 	});
 	it('Returns null if missing both parameters', async () =>{
 		const neither = await _getOriginOembed();
-		expect(neither).toBe(null);
-		expect(consoleMock).toHaveBeenCalledOnce()
-		expect(consoleMock).toHaveBeenCalledWith('Missing hostname or URL.')
+		assert.equal(neither, null);
+		assert.equal(consoleMock.mock.calls.length, 1);
+		assert.deepEqual(consoleMock.mock.calls[0].arguments, ['Missing hostname or URL.']);
 	});
 	it('Queries oembed data', async () => {
 		const oembedHtml = await _getOriginOembed('fosstodon.org', 'https://fosstodon.org/@eleventy/113198584376721364')
-		expect(oembedHtml).toBe("OEMBED_HTML")
+		assert.equal(oembedHtml, "OEMBED_HTML")
 	});
 
 	it('Returns null on HTTP 404 status', async () => {
 		const oembedHtml = await _getOriginOembed('fosstodon.org', 'https://fosstodon.org/@eleventy/000000000000000000')
-		expect(oembedHtml).toBe(null);
+		assert.equal(oembedHtml, null);
 	});
 });
 
@@ -100,7 +101,7 @@ describe('Graceful failures', () => {
 		const content = "<p>Foo bar baz</p>";
 
 		const output = await asyncReplace(content, pattern, (...match) => replace(match, config));
-		expect(output).toBe(content);
+		assert.equal(output, content);
 	});
 
 	it('Returns original input config.server is not set', async () => {
@@ -109,7 +110,7 @@ describe('Graceful failures', () => {
 		const content = "<p>https://social.vivaldi.net/@eleventy@fosstodon.org/113198584572922516</p>";
 
 		const output = await asyncReplace(content, pattern, (...match) => replace(match, config));
-		expect(output).toBe(content);
+		assert.equal(output, content);
 	});
 
 	it('Returns original input if API query for origin status ID fails', async () => {
@@ -118,7 +119,7 @@ describe('Graceful failures', () => {
 		const content = "<p>https://social.vivaldi.net/@eleventy@fosstodon.org/000000000000000000</p>";
 
 		const output = await asyncReplace(content, pattern, (...match) => replace(match, config));
-		expect(output).toBe(content);
+		assert.equal(output, content);
 	});
 
 	it('Returns original input if oembed response fails', async () => {
@@ -127,7 +128,7 @@ describe('Graceful failures', () => {
 		const content = "<p>https://social.vivaldi.net/@eleventy@fosstodon.org/111111111111111111</p>";
 
 		const output = await asyncReplace(content, pattern, (...match) => replace(match, config));
-		expect(output).toBe(content);
+		assert.equal(output, content);
 	});
 
 
@@ -144,7 +145,7 @@ describe('Returns expected HTML', () => {
 		const content = "<p>https://fosstodon.org/@eleventy/113198584376721364</p>";
 
 		const output = await asyncReplace(content, pattern, (...match) => replace(match, config));
-		expect(output).toBe(`<div class="eleventy-plugin-embed-mastodon">${mockOEmbedResponse}</div>`);
+		assert.equal(output, `<div class="eleventy-plugin-embed-mastodon">${mockOEmbedResponse}</div>`);
 	});
 
 	it('Federated server status', async () => {
@@ -153,7 +154,7 @@ describe('Returns expected HTML', () => {
 		const content = "<p>https://social.vivaldi.net/@eleventy@fosstodon.org/113198584572922516</p>";
 
 		const output = await asyncReplace(content, pattern, (...match) => replace(match, config));
-		expect(output).toBe(`<div class="eleventy-plugin-embed-mastodon">${mockOEmbedResponse}</div>`);
+		assert.equal(output, `<div class="eleventy-plugin-embed-mastodon">${mockOEmbedResponse}</div>`);
 	});
 
 	it('With extraneous URL params', async () => {
@@ -162,7 +163,7 @@ describe('Returns expected HTML', () => {
 		const content = "<p>https://social.vivaldi.net/@eleventy@fosstodon.org/113198584572922516?foo=bar&baz</p>";
 
 		const output = await asyncReplace(content, pattern, (...match) => replace(match, config));
-		expect(output).toBe(`<div class="eleventy-plugin-embed-mastodon">${mockOEmbedResponse}</div>`);
+		assert.equal(output, `<div class="eleventy-plugin-embed-mastodon">${mockOEmbedResponse}</div>`);
 	});
 
 	it('Custom wrapper class', async () => {
@@ -171,7 +172,7 @@ describe('Returns expected HTML', () => {
 		const content = "<p>https://social.vivaldi.net/@eleventy@fosstodon.org/113198584572922516</p>";
 
 		const output = await asyncReplace(content, pattern, (...match) => replace(match, config));
-		expect(output).toBe(`<div class="foo">${mockOEmbedResponse}</div>`);
+		assert.equal(output, `<div class="foo">${mockOEmbedResponse}</div>`);
 	});
 
 });
