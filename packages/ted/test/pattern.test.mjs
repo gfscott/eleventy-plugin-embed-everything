@@ -1,4 +1,5 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
 import pattern from '../lib/pattern.js';
 import validUrls from './_validUrls.mjs';
 
@@ -31,7 +32,7 @@ describe('TED URL Pattern Tests', () => {
        */
       pattern.lastIndex = 0;
       let str = `<p>${url}</p>`
-      expect(str).toMatch(pattern);
+      assert.match(str, pattern);
     });
 
     it(`Regex test ${index}-b: ${url}, with whitespace`, () => {
@@ -39,13 +40,13 @@ describe('TED URL Pattern Tests', () => {
       let str = `<p>
                   ${url}
                 </p>`
-      expect(str).toMatch(pattern);
+      assert.match(str, pattern);
     });
 
     it(`Regex test ${index}-c: ${url}, with link`, () => {
       pattern.lastIndex = 0;
       let str = `<p><a href="${url}">${url}</a></p>`
-      expect(str).toMatch(pattern);
+      assert.match(str, pattern);
     });
 
     it(`Regex test ${index}-d: ${url}, with link and whitespace`, () => {
@@ -55,7 +56,7 @@ describe('TED URL Pattern Tests', () => {
                     ${url}
                   </a>
                 </p>`
-      expect(str).toMatch(pattern);
+      assert.match(str, pattern);
     });
   }
 });
