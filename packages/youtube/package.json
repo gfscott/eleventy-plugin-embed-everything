@@ -14,8 +14,8 @@
     "lib"
   ],
   "scripts": {
-    "test": "npx ava",
-    "coverage": "nyc --reporter=lcov ava"
+    "test": "node --test",
+    "coverage": "node --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=lcov.info"
   },
   "author": {
     "name": "Graham F. Scott",

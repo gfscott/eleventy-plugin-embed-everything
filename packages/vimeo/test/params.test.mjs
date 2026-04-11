@@ -1,27 +1,28 @@
-import test from 'ava';
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
 import {addEmbedUrlParams} from "../lib/replace.js";
 
-test("Missing input returns default string", t => {
+test("Missing input returns default string", () => {
 	const str = addEmbedUrlParams()
-	t.is(str, "dnt=1")
+	assert.equal(str, "dnt=1")
 });
 
-test("Empty object returns default string", t => {
+test("Empty object returns default string", () => {
 	const str = addEmbedUrlParams({})
-	t.is(str, "dnt=1")
+	assert.equal(str, "dnt=1")
 });
 
-test("Custom DNT value matches default", t => {
+test("Custom DNT value matches default", () => {
 	const str = addEmbedUrlParams({dnt: true})
-	t.is(str, "dnt=1")
+	assert.equal(str, "dnt=1")
 });
 
-test("Custom DNT off", t => {
+test("Custom DNT off", () => {
 	const str = addEmbedUrlParams({dnt: false})
-	t.is(str, "dnt=0")
+	assert.equal(str, "dnt=0")
 });
 
-test("Privacy hash", t => {
+test("Privacy hash", () => {
 	const str = addEmbedUrlParams({hash: 'asdf1234'})
-	t.is(str, "dnt=1&h=asdf1234")
+	assert.equal(str, "dnt=1&h=asdf1234")
 });

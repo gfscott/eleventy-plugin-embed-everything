@@ -4,8 +4,8 @@
   "description": "An Eleventy plugin that allows you to quickly add common web embeds to markdown posts, using only their URLs",
   "main": ".eleventy.js",
   "scripts": {
-    "test": "npx ava",
-    "coverage": "nyc --reporter=lcov ava"
+    "test": "node --test",
+    "coverage": "node --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=lcov.info"
   },
   "files": [
     ".eleventy.js",

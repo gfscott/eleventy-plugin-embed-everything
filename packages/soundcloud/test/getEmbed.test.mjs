@@ -1,4 +1,5 @@
-import test from 'ava';
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
 import getEmbed from '../lib/getEmbed.js';
 import pluginDefaults from '../lib/pluginDefaults.js';
 
@@ -20,40 +21,40 @@ const expectedSetOutput_sm = '<div class="eleventy-plugin-embed-soundcloud"><ifr
  * For the three supported URL types, check that the plugin produces 
  * the expected markup
  */
-test(`Artist URL`, async t => {
+test(`Artist URL`, async () => {
   let out = await getEmbed(artistUrl, pluginDefaults);
-  t.is(out, expectedArtistOutput);
+  assert.equal(out, expectedArtistOutput);
 });
-test(`Track URL`, async t => {
+test(`Track URL`, async () => {
   let out = await getEmbed(trackUrl, pluginDefaults);
-  t.is(out, expectedTrackOutput);
+  assert.equal(out, expectedTrackOutput);
 });
-test(`Set URL`, async t => {
+test(`Set URL`, async () => {
   let out = await getEmbed(setUrl, pluginDefaults);
-  t.is(out, expectedSetOutput);
+  assert.equal(out, expectedSetOutput);
 });
 
 /**
  * For the three supported URL types, check that the plugin produces 
  * the expected markup with the "small" embed type specified
  */
-test(`Artist URL, small version`, async t => {
+test(`Artist URL, small version`, async () => {
   let out = await getEmbed(artistUrl, smallPlayer);
-  t.is(out, expectedArtistOutput_sm);
+  assert.equal(out, expectedArtistOutput_sm);
 });
-test(`Track URL, small version`, async t => {
+test(`Track URL, small version`, async () => {
   let out = await getEmbed(trackUrl, smallPlayer);
-  t.is(out, expectedTrackOutput_sm);
+  assert.equal(out, expectedTrackOutput_sm);
 });
-test(`Set URL, small version`, async t => {
+test(`Set URL, small version`, async () => {
   let out = await getEmbed(setUrl, smallPlayer);
-  t.is(out, expectedSetOutput_sm);
+  assert.equal(out, expectedSetOutput_sm);
 });
 
 /**
  * On request failure, return the URL unchanged
  */
-test(`oEmbed fetch failure`, async t => {
+test(`oEmbed fetch failure`, async () => {
   let out = await getEmbed(badUrl, pluginDefaults);
-  t.is(out, badUrl);
+  assert.equal(out, badUrl);
 });

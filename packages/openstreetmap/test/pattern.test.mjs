@@ -1,4 +1,5 @@
-import test from 'ava';
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
 import pattern from '../lib/pattern.js';
 import permuteArrays from 'permute-arrays';
 
@@ -14,16 +15,16 @@ const suffixes = [
 const validUrls = new Set(permuteArrays(base, prefixes, suffixes).slice(prefixes.length))
 
 for (let url of validUrls) {
-  test(`${url} is a valid URL`, t => {
+  test(`${url} is a valid URL`, () => {
     pattern.lastIndex = 0;
-    t.regex(`<p>${url}</p>`, pattern);
+    assert.match(`<p>${url}</p>`, pattern);
   });
 
-  test(`Expected values extracted from ${url}`, t => {
+  test(`Expected values extracted from ${url}`, () => {
     pattern.lastIndex = 0;
     const { groups: { zoom, lat, long } } = pattern.exec(`<p>${url}</p>`);
-    t.is(zoom, '8');
-    t.is(lat, '46.195');
-    t.is(long, '-81.362');
+    assert.equal(zoom, '8');
+    assert.equal(lat, '46.195');
+    assert.equal(long, '-81.362');
   })
 }

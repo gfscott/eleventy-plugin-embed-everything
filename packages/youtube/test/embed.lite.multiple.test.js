@@ -1,4 +1,5 @@
-const test = require('ava');
+const test = require('node:test');
+const assert = require('node:assert/strict');
 const merge = require('deepmerge');
 const pattern = require('../lib/pattern.js');
 const embed = require('../lib/embed.js');
@@ -37,6 +38,6 @@ test(`Build embed lite mode, two videos, start time should not bleed into the se
     return await embed(match, config, index++)
   });
 
-  t.is(result, `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');" params="start=5"><div class="lty-playbtn"></div></lite-youtube></div><div id="4JS70KB9GS0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="4JS70KB9GS0" style="background-image: url('https://i.ytimg.com/vi/4JS70KB9GS0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`);
+  assert.equal(result, `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.css">\n<script defer="defer" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@0.3.3/src/lite-yt-embed.min.js"></script>\n<div id="hIs5StN8J-0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="hIs5StN8J-0" style="background-image: url('https://i.ytimg.com/vi/hIs5StN8J-0/hqdefault.jpg');" params="start=5"><div class="lty-playbtn"></div></lite-youtube></div><div id="4JS70KB9GS0" class="eleventy-plugin-youtube-embed"><lite-youtube videoid="4JS70KB9GS0" style="background-image: url('https://i.ytimg.com/vi/4JS70KB9GS0/hqdefault.jpg');"><div class="lty-playbtn"></div></lite-youtube></div>`);
 });
 

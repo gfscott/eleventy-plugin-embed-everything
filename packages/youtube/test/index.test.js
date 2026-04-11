@@ -1,4 +1,5 @@
-const test = require('ava');
+const test = require("node:test");
+const assert = require("node:assert/strict");
 
 /**
  * This test mocks the behavior of how the plugin index file works.
@@ -10,7 +11,7 @@ const test = require('ava');
  * style and script tags. The default embed doesn't need to be aware of its
  * index.
  */
-test('Index of replacements inside content works as expected', (t) => {
+test('Index of replacements inside content works as expected', () => {
   // `bar` appears twice in the test string.
   const content = 'foo bar foo bar';
   // We expect *only* the first `bar` to be replaced with `baz`.
@@ -27,5 +28,5 @@ test('Index of replacements inside content works as expected', (t) => {
   // Call mockEmbed for each match, passing the index and then incrementing it.
   const result = content.replace(pattern, (...match) => mockEmbed(match, {}, index++));
   // The resulting string should only replace the first instance of `bar`.
-  t.is(result, expected)
+  assert.equal(result, expected);
 })

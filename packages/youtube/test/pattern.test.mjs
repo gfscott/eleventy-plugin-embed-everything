@@ -1,25 +1,26 @@
-import test from 'ava';
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
 import { valid, invalid } from './_strings.mjs';
 import { invalid as invalidUrls } from './_urls.mjs';
 import pattern from '../lib/pattern.js';
 
 for (let [index, str] of valid.entries()) {
-  test(`Valid-${index}: (${str})`, async t => {
+  test(`Valid-${index}: (${str})`, async () => {
     pattern.lastIndex = 0;
-    t.regex(str, pattern)
+    assert.match(str, pattern)
   });
 }
 
 for (let [index, str] of invalid.entries()) {
-  test(`Invalid-${index}: (${str})`, async t => {
+  test(`Invalid-${index}: (${str})`, async () => {
     pattern.lastIndex = 0;
-    t.notRegex(str, pattern)
+    assert.doesNotMatch(str, pattern)
   });
 }
 
 for (let [index, str] of invalidUrls.entries()) {
-  test(`Invalid-URL-${index}: (<p>${str}</p>)`, async t => {
+  test(`Invalid-URL-${index}: (<p>${str}</p>)`, async () => {
     pattern.lastIndex = 0;
-    t.notRegex(`<p>${str}</p>`, pattern)
+    assert.doesNotMatch(`<p>${str}</p>`, pattern)
   });
 }

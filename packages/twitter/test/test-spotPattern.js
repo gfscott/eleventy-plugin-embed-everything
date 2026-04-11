@@ -1,4 +1,5 @@
-const test = require("ava");
+const test = require("node:test");
+const assert = require("node:assert/strict");
 const patternPresent = require("../lib/spotPattern.js");
 const validStrings = require("./_validStrings.js");
 // const invalidStrings = require("./_invalidStrings.js");
@@ -9,9 +10,9 @@ const validStrings = require("./_validStrings.js");
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} ideal case`,
-		(t) => {
+		() => {
 			let idealCase = `<p>${obj.str}</p>`;
-			t.truthy(patternPresent(idealCase));
+			assert.ok(patternPresent(idealCase));
 		},
 	);
 });
@@ -23,11 +24,11 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} with whitespace`,
-		(t) => {
+		() => {
 			let withWhitespace = `<p>
       ${obj.str}
     </p>`;
-			t.truthy(patternPresent(withWhitespace));
+			assert.ok(patternPresent(withWhitespace));
 		},
 	);
 });
@@ -38,9 +39,9 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} with links`,
-		(t) => {
+		() => {
 			let withLinks = `<p><a href="">${obj.str}</a></p>`;
-			t.truthy(patternPresent(withLinks));
+			assert.ok(patternPresent(withLinks));
 		},
 	);
 });
@@ -52,13 +53,13 @@ validStrings.forEach(function(obj) {
 validStrings.forEach(function(obj) {
 	test(
 		`${obj.type} with links and whitespace`,
-		(t) => {
+		() => {
 			let withLinksAndWhitespace = `<p>
       <a href="">
         ${obj.str}
       </a>
     </p>`;
-			t.truthy(patternPresent(withLinksAndWhitespace));
+			assert.ok(patternPresent(withLinksAndWhitespace));
 		},
 	);
 });
@@ -70,24 +71,24 @@ validStrings.forEach(function(obj) {
  */
 test(
 	"Regex doesn't greedily consume subsequent paragraph tags in minified HTML",
-	(t) => {
+	() => {
 		let multipleParagraphs = "<p>https://twitter.com/SaraSoueidan/status/1289865845053652994</p><p>Foo</p>";
 		let output = patternPresent(multipleParagraphs);
 		let expected = [
 			"<p>https://twitter.com/SaraSoueidan/status/1289865845053652994</p>",
 		];
-		t.deepEqual(output, expected);
+		assert.deepEqual(output, expected);
 	},
 );
 
 test(
 	"Regex doesn't greedily consume subsequent paragraph tags in minified HTML, including anchor tags",
-	(t) => {
+	() => {
 		let multipleParagraphs = `<p><a href="foo">https://twitter.com/SaraSoueidan/status/1289865845053652994</a></p><p>Foo</p>`;
 		let output = patternPresent(multipleParagraphs);
 		let expected = [
 			'<p><a href="foo">https://twitter.com/SaraSoueidan/status/1289865845053652994</a></p>',
 		];
-		t.deepEqual(output, expected);
+		assert.deepEqual(output, expected);
 	},
 );

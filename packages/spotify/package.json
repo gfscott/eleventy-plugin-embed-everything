@@ -10,19 +10,13 @@
   ],
   "main": "index.js",
   "scripts": {
-    "test": "npx ava",
-    "coverage": "nyc --reporter=lcov ava"
+    "test": "node --test",
+    "coverage": "node --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=lcov.info"
   },
   "files": [
     "index.js",
     "lib/**"
   ],
-  "ava": {
-    "files": [
-      "!test/inc",
-      "!test/html"
-    ]
-  },
   "author": {
     "name": "Graham F. Scott",
     "email": "gfscott@gmail.com",

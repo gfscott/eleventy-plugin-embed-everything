@@ -1,9 +1,10 @@
-import test from 'ava';
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
 import pattern from '../lib/pattern.js';
 import replace from '../lib/replace.js';
 import { getBoundingBox } from '../lib/replace.js';
 
-test('Custom bounding box calculation is within acceptable variance from OSM', t => {
+test('Custom bounding box calculation is within acceptable variance from OSM', () => {
 
   // These are values produced by the OSM embed service
   const expected = {
@@ -30,44 +31,44 @@ test('Custom bounding box calculation is within acceptable variance from OSM', t
   // https://github.com/openstreetmap/openstreetmap-website/blob/master/lib/bounding_box.rb
   const acceptableDrift = 0.01;
 
-  t.is(Math.abs(long_s - expected.long_s) < acceptableDrift, true);
-  t.is(Math.abs(lat_e - expected.lat_e) < acceptableDrift, true);
-  t.is(Math.abs(long_e - expected.long_e) < acceptableDrift, true);
-  t.is(Math.abs(lat_s - expected.lat_s) < acceptableDrift, true);
+  assert.equal(Math.abs(long_s - expected.long_s) < acceptableDrift, true);
+  assert.equal(Math.abs(lat_e - expected.lat_e) < acceptableDrift, true);
+  assert.equal(Math.abs(long_e - expected.long_e) < acceptableDrift, true);
+  assert.equal(Math.abs(lat_s - expected.lat_s) < acceptableDrift, true);
 
 });
 
-test('Input produces expected output with default options', t => {
+test('Input produces expected output with default options', () => {
   const input = '<p>https://www.openstreetmap.org/#map=11/47.9012/106.8911</p>';
   const output = input.replace(pattern, (...match) => replace(match));
   const expected = '<div class="eleventy-plugin-embed-openstreetmap" style="aspect-ratio: 16/9"><iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=106.59927565917968%2C47.73983206904563%2C107.1829243408203%2C48.06206649357146&layer=mapnik"></iframe></div>';
-  t.is(output, expected);
+  assert.equal(output, expected);
 });
 
-test('Input produces expected output with custom class name', t => {
+test('Input produces expected output with custom class name', () => {
   const input = '<p>https://www.openstreetmap.org/#map=11/47.9012/106.8911</p>';
   const output = input.replace(pattern, (...match) => replace(match, {embedClass: 'foo'}));
   const expected = '<div class="foo" style="aspect-ratio: 16/9"><iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=106.59927565917968%2C47.73983206904563%2C107.1829243408203%2C48.06206649357146&layer=mapnik"></iframe></div>';
-  t.is(output, expected);
+  assert.equal(output, expected);
 });
 
-test('Input produces expected output with custom wrapper style', t => {
+test('Input produces expected output with custom wrapper style', () => {
   const input = '<p>https://www.openstreetmap.org/#map=11/47.9012/106.8911</p>';
   const output = input.replace(pattern, (...match) => replace(match, { wrapperStyle: 'width: 100%; height: 500px;' }));
   const expected = '<div class="eleventy-plugin-embed-openstreetmap" style="width: 100%; height: 500px;"><iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=106.59927565917968%2C47.73983206904563%2C107.1829243408203%2C48.06206649357146&layer=mapnik"></iframe></div>';
-  t.is(output, expected);
+  assert.equal(output, expected);
 });
 
-test('Input produces expected output with custom map layer', t => {
+test('Input produces expected output with custom map layer', () => {
   const input = '<p>https://www.openstreetmap.org/#map=11/47.9012/106.8911</p>';
   const output = input.replace(pattern, (...match) => replace(match, {layer: 'cycle'}));
   const expected = '<div class="eleventy-plugin-embed-openstreetmap" style="aspect-ratio: 16/9"><iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=106.59927565917968%2C47.73983206904563%2C107.1829243408203%2C48.06206649357146&layer=cycle"></iframe></div>';
-  t.is(output, expected);
+  assert.equal(output, expected);
 });
 
-test('Input produces expected output with marker option active', t => {
+test('Input produces expected output with marker option active', () => {
   const input = '<p>https://www.openstreetmap.org/#map=11/47.9012/106.8911</p>';
   const output = input.replace(pattern, (...match) => replace(match, {includeMarker: true}));
   const expected = '<div class="eleventy-plugin-embed-openstreetmap" style="aspect-ratio: 16/9"><iframe width="100%" height="100%" frameborder="0" src="https://www.openstreetmap.org/export/embed.html?bbox=106.59927565917968%2C47.73983206904563%2C107.1829243408203%2C48.06206649357146&layer=mapnik&marker=47.9012%2C106.8911"></iframe></div>';
-  t.is(output, expected);
+  assert.equal(output, expected);
 });
