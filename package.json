@@ -29,7 +29,7 @@
   "devDependencies": {
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
     "@vitest/coverage-istanbul": "^4.1.2",
-    "msw": "^2.13.2",
+    "msw": "^2.13.6",
     "permute-arrays": "workspace:^",
     "vitest": "^4.1.2"
   },
