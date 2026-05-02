@@ -5,14 +5,16 @@ import validUrls from "./_validUrls.mjs";
 
 /**
  * The `regex` library outputs a native RegExp object.
- * This test snapshots that output, and will fail if the
+ * This test asserts that output, and will fail if the
  * output changes between regex library versions.
  * That's not necessarily a problem, but should be reviewed
  * for compatibility.
  */
-describe("Snapshot regex library output", () => {
-	it("Produces the same RegExp output across regex versions", (t) => {
-		t.assert.snapshot(String(pattern));
+const EXPECTED_PATTERN = '/<p>(?:(?=((?:(?=(\\s*))\\2)))\\1)?(?:(?=(<a[^>]*?>))\\3)?(?:(?=((?:(?=(\\s*))\\5)))\\4)?(?:(?=(https?:))\\6)?(?:(?=(\\/{2}))\\7)?(?:(?=(w{3}\\.))\\8)?(?:)tiktok.com\\/(?<user>@[\\w\\.]+?)\\/video\\/(?<id>\\d{19})[^\\s<>]*?(?:(?=((?:(?=(\\s*))\\12)))\\11)?(?:(?=(<\\/a>))\\13)?(?:(?=((?:(?=(\\s*))\\15)))\\14)?(?:)<\\/p>/gv';
+
+describe("RegExp output from regex library", () => {
+	it("Produces the same RegExp output across regex versions", () => {
+		assert.equal(String(pattern), EXPECTED_PATTERN);
 	});
 });
 
