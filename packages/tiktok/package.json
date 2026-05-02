@@ -10,8 +10,8 @@
   ],
   "main": "index.js",
   "scripts": {
-    "test": "npx vitest run",
-    "coverage": "vitest run --coverage --coverage.include='lib/**'"
+    "test": "node --test",
+    "coverage": "node --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=lcov.info"
   },
   "files": [
     "index.js",
