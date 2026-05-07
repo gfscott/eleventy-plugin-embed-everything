@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         os: ["ubuntu-latest", "macos-latest", "windows-latest"]
-        node: ["20", "22", "24", "25"]
+        node: ["20", "22", "24", "26"]
     steps:
       - name: Checkout repo
         uses: actions/checkout@v6
