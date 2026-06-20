@@ -57,6 +57,6 @@ jobs:
       - name: Run unit tests
         run: pnpm coverage
       - name: Upload coverage to Codecov.io
-        uses: codecov/codecov-action@v6
+        uses: codecov/codecov-action@v7
         with:
           codecov_yml_path: ./codecov.yml
