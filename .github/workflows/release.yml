@@ -25,7 +25,7 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Install pnpm
         uses: pnpm/action-setup@v6
@@ -73,7 +73,7 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       # Source: modified from a shopify/hydrogen workflow:
       # https://github.com/Shopify/hydrogen/blob/main/.github/workflows/sync_main.yml
@@ -94,7 +94,7 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           # Checkout the next branch, instead of the default main branch
           ref: next
