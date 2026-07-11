@@ -28,6 +28,13 @@ The demo is helpful to test the plugin output during the development process.
 
 Embed Everything is a [monorepo](https://monorepo.tools/). Each individual embed provider (like YouTube or Vimeo) gets released as a standalone npm package. Those packages are then bundled together in the `everything` package.
 
+## AI contribution policy
+
+Thoughtful LLM assistance has its place in contemporary software development workflows. These are our principles regarding generative AI and related technologies:
+
+- **Accountability:** Contributors are responsible for the quality and integrity of their submissions, regardless of provenance. Slop won't be accepted.
+- **Disclosure:** Clearly state if LLMs were involved. Co-authorship of commits that include the model name and version are preferred.
+
 ## Anatomy of a plugin
 
 This is the typical structure of each plugin:
