@@ -18,7 +18,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v7
       - name: Install pnpm
-        uses: pnpm/action-setup@v6
+        uses: pnpm/action-setup@v6.0.9
         # Standalone allows pnpm to be used with otherwise incompatible Node.js versions
         # Required to support Node v20
         # https://github.com/pnpm/action-setup#standalone
@@ -44,7 +44,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v7
       - name: Install pnpm
-        uses: pnpm/action-setup@v6
+        uses: pnpm/action-setup@v6.0.9
         with:
           standalone: true
       - name: Setup Node.js
