@@ -52,7 +52,7 @@ jobs:
       # The Changesets action either updates its "Version packages" PR
       # OR publishes it to npm when that PR merges to main.
       - name: Create Release Pull Request or publish
-        uses: changesets/action@v1
+        uses: changesets/action@v2
         with:
           # Calls 'release' script in root package.json
           # https://github.com/changesets/action#inputs
