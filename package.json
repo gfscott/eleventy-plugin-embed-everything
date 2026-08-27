@@ -24,7 +24,6 @@
   },
   "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues",
   "devDependencies": {
-    "@svitejs/changesets-changelog-github-compact": "^1.2.0",
     "msw": "^2.15.0",
     "permute-arrays": "workspace:^"
   },
