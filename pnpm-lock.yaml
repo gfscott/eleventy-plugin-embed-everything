@@ -7,11 +7,10 @@ settings:
 importers:
 
   .:
-    dependencies:
+    devDependencies:
       '@changesets/cli':
         specifier: ^3.0.1
         version: 3.0.1
-    devDependencies:
       msw:
         specifier: ^2.15.0
         version: 2.15.0(@types/node@26.3.0)

@@ -24,10 +24,8 @@
   },
   "bugs": "https://github.com/gfscott/eleventy-plugin-embed-everything/issues",
   "devDependencies": {
+    "@changesets/cli": "^3.0.1",
     "msw": "^2.15.0",
     "permute-arrays": "workspace:^"
-  },
-  "dependencies": {
-    "@changesets/cli": "^3.0.1"
   }
 }
