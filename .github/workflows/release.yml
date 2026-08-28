@@ -26,24 +26,11 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v7
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v6.0.9
-        # Standalone allows pnpm to be used with otherwise incompatible Node.js versions
-        # Required to support Node v20
-        # https://github.com/pnpm/action-setup#standalone
+      - name: Install pnpm and set up Node.js
+        uses: pnpm/setup@v2
         with:
-          standalone: true
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: 24
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install
-
+          runtime: node@24
+          cache: true
       # Even though the CI workflow runs tests, run them here
       # so the release task errors out if there's a problem.
       - name: Run unit tests
@@ -99,19 +86,11 @@ jobs:
           # Checkout the next branch, instead of the default main branch
           ref: next
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v6.0.9
+      - name: Install pnpm and set up Node.js
+        uses: pnpm/setup@v2
         with:
-          standalone: true
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: 24
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install
+          runtime: node@24
+          cache: true
 
       # By default, the changesets action creates an .npmrc file in each
       # package directory before publishing so npm has the registry and
