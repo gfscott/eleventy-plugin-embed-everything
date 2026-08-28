@@ -17,20 +17,11 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v7
-      - name: Install pnpm
-        uses: pnpm/action-setup@v6.0.9
-        # Standalone allows pnpm to be used with otherwise incompatible Node.js versions
-        # Required to support Node v20
-        # https://github.com/pnpm/action-setup#standalone
+      - name: Install pnpm and set up Node.js
+        uses: pnpm/setup@v2
         with:
-          standalone: true
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: ${{ matrix.node }}
-          cache: 'pnpm'
-      - name: Install dependencies
-        run: pnpm install
+          runtime: node@${{ matrix.node }}
+          cache: true
       - name: Run unit tests
         run: pnpm test
 
@@ -43,18 +34,12 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v7
-      - name: Install pnpm
-        uses: pnpm/action-setup@v6.0.9
+      - name: Install pnpm and set up Node.js
+        uses: pnpm/setup@v2
         with:
-          standalone: true
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: "24"
-          cache: 'pnpm'
-      - name: Install dependencies
-        run: pnpm install
-      - name: Run unit tests
+          runtime: node@24
+          cache: true
+      - name: Run coverage
         run: pnpm coverage
       - name: Upload coverage to Codecov.io
         uses: codecov/codecov-action@v7
