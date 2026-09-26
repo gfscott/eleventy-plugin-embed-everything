@@ -27,7 +27,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v7
       - name: Install pnpm and set up Node.js
-        uses: pnpm/setup@v2
+        uses: pnpm/setup@v3
         with:
           runtime: node@24
           cache: true
@@ -87,7 +87,7 @@ jobs:
           ref: next
 
       - name: Install pnpm and set up Node.js
-        uses: pnpm/setup@v2
+        uses: pnpm/setup@v3
         with:
           runtime: node@24
           cache: true
