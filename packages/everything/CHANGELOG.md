@@ -1,5 +1,16 @@
 # eleventy-plugin-embed-everything
 
+## 1.21.3
+
+### Patch Changes
+
+- Updated dependencies [[`3399316`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/339931661678f29cfe69a4ddfcb1c17b68664290)]:
+  - eleventy-plugin-embed-bluesky@1.0.3
+  - eleventy-plugin-embed-mastodon@1.0.4
+  - eleventy-plugin-embed-soundcloud@1.2.12
+  - eleventy-plugin-embed-twitter@1.4.5
+  - eleventy-plugin-youtube-embed@1.13.3
+
 ## 1.21.2
 
 ### Patch Changes

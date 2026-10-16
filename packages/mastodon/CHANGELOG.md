@@ -1,5 +1,11 @@
 # eleventy-plugin-embed-mastodon
 
+## 1.0.4
+
+### Patch Changes
+
+- Bump @11ty/eleventy-fetch from 5.1.2 to 5.1.3 ([#437](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/437))
+
 ## 1.0.3
 
 ### Patch Changes
