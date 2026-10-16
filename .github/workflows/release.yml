@@ -29,7 +29,7 @@ jobs:
       - name: Install pnpm and set up Node.js
         uses: pnpm/setup@v3
         with:
-          runtime: node@24
+          runtime: node@26
           cache: true
       # Even though the CI workflow runs tests, run them here
       # so the release task errors out if there's a problem.
@@ -89,7 +89,7 @@ jobs:
       - name: Install pnpm and set up Node.js
         uses: pnpm/setup@v3
         with:
-          runtime: node@24
+          runtime: node@26
           cache: true
 
       # By default, the changesets action creates an .npmrc file in each
