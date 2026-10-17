@@ -26,6 +26,6 @@ jobs:
         uses: pnpm/setup@v3
         with:
           runtime: node@26
-          cache: true
+          cache: false
       - name: Publish preview releases
         run: pnpm exec pkg-pr-new publish --pnpm './packages/*'
