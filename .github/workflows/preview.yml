@@ -3,28 +3,29 @@ permissions:
   contents: read
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - packages/**
-  pull_request:
+  # Only runs after the CI workflow (test.yml) finishes
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
 
 jobs:
   preview:
     runs-on: ubuntu-latest
-    # Only runs in the main repo, not in forks
-    if: github.repository == 'gfscott/eleventy-plugin-embed-everything'
+    # Only runs in the main repo, not in forks, and only if CI passed
+    if: >-
+      github.repository == 'gfscott/eleventy-plugin-embed-everything' &&
+      (github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success')
     steps:
       - name: Checkout repo
         uses: actions/checkout@v7
+        with:
+          # workflow_run executes against the default branch; check out the commit CI tested
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
       - name: Install pnpm and set up Node.js
         uses: pnpm/setup@v3
         with:
           runtime: node@26
           cache: true
-      # Run unit tests and bail without publishing if there's a problem.
-      - name: Run unit tests
-        run: pnpm test
       - name: Publish preview releases
-        run: pnpm exec pkg-pr-new publish --pnpm
+        run: pnpm exec pkg-pr-new publish --pnpm './packages/*'
