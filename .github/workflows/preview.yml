@@ -1,0 +1,30 @@
+name: Preview packages
+permissions:
+  contents: read
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - packages/**
+  pull_request:
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    # Only runs in the main repo, not in forks
+    if: github.repository == 'gfscott/eleventy-plugin-embed-everything'
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v7
+      - name: Install pnpm and set up Node.js
+        uses: pnpm/setup@v3
+        with:
+          runtime: node@26
+          cache: true
+      # Run unit tests and bail without publishing if there's a problem.
+      - name: Run unit tests
+        run: pnpm test
+      - name: Publish preview releases
+        run: pnpm exec pkg-pr-new publish --pnpm
