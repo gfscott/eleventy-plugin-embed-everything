@@ -99,6 +99,8 @@ eleventyConfig.addPlugin(embedEverything, {
 });
 ```
 
+You'll get a console warning if you `add` a plugin that's already active by default, since you probably want `use` instead.
+
 **Example:** configure the plugin to embed _only_ Vimeo and Instagram:
 ```javascript
 eleventyConfig.addPlugin(embedEverything, {
