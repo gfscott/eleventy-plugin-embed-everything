@@ -30,8 +30,8 @@ importers:
   packages/bluesky:
     dependencies:
       '@11ty/eleventy-fetch':
-        specifier: ^5.1.3
-        version: 5.1.3
+        specifier: ^6.0.1
+        version: 6.0.1
       string-replace-async:
         specifier: ^3.0.2
         version: 3.0.2
@@ -83,8 +83,8 @@ importers:
   packages/mastodon:
     dependencies:
       '@11ty/eleventy-fetch':
-        specifier: ^5.1.3
-        version: 5.1.3
+        specifier: ^6.0.1
+        version: 6.0.1
       deepmerge:
         specifier: ^4.3.1
         version: 4.3.1
@@ -104,8 +104,8 @@ importers:
   packages/soundcloud:
     dependencies:
       '@11ty/eleventy-fetch':
-        specifier: ^5.1.3
-        version: 5.1.3
+        specifier: ^6.0.1
+        version: 6.0.1
 
   packages/spotify: {}
 
@@ -125,8 +125,8 @@ importers:
   packages/twitter:
     dependencies:
       '@11ty/eleventy-fetch':
-        specifier: ^5.1.3
-        version: 5.1.3
+        specifier: ^6.0.1
+        version: 6.0.1
       deepmerge:
         specifier: ^4.3.1
         version: 4.3.1
@@ -136,8 +136,8 @@ importers:
   packages/youtube:
     dependencies:
       '@11ty/eleventy-fetch':
-        specifier: ^5.1.3
-        version: 5.1.3
+        specifier: ^6.0.1
+        version: 6.0.1
       deepmerge:
         specifier: ^4.3.1
         version: 4.3.1
@@ -167,9 +167,9 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  '@11ty/eleventy-fetch@5.1.3':
-    resolution: {integrity: sha512-4HS6QB/mVWTVlE6kjCKPkjkC1Z0YOqizJaHR05zK+E7a2b4EUC3T+wLktIy7wEl76ZoarkY45EKLmTw1XuR8fQ==}
-    engines: {node: '>=18'}
+  '@11ty/eleventy-fetch@6.0.1':
+    resolution: {integrity: sha512-kY5LcMhBnlnyVo/xUn/RpYKDXtXk4W8JnCdCaTZAyJq8L5f1qgVWFfs41wCawNxLglg6dZG1F5g9EEk3kzauig==}
+    engines: {node: '>=22'}
 
   '@11ty/eleventy-plugin-bundle@3.0.7':
     resolution: {integrity: sha512-QK1tRFBhQdZASnYU8GMzpTdsMMFLVAkuU0gVVILqNyp09xJJZb81kAS3AFrNrwBCsgLxTdWHJ8N64+OTTsoKkA==}
@@ -177,6 +177,10 @@ packages:
 
   '@11ty/eleventy-utils@2.0.7':
     resolution: {integrity: sha512-6QE+duqSQ0GY9rENXYb4iPR4AYGdrFpqnmi59tFp9VrleOl0QSh8VlBr2yd6dlhkdtj7904poZW5PvGr9cMiJQ==}
+    engines: {node: '>=18'}
+
+  '@11ty/eleventy-utils@3.0.1':
+    resolution: {integrity: sha512-touQaAQRq1wBMvUMSg3Nr1SVdb5kUssMMPWm6x+1fOLZ9LcwWWTZkjFsjkmJmpe7ZICHuh76bYi0qFLqJTG/mA==}
     engines: {node: '>=18'}
 
   '@11ty/eleventy@3.1.7':
@@ -339,9 +343,9 @@ packages:
     resolution: {integrity: sha512-pOr5+q1fLYKwFN3LAJuGZEnfXDcQ73zqgDHMtGy+K+uIoUqyY+6MeDCWFwfu+4EFuq76I5EPFofoNAI+Bmmq4A==}
     engines: {node: '>=22.13'}
 
-  '@rgrove/parse-xml@4.2.3':
-    resolution: {integrity: sha512-Jhlb+0zYez1T1yXUQs3F1qAtFuJljBVNdy9TKmLDauAXkxsOXopKYOyQ5Wm6SvP3fycav0GviX4Y15WWhGetMw==}
-    engines: {node: '>=14.0.0'}
+  '@rgrove/parse-xml@5.0.0':
+    resolution: {integrity: sha512-SgHFyisNAkS2ZbM8SCriUm1N0bxLiz0POKvpDeAtrnLrXaYG1PawNwu1rSjmE/vcVHbZzYWNgVP6xkep6R4uXg==}
+    engines: {node: '>=22.12.0'}
 
   '@sindresorhus/slugify@2.2.1':
     resolution: {integrity: sha512-MkngSCRZ8JdSOCHRaYd+D01XhvU3Hjy6MGl06zhOk614hp9EOAp5gIkBeQg7wtmxpitU6eAL4kdiRMcJa2dlrw==}
@@ -527,9 +531,6 @@ packages:
   evaluate-value@2.0.0:
     resolution: {integrity: sha512-VonfiuDJc0z4sOO7W0Pd130VLsXN6vmBWZlrog1mCb/o7o/Nl5Lr25+Kj/nkCCAhG+zqeeGjxhkK9oHpkgTHhQ==}
     engines: {node: '>= 8'}
-
-  eventemitter3@4.0.7:
-    resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
 
   extend-shallow@2.0.1:
     resolution: {integrity: sha512-zCnTtlxNoAiDc3gqY2aYAWFx7XWWiasuF2K8Me5WbN8otHKTUKBwjPtNpRs/rbUZm7KxWAaNj7P1a/p52GbVug==}
@@ -746,17 +747,9 @@ packages:
   outvariant@1.4.3:
     resolution: {integrity: sha512-+Sl2UErvtsoajRDKCE5/dBz4DIvHXQQnAxtQTF04OJxY0+DyZXSo5P5Bb7XYWOh81syohlYL24hbDwxedPUJCA==}
 
-  p-finally@1.0.0:
-    resolution: {integrity: sha512-LICb2p9CB7FS+0eR1oqWnHhp0FljGLZCWBE9aix0Uye9W8LTQPwMTYVGWQWIw9RdQiDg4+epXQODwIYJtSJaow==}
-    engines: {node: '>=4'}
-
-  p-queue@6.6.2:
-    resolution: {integrity: sha512-RwFpb72c/BhQLEXIZ5K2e+AhgNVmIejGlTgiB9MzZ0e93GRvqZ7uSi0dvRF7/XIXDeNkra2fNHBxTyPDGySpjQ==}
-    engines: {node: '>=8'}
-
-  p-timeout@3.2.0:
-    resolution: {integrity: sha512-rhIwUycgwwKcP9yTOOFK/AKsAopjjCakVqLHePO3CC6Mir1Z99xT+R63jZxAT5lFZLa2inS5h+ZS2GvR99/FBg==}
-    engines: {node: '>=8'}
+  p-queue@10.0.0:
+    resolution: {integrity: sha512-P2wrCri3bhGLPo3kX7qYVXbo/5GvaVATU0DpO24CbeT53Y4z35t8JUWku04ERpXHUYB5rPMi3TkWE3fmJgx5rA==}
+    engines: {node: '>=22'}
 
   package-manager-detector@1.8.0:
     resolution: {integrity: sha512-yQA4H19AmPEoMUeavPMDIe1higySl/gH/yaQrkT/s07Qp+7pp2hYz30N3z2l5BkjVkF9Ow6o0wjJamm2y7Sn0A==}
@@ -1010,13 +1003,13 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@11ty/eleventy-fetch@5.1.3':
+  '@11ty/eleventy-fetch@6.0.1':
     dependencies:
-      '@11ty/eleventy-utils': 2.0.7
-      '@rgrove/parse-xml': 4.2.3
+      '@11ty/eleventy-utils': 3.0.1
+      '@rgrove/parse-xml': 5.0.0
       debug: 4.4.3
       flatted: 3.4.4
-      p-queue: 6.6.2
+      p-queue: 10.0.0
     transitivePeerDependencies:
       - supports-color
 
@@ -1030,6 +1023,8 @@ snapshots:
       - supports-color
 
   '@11ty/eleventy-utils@2.0.7': {}
+
+  '@11ty/eleventy-utils@3.0.1': {}
 
   '@11ty/eleventy@3.1.7':
     dependencies:
@@ -1277,7 +1272,7 @@ snapshots:
 
   '@pnpm/deps.graph-sequencer@1100.0.1': {}
 
-  '@rgrove/parse-xml@4.2.3': {}
+  '@rgrove/parse-xml@5.0.0': {}
 
   '@sindresorhus/slugify@2.2.1':
     dependencies:
@@ -1423,8 +1418,6 @@ snapshots:
   etag@1.8.1: {}
 
   evaluate-value@2.0.0: {}
-
-  eventemitter3@4.0.7: {}
 
   extend-shallow@2.0.1:
     dependencies:
@@ -1618,16 +1611,7 @@ snapshots:
 
   outvariant@1.4.3: {}
 
-  p-finally@1.0.0: {}
-
-  p-queue@6.6.2:
-    dependencies:
-      eventemitter3: 4.0.7
-      p-timeout: 3.2.0
-
-  p-timeout@3.2.0:
-    dependencies:
-      p-finally: 1.0.0
+  p-queue@10.0.0: {}
 
   package-manager-detector@1.8.0: {}
 
