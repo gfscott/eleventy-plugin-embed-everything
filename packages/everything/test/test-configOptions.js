@@ -82,6 +82,18 @@ test(
 	},
 )
 
+test(`Config "add" option warns when adding a default plugin`, (t) => {
+	const warn = t.mock.method(console, "warn", () => {});
+	config({add: ["youtube"]});
+	assert.equal(warn.mock.callCount(), 1);
+});
+
+test(`Config "add" option doesn't warn for non-default plugins`, (t) => {
+	const warn = t.mock.method(console, "warn", () => {});
+	config({add: ["soundcloud"]});
+	assert.equal(warn.mock.callCount(), 0);
+});
+
 test(
 	`Config returns expected output with valid "use" option`,
 	() => {
