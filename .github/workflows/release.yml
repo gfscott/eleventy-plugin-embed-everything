@@ -43,9 +43,9 @@ jobs:
         with:
           # Calls 'release' script in root package.json
           # https://github.com/changesets/action#inputs
-          publish: pnpm release
-          commit: Version packages
-          title: Version packages
+          publish-script: pnpm release
+          commit-message: Version packages
+          pr-title: Version packages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
