@@ -10,10 +10,7 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 # Originally modeled on https://github.com/sveltejs/kit/blob/main/.github/workflows/release.yml#L13-L16
-permissions:
-  contents: write # to create release (changesets/action)
-  id-token: write # OpenID Connect token needed for provenance
-  pull-requests: write # to create pull request (changesets/action)
+permissions: {}
 
 jobs:
 
@@ -22,15 +19,19 @@ jobs:
     runs-on: ubuntu-latest
     # Only runs in the main repo, not in forks
     if: github.repository == 'gfscott/eleventy-plugin-embed-everything'
+    permissions:
+      contents: write # to create release (changesets/action)
+      id-token: write # OpenID Connect token needed for provenance
+      pull-requests: write # to create pull request (changesets/action)
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       - name: Install pnpm and set up Node.js
-        uses: pnpm/setup@v3
+        uses: pnpm/setup@731dfb6463bbd11c11fd0ee11fe00ed0e36d48a1
         with:
           runtime: node@26
-          cache: true
+          cache: false # release jobs shouldn't restore a cache for security
       # Even though the CI workflow runs tests, run them here
       # so the release task errors out if there's a problem.
       - name: Run unit tests
@@ -39,7 +40,7 @@ jobs:
       # The Changesets action either updates its "Version packages" PR
       # OR publishes it to npm when that PR merges to main.
       - name: Create Release Pull Request or publish
-        uses: changesets/action@v2
+        uses: changesets/action@ae32849d5ba541f9ae29e40e22a623bc13562f51
         with:
           # Calls 'release' script in root package.json
           # https://github.com/changesets/action#inputs
@@ -57,10 +58,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: changesets_release
     if: github.repository == 'gfscott/eleventy-plugin-embed-everything'
+    permissions:
+      contents: write # to force-push the next branch
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
       # Source: modified from a shopify/hydrogen workflow:
       # https://github.com/Shopify/hydrogen/blob/main/.github/workflows/sync_main.yml
@@ -77,20 +80,21 @@ jobs:
     if: github.repository == 'gfscott/eleventy-plugin-embed-everything'
     # id-token write permission required for package provenance
     permissions:
+      contents: read
       id-token: write
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           # Checkout the next branch, instead of the default main branch
           ref: next
 
       - name: Install pnpm and set up Node.js
-        uses: pnpm/setup@v3
+        uses: pnpm/setup@731dfb6463bbd11c11fd0ee11fe00ed0e36d48a1
         with:
           runtime: node@26
-          cache: true
+          cache: false # release jobs shouldn't restore a cache for security
 
       # By default, the changesets action creates an .npmrc file in each
       # package directory before publishing so npm has the registry and

@@ -5,3 +5,6 @@ packages:
 
 allowBuilds:
   msw: true
+
+# 3-day cooloff (in minutes) to mitigate compromised packages
+minimumReleaseAge: 4320
