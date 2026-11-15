@@ -16,9 +16,11 @@ jobs:
         node: ["22", "24", "26"]
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
       - name: Install pnpm and set up Node.js
-        uses: pnpm/setup@v3
+        uses: pnpm/setup@731dfb6463bbd11c11fd0ee11fe00ed0e36d48a1
         with:
           runtime: node@${{ matrix.node }}
           cache: true
@@ -33,15 +35,18 @@ jobs:
     if: github.repository == 'gfscott/eleventy-plugin-embed-everything'
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
       - name: Install pnpm and set up Node.js
-        uses: pnpm/setup@v3
+        uses: pnpm/setup@731dfb6463bbd11c11fd0ee11fe00ed0e36d48a1
         with:
           runtime: node@26
           cache: true
       - name: Run coverage
         run: pnpm coverage
       - name: Upload coverage to Codecov.io
-        uses: codecov/codecov-action@v7
+        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5
         with:
           codecov_yml_path: ./codecov.yml
+          version: v11.3.2
