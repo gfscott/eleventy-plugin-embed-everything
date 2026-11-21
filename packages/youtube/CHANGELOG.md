@@ -1,5 +1,12 @@
 # eleventy-plugin-youtube-embed
 
+## 1.13.3
+
+### Patch Changes
+
+- Bump @11ty/eleventy-fetch from 5.1.2 to 5.1.3 ([#437](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/437))
+- Bump lite-youtube-embed from 0.3.4 to 0.4.0 ([#471](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/471))
+
 ## 1.13.2
 
 ### Patch Changes
