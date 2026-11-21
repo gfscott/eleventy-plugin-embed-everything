@@ -142,8 +142,8 @@ importers:
         specifier: ^4.3.1
         version: 4.3.1
       lite-youtube-embed:
-        specifier: ^0.3.4
-        version: 0.3.4
+        specifier: ^0.4.0
+        version: 0.4.0
       string-replace-async:
         specifier: ^3.0.2
         version: 3.0.2
@@ -654,8 +654,8 @@ packages:
   list-to-array@1.1.0:
     resolution: {integrity: sha512-+dAZZ2mM+/m+vY9ezfoueVvrgnHIGi5FvgSymbIgJOFwiznWyA59mav95L+Mc6xPtL3s9gm5eNTlNtxJLbNM1g==}
 
-  lite-youtube-embed@0.3.4:
-    resolution: {integrity: sha512-aXgxpwK7AIW58GEbRzA8EYaY4LWvF3FKak6B9OtSJmuNyLhX2ouD4cMTxz/yR5HFInhknaYd2jLWOTRTvT8oAw==}
+  lite-youtube-embed@0.4.0:
+    resolution: {integrity: sha512-82CmQVLWv1P1FNUWgiXJtbkBQbyF8UQB0s0F+pSegbcx53uylX4kgJ6QJsXseVHzNtVxa9t8yjryA2B9sTkFKg==}
 
   luxon@3.7.2:
     resolution: {integrity: sha512-vtEhXh/gNjI9Yg1u4jX/0YVPMvxzHuGgCm6tC5kZyb08yjGWGnqAjGJvcXbqQR2P3MyMEFnRbpcdFS6PBcLqew==}
@@ -1534,7 +1534,7 @@ snapshots:
 
   list-to-array@1.1.0: {}
 
-  lite-youtube-embed@0.3.4: {}
+  lite-youtube-embed@0.4.0: {}
 
   luxon@3.7.2: {}
 
