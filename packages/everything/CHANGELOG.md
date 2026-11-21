@@ -1,5 +1,18 @@
 # eleventy-plugin-embed-everything
 
+## 1.21.3
+
+### Patch Changes
+
+- Add an informational console warning for users who pass the `add` option when they likely want `use` instead. ([#465](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/465))
+- Bump lite-youtube-embed from 0.3.4 to 0.4.0 ([#471](https://github.com/gfscott/eleventy-plugin-embed-everything/pull/471))
+- Updated dependencies [[`3399316`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/339931661678f29cfe69a4ddfcb1c17b68664290), [`6c998a2`](https://github.com/gfscott/eleventy-plugin-embed-everything/commit/6c998a26ef68ae63aa478621ec23f7fde0596f07)]:
+  - eleventy-plugin-embed-bluesky@1.0.3
+  - eleventy-plugin-embed-mastodon@1.0.4
+  - eleventy-plugin-embed-soundcloud@1.2.12
+  - eleventy-plugin-embed-twitter@1.4.5
+  - eleventy-plugin-youtube-embed@1.13.3
+
 ## 1.21.2
 
 ### Patch Changes
